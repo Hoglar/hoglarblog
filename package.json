@@ -13,9 +13,9 @@
   "author": "Martin Høghaug Larsen",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6"
   },
-
   "bugs": {
     "url": "https://github.com/Hoglar/hoglarblog/issues"
   },

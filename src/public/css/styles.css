@@ -1,0 +1,167 @@
+
+* {
+	box-sizing: border-box;
+}
+/* ------------ Web fonts -----------*/
+
+html {
+
+    min-height: 100%;
+    
+}
+
+
+.siteBody {
+    background: white; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+   
+    
+}
+
+
+/*   ----------   Header ------------    
+
+-----------------------------------------
+----------------------------------------- */
+
+.header,
+.mainNav {
+    display: flex;
+}
+
+
+.header {
+    
+    height: 70px;
+    background: white;
+    border-bottom: solid 2px;
+    border-bottom-color: #2d557c;
+    justify-content: flex-start;
+    width: 100%;
+      
+}
+
+.navLink-1 {
+    order: 1;
+}
+
+
+.mainNav li {
+    list-style-type: none;
+    color: black;
+    padding-top: 40px;
+    padding-right: 40px;
+    
+    font-family: 'dancing script', cursive;
+    font-size: 18px;
+}
+
+.navLink-1 a ,
+.navLink-2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.navLink-1 a:hover,
+.navLink-2 a:hover {
+    color: #122131;
+}
+
+/*   ----------   DIV, champion picker ------------    
+
+-----------------------------------------
+----------------------------------------- */
+
+.mainLogo {
+    display: flex;
+}
+
+.mainLogo {
+    align-self: center;
+    flex: 1;
+}
+
+.mainLogo img {
+    align-self: center;
+}
+
+
+
+
+/*   ----------   About and contact ------------    
+
+-----------------------------------------
+----------------------------------------- */
+
+.about {
+    display: flex;
+   
+    flex-direction: column;
+}
+
+section h2 {
+  
+    align-self: center;
+    
+}
+    
+section p {
+  
+    align-self: center;
+    width: 40%;
+}
+
+
+
+
+
+
+
+
+/* ----------- Footer ------------*/
+
+.mainFooter {
+    border-top: solid 1px #122131;
+    width: 100%;
+    height:60px;
+    align-self: flex-end;
+    background: #2d557c;
+  
+   
+    
+}
+
+.mainFooter p {
+    margin: 10px auto;
+    text-align: center;
+    color: white;
+}
+
+#legalJibberJabber {
+    font-size: 10px;
+    color: #87aed4;
+    margin-left: 10px;
+    margin-right: 10px;
+   
+}
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+  
+    #legalJibberJabber {
+        font-size: 14px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
+
+@media (min-width: 1025px) {
+
+	
+}
