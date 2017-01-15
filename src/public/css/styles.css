@@ -47,29 +47,50 @@ html {
     order: 1;
 }
 
+.navLink-2 {
+    order: 2;
+}
+
 
 .mainNav li {
     list-style-type: none;
     color: black;
     padding-top: 40px;
     padding-right: 40px;
-    
     font-family: 'dancing script', cursive;
-    font-size: 18px;
+    font-size: 30px;
 }
 
-.navLink-1 a ,
-.navLink-2 a {
+
+.navLink a
+{
     text-decoration: none;
     color: black;
 }
 
-.navLink-1 a:hover,
-.navLink-2 a:hover {
-    color: #122131;
+
+.navLink a:hover {
+    color: #2d557c;
 }
 
-/*   ----------   DIV, champion picker ------------    
+/*   ----------   Index Page ------------    
+
+-----------------------------------------
+----------------------------------------- */
+
+.indexPage {
+    display: flex;
+    align-self: center;
+    
+
+}
+
+.indexContent-1 {
+    align-content: space-around;
+}
+
+
+/*   ----------   DIV ------------    
 
 -----------------------------------------
 ----------------------------------------- */
@@ -87,6 +108,50 @@ html {
     align-self: center;
 }
 
+.mainContent {
+    display: flex;
+    margin: auto;
+    flex: 1;
+}
+
+/*   ----------   DIV blogPosts ------------    
+
+-----------------------------------------
+----------------------------------------- */
+
+
+.blogPosts {
+    text-align: center;
+    width: 60%;
+    border: solid 2px black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    
+    
+}
+
+.blogPosts h1 {
+    font-family: 'dancing script', cursive;
+}
+
+.blogPosts a {
+    color: black;
+    text-decoration: none;
+}
+
+.blogPosts a:hover {
+    font-size: 110%;
+    text-decoration: overline;
+}
+
+.postSelected h1 {
+    
+    text-decoration: overline;
+}
 
 
 
