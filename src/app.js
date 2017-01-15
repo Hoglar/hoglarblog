@@ -54,7 +54,7 @@ app.get('/blog/:title?', (req, res) => {
 
 
 
-app.listen(8080, 'localhost' () => {
+app.listen(8080, 'localhost', () => {
 
     console.log("server is up and running");
 });
