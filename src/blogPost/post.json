@@ -1,0 +1,19 @@
+{
+    
+    "indexOf": {
+        "title": "How to use: indexOf",
+        "description": "Litle guide on the usage of indexOf method",
+        "content": "I had this problem: I had an array of objects that i wanted to list, that was okay, i made the array and iterated over it. The page then listed the objects fine and well. I then wanted to use the array key as an url adress. There must be easyer ways to get the key but i got the key by using the indexOf method. To use the indexOf method you first have to select the array you want to get the index of a key in, then you have to use the method on it and give the parameter of the key name. array.indexOf(key), you then get the index back and your done."
+  },
+    "flexbox": {
+        "title": "How to use: Flexbox",
+        "description": "Flexbox is a part of the CSS vocabulary and a way to layout your site",
+        "content": "I chose to use flexbox over bootstrap"
+  },
+    "objectToArray": {
+        "title": "Making arrays out of objects",
+        "description": "If you have an object, like JSON for example. You can use the Obcject.key to make an array",
+        "content": "This is to tricky to explain now, put one day maybe"
+  }
+    
+}

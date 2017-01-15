@@ -3,6 +3,9 @@
 const express = require('express');
 var app = express();
 
+// for å få med json filen post.json må jeg require den here, i can now use the blogPosts variable to acces my blogposts.
+const blogPosts = require('./blogPost/post.json');
+
 // Will use the template engine Jade to rende HTML, so here i set upp the app for jade.
 // Jade er byttet til Pug, fikser meg derfor pug.
 // view engine sets the template engine to use to render template files. will soon change to angular. But this will have to do
@@ -16,9 +19,45 @@ app.set('views', __dirname + '/templates');
 app.use('/static', express.static('public'));
 
 
-app.get('/', (req,res) => {
+//
+
+
+
+// Trenger og lage en funksjon som lager en liste av blogposts, helst de 10 siste eller noe. kan lage denne i en annen fil senere. 
+// Har her en array med alle keys i blogposts
+var postsArray = Object.keys(blogPosts);
+
+var postList = postsArray.map((value) => {
+    return blogPosts[value];
+});
+
+
+
+app.get('/', (req, res) => {
     res.render('index');
 });
+
+// Lage ny route til hoglar/blog
+
+
+//app.get('/blog', (req, res) => {
+  //  res.render('blog');
+//})
+
+app.get('/blog/:title?', (req, res) => {
+    // Ved å bruke req.params.title får post verdien som er i title
+    var title = req.params.title;
+    // Jeg lagrer blog posten med navnet til title til var post slik at jeg kan bruke den til å sende til fil. 
+    var post = blogPosts[title];
+    // sender her informasjon om og rendre blog.pug hvor jeg og sender en variabel "post" med informasjonen i variablen post fra denne funksjonen. Lager først en error message om titlen ikke finnes i blogPost.  
+    if (!(title in blogPosts)) {
+        res.render('blog', {posts: postList, postName: postsArray});
+    } else {
+        res.render('blogPost', {post: post});
+    }
+});
+
+
 
 app.listen(3000, () => {
     console.log("server is up and running");

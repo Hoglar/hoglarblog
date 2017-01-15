@@ -5,5 +5,9 @@ html
     body.siteBody
         include ./partials/_nav.pug
         include ./partials/_main.pug
+            block indexPage
+            block blogPosts
+            block singleBlogPost
         include ./partials/_footer.pug
 
+    block content
