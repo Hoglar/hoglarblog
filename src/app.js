@@ -20,6 +20,6 @@ app.get('/', (req,res) => {
     res.render('index');
 });
 
-app.listen(8080, () => {
+app.listen(8080, 'localhost', () => {
     console.log("server is up and running");
 });
