@@ -27,10 +27,10 @@ app.use('/static', express.static('public'));
 // Har her en array med alle keys i blogposts
 var postsArray = Object.keys(blogPosts);
 
+
 var postList = postsArray.map((value) => {
     return blogPosts[value];
 });
-
 
 
 app.get('/', (req, res) => {

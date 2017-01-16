@@ -8,7 +8,16 @@
     "flexbox": {
         "title": "How to use: Flexbox",
         "description": "Flexbox is a part of the CSS vocabulary and a way to layout your site",
-        "content": "I chose to use flexbox over bootstrap"
+        "content": {
+            "title": "Css Glossary",
+            "glossary": {
+                "module":[ "Module", "A css module is something tricky to understand. And maybe it isnt so important in learning flexbox, but lets try anyway. The official explanation is as follows: A CSS Module is a CSS file in which all class names and animation names are scoped locally by default." ],
+                "container": ["Container", "Parent element, known as flex container."],
+                "main axis": ["Main axis", "This is the shit"]
+            },
+            "paragraph": "Flexbox is about setting upp flexible boxes, on my page i have 4 boxes right now, or to be more spesific, i got one box with 3 boxes within. I got the site box with the navbox, bodybox and footer box"
+            
+        }
   },
     "objectToArray": {
         "title": "Making arrays out of objects",
