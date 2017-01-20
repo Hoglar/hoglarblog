@@ -26,23 +26,15 @@ html {
 -----------------------------------------
 ----------------------------------------- */
 
-.header,
-.mainNav {
-    display: flex;
-}
-
-
-.header {
-    
+.navFlexContainer {
+    display: flex; 
     height: 70px;
     background: white;
     border-bottom: solid 2px;
     border-bottom-color: #2d557c;
     justify-content: flex-start;
-    width: 100%;
+    width: 100%; }
       
-}
-
 .navLink-1 {
     order: 1;
 }
@@ -52,7 +44,7 @@ html {
 }
 
 
-.mainNav li {
+.navFlexContainer li {
     list-style-type: none;
     color: black;
     padding-top: 40px;
@@ -90,28 +82,16 @@ html {
 }
 
 
-/*   ----------   DIV ------------    
+/*   ----------   Main content flex container! ------------    
 
 -----------------------------------------
 ----------------------------------------- */
 
-.mainLogo {
-    display: flex;
-}
-
-.mainLogo {
-    align-self: center;
-    flex: 1;
-}
-
-.mainLogo img {
-    align-self: center;
-}
 
 .mainContent {
     display: flex;
-    margin: auto;
     flex: 1;
+    flex-direction: column;
 }
 
 /*   ----------   DIV blogPosts ------------    
@@ -153,6 +133,12 @@ html {
     text-decoration: overline;
 }
 
+h1.underscore {
+    text-decoration: none;
+    border-bottom: 3px solid;
+    padding-bottom: 10px;
+    
+}
 
 
 /*   ----------   About and contact ------------    

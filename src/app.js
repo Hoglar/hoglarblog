@@ -19,20 +19,16 @@ app.set('views', __dirname + '/templates');
 app.use('/static', express.static('public'));
 
 
-//
-var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
-
-
-
 
 // Trenger og lage en funksjon som lager en liste av blogposts, helst de 10 siste eller noe. kan lage denne i en annen fil senere. 
 // Har her en array med alle keys i blogposts
 var postsArray = Object.keys(blogPosts);
 
+
 var postList = postsArray.map((value) => {
     return blogPosts[value];
 });
+
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -52,6 +48,7 @@ app.get('/blog/:title?', (req, res) => {
         res.render('blogPost', {post: post});
     }
 });
+
 
 app.listen(8080, 'localhost', () => {
 

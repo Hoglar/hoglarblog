@@ -2,5 +2,19 @@ extends layout.pug
 block singleBlogPost 
     div.blogPosts.postSelected
         h1 #{post.title}
-        p #{post.content}
+        
+        if ( typeof post.content === 'object' )
+            h1.underscore #{post.content.title}
+            div.glossaryContent
+                each key in post.content.glossary
+                    h2 #{key[0]}
+                    p #{key[1]}
+                
+            div
+                p #{post.content.paragraph}
+            // under title iterate over glossary object
+        else
+            p #{post.content}
+        
+    
         
