@@ -20,6 +20,9 @@ app.use('/static', express.static('public'));
 
 
 //
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
 
 
 
@@ -30,8 +33,6 @@ var postsArray = Object.keys(blogPosts);
 var postList = postsArray.map((value) => {
     return blogPosts[value];
 });
-
-
 
 app.get('/', (req, res) => {
     res.render('index');
@@ -51,8 +52,6 @@ app.get('/blog/:title?', (req, res) => {
         res.render('blogPost', {post: post});
     }
 });
-
-
 
 app.listen(8080, 'localhost', () => {
 
