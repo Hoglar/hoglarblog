@@ -1,7 +1,16 @@
 header.navFlexContainer
-    
-        li.navLink.navLink-1 
-            a(href="/") Hoglar
-        
-        li.navLink.navLink-2
-            a(href="/blog") Blog
+        div.navBlock-1
+            li.navLink.navLink-1 
+                a(href="/") Hoglar
+
+            li.navLink.navLink-2
+                a(href="/blog") Blog
+            
+        if (inBlog === true)
+            div.navBlock-2
+                li.navLink.navLinkMiddle FrontEnd
+            
+                li.navLink.navLinkMiddle Backend
+                
+                li.navLink.navLinkMiddle Tools
+        div.navBlock-3

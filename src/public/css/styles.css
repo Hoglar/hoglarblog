@@ -32,15 +32,32 @@ html {
     background: white;
     border-bottom: solid 2px;
     border-bottom-color: #2d557c;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%; }
       
-.navLink-1 {
+
+.navBlock-1 {
+    display: flex;
+    justify-content: flex-start;
     order: 1;
+    flex-basis: 20%;
+    
 }
 
-.navLink-2 {
+.navBlock-2 {
+    display: flex;
+    justify-content: center;
     order: 2;
+    flex-basis: 60%;
+    
+}
+
+.navBlock-3 {
+    display: flex;
+    justify-content: flex-start;
+    order: 3;
+    flex-basis: 20%;
+    
 }
 
 
@@ -63,6 +80,11 @@ html {
 
 .navLink a:hover {
     color: #2d557c;
+}
+
+.navLinkMiddle {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /*   ----------   Index Page ------------    

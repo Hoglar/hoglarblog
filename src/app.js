@@ -51,7 +51,7 @@ app.get('/blog/:title?', (req, res) => {
     var post = blogPosts[title];
     // sender her informasjon om og rendre blog.pug hvor jeg og sender en variabel "post" med informasjonen i variablen post fra denne funksjonen. Lager først en error message om titlen ikke finnes i blogPost.  
     if (!(title in blogPosts)) {
-        res.render('blog', {posts: postList, postName: postsArray});
+        res.render('blog', {posts: postList, postName: postsArray, inBlog: true});
     } else {
         res.render('blogPost', {post: post});
     }
@@ -59,6 +59,6 @@ app.get('/blog/:title?', (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(8080, 'localhost', () => {
     console.log("server is up and running");
 });
