@@ -16,8 +16,8 @@ html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-   
     
+      
 }
 
 /*   ----------   Main content flex container! ------------    
@@ -86,8 +86,7 @@ html {
 }
 
 
-.navLink a
-{
+.navLink a {
     text-decoration: none;
     color: black;
 }
@@ -109,27 +108,30 @@ html {
 
     
 
-}
 
 .indexContent {
     display: flex;
-    justify-content: center ;
+    flex-direction: column;
+    width: 70%;
+    background-color: floralwhite;
+    align-self: center;
+    justify-content: flex-start;
+    flex: 1;
+    border-right: solid 2px #2d557c;
+    border-left: solid 2px #2d557c;
+    
+    line-height: 150%;
+    
 }
 
 .indexContent h1 {
     text-align: center;
+    margin-top: 70px;
 }
 
 .indexContent p {
     width: 60%;
     margin: 30px auto 30px;
-    
-}
-
-
-.indexContent a img {
-    width: 100px;
-    height: 100px;
     
 }
 
@@ -185,6 +187,10 @@ h1.underscore {
 .blogPostContent {
     border-top: solid 2px black;
 } 
+
+.glossaryContent {
+    display: none;
+}
 
 
 /*   ----------   About and contact ------------    
