@@ -193,34 +193,6 @@ h1.underscore {
 }
 
 
-/*   ----------   About and contact ------------    
-
------------------------------------------
------------------------------------------ */
-
-.about {
-    display: flex;
-   
-    flex-direction: column;
-}
-
-section h2 {
-  
-    align-self: center;
-    
-}
-    
-section p {
-  
-    align-self: center;
-    width: 40%;
-}
-
-
-
-
-
-
 
 
 /* ----------- Footer ------------*/
@@ -291,6 +263,81 @@ section p {
     margin-right: 20px;
     border: solid 1px black;
 }
+
+.glossaryPicture {
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+}
+
+/* ================================= 
+  Glossary page
+==================================== */
+
+.mainGlossaryBlock {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 70px;
+    font-family: 'dancing script', cursive;
+}
+
+.mainGlossaryBlock div {
+    border-radius: 10px 10px 10px 20px;
+}
+
+.mainGlossaryBlock h1 {
+    border: solid 2px #122131;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px 10px 10px 20px;
+}
+
+.htmlGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+    width: 30%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+    min-height: 450px;
+}
+
+.htmlGlossary h1 {
+    background-color: #3079AB;
+    
+}
+
+.cssGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+    width: 30%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+    
+}
+
+.cssGlossary h1 {
+    background-color: #3079AB;
+}
+
+.javaScriptGloassary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 3;
+    width: 30%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+}
+
+.javaScriptGloassary h1 {
+    background-color: #c25975;
+}
+    
 
 /* ================================= 
   Media Queries
