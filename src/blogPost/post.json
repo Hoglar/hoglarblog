@@ -23,6 +23,17 @@
         "title": "Making arrays out of objects",
         "description": "If you have an object, like JSON for example. You can use the Obcject.key to make an array",
         "content": "This is to tricky to explain now, put one day maybe"
-  }
+  },
+    "DocumentObjectModel": {
+        "title": "How to use: THE DOM",
+        "description": "To create interactivity to your website u can use JavaScript to manipulate the DOM, this blogpost tries to explain how we do that",
+        "content": {
+            "title": "DOM Glossary",
+            "glossary": {
+                "dom": ["DOM", "DOM stands for Document Object Model and it is a Javascript Model"]
+            },
+            "paragraph": "blah"
+        }
+    }
     
 }

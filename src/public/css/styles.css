@@ -20,6 +20,21 @@ html {
     
 }
 
+/*   ----------   Main content flex container! ------------    
+
+-----------------------------------------
+----------------------------------------- */
+
+
+.mainContent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+
+
+
 
 /*   ----------   Header ------------    
 
@@ -32,15 +47,32 @@ html {
     background: white;
     border-bottom: solid 2px;
     border-bottom-color: #2d557c;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%; }
       
-.navLink-1 {
+
+.navBlock-1 {
+    display: flex;
+    justify-content: flex-start;
     order: 1;
+    flex-basis: 20%;
+    
 }
 
-.navLink-2 {
+.navBlock-2 {
+    display: flex;
+    justify-content: center;
     order: 2;
+    flex-basis: 60%;
+    
+}
+
+.navBlock-3 {
+    display: flex;
+    justify-content: flex-start;
+    order: 3;
+    flex-basis: 20%;
+    
 }
 
 
@@ -65,34 +97,44 @@ html {
     color: #2d557c;
 }
 
+.navLinkMiddle {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 /*   ----------   Index Page ------------    
 
 -----------------------------------------
 ----------------------------------------- */
 
-.indexPage {
-    display: flex;
-    align-self: center;
     
 
 }
 
-.indexContent-1 {
-    align-content: space-around;
-}
-
-
-/*   ----------   Main content flex container! ------------    
-
------------------------------------------
------------------------------------------ */
-
-
-.mainContent {
+.indexContent {
     display: flex;
-    flex: 1;
-    flex-direction: column;
+    justify-content: center ;
 }
+
+.indexContent h1 {
+    text-align: center;
+}
+
+.indexContent p {
+    width: 60%;
+    margin: 30px auto 30px;
+    
+}
+
+
+.indexContent a img {
+    width: 100px;
+    height: 100px;
+    
+}
+
+
+
 
 /*   ----------   DIV blogPosts ------------    
 
@@ -140,6 +182,10 @@ h1.underscore {
     
 }
 
+.blogPostContent {
+    border-top: solid 2px black;
+} 
+
 
 /*   ----------   About and contact ------------    
 
@@ -174,13 +220,37 @@ section p {
 /* ----------- Footer ------------*/
 
 .mainFooter {
+    display: flex;
     border-top: solid 1px #122131;
     width: 100%;
     height:60px;
     align-self: flex-end;
     background: #2d557c;
-  
-   
+    align-items: center;
+    
+}
+
+.footerBlock-1 {
+    display: flex;
+    justify-content: flex-start;
+    order: 1;
+    flex-basis: 20%;
+    
+}
+
+.footerBlock-2 {
+    display: flex;
+    justify-content: center;
+    order: 2;
+    flex-basis: 60%;
+    
+}
+
+.footerBlock-3 {
+    display: flex;
+    justify-content: flex-end;
+    order: 3;
+    flex-basis: 20%;
     
 }
 
@@ -196,6 +266,24 @@ section p {
     margin-left: 10px;
     margin-right: 10px;
    
+}
+
+.mainFooter a {
+    display: flex;
+    align-self: center;
+}
+
+.digitalOceanReferal {
+    max-width: 120px;
+    height: 25px;
+    
+    margin-right: 20px;
+}
+.treehouseReferal {
+    height: 55px;
+    width: 55px;
+    margin-right: 20px;
+    border: solid 1px black;
 }
 
 /* ================================= 
