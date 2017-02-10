@@ -16,8 +16,8 @@ html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-   
     
+      
 }
 
 /*   ----------   Main content flex container! ------------    
@@ -86,8 +86,7 @@ html {
 }
 
 
-.navLink a
-{
+.navLink a {
     text-decoration: none;
     color: black;
 }
@@ -109,27 +108,30 @@ html {
 
     
 
-}
 
 .indexContent {
     display: flex;
-    justify-content: center ;
+    flex-direction: column;
+    width: 70%;
+    background-color: floralwhite;
+    align-self: center;
+    justify-content: flex-start;
+    flex: 1;
+    border-right: solid 2px #2d557c;
+    border-left: solid 2px #2d557c;
+    
+    line-height: 150%;
+    
 }
 
 .indexContent h1 {
     text-align: center;
+    margin-top: 70px;
 }
 
 .indexContent p {
     width: 60%;
     margin: 30px auto 30px;
-    
-}
-
-
-.indexContent a img {
-    width: 100px;
-    height: 100px;
     
 }
 
@@ -186,33 +188,9 @@ h1.underscore {
     border-top: solid 2px black;
 } 
 
-
-/*   ----------   About and contact ------------    
-
------------------------------------------
------------------------------------------ */
-
-.about {
-    display: flex;
-   
-    flex-direction: column;
+.glossaryContent {
+    display: none;
 }
-
-section h2 {
-  
-    align-self: center;
-    
-}
-    
-section p {
-  
-    align-self: center;
-    width: 40%;
-}
-
-
-
-
 
 
 
@@ -285,6 +263,81 @@ section p {
     margin-right: 20px;
     border: solid 1px black;
 }
+
+.glossaryPicture {
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+}
+
+/* ================================= 
+  Glossary page
+==================================== */
+
+.mainGlossaryBlock {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 70px;
+    font-family: 'dancing script', cursive;
+}
+
+.mainGlossaryBlock div {
+    border-radius: 10px 10px 10px 20px;
+}
+
+.mainGlossaryBlock h1 {
+    border: solid 2px #122131;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px 10px 10px 20px;
+}
+
+.htmlGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+    width: 30%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+    min-height: 450px;
+}
+
+.htmlGlossary h1 {
+    background-color: #3079AB;
+    
+}
+
+.cssGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+    width: 30%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+    
+}
+
+.cssGlossary h1 {
+    background-color: #3079AB;
+}
+
+.javaScriptGloassary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 3;
+    width: 30%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+}
+
+.javaScriptGloassary h1 {
+    background-color: #c25975;
+}
+    
 
 /* ================================= 
   Media Queries

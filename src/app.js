@@ -5,6 +5,7 @@ var app = express();
 
 // for å få med json filen post.json må jeg require den here, i can now use the blogPosts variable to acces my blogposts.
 const blogPosts = require('./blogPost/post.json');
+const glossary = require('./blogPost/glossary.json');
 
 // Will use the template engine Jade to rende HTML, so here i set upp the app for jade.
 // Jade er byttet til Pug, fikser meg derfor pug.
@@ -29,10 +30,17 @@ var postList = postsArray.map((value) => {
     return blogPosts[value];
 });
 
-
+// dette er route til index
 app.get('/', (req, res) => {
     res.render('index');
 });
+
+
+app.get('/glossary', (req, res) => {
+    res.render('glossary', {glossary : glossary});
+});
+
+// Lage ny route til hoglar/blog
 
 
 

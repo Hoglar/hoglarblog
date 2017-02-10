@@ -4,8 +4,9 @@ block singleBlogPost
         h1 #{post.title}
         
         if ( typeof post.content === 'object' )
-            h1.underscore #{post.content.title}
-            div.glossaryContent
+            a#glossaryh1Selector
+                h1.underscore #{post.content.title}
+            div.glossaryContent#glossaryContent
                 each key in post.content.glossary
                     h2 #{key[0]}
                     p #{key[1]}
@@ -15,6 +16,5 @@ block singleBlogPost
             // under title iterate over glossary object
         else
             p #{post.content}
-        
-    
-        
+block javaScript        
+    script(src="/static/js/blogFunctionality.js")

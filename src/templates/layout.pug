@@ -7,7 +7,12 @@ html
         div.mainContent
             block indexPage
             block blogPosts
+            block glossary
             block singleBlogPost
         include ./partials/_footer.pug
+        block javaScript
+        script(src="/static/js/functionality.js")
 
     block content
+    
+    
