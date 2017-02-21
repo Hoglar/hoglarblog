@@ -90,6 +90,7 @@ html {
 .navLink a {
     text-decoration: none;
     color: black;
+    margin-left: 20px;
 }
 
 
