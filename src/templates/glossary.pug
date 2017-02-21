@@ -3,8 +3,18 @@ block glossary
     div.mainGlossaryBlock
         div.htmlGlossary
             h1 HTML
+            div.glossaryList
+                each key in glossary.html
+                    h2 #{key[0]}
         div.cssGlossary
             h1 CSS
+            div.glossaryList
+                each key in glossary.css
+                    h2 #{key[0]}
         div.javaScriptGloassary
             h1 JavaScript
+            div.glossaryList
+                each key in glossary.javaScript
+                    h2 #{key[0]}
+
     

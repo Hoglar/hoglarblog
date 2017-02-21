@@ -3,13 +3,15 @@
         
     },
     
-    "CSS": {
+    "css": {
         
     },
     
-    "JavaScript": {
-        "title": "The DOM"
-        
+    "javaScript": {
+        "DOM": ["DOM", "DOM stands for Document Object Model and it is a Javascript Model"],
+        "Variable": ["Variable", "A javascript variable holds a value and stores it to the memory"],
+        "object": ["Object", "Blash"]
     }
+    
     
 }
