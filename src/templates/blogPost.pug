@@ -1,5 +1,6 @@
 extends layout.pug
 block singleBlogPost 
+
     div.blogPosts.postSelected
         h1 #{post.title}
         
@@ -24,5 +25,9 @@ block singleBlogPost
             // under title iterate over glossary object
         else
             p #{post.content}
+            
+    div.blogPostsLeft#glossarySegment
+        //div.glossarySticker#glossarySticker
+    div.blogPostsRight
 block javaScript        
     script(src="/static/js/blogFunctionality.js")

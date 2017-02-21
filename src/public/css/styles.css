@@ -29,7 +29,8 @@ html {
 .mainContent {
     display: flex;
     flex: 1;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -111,16 +112,16 @@ html {
 
 .indexContent {
     display: flex;
+    margin: auto;
     flex-direction: column;
-    width: 70%;
+    max-width: 70%;
     background-color: floralwhite;
-    align-self: center;
-    justify-content: flex-start;
     flex: 1;
-    border-right: solid 2px #2d557c;
-    border-left: solid 2px #2d557c;
-    
+    border: solid 2px #2d557c;
     line-height: 150%;
+
+
+  
     
 }
 
@@ -147,17 +148,41 @@ html {
 .blogPosts {
     text-align: center;
     width: 60%;
-    border: solid 2px black;
+    border: solid 2px #122131;
     margin-top: 10px;
     margin-bottom: 10px;
-    align-self: center;
     padding-left: 10px;
     padding-right: 10px;
     background-color: floralwhite;
+    order: 2;
+   
     
     
     
 }
+
+.blogPostsLeft {
+    display: flex;
+    order: 1;
+    width: 20%;
+    justify-content: space-around;
+    
+}
+
+#glossarySticker {
+    background-color: floralwhite;
+    width: 90%;
+    border: solid 2px #122131;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.blogPostsRight {
+    order: 3;
+    width: 20%;
+}
+
 
 .blogPosts h1 {
     font-family: 'dancing script', cursive;
@@ -186,7 +211,7 @@ h1.underscore {
 }
 
 .blogPostContent {
-    border-top: solid 2px black;
+    border-top: solid 2px #122131;
 } 
 
 .glossaryContent {
@@ -200,7 +225,7 @@ h1.underscore {
 
 .mainFooter {
     display: flex;
-    border-top: solid 1px #122131;
+    border-top: solid 2px #122131;
     width: 100%;
     height:60px;
     align-self: flex-end;
@@ -276,9 +301,14 @@ h1.underscore {
     border: solid 2px black;
     border-radius: 10px 10px 10px 20px;
     font-family: 'dancing script', cursive;
-    background-color: #c25975;
+    background-color: floralwhite;
+    font-size: 120%;
     
 }
+#glossaryButton:hover {
+    background-color: #c25975;
+}
+
 
 /* ================================= 
   Glossary page
@@ -289,7 +319,8 @@ h1.underscore {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
-    margin-top: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-family: 'dancing script', cursive;
 }
 
