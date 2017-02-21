@@ -1,7 +1,10 @@
 footer.mainFooter
     div.footerBlock-1
         a(href="/glossary")
-            img.glossaryPicture(src="/static/img/registry-book-300px.png")
+            img.glossaryPicture(src="/static/img/lemmling-Cartoon-owl-sitting-on-a-book-300px.png")
+        
+        if (inBlogPost === true)
+            button.specificGlossaryButton #{post.title} Glossary
     div.footerBlock-2
         p © Hoglar.com - 2017
     div.footerBlock-3

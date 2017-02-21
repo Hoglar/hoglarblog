@@ -153,6 +153,7 @@ html {
     align-self: center;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: floralwhite;
     
     
     
@@ -270,6 +271,15 @@ h1.underscore {
     margin-left: 20px;
 }
 
+.specificGlossaryButton {
+    margin-left: 20px;
+    border: solid 2px black;
+    border-radius: 10px 10px 10px 20px;
+    font-family: 'dancing script', cursive;
+    background-color: #c25975;
+    
+}
+
 /* ================================= 
   Glossary page
 ==================================== */
@@ -337,6 +347,18 @@ h1.underscore {
 .javaScriptGloassary h1 {
     background-color: #c25975;
 }
+
+.glossaryList {
+    display: flex;
+    flex-direction: row;
+}
+
+.glossaryList h2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: solid 1px #2d557c;
+    border-left: solid 1px #2d557c;
+} 
     
 
 /* ================================= 

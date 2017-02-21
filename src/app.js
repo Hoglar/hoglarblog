@@ -53,7 +53,7 @@ app.get('/blog/:title?', (req, res) => {
     if (!(title in blogPosts)) {
         res.render('blog', {posts: postList, postName: postsArray, inBlog: true});
     } else {
-        res.render('blogPost', {post: post});
+        res.render('blogPost', {post: post, glossary : glossary, inBlogPost: true});
     }
 });
 
