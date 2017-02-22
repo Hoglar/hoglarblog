@@ -1,9 +1,11 @@
 extends ./layout.pug 
 block blogPosts
-    each post in posts
-        div.blogPosts
-            h1 
-                a(href="/blog/" + postName[posts.indexOf(post)]) #{post.title}
-            p   #{post.description}
+    div.blogLandingpage
+        each post in posts
+            div.blogLandingpagePost
+                h1 
+                    a(href="/blog/" + postName[posts.indexOf(post)]) #{post.title}
+                p   #{post.description}
+                p.postDate #{post.date}
         
         

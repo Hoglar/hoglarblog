@@ -31,6 +31,7 @@ html {
     flex: 1;
     flex-direction: row;
     justify-content: space-between;
+    line-height: 150%;
 }
 
 
@@ -119,7 +120,7 @@ html {
     background-color: floralwhite;
     flex: 1;
     border: solid 2px #2d557c;
-    line-height: 150%;
+    
 
 
   
@@ -144,6 +145,10 @@ html {
 
 -----------------------------------------
 ----------------------------------------- */
+
+
+
+
 
 
 .blogPosts {
@@ -221,6 +226,47 @@ h1.underscore {
 
 
 
+
+/*------------ BlogLandingPage -----------*/
+
+
+.blogLandingpage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.blogLandingpagePost {
+    text-align: center;
+    border: solid 2px #122131;
+    background-color: floralwhite;
+    width: 30%;
+    margin: 10px;
+    border-radius: 10px 10px 10px 20px;
+    padding: 20px;
+}
+
+.blogLandingpagePost h1 {
+    font-family: 'dancing script', cursive;
+}
+
+.blogLandingpagePost a {
+    color: black;
+    text-decoration: none;
+}
+
+.blogLandingpagePost a:hover {
+    font-size: 110%;
+    text-decoration: overline;
+}
+
+.postDate {
+    text-align: right;
+    
+}
 
 /* ----------- Footer ------------*/
 
