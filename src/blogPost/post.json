@@ -38,6 +38,13 @@
         "description": "If you want to make a Web Page, one good way to start the journey is to learn HTML. I will here try to explain the basics and how you can make a page and display it on your computer. If you actually want to put it on the world wide web, your gonna need more than the basics!",
         "content": "The web is made out of many different tecnologies or tools. The tool i use to write this post in is called JSON, and im not actually writing it out in HTML but something called PUG, this may be wrong cause still think the maze of tecnologies is quite overwhelming. Anyway, to get started with web development you can do alot with simple HTML",
         "date": "22.02.17"
+    },
+    
+    "filePointer" : {
+        "title": "File Pointers",
+        "description": "File pointers shoud remain under a c chapter, but i dont have that. I here dig into the file pointers in the c language",
+        "content": "When a computer runs a program its mostly the RAM thats working with dynamic data, the hard Drives function is only to store persistent data. In c we store data in a data structure called FILE, this is the files thats stored on your hardDisk. To work with these files while programming we use filePointers to acces the files.",
+        "date": "11.06.17"
     }
     
 }
