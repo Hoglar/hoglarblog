@@ -1,0 +1,50 @@
+{
+    
+    "indexOf": {
+        "title": "How to use: indexOf",
+        "description": "Litle guide on the usage of indexOf method",
+        "content": "I had this problem: I had an array of objects that i wanted to list, that was okay, i made the array and iterated over it. The page then listed the objects fine and well. I then wanted to use the array key as an url adress. There must be easyer ways to get the key but i got the key by using the indexOf method. To use the indexOf method you first have to select the array you want to get the index of a key in, then you have to use the method on it and give the parameter of the key name. array.indexOf(key), you then get the index back and your done.",
+        "date": "..."
+  },
+    "flexbox": {
+        "title": "How to use: Flexbox",
+        "description": "Flexbox is a part of the CSS vocabulary and a way to layout your site",
+        "content": "Flexbox is about setting upp flexible boxes, on my page i have 4 boxes right now, or to be more spesific, i got one box with 3 boxes within. I got the site box with the navbox, bodybox and footer box",
+        "date": "..."
+            
+  },
+    "objectToArray": {
+        "title": "Making arrays out of objects",
+        "description": "If you have an object, like JSON for example. You can use the Obcject.key to make an array",
+        "content": "This is to tricky to explain now, put one day maybe",
+        "date": "..."
+  },
+    "DocumentObjectModel": {
+        "title": "How to use: THE DOM",
+        "description": "To create interactivity to your website u can use JavaScript to manipulate the DOM, this blogpost tries to explain how we do that",
+        "content": {
+            
+            "paragraph": {
+                "basics": ["Basics", "When you are working with the DOM we interact with it in three different ways:", "We can select the elements in the DOM.", "We can manipulate or change the elements in the DOM.", "We can add events that will happend to the elements during given conditions."],
+                
+                "SelectingTheDom": ["To select the DOM", "To selecet the Dom we got some code to learn"]
+            }
+        },
+        "date": "..."
+    },
+    
+    "basicHtml" : {
+        "title": "Basic HTML",
+        "description": "If you want to make a Web Page, one good way to start the journey is to learn HTML. I will here try to explain the basics and how you can make a page and display it on your computer. If you actually want to put it on the world wide web, your gonna need more than the basics!",
+        "content": "The web is made out of many different tecnologies or tools. The tool i use to write this post in is called JSON, and im not actually writing it out in HTML but something called PUG, this may be wrong cause still think the maze of tecnologies is quite overwhelming. Anyway, to get started with web development you can do alot with simple HTML",
+        "date": "22.02.17"
+    },
+    
+    "filePointer" : {
+        "title": "File Pointers",
+        "description": "File pointers shoud remain under a c chapter, but i dont have that. I here dig into the file pointers in the c language",
+        "content": "When a computer runs a program its mostly the RAM thats working with dynamic data, the hard Drives function is only to store persistent data. In c we store data in a data structure called FILE, this is the files thats stored on your hardDisk. To work with these files while programming we use filePointers to acces the files.",
+        "date": "11.06.17"
+    }
+    
+}
