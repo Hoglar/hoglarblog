@@ -41,9 +41,9 @@
     },
     
     "filePointer" : {
-        "title": "File Pointers",
+        "title": "Making a post to help me",
         "description": "File pointers shoud remain under a c chapter, but i dont have that. I here dig into the file pointers in the c language",
-        "content": "When a computer runs a program its mostly the RAM thats working with dynamic data, the hard Drives function is only to store persistent data. In c we store data in a data structure called FILE, this is the files thats stored on your hardDisk. To work with these files while programming we use filePointers to acces the files.",
+        "content": "Its cool to write directly into the server like im doing now. I need to make checklists, for things i need to do, get good at checklists, and i need to update this site more often. Im finding it hard to find out how to get the site updated, that must be my number one problem. I cant write in nano as i do now. i want to work in an text editor. I can make a checklist of the steps i need to take to post a post. how do i even save?",
         "date": "11.06.17"
     }
     
