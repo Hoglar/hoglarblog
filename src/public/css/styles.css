@@ -386,7 +386,7 @@ h1.underscore {
     flex-direction: column;
     align-items: center;
     order: 1;
-    width: 30%;
+    width: 20%;
     border: solid 2px #2d557c;
     background-color: floralwhite;
     min-height: 450px;
@@ -402,7 +402,7 @@ h1.underscore {
     flex-direction: column;
     align-items: center;
     order: 2;
-    width: 30%;
+    width: 20%;
     border: solid 2px #2d557c;
     background-color: floralwhite;
     
@@ -417,13 +417,27 @@ h1.underscore {
     flex-direction: column;
     align-items: center;
     order: 3;
-    width: 30%;
+    width: 20%;
     border: solid 2px #2d557c;
     background-color: floralwhite;
 }
 
 .javaScriptGloassary h1 {
     background-color: #c25975;
+}
+
+.mongoDbGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 4;
+    width: 20%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+}
+
+.mongoDbGlossary h1 {
+    background-color: #2c9676
 }
 
 .glossaryList {
