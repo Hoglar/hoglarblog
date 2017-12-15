@@ -2,6 +2,8 @@
 // Const or let here? maybe even var?
 const express = require('express');
 var app = express();
+const MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
 
 // for å få med json filen post.json må jeg require den here, i can now use the blogPosts variable to acces my blogposts.
 const blogPosts = require('./blogPost/post.json');
@@ -37,7 +39,16 @@ app.get('/', (req, res) => {
 
 
 app.get('/glossary', (req, res) => {
-    res.render('glossary', {glossary : glossary});
+    MongoClient.connect('mongodb://localhost:27017/hoglarBlog', (err, db) => {
+        
+        db.collection('glossary').find({}).toArray(function(err, docs) {
+            
+            assert.equal(err, null);
+            assert.notEqual(docs.length, 0);
+            
+            res.render("glossary", {docs : docs});
+        });   
+    });
 });
 
 // Lage ny route til hoglar/blog
@@ -57,6 +68,7 @@ app.get('/blog/:title?', (req, res) => {
     }
 });
 
+// Lager her en route til wow siden min hvor jeg skal lage kjappe guides til encounters, informasjonen skal lagres på database.
 
 app.listen(8080, 'localhost', () => {
 
