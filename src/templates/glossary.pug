@@ -4,17 +4,22 @@ block glossary
         div.htmlGlossary
             h1 HTML
             div.glossaryList
-                each key in glossary.html
-                    h2 #{key[0]}
+                
         div.cssGlossary
             h1 CSS
             div.glossaryList
-                each key in glossary.css
-                    h2 #{key[0]}
+              
+                
         div.javaScriptGloassary
             h1 JavaScript
             div.glossaryList
-                each key in glossary.javaScript
-                    h2 #{key[0]}
+                
+        div.mongoDbGlossary
+            h1 MongoDb
+            div.glossaryList   
+                for doc in docs
+                    if doc.tag == "mongodb"
+                        h2 #{doc.topic}
+               
 
     
