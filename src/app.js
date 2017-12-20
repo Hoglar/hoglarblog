@@ -7,7 +7,6 @@ var assert = require('assert');
 
 // for å få med json filen post.json må jeg require den here, i can now use the blogPosts variable to acces my blogposts.
 const blogPosts = require('./blogPost/post.json');
-const glossary = require('./blogPost/glossary.json');
 
 // Will use the template engine Jade to rende HTML, so here i set upp the app for jade.
 // Jade er byttet til Pug, fikser meg derfor pug.
@@ -20,8 +19,6 @@ app.set('views', __dirname + '/templates');
 
 // Here i set up so i can serve static files to the web page through my public folder. The public folder is now accesable to the browser. I also set in a fake address, i can now acces files wit /static/filename
 app.use('/static', express.static('public'));
-
-
 
 // Trenger og lage en funksjon som lager en liste av blogposts, helst de 10 siste eller noe. kan lage denne i en annen fil senere. 
 // Har her en array med alle keys i blogposts
@@ -50,6 +47,27 @@ app.get('/glossary', (req, res) => {
         });   
     });
 });
+
+app.get('/glossary/:title', (req, res) => {
+    MongoClient.connect('mongodb://localhost:27017/hoglarBlog', (err, db) => {
+        
+        var topic = req.params.title;
+        
+        db.collection('glossary').find({"topic": topic}).toArray(function(err, docs) {
+            
+            if (docs.length == 0) {
+                
+                res.render('index');
+            }
+            else
+            {
+                res.render("glossaryPost", {docs : docs});
+            }    
+        });
+    });
+});
+
+
 
 // Lage ny route til hoglar/blog
 

@@ -1,0 +1,13 @@
+extends ./layout.pug
+block glossaryPost
+    div.glossaryPostMain
+        div.glossaryPost
+            h1 #{docs[0].text.title}
+            h4 #{docs[0].text.ingress}
+
+            for paragraph in docs[0].text.theory
+                p #{paragraph}
+                
+            for snippet in docs[0].text.snippet
+                p #{snippet}
+    
