@@ -32,6 +32,7 @@ html {
     flex-direction: row;
     justify-content: space-between;
     line-height: 150%;
+    
 }
 
 
@@ -45,8 +46,7 @@ html {
 
 .navFlexContainer {
     display: flex; 
-    height: 70px;
-    background: white;
+    height: 50px;
     border-bottom: solid 2px;
     border-bottom-color: #2d557c;
     justify-content: space-between;
@@ -81,7 +81,7 @@ html {
 .navFlexContainer li {
     list-style-type: none;
     color: black;
-    padding-top: 40px;
+    padding-top: 8px;
     padding-right: 40px;
     font-size: 30px;
 }
@@ -463,10 +463,11 @@ h1.underscore {
 
 .glossaryPostMain {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    margin-top: 40px;
 }
 
 .glossaryPost {
@@ -476,7 +477,28 @@ h1.underscore {
     align-items: center;
     flex-direction: column;
     width: 80%;
+
 }
+
+.comments {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border : solid 2px #2d557c;
+    flex-direction: column;
+    align-items: center;
+    padding : 10px 40px 10px 40px;
+}
+
+.comments p {
+    border: solid 2px #2d557c;
+    padding : 10px 40px 10px 40px;
+    background-color: floralwhite;
+    width: 100%;
+    
+}
+
+
 
 
 
