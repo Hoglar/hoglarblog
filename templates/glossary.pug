@@ -1,0 +1,36 @@
+extends ./layout.pug
+block glossary
+    div.mainGlossaryBlock
+        div.htmlGlossary
+            h1 HTML
+            div.glossaryList
+                for doc in docs
+                    if doc.tag == "html"
+                        h2 
+                            a(href="/glossary/" + doc.topic) #{doc.topic}
+        div.cssGlossary
+            h1 CSS
+            div.glossaryList
+                for doc in docs
+                    if doc.tag == "css"
+                        h2 
+                            a(href="/glossary/" + doc.topic) #{doc.topic}
+                
+        div.javaScriptGloassary
+            h1 JavaScript
+            div.glossaryList
+                for doc in docs
+                    if doc.tag == "javaScript"
+                        h2 
+                            a(href="/glossary/" + doc.topic) #{doc.topic}
+                
+        div.mongoDbGlossary
+            h1 MongoDb
+            div.glossaryList   
+                for doc in docs
+                    if doc.tag == "mongodb"
+                        h2 
+                            a(href="/glossary/" + doc.topic) #{doc.topic}
+               
+
+    
