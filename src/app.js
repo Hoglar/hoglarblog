@@ -18,10 +18,6 @@ const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 
 
-
-// for å få med json filen post.json må jeg require den here, i can now use the blogPosts variable to acces my blogposts.
-const blogPosts = require('./blogPost/post.json');
-
 // Will use the template engine Jade to rende HTML, so here i set upp the app for jade.
 // Jade er byttet til Pug, fikser meg derfor pug.
 // view engine sets the template engine to use to render template files. will soon change to angular. But this will have to do
@@ -33,15 +29,6 @@ app.set('views', __dirname + '/templates');
 
 // Here i set up so i can serve static files to the web page through my public folder. The public folder is now accesable to the browser. I also set in a fake address, i can now acces files wit /static/filename
 app.use('/static', express.static('public'));
-
-// Trenger og lage en funksjon som lager en liste av blogposts, helst de 10 siste eller noe. kan lage denne i en annen fil senere. 
-// Har her en array med alle keys i blogposts
-var postsArray = Object.keys(blogPosts);
-
-
-var postList = postsArray.map((value) => {
-    return blogPosts[value];
-});
 
 // dette er route til index
 app.get('/', (req, res) => {
