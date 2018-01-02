@@ -11,17 +11,36 @@ block glossaryPost
             for snippet in docs[0].text.snippet
                 p #{snippet}
                 
+        
+        
+        div.commentForm
+            form(action='', method='post')
+                label(for='commentSection')  Enter comment: 
+                textarea#commentSection(type='text', name='comment' placeholder='Type comment here, max 256 letters')
                 
+                label(for="authorSection") Author name:
+                input#authorSection(type='text', placeholder='What do we call you?', name="author")
+                
+                input(type='submit', value='Submit', class="commentSubmitButton")
+        
+        
         div.comments
             h1 Comments
             
-            for comment in docs[0].comment
-                p #{comment}
+            div.commentBox
                 
-        div.commentForm
-            form(action='', method='post')
-                label(for='commentSection') Enter comment: 
-                input#commentSection(type='text', name='comment', value='')
-                input(type='submit', value='Post comment')
-        
-    
+            
+                    for comment in docs[0].comment
+                        div.singleComment
+                        
+                            div.commentTime 
+                                p #{comment.date}
+                            
+                            p.commentText #{comment.text}
+
+                            p.commentAuthor #{comment.author}
+
+                            
+
+
+

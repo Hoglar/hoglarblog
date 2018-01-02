@@ -85,8 +85,11 @@ app.get('/glossary/:title', (req, res) => {
 
 app.post('/glossary/:title', [
     
-    check("comment").isLength({ min: 8 }).isLength({ max: 50 })
-    .trim()
+    check("comment").isLength({ min: 8 }).isLength({ max: 250 })
+    .trim(),
+    
+    check("author").isLength({ min: 2}).isLength({ max: 20 }).trim()
+    
     
     
 ], (req, res) => {
@@ -121,10 +124,18 @@ app.post('/glossary/:title', [
         var topic = req.params.title;
         
         var commentSection = req.body.comment;
+        var commentAuthor = req.body.author;
+        var d = new Date().toISOString().slice(0,10);
+        
         
         // This section is for updating the comments in the glossary pages.
         var myquery = { "topic": topic };
-        var newvalues = { $push: { comment: { $each: [ commentSection ], $slice: -6  } } };
+        var newvalues = { $push: { comment: { $each: [ { 
+            "text" : commentSection,
+            "author": commentAuthor,
+            "date": d
+             
+        } ], $slice: -6  } } };
         
         
         
