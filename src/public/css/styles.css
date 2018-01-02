@@ -533,19 +533,14 @@ h1.underscore {
 }
 
 
+/* ================================= 
+  Glossary Form
+==================================== */
 
 .commentForm {
     display: flex;
     width: 40%;
-}
-
-
-
-.commentForm form {
-    display: flex;
     flex-direction: column;
-    margin-top: 50px;
-    width: 100%;
 }
 
 .commentForm form label {
@@ -565,12 +560,57 @@ h1.underscore {
 
 }
 
+.commentSigningField {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 2px;
+}
+
+.commentAuthorField {
+    display: flex;
+    width: 50%;
+    border: solid 2px #122131;
+    background-color: #2d557c;
+    color: white;
+    font-size: 18px; 
+}
+
+.commentButtonField {
+    width: 50%;
+}
+
+.authorSectionLabel {
+    display: flex;
+    width: 50%;
+    
+    
+}
+#authorSection {
+    display: flex;
+    width: 50%;
+    
+}
+
+
+
+
+
+.commentForm form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 100%;
+}
+
+
+
 .commentSubmitButton {
     border: solid 2px #122131;
-    margin-top: 5px;
     font-size: 18px;
+    width: 100%;
     background-color: #2da55c;
     color: white;
+    min-height: 30px;
 }
 
 .commentSubmitButton:hover {

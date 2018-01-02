@@ -18,10 +18,15 @@ block glossaryPost
                 label(for='commentSection')  Enter comment: 
                 textarea#commentSection(type='text', name='comment' placeholder='Type comment here, max 256 letters')
                 
-                label(for="authorSection") Author name:
-                input#authorSection(type='text', placeholder='What do we call you?', name="author")
+            div.commentSigningField    
                 
-                input(type='submit', value='Submit', class="commentSubmitButton")
+                div.commentAuthorField
+                    label(for="authorSection" class="authorSectionLabel") Author name:
+                    input#authorSection(type='text', placeholder='Your name?', name="author")
+                
+                
+                div.commentButtonField
+                    input(type='submit', value='Submit', class="commentSubmitButton")
         
         
         div.comments
