@@ -564,15 +564,12 @@ h1.underscore {
     display: flex;
     flex-wrap: nowrap;
     margin-top: 2px;
+    
 }
 
 .commentAuthorField {
-    display: flex;
     width: 50%;
-    border: solid 2px #122131;
-    background-color: #2d557c;
-    color: white;
-    font-size: 18px; 
+    
 }
 
 .commentButtonField {
@@ -580,13 +577,11 @@ h1.underscore {
 }
 
 .authorSectionLabel {
-    display: flex;
     width: 50%;
     
     
 }
 #authorSection {
-    display: flex;
     width: 50%;
     
 }
@@ -610,7 +605,6 @@ h1.underscore {
     width: 100%;
     background-color: #2da55c;
     color: white;
-    min-height: 30px;
 }
 
 .commentSubmitButton:hover {
