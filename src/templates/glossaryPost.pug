@@ -35,15 +35,15 @@ block glossaryPost
             div.commentBox
                 
             
-                    for comment in docs[0].comment
-                        div.singleComment
+                for comment in docs[0].comment
+                    div.singleComment
                         
-                            div.commentTime 
-                                p #{comment.date}
-                            
-                            p.commentText #{comment.text}
+                        div.commentTime 
+                            p #{comment.date}
 
-                            p.commentAuthor #{comment.author}
+                        p.commentText #{comment.text}
+
+                        p.commentAuthor #{comment.author}
 
                             
 
