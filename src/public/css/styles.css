@@ -543,7 +543,7 @@ h1.underscore {
     flex-direction: column;
 }
 
-.commentForm form label {
+.commentFormHeader {
     border: solid 2px #122131;
     text-align: center;
     margin-bottom: 5px;
@@ -564,28 +564,33 @@ h1.underscore {
     display: flex;
     flex-wrap: nowrap;
     margin-top: 2px;
+    width: 100%;
     
 }
 
 .commentAuthorField {
+    display: flex;
     width: 50%;
+    justify-content: space-between;
+    border: solid 1px #122131;
+    background-color: #2d557c;
+    color: white;
     
 }
 
 .commentButtonField {
     width: 50%;
-}
-
-.authorSectionLabel {
-    width: 50%;
-    
-    
-}
-#authorSection {
-    width: 50%;
     
 }
 
+.commentAuthorField label {
+    font-size: 18px;
+    padding-left: 4px;
+}
+
+.commentAuthorField input {
+    flex-grow: 0.7;
+}
 
 
 

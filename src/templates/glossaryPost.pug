@@ -15,7 +15,7 @@ block glossaryPost
         
         div.commentForm
             form(action='', method='post')
-                label(for='commentSection')  Enter comment: 
+                label(for='commentSection', class="commentFormHeader")  Enter comment: 
                 textarea#commentSection(type='text', name='comment' placeholder='Type comment here, max 256 letters')
                 
                 div.commentSigningField    
