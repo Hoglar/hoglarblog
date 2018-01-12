@@ -1,47 +1,36 @@
-var express = require('express');
-var router = express.Router();
-const MongoClient = require('mongodb').MongoClient;
-
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 
-var mongodb;
 
-createMongoDbConnection();
-
-router.get('/', (req, res) => {
+module.exports = function(app, dbs) {
     
-    
+    app.get('/glossary', (req, res) => {
         
-    if(mongodb != null && mongodb != undefined) {
-        
-        mongodb.collection('glossary').find({}).toArray(function(err, docs) {
-
-            res.render("glossary", {docs : docs});
-          
-        });
-    }
-        
-});
-
-router.get('/:title', (req, res) => {
-    
-    if(mongodb != null && mongodb != undefined) {
-        
-        var topic = req.params.title;
-        
-        mongodb.collection('glossary').find({ "topic": topic}).toArray(function(err, docs) {
-            if (docs.length == 0) {
-                res.render('index');
+        dbs.hoglarBlog.collection('glossary').find({}).toArray(function(err, docs) {
+            if (err) {
+                console.log(err);
+                res.error(err);
             } else {
-                res.render('glossaryPost', { docs : docs });
+                res.render("glossary", {docs : docs});
             }
         });
-        
-    }
-});
+    });
 
-router.post('/:title', [
+
+    app.get('/glossary/:title', (req, res) => {
+        var topic = req.params.title;
+        
+        dbs.hoglarBlog.collection('glossary').find({ "topic": topic}).toArray(function(err, docs) {
+            if (err) {
+                console.log("Its happening something on line 26");
+            } else {
+                res.render("glossaryPost", { docs : docs });
+            }
+        });
+    });
+    
+    
+    app.post('/glossary/:title', [
     check("comment").isLength({ min: 8 }).isLength({ max: 250 })
     .trim(),
     
@@ -54,7 +43,7 @@ router.post('/:title', [
         
         var topic = req.params.title;
         
-        mongodb.collection('glossary').find({ "topic": topic}).toArray(function(err, docs) {
+        dbs.hoglarBlog.collection('glossary').find({ "topic": topic}).toArray(function(err, docs) {
             if (docs.length == 0) {
                 res.render('index');
             } else {
@@ -78,42 +67,27 @@ router.post('/:title', [
              
         } ], $slice: -6  } } };
         
-        mongodb.collection('glossary').updateOne(myquery, newvalues, function(err, res) {
+        dbs.hoglarBlog.collection('glossary').updateOne(myquery, newvalues, function(err, res) {
             if (err) throw err;
             console.log('1 document updated');
+            
         });
         
-        mongodb.collection('glossary').find({"topic": topic}).toArray(function(err, docs) {
+        dbs.hoglarBlog.collection('glossary').find({"topic": topic}).toArray(function(err, docs) {
             
-            
-            if (docs.length == 0) {
-                
-                res.render('index');
-                
+            if (err) {
+                console.log(err);
+                res.render("Something went wrong loading database"); 
             }
             else
             {   
                 res.render("glossaryPost", {docs : docs});
-                
             }    
         });
     }
 });
 
-function createMongoDbConnection() {
-    if(MongoClient != null && MongoClient != undefined) {
-        MongoClient.connect('mongodb://localhost:27017/hoglarBlog', function(error, dbInstance) {
-            if(error){
-                console.log("Error loading database");
-                mongodb = null;
-            } else {
-                console.log("Connected to database through listen function.");
-                mongodb = dbInstance;
-            }
-        });
-    }
-}
+            
+return app;
 
-
-
-module.exports = router;
+};

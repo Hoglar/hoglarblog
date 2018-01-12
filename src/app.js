@@ -4,20 +4,19 @@
 const express = require('express');
 var app = express();
 const MongoClient = require('mongodb').MongoClient;
-var mongodb;
 var assert = require('assert');
 var bodyParser = require('body-parser');
+var initializeDatabases = require("./dbs");
 
-const { check, validationResult } = require('express-validator/check');
-const { matchedData, sanitize } = require('express-validator/filter');
-// require body parser
-
-//Requiring routes
-var indexPage = require('./routes/index');
-var glossaryPage = require('./routes/glossary');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+//Requiring routes
+var glossaryRoute = require("./routes/glossary")
+var indexPage = require('./routes/index');
+//var glossaryPage = require('./routes/glossary');
+
 
 // view engine sets the template engine to use to render template files.
 app.set('view engine', 'pug');
@@ -32,18 +31,29 @@ app.use('/static', express.static('public'));
 // dette er route til index
 app.use('/', indexPage);
 // Setter her opp route til glossary page.
-app.use('/glossary', glossaryPage);
+//app.use('/glossary', glossaryPage);
 
 // Setter her opp route til glossary posts, bruker :title for å få tak i den trykte linken. 
 
-
-// Lager her en route til wow siden min hvor jeg skal lage kjappe guides til encounters, informasjonen skal lagres på database.
-
-app.listen(8080, 'localhost', () => {
+initializeDatabases(function(err, dbs) {
+    if (err) {
+        console.log("Failed to make database connection!");
+        console.error(err);
+        process.exit(1);
+    }
+    
+    glossaryRoute(app, dbs);
+    
+    app.listen(8080, 'localhost', () => {
 
     console.log("server is up and running");
     
+    });
+    
 });
+
+
+// Lager her en route til wow siden min hvor jeg skal lage kjappe guides til encounters, informasjonen skal lagres på database.
 
 
 
