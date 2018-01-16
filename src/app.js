@@ -13,9 +13,9 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Requiring routes
-var glossaryRoute = require("./routes/glossary")
+var glossaryRoute = require("./routes/glossary");
 var indexPage = require('./routes/index');
-//var glossaryPage = require('./routes/glossary');
+var checklistPage = require("./routes/checklist");
 
 
 // view engine sets the template engine to use to render template files.
@@ -30,6 +30,7 @@ app.use('/static', express.static('public'));
 
 // dette er route til index
 app.use('/', indexPage);
+app.use('/checklist', checklistPage);
 // Setter her opp route til glossary page.
 //app.use('/glossary', glossaryPage);
 

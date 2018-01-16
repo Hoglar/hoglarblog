@@ -24,14 +24,15 @@ module.exports = function(app, dbs) {
             if (err) {
                 console.log("Its happening something on line 26");
             } else {
-                res.render("glossaryPost", { docs : docs });
+                var commentPlaceholder = "Type comment here, max 256 letters.";
+                res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
             }
         });
     });
     
     
     app.post('/glossary/:title', [
-    check("comment").isLength({ min: 8 }).isLength({ max: 250 })
+    check("comment").isLength({ min: 10 }).isLength({ max: 256 })
     .trim(),
     
     check("author").isLength({ min: 2}).isLength({ max: 20 }).trim()
@@ -42,12 +43,16 @@ module.exports = function(app, dbs) {
     if (!errors.isEmpty()) {
         
         var topic = req.params.title;
-        
-        dbs.hoglarBlog.collection('glossary').find({ "topic": topic}).toArray(function(err, docs) {
+        console.log(errors);
+        dbs.hoglarBlog.collection('glossary').find({ "topic": topic }).toArray(function(err, docs) {
             if (docs.length == 0) {
                 res.render('index');
+                console.log("Cannot load from database");
             } else {
-                res.render('glossaryPost', {docs : docs});
+                
+                var commentPlaceholder = "Something went wrong with input. The comment must be over 10 characters long and max 256 characters. You must also write a name at Author name!";
+                
+                res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
             }
         });
     } else {
@@ -81,7 +86,8 @@ module.exports = function(app, dbs) {
             }
             else
             {   
-                res.render("glossaryPost", {docs : docs});
+                var commentPlaceholder = "The post is uploaded, if you cant see it refresh page.)";
+                res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
             }    
         });
     }
