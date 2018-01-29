@@ -3,14 +3,27 @@ block checklist
    
     div.checklistMain
         div.checklistBox
-            h1 ToDo List!
-            div.checklistItemBox
-                for item in todoList
-                    p #{item}
-       
-        
+            h1 To Do List!
+            
+            for item in todoList
+                div.checklistItemBox
+
+                    div.checklistItem
+                        h1 #{item.task}
+                        button.subtaskButton Subtask
+                        button.removeSubtask(style="display: none;") remove subtask
+                        button.completeButton Complete
+                        p(style="display: none;") #{item.description}
+
+                    div.checklistSubtask(style="display: none;")
+                        for task in item.subtask
+
+                            div.subtaskItem
+                                h2 #{task["subtask-title"]}
+                                p #{task["subtask-description"]}
+
+
 
         
         
-        
-        
+    

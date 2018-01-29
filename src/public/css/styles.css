@@ -518,16 +518,39 @@ hoglarLogo {
     display: flex;
     flex-direction: column;
     width: 60%;
-    border: solid 2px #122131;
     align-items: center;
 }
 
-.checklistBox h1 {
-    border-bottom: solid 2px #122131;
-    width: 100%;
-    text-align: center;
-    
+.checklistItemBox {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #122131;
+    width: 60%;
+    padding: 5px;
 }
+
+.checklistItem {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.checklistItemBox button {
+    border: solid 2px #122131;
+    border-radius: 10px 10px 10px 20px;
+    background-color: #2d557c;
+    color: white;
+}
+
+.subtaskItem {
+    border-top: solid 2px #122131;
+}
+
+
+
+
 
 /* ================================= 
   Media Queries

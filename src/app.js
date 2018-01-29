@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Requiring routes
 var glossaryRoute = require("./routes/glossary");
 var indexPage = require('./routes/index');
-var checklistPage = require("./routes/checklist");
 
+var checklistPage = require("./routes/checklist");
 
 // view engine sets the template engine to use to render template files.
 app.set('view engine', 'pug');
@@ -30,9 +30,6 @@ app.use('/static', express.static('public'));
 
 // dette er route til index
 app.use('/', indexPage);
-app.use('/checklist', checklistPage);
-// Setter her opp route til glossary page.
-//app.use('/glossary', glossaryPage);
 
 // Setter her opp route til glossary posts, bruker :title for å få tak i den trykte linken. 
 
@@ -42,8 +39,9 @@ initializeDatabases(function(err, dbs) {
         console.error(err);
         process.exit(1);
     }
-    
+    // Updating app with the routes.
     glossaryRoute(app, dbs);
+    checklistPage(app, dbs);
     
     app.listen(8080, 'localhost', () => {
 
@@ -52,9 +50,3 @@ initializeDatabases(function(err, dbs) {
     });
     
 });
-
-
-// Lager her en route til wow siden min hvor jeg skal lage kjappe guides til encounters, informasjonen skal lagres på database.
-
-
-

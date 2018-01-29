@@ -1,5 +1,7 @@
 'use strict';
 
+// index.js under dbs is where i set up the databases, currently i only use one database, hoglarBlog and just use collections under this database for the different pages. Maybe i should make more databases?
+
 var async = require('async');
 var MongoClient = require('mongodb').MongoClient;
 
