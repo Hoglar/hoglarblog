@@ -14,7 +14,6 @@ module.exports = function(app, dbs) {
             } else {
                 // we now got an array called todoList we can display. 
                 res.render("checklist", { todoList : todoList });
-                console.log(todoList);
             }
             
         }); 
