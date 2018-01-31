@@ -7,6 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var bodyParser = require('body-parser');
 var initializeDatabases = require("./dbs");
+const crypto = require('crypto');
 
 
 app.use(bodyParser.json()); // support json encoded bodies
@@ -15,7 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Requiring routes
 var glossaryRoute = require("./routes/glossary");
 var indexPage = require('./routes/index');
-
 var checklistPage = require("./routes/checklist");
 
 // view engine sets the template engine to use to render template files.
@@ -30,6 +30,7 @@ app.use('/static', express.static('public'));
 
 // dette er route til index
 app.use('/', indexPage);
+app.use('/error', indexPage);
 
 // Setter her opp route til glossary posts, bruker :title for å få tak i den trykte linken. 
 

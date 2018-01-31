@@ -71,6 +71,7 @@ module.exports = function(app, dbs) {
             "date": d
              
         } ], $slice: -6  } } };
+        console.log(myquery);
         
         dbs.hoglarBlog.collection('glossary').updateOne(myquery, newvalues, function(err, res) {
             if (err) throw err;

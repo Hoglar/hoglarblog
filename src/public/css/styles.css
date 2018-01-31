@@ -525,7 +525,7 @@ hoglarLogo {
     display: flex;
     flex-direction: column;
     border: solid 2px #122131;
-    width: 60%;
+    width: 80%;
     padding: 5px;
 }
 
@@ -534,20 +534,82 @@ hoglarLogo {
     flex-direction: row;
     width: 100%;
     padding: 5px;
-    justify-content: space-between;
+    justify-content: space-around;
+    
 }
 
-.checklistItemBox button {
+.checklistItemText {
+    width: 75%;
+    border-right: solid 2px #122131;
+}
+
+.checklistItemButtons {
+    width: 25%;
+}
+
+.checklistItembuttons button {
+    margin: 2px;
     border: solid 2px #122131;
     border-radius: 10px 10px 10px 20px;
     background-color: #2d557c;
     color: white;
+    height: 50%;
 }
 
 .subtaskItem {
     border-top: solid 2px #122131;
 }
 
+
+/* ================================= 
+  Checklist add section
+==================================== */
+
+.todoAddItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.todoAddForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#addItem {
+    width: 100%;
+    min-height: 40px;
+    border: solid 2px #122131;
+    background-color: #2d557c;
+    color: white;
+    font-size: 20px;
+}
+
+.todoInputSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 18px;
+}
+
+.todoSubmitButton {
+    background-color: #2d557c;
+    color: white;
+    font-size: 18px;
+    border: solid 2px #122131;
+}
+
+.checklistDeleteButton form {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteTaskField {
+    width: 25%;
+}
 
 
 
