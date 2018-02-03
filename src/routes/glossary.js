@@ -15,8 +15,7 @@ module.exports = function(app, dbs) {
             }
         });
     });
-
-
+    
     app.get('/glossary/:title', (req, res) => {
         var topic = req.params.title;
         
@@ -29,7 +28,6 @@ module.exports = function(app, dbs) {
             }
         });
     });
-    
     
     app.post('/glossary/:title', [
     check("comment").isLength({ min: 10 }).isLength({ max: 256 })
@@ -71,26 +69,22 @@ module.exports = function(app, dbs) {
             "date": d
              
         } ], $slice: -6  } } };
-        console.log(myquery);
         
-        dbs.hoglarBlog.collection('glossary').updateOne(myquery, newvalues, function(err, res) {
-            if (err) throw err;
-            console.log('1 document updated');
+        dbs.hoglarBlog.collection('glossary').updateOne(myquery, newvalues).then(() => {
+            dbs.hoglarBlog.collection('glossary').find({"topic": topic}).toArray(function(err, docs) {
+
+                if (err) {
+                    console.log(err);
+                    res.render("Something went wrong loading database"); 
+                }
+                else
+                {   
+                    var commentPlaceholder = "The post is uploaded!";
+                    res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
+                }    
+            });
             
-        });
-        
-        dbs.hoglarBlog.collection('glossary').find({"topic": topic}).toArray(function(err, docs) {
-            
-            if (err) {
-                console.log(err);
-                res.render("Something went wrong loading database"); 
-            }
-            else
-            {   
-                var commentPlaceholder = "The post is uploaded, if you cant see it refresh page.)";
-                res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
-            }    
-        });
+        })      
     }
 });
 

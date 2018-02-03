@@ -55,18 +55,17 @@ module.exports = function(app, dbs) {
                         ],
                         "importance": "",
                         "complete": false
-                    });
-                    
-                    
-                    dbs.hoglarBlog.collection('checklist').find({}).toArray((err, todoList) => {
-                        if (err) {
-                            console.log(err);
-                            res.error(err);
-                        } else {
-                            res.render("checklist", { todoList : todoList });
-                        }
-                    })
-                    
+                    }).then(() => {
+                        
+                            dbs.hoglarBlog.collection('checklist').find({}).toArray((err, todoList) => {
+                            if (err) {
+                                console.log(err);
+                                res.error(err);
+                            } else {
+                                res.render("checklist", { todoList : todoList });
+                            }
+                        });
+                   });         
                 } else {
                     console.log("Someone typed wrong password");
                     res.render("error");
@@ -89,16 +88,16 @@ module.exports = function(app, dbs) {
         
                 var query = { "task": taskById.task}
 
-                dbs.hoglarBlog.collection("checklist").deleteOne(query);
-
-                dbs.hoglarBlog.collection('checklist').find({}).toArray((err, todoList) => {
-                    if (err) {
-                        console.log(err);
-                        res.error(err);
-                    } else {
-                        res.render("checklist", { todoList : todoList });
-                    }
-                })    
+                dbs.hoglarBlog.collection("checklist").deleteOne(query).then(() => {
+                    dbs.hoglarBlog.collection('checklist').find({}).toArray((err, todoList) => {
+                        if (err) {
+                            console.log(err);
+                            res.error(err);
+                        } else {
+                            res.render("checklist", { todoList : todoList });
+                        }
+                    })   
+                })
                 
             } else {
                 console.log("Someone typed wrong password");
