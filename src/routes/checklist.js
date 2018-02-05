@@ -20,7 +20,7 @@ module.exports = function(app, dbs) {
     });
     
     app.post('/updateChecklist', [
-        check("addItem").isLength({min: 5 }).isLength({ max: 40 }).trim(),
+        check("addItem").isLength({min: 5 }).isLength({ max: 100 }).trim(),
         check("addDescription").isLength({ max: 256 }).trim(),
         check("todoSecret").isLength({ min: 2 })
     ], (req, res) => {
@@ -30,7 +30,9 @@ module.exports = function(app, dbs) {
         
         if (!error.isEmpty()) {
             res.render('error');
-        } else {
+        } 
+        
+        else {
             
             var passwordTry = req.body.todoSecret;
         
@@ -93,13 +95,16 @@ module.exports = function(app, dbs) {
                         if (err) {
                             console.log(err);
                             res.error(err);
-                        } else {
+                        } 
+                        
+                        else {
                             res.render("checklist", { todoList : todoList });
                         }
                     })   
                 })
                 
-            } else {
+            } 
+            else {
                 console.log("Someone typed wrong password");
                 res.render("error");
             }

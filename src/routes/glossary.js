@@ -22,7 +22,9 @@ module.exports = function(app, dbs) {
         dbs.hoglarBlog.collection('glossary').find({ "topic": topic}).toArray(function(err, docs) {
             if (err) {
                 console.log("Its happening something on line 26");
-            } else {
+            } 
+            
+            else {
                 var commentPlaceholder = "Type comment here, max 256 letters.";
                 res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
             }
@@ -53,7 +55,9 @@ module.exports = function(app, dbs) {
                 res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
             }
         });
-    } else {
+    } 
+        
+    else {
         
         var topic = req.params.title;
         
@@ -77,8 +81,7 @@ module.exports = function(app, dbs) {
                     console.log(err);
                     res.render("Something went wrong loading database"); 
                 }
-                else
-                {   
+                else {   
                     var commentPlaceholder = "The post is uploaded!";
                     res.render("glossaryPost", { docs : docs, commentPlaceholder : commentPlaceholder });
                 }    

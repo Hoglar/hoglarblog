@@ -22,17 +22,12 @@ var checklistPage = require("./routes/checklist");
 app.set('view engine', 'pug');
 // views shows where the template files are located
 app.set('views', __dirname + '/templates');
-// Use app.render() to use render html from templates
-
 
 // Here i set up so i can serve static files to the web page through my public folder. The public folder is now accesable to the browser. I also set in a fake address, i can now acces files wit /static/filename
 app.use('/static', express.static('public'));
 
 // dette er route til index
 app.use('/', indexPage);
-app.use('/error', indexPage);
-
-// Setter her opp route til glossary posts, bruker :title for å få tak i den trykte linken. 
 
 initializeDatabases(function(err, dbs) {
     if (err) {

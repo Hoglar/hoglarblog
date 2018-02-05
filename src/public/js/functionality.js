@@ -18,7 +18,9 @@ window.onload = () => {
     todoAddItemButton.addEventListener("click", () => {
         if (todoInputSection.style.display == "none") {
             todoInputSection.style.display = "flex";
-        } else {
+        } 
+        
+        else {
             todoInputSection.style.display = "none";
         }
         
@@ -42,7 +44,9 @@ window.onload = () => {
     return function(){
         if (checklistSubtask[i].style.display == "none") {
             checklistSubtask[i].style.display = "block";
-        } else {
+        } 
+        
+        else {
             checklistSubtask[i].style.display = "none";
         }  
     };  

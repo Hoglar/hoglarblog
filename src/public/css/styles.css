@@ -173,6 +173,12 @@ hoglarLogo {
     
 }
 
+.footerBlock-3 a {
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
 .mainFooter p {
     margin: 10px auto;
     text-align: center;
@@ -611,8 +617,19 @@ hoglarLogo {
     width: 25%;
 }
 
+/* ================================= 
+  About
+==================================== */
 
+.aboutPage {
+    color: white;
+    font-size: 18px;
+    
+}
 
+.aboutPage a {
+    color: white;
+}
 
 /* ================================= 
   Media Queries

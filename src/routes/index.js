@@ -9,6 +9,12 @@ router.get('/', (req, res) => {
 
 router.get('/error', (req, res) => {
     res.render('error');
+});
+
+router.get("/about", (req, res) => {
+    res.render('about');
 })
+
+
 
 module.exports = router;
