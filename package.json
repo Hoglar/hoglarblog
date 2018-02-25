@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Hoglar/hoglarblog/issues"
   },
-  "homepage": "https://github.com/Hoglar/hoglarblog#readme"
+  "homepage": "https://github.com/Hoglar/hoglarblog#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
 }
