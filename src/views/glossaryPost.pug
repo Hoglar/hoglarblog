@@ -1,0 +1,51 @@
+extends ./layout.pug
+block glossaryPost
+    div.glossaryPostMain
+        div.glossaryPost
+            h1 #{docs[0].text.title}
+            h4 #{docs[0].text.ingress}
+
+            for paragraph in docs[0].text.theory
+                p #{paragraph}
+                
+            for snippet in docs[0].text.snippet
+                p #{snippet}
+                
+        
+        
+        div.commentForm
+            form(action='', method='post')
+                label(for='commentSection', class="commentFormHeader")  Enter comment: 
+                textarea#commentSection(type='text', name='comment', placeholder=commentPlaceholder)
+                
+                div.commentSigningField    
+
+                    div.commentAuthorField
+                        label(for="authorSection", class="authorSectionLabel") Author name:
+                        input#authorSection(type='text', placeholder='Your name?', name="author")
+
+
+                    div.commentButtonField
+                        input(type='submit', value='Submit', class="commentSubmitButton")
+        
+        
+        div.comments
+            h1 Comments
+            
+            div.commentBox
+                
+            
+                for comment in docs[0].comment
+                    div.singleComment
+                        
+                        div.commentTime 
+                            p #{comment.date}
+
+                        p.commentText #{comment.text}
+
+                        p.commentAuthor #{comment.author}
+
+                            
+
+
+

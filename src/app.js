@@ -21,7 +21,7 @@ var checklistPage = require("./routes/checklist");
 // view engine sets the template engine to use to render template files.
 app.set('view engine', 'pug');
 // views shows where the template files are located
-app.set('views', __dirname + '/templates');
+app.set('views', __dirname + '/views');
 
 // Here i set up so i can serve static files to the web page through my public folder. The public folder is now accesable to the browser. I also set in a fake address, i can now acces files wit /static/filename
 app.use('/static', express.static('public'));
@@ -38,11 +38,11 @@ initializeDatabases(function(err, dbs) {
     // Updating app with the routes.
     glossaryRoute(app, dbs);
     checklistPage(app, dbs);
-    
+
     app.listen(8080, 'localhost', () => {
 
     console.log("server is up and running");
-    
+
     });
-    
+
 });
