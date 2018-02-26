@@ -11,10 +11,10 @@ router.get('/error', (req, res) => {
 
 router.get("/about", (req, res) => {
     res.render('about');
-})
+});
 
-router.get("/react") => {
-    res.render("react")
-}
+router.get("/react", (req, res) => {
+    res.render("react");
+});
 
 module.exports = router;
