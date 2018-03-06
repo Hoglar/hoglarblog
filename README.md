@@ -3,4 +3,5 @@
 
 Hello
 
-The hoglarblog repo is where hoglar.com is getting created. Im a guy that is learning how to code on my free time and this project is kinda my practice area. I am very glad if someone wanna commit or just chat ! :)
+This is the react branch. I am trying to use react to build this project. Right now its quite hard for me to know what to throw away and what to keep.
+Maybe its best to start over??
