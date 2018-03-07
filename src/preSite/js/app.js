@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import '../css/styles.css';
 
 import png from '../assets/keen.png';
-import hoglarLogo from '../assets/hoglarLogo.png';
+
 
 
 
@@ -38,7 +38,7 @@ class SidebarBox extends React.Component {
     render() {
         return(
             <div className="sidebarBox">
-                <img src={ png } />
+                
             </div>
         )
     }
