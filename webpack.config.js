@@ -1,4 +1,5 @@
 const path = require("path");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Im setting up the paths. The DIST is where webpack will put the bundle when it is done.
 // The JS path is where webpack should get its entry
@@ -15,6 +16,10 @@ module.exports = {
         filename: 'app.bundle.js'
     },
 
+    plugins: [
+        new ExtractTextPlugin('style.bundle.css'),
+    ],
+
     module: {
         rules: [
             {
@@ -23,6 +28,12 @@ module.exports = {
                 use: [
                     'babel-loader',
                 ]
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                    use: 'css-loader',
+                })
             }
         ]
     },

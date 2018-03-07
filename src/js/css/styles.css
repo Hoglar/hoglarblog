@@ -7,7 +7,7 @@
 html {
 
     min-height: 100%;
-    
+
 }
 
 
@@ -16,11 +16,11 @@ html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    
-      
+
+
 }
 
-/*   ----------   Main content flex container! ------------    
+/*   ----------   Main content flex container! ------------
 
 -----------------------------------------
 ----------------------------------------- */
@@ -33,31 +33,31 @@ html {
     justify-content: space-between;
     line-height: 150%;
     align-items: center;
-    
-    
+
+
 }
 
 
-/*   ----------   Header ------------    
+/*   ----------   Header ------------
 
 -----------------------------------------
 ----------------------------------------- */
 
 .navFlexContainer {
-    display: flex; 
+    display: flex;
     height: 50px;
     border-bottom: solid 2px;
     border-bottom-color: #122131;
     justify-content: space-between;
     width: 100%; }
-      
+
 
 .navBlock-1 {
     display: flex;
     justify-content: flex-start;
     order: 1;
     flex-basis: 20%;
-    
+
 }
 
 .navBlock-2 {
@@ -65,7 +65,7 @@ html {
     justify-content: center;
     order: 2;
     flex-basis: 60%;
-    
+
 }
 
 .navBlock-3 {
@@ -73,7 +73,7 @@ html {
     justify-content: flex-start;
     order: 3;
     flex-basis: 20%;
-    
+
 }
 
 
@@ -102,12 +102,12 @@ html {
     margin-right: 10px;
 }
 
-/*   ----------   Index Page ------------    
+/*   ----------   Index Page ------------
 
 -----------------------------------------
 ----------------------------------------- */
 
-    
+
 
 
 .indexContent {
@@ -118,7 +118,7 @@ html {
     flex: 1;
     justify-content: space-around;
     align-items: center;
-  
+
 }
 
 .indexContent h1 {
@@ -129,11 +129,11 @@ html {
 .indexContent p {
     width: 60%;
     margin: 30px auto 30px;
-    
+
 }
 
 hoglarLogo {
-    
+
 }
 
 /* ----------- Footer ------------*/
@@ -146,7 +146,7 @@ hoglarLogo {
     align-self: flex-end;
     background: #2d557c;
     align-items: center;
-    
+
 }
 
 .footerBlock-1 {
@@ -154,7 +154,7 @@ hoglarLogo {
     justify-content: flex-start;
     order: 1;
     flex-basis: 20%;
-    
+
 }
 
 .footerBlock-2 {
@@ -162,7 +162,7 @@ hoglarLogo {
     justify-content: center;
     order: 2;
     flex-basis: 60%;
-    
+
 }
 
 .footerBlock-3 {
@@ -170,7 +170,7 @@ hoglarLogo {
     justify-content: flex-end;
     order: 3;
     flex-basis: 20%;
-    
+
 }
 
 .footerBlock-3 a {
@@ -190,7 +190,7 @@ hoglarLogo {
     color: #87aed4;
     margin-left: 10px;
     margin-right: 10px;
-   
+
 }
 
 .mainFooter a {
@@ -201,7 +201,7 @@ hoglarLogo {
 .digitalOceanReferal {
     max-width: 120px;
     height: 25px;
-    
+
     margin-right: 20px;
 }
 
@@ -218,14 +218,14 @@ hoglarLogo {
     font-family: 'dancing script', cursive;
     background-color: floralwhite;
     font-size: 120%;
-    
+
 }
 #glossaryButton:hover {
     background-color: #c25975;
 }
 
 
-/* ================================= 
+/* =================================
   Glossary page
 ==================================== */
 
@@ -236,12 +236,12 @@ hoglarLogo {
     justify-content: space-around;
     margin-top: 20px;
     margin-bottom: 20px;
-    
+
 }
 
 .mainGlossaryBlock div {
     border-radius: 10px 10px 10px 20px;
-    
+
 }
 .mainGlossaryBlock div h1 {
     font-family: 'dancing script', cursive;
@@ -266,7 +266,7 @@ hoglarLogo {
 
 .htmlGlossary h1 {
     background-color: #3079AB;
-    
+
 }
 
 .cssGlossary {
@@ -277,7 +277,7 @@ hoglarLogo {
     width: 20%;
     border: solid 2px #2d557c;
     background-color: floralwhite;
-    
+
 }
 
 .cssGlossary h1 {
@@ -315,7 +315,7 @@ hoglarLogo {
 .glossaryList {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .glossaryList h2 a {
@@ -323,10 +323,10 @@ hoglarLogo {
     padding-right: 10px;
     text-decoration: none;
     color: black;
-    
-} 
 
-/* ================================= 
+}
+
+/* =================================
   Glossary Post
 ==================================== */
 
@@ -350,7 +350,7 @@ hoglarLogo {
 
 }
 
-/* ================================= 
+/* =================================
   Comment field
 ==================================== */
 
@@ -361,9 +361,9 @@ hoglarLogo {
     margin-bottom: 50px;
     flex-direction: column;
     align-items: center;
-    
+
     width: 80%;
-    
+
 }
 
 .comments h1 {
@@ -418,11 +418,11 @@ hoglarLogo {
     font-size: 20px;
     font-weight: bold;
     justify-content: flex-end;
-    
+
 }
 
 
-/* ================================= 
+/* =================================
   Comment Form
 ==================================== */
 
@@ -440,7 +440,7 @@ hoglarLogo {
     font-size: 20px;
     background-color: #2d557c;
     color: white;
-    
+
 }
 
 .commentForm textarea {
@@ -464,12 +464,12 @@ hoglarLogo {
     border: solid 1px #122131;
     background-color: #2d557c;
     color: white;
-    
+
 }
 
 .commentButtonField {
     width: 50%;
-    
+
 }
 
 .commentAuthorField label {
@@ -501,10 +501,10 @@ hoglarLogo {
 .commentSubmitButton:hover {
     background-color: #2d557c;
     cursor: pointer;
-    
+
 }
 
-/* ================================= 
+/* =================================
   Checklist page
 ==================================== */
 
@@ -517,7 +517,7 @@ hoglarLogo {
     border-left: solid 2px #122131;
     border-right: solid 2px #122131;
     flex: 1;
-    
+
 }
 
 .checklistBox {
@@ -541,7 +541,7 @@ hoglarLogo {
     width: 100%;
     padding: 5px;
     justify-content: space-around;
-    
+
 }
 
 .checklistItemText {
@@ -567,7 +567,7 @@ hoglarLogo {
 }
 
 
-/* ================================= 
+/* =================================
   Checklist add section
 ==================================== */
 
@@ -617,26 +617,26 @@ hoglarLogo {
     width: 25%;
 }
 
-/* ================================= 
+/* =================================
   About
 ==================================== */
 
 .aboutPage {
     color: white;
     font-size: 18px;
-    
+
 }
 
 .aboutPage a {
     color: white;
 }
 
-/* ================================= 
+/* =================================
   Media Queries
 ==================================== */
 
 @media (min-width: 769px) {
-  
+
     #legalJibberJabber {
         font-size: 14px;
         margin-left: 10px;
@@ -646,7 +646,7 @@ hoglarLogo {
 }
 
 @media (max-width: 700px) {
-    
+
     .commentForm {
         width: 90%;
     }
@@ -660,14 +660,13 @@ hoglarLogo {
         flex-direction: column;
         flex-wrap: wrap;
     }
-    
+
     .commentButtonField {
         width: 100%;
     }
-    
+
     .commentAuthorField {
         width: 100%;
     }
-	
-}
 
+}

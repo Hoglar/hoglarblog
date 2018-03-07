@@ -1,0 +1,672 @@
+
+* {
+	box-sizing: border-box;
+}
+/* ------------ Web fonts -----------*/
+
+html {
+
+    min-height: 100%;
+
+}
+
+
+.siteBody {
+    background: white; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+
+}
+
+/*   ----------   Main content flex container! ------------
+
+-----------------------------------------
+----------------------------------------- */
+
+
+.mainContent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 150%;
+    align-items: center;
+
+
+}
+
+
+/*   ----------   Header ------------
+
+-----------------------------------------
+----------------------------------------- */
+
+.navFlexContainer {
+    display: flex;
+    height: 50px;
+    border-bottom: solid 2px;
+    border-bottom-color: #122131;
+    justify-content: space-between;
+    width: 100%; }
+
+
+.navBlock-1 {
+    display: flex;
+    justify-content: flex-start;
+    order: 1;
+    flex-basis: 20%;
+
+}
+
+.navBlock-2 {
+    display: flex;
+    justify-content: center;
+    order: 2;
+    flex-basis: 60%;
+
+}
+
+.navBlock-3 {
+    display: flex;
+    justify-content: flex-start;
+    order: 3;
+    flex-basis: 20%;
+
+}
+
+
+.navFlexContainer li {
+    list-style-type: none;
+    color: black;
+    padding-top: 8px;
+    padding-right: 40px;
+    font-size: 30px;
+}
+
+
+.navLink a {
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}
+
+
+.navLink a:hover {
+    color: #2d557c;
+}
+
+.navLinkMiddle {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/*   ----------   Index Page ------------
+
+-----------------------------------------
+----------------------------------------- */
+
+
+
+
+.indexContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #2d557c;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.indexContent h1 {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.indexContent p {
+    width: 60%;
+    margin: 30px auto 30px;
+
+}
+
+hoglarLogo {
+
+}
+
+/* ----------- Footer ------------*/
+
+.mainFooter {
+    display: flex;
+    border-top: solid 2px #122131;
+    width: 100%;
+    height:60px;
+    align-self: flex-end;
+    background: #2d557c;
+    align-items: center;
+
+}
+
+.footerBlock-1 {
+    display: flex;
+    justify-content: flex-start;
+    order: 1;
+    flex-basis: 20%;
+
+}
+
+.footerBlock-2 {
+    display: flex;
+    justify-content: center;
+    order: 2;
+    flex-basis: 60%;
+
+}
+
+.footerBlock-3 {
+    display: flex;
+    justify-content: flex-end;
+    order: 3;
+    flex-basis: 20%;
+
+}
+
+.footerBlock-3 a {
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.mainFooter p {
+    margin: 10px auto;
+    text-align: center;
+    color: white;
+}
+
+#legalJibberJabber {
+    font-size: 10px;
+    color: #87aed4;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.mainFooter a {
+    display: flex;
+    align-self: center;
+}
+
+.digitalOceanReferal {
+    max-width: 120px;
+    height: 25px;
+
+    margin-right: 20px;
+}
+
+.glossaryPicture {
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+}
+
+.specificGlossaryButton {
+    margin-left: 20px;
+    border: solid 2px black;
+    border-radius: 10px 10px 10px 20px;
+    font-family: 'dancing script', cursive;
+    background-color: floralwhite;
+    font-size: 120%;
+
+}
+#glossaryButton:hover {
+    background-color: #c25975;
+}
+
+
+/* =================================
+  Glossary page
+==================================== */
+
+.mainGlossaryBlock {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.mainGlossaryBlock div {
+    border-radius: 10px 10px 10px 20px;
+
+}
+.mainGlossaryBlock div h1 {
+    font-family: 'dancing script', cursive;
+}
+
+.mainGlossaryBlock h1 {
+    border: solid 2px #122131;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px 10px 10px 20px;
+}
+
+.htmlGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+    width: 20%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+    min-height: 450px;
+}
+
+.htmlGlossary h1 {
+    background-color: #3079AB;
+
+}
+
+.cssGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+    width: 20%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+
+}
+
+.cssGlossary h1 {
+    background-color: #3079AB;
+}
+
+.javaScriptGloassary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 3;
+    width: 20%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+}
+
+.javaScriptGloassary h1 {
+    background-color: #c25975;
+}
+
+.mongoDbGlossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 4;
+    width: 20%;
+    border: solid 2px #2d557c;
+    background-color: floralwhite;
+}
+
+.mongoDbGlossary h1 {
+    background-color: #2c9676
+}
+
+.glossaryList {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.glossaryList h2 a {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: black;
+
+}
+
+/* =================================
+  Glossary Post
+==================================== */
+
+.glossaryPostMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 85%;
+    border-left: solid 2px #122131;
+    border-right: solid 2px #122131;
+}
+
+.glossaryPost {
+    display: flex;
+    background-color: floralwhite;
+    border-bottom: solid 2px #122131;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+/* =================================
+  Comment field
+==================================== */
+
+
+.comments {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    flex-direction: column;
+    align-items: center;
+
+    width: 80%;
+
+}
+
+.comments h1 {
+    align-self: flex-start;
+}
+
+
+
+
+.commentBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    border: solid 2px #122131;
+    background-color: floralwhite;
+}
+
+.singleComment {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    border: solid 2px #122131;
+    min-height: 200px;
+    margin: 20px 10px 20px 10px;
+    justify-content: space-between;
+    background-color: white;
+    word-wrap: break-word;
+}
+
+.commentTime {
+    display: flex;
+    width: 100%;
+    border-bottom: solid 2px #122131;
+    background-color: #2d557c;
+}
+
+.commentTime p {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.commentText {
+    margin-left: 5px;
+}
+
+.commentAuthor  {
+    text-align: right;
+    margin-right: 10px;
+    font-family: 'dancing script', cursive;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: flex-end;
+
+}
+
+
+/* =================================
+  Comment Form
+==================================== */
+
+.commentForm {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+}
+
+.commentFormHeader {
+    border: solid 2px #122131;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 5px 0px 5px 0px;
+    font-size: 20px;
+    background-color: #2d557c;
+    color: white;
+
+}
+
+.commentForm textarea {
+    height: 100px;
+    border: solid 1px #122131;
+    background-color: white;
+
+}
+
+.commentSigningField {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 2px;
+    width: 100%;
+}
+
+.commentAuthorField {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    border: solid 1px #122131;
+    background-color: #2d557c;
+    color: white;
+
+}
+
+.commentButtonField {
+    width: 50%;
+
+}
+
+.commentAuthorField label {
+    font-size: 18px;
+    padding-left: 4px;
+}
+
+.commentAuthorField input {
+    flex-grow: 0.7;
+}
+
+.commentForm form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 100%;
+}
+
+
+
+.commentSubmitButton {
+    border: solid 2px #122131;
+    font-size: 18px;
+    width: 100%;
+    background-color: #2da55c;
+    color: white;
+}
+
+.commentSubmitButton:hover {
+    background-color: #2d557c;
+    cursor: pointer;
+
+}
+
+/* =================================
+  Checklist page
+==================================== */
+
+.checklistMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 85%;
+    border-left: solid 2px #122131;
+    border-right: solid 2px #122131;
+    flex: 1;
+
+}
+
+.checklistBox {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+}
+
+.checklistItemBox {
+    display: flex;
+    flex-direction: column;
+    border: solid 2px #122131;
+    width: 80%;
+    padding: 5px;
+}
+
+.checklistItem {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 5px;
+    justify-content: space-around;
+
+}
+
+.checklistItemText {
+    width: 75%;
+    border-right: solid 2px #122131;
+}
+
+.checklistItemButtons {
+    width: 25%;
+}
+
+.checklistItembuttons button {
+    margin: 2px;
+    border: solid 2px #122131;
+    border-radius: 10px 10px 10px 20px;
+    background-color: #2d557c;
+    color: white;
+    height: 50%;
+}
+
+.subtaskItem {
+    border-top: solid 2px #122131;
+}
+
+
+/* =================================
+  Checklist add section
+==================================== */
+
+.todoAddItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.todoAddForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#addItem {
+    width: 100%;
+    min-height: 40px;
+    border: solid 2px #122131;
+    background-color: #2d557c;
+    color: white;
+    font-size: 20px;
+}
+
+.todoInputSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 18px;
+}
+
+.todoSubmitButton {
+    background-color: #2d557c;
+    color: white;
+    font-size: 18px;
+    border: solid 2px #122131;
+}
+
+.checklistDeleteButton form {
+    display: flex;
+    flex-direction: row;
+}
+
+.deleteTaskField {
+    width: 25%;
+}
+
+/* =================================
+  About
+==================================== */
+
+.aboutPage {
+    color: white;
+    font-size: 18px;
+
+}
+
+.aboutPage a {
+    color: white;
+}
+
+/* =================================
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+
+    #legalJibberJabber {
+        font-size: 14px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .commentForm {
+        width: 90%;
+    }
+}
+
+
+
+@media (max-width: 1700px) {
+    .commentSigningField {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .commentButtonField {
+        width: 100%;
+    }
+
+    .commentAuthorField {
+        width: 100%;
+    }
+
+}
