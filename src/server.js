@@ -19,16 +19,12 @@ var glossaryRoute = require("./routes/glossary");
 var indexPage = require('./routes/index');
 var checklistPage = require("./routes/checklist");
 
-// view engine sets the template engine to use to render template files.
-app.set('view engine', 'pug');
-// views shows where the template files are located
-app.set('views', path.join(__dirname + '/views'));
-
-// Here i set up so i can serve static files to the web page through my public folder. The public folder is now accesable to the browser. I also set in a fake address, i can now acces files wit /static/filename
+// We need to serve a public folder to the page, we use index.html as start, this then has acces to the public folder.
 app.use('/static', express.static('public'));
 
-// dette er route til index
-app.use('/', indexPage);
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 initializeDatabases(function(err, dbs) {
     if (err) {
