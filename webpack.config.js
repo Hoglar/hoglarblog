@@ -9,9 +9,9 @@ const paths = {
 }
 
 module.exports = {
-    entry: path.join(path.JS, 'app.js'),
+    entry: path.join(paths.JS, 'app.js'),
     output: {
-        path: path.DIST,
+        path: paths.DIST,
         filename: 'app.bundle.js'
     },
 
