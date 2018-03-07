@@ -4,6 +4,37 @@
 }
 /* ------------ Web fonts -----------*/
 
-#root {
-	color: blue;
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.wrapper {
+	display: grid;
+	grid-template-columns: 45px repeat(3, 1fr);
+	border: 1px solid blue;
+	text-align: center;
+	height: 100vh;
+}
+
+/* Sidebar! */
+
+.sidebar {
+	display: grid;
+	grid-column: 1 / 2;
+
+	grid-template-rows: repeat(12, 45px) 1fr;
+
+	font-size: 20px;
+	border: 1px solid red;
+	height: 100vh;
+	background-color: grey;
+}
+
+.sidebarBox-1 {
+	grid-row: 1 / 2;
+}
+
+.sidebarBox-1:hover {
+	border-right: 2px solid green;
 }

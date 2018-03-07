@@ -5,15 +5,27 @@ import ReactDOM from 'react-dom';
 
 import '../css/styles.css';
 
-class Application extends React.Component {
+class Sidebar extends React.Component {
     render() {
         return (
-            <div className="wrapper">
-                <h1>Hello world!!</h1>
+            <div className="sidebarBox-1">
+                
             </div>
-
         )
     }
 }
 
-ReactDOM.render(<Application /> , document.getElementById('root'));
+class Application extends React.Component {
+    render() {
+        return (
+            <div className="wrapper">
+                <div className="sidebar">
+                    <Sidebar />
+                </div>
+            </div>
+        )
+    }
+}
+
+
+ReactDOM.render(<Application />, document.getElementById('root'));
