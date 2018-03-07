@@ -34,8 +34,20 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({
                     use: 'css-loader',
                 })
+            },
+            // File loader so i can put files in asset
+            // When preSite gets loaded we also get assets
+            // we then can access pictures
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    'file-loader',
+                ]
             }
-        ]
+
+
+        ],
+
     },
 
     resolve: {

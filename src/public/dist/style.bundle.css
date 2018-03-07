@@ -9,12 +9,15 @@ body {
 	margin: 0;
 }
 
+/* The wrapper is the thing around my page, not sure if this should be my grid container, but heck. */
+
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(3, 1fr);
-	border: 1px solid blue;
 	text-align: center;
+
 	height: 100vh;
+	background-color: #01060C;
 }
 
 /* Sidebar! */
@@ -22,13 +25,13 @@ body {
 .sidebar {
 	display: grid;
 	grid-column: 1 / 2;
-
 	grid-template-rows: repeat(12, 45px) 1fr;
-
 	font-size: 20px;
-	border: 1px solid red;
+	background-color: #01060C;
+	border-right: 1px solid #0F78FF;
+
 	height: 100vh;
-	background-color: grey;
+
 }
 
 .sidebarBox-1 {
@@ -36,5 +39,5 @@ body {
 }
 
 .sidebarBox-1:hover {
-	border-right: 2px solid green;
+	border-right: 1px solid #FF9E00;
 }
