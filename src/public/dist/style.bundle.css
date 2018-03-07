@@ -1,22 +1,13 @@
 
-* {
-	box-sizing: border-box;
-}
-/* ------------ Web fonts -----------*/
-
 body {
 	padding: 0;
 	margin: 0;
 }
 
-/* The wrapper is the thing around my page, not sure if this should be my grid container, but heck. */
-
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(3, 1fr);
 	text-align: center;
-
-	height: 100vh;
 	background-color: #01060C;
 }
 
@@ -25,19 +16,23 @@ body {
 .sidebar {
 	display: grid;
 	grid-column: 1 / 2;
-	grid-template-rows: repeat(12, 45px) 1fr;
+	grid-template-rows: repeat(6, 45px) 1fr;
 	font-size: 20px;
 	background-color: #01060C;
-	border-right: 1px solid #0F78FF;
-
 	height: 100vh;
 
 }
 
-.sidebarBox-1 {
-	grid-row: 1 / 2;
+.sidebarBox {
+	border-right: 1px solid #0F78FF;
 }
 
-.sidebarBox-1:hover {
+.sidebarBox:hover {
 	border-right: 1px solid #FF9E00;
+	border-bottom: 1px solid #000000;
+}
+
+.sidebarFiller {
+    grid-row: 7 / auto;
+    border-right: 1px solid #0F78FF;
 }

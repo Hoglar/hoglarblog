@@ -44,10 +44,7 @@ module.exports = {
                     'file-loader',
                 ]
             }
-
-
         ],
-
     },
 
     resolve: {
