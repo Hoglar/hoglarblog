@@ -13,6 +13,7 @@ body {
 
 /* Sidebar! */
 
+
 .sidebar {
 	display: grid;
 	grid-column: 1 / 2;
@@ -23,18 +24,19 @@ body {
 
 }
 
+
 .sidebarBox {
 	border-right: 1px solid #0F78FF;
-	color: white;
+	padding-top: 7px;
+
 }
 
-.siderbarBox img {
-	color: white;
-}
+
 
 .sidebarBox:hover {
 	border-right: 1px solid #FF9E00;
 	border-bottom: 1px solid #000000;
+	padding-top: 6px;
 }
 
 .sidebarFiller {
