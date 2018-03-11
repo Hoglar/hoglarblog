@@ -23,15 +23,50 @@ import home from '../assets/house.png';
 // elementene en kan velge mellom vil etterhvert være egne komponeneter,
 // i sidebaren trenger jeg kun deres gjeldene bilder.
 
+
+// Notes, glossary
+
 const defaultSidebar = [
     {
+        // Home
+        // A home button is pretty, dont know exactly
+        // What it should do.
         img: home,
         id: 1,
     },
     {
-        img: home,
+        // Notes
+        // This api is for writing notes when learning,
+        // it should be topic based but freely written. and open for all.
+        img: notes,
         id: 2,
+    },
+    {
+        // Glossary
+        // Glossary is topic based and meant to be a short description.
+        // I will make the most reviewd glossary be the default description.
+        //
+    },
+    {
+        // Blog or ideas
+        // Can be topic based but aslo just free writing.
+    },
+    {
+        // Social
+        // Should have some sort of friend function.
+    },
+    {
+        // Profile settings
+        // Here we can change what api we need
+        // We can also change order.
+    },
+    {
+        // Questions
+        // also topic based, i want a way to write Questions
+        // and which we get replyes in your own page,
+        // color shoud change on update.
     }
+
 ]
 
 // Sidebar får hittil en props. Den får et object fra Application.
