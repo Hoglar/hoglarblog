@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 import '../css/styles.css';
 
-import png from '../assets/keen.png';
+import home from '../assets/';
+
 
 
 
@@ -18,7 +19,7 @@ class Sidebar extends React.Component {
     render() {
         return (
             <div className="sidebar">
-                <SidebarBox />
+                <SidebarBox img={home}/>
                 <SidebarBox />
                 <SidebarBox />
                 <SidebarBox />
@@ -38,7 +39,7 @@ class SidebarBox extends React.Component {
     render() {
         return(
             <div className="sidebarBox">
-                
+                <img src={this.props.img} />
             </div>
         )
     }
@@ -47,7 +48,6 @@ class SidebarBox extends React.Component {
 SidebarBox.propTypes = {
 
 }
-
 
 class Application extends React.Component {
     render() {

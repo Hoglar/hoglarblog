@@ -25,6 +25,11 @@ body {
 
 .sidebarBox {
 	border-right: 1px solid #0F78FF;
+	color: white;
+}
+
+.siderbarBox img {
+	color: white;
 }
 
 .sidebarBox:hover {
