@@ -6,7 +6,12 @@ import PropTypes from 'prop-types';
 
 import '../css/styles.css';
 
-import home from '../assets/house.png';
+// importing icons from assets to gove to defaultSidebar
+import homePng from '../assets/house.png';
+import notesPng from '../assets/feedback.png';
+import dictionaryPng from '../assets/books.png';
+import ideasPng from '../assets/idea.png';
+
 
 
 // må også gjøre dette mer modulært.
@@ -31,25 +36,28 @@ const defaultSidebar = [
         // Home
         // A home button is pretty, dont know exactly
         // What it should do.
-        img: home,
+        img: homePng,
         id: 1,
     },
     {
         // Notes
         // This api is for writing notes when learning,
         // it should be topic based but freely written. and open for all.
-        img: notes,
+        img: notesPng,
         id: 2,
     },
     {
-        // Glossary
+        // Dictionary
         // Glossary is topic based and meant to be a short description.
         // I will make the most reviewd glossary be the default description.
-        //
+        img: dictionaryPng, // Bilde noe ute av stil, kanskje bytte?
+        id: 3,
     },
     {
         // Blog or ideas
         // Can be topic based but aslo just free writing.
+        img: ideasPng,
+        id: 4,
     },
     {
         // Social
@@ -65,6 +73,9 @@ const defaultSidebar = [
         // also topic based, i want a way to write Questions
         // and which we get replyes in your own page,
         // color shoud change on update.
+    },
+    {
+        // Checklist
     }
 
 ]
