@@ -100,6 +100,10 @@ const defaultSidebar = [
 // Sidebar får hittil en props. Den får et object fra Application.
 
 class Sidebar extends React.Component {
+
+
+
+
     render() {
         return (
             <div className="sidebar">
@@ -107,7 +111,8 @@ class Sidebar extends React.Component {
                     return (
                         <SidebarBox
                             img={api.img}
-                            key={api.id} />
+                            key={api.id}
+                            showBoxInfo = {this.props.showBoxInfo}/>
                     )
                 }.bind(this))}
 
@@ -121,14 +126,23 @@ class Sidebar extends React.Component {
 // forskjellig knapp for en gitt funksionalitet.
 
 class SidebarBox extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            hover: false,
+        }
+    }
+
+    onHover() {
+        console.log("Hehe");
+
+    }
 
     // on hover i want to show info about the box.
-    onClick() {
-        console.log("Rekt!");
-    }
     render() {
         return(
-            <div className="sidebarBox" onClick={this.onClick.bind(this)}>
+            <div className="sidebarBox" onMouseEnter={this.onHover.bind(this)} onClick={this.props.showBoxInfo}>
+
                 <img src={this.props.img} className="center" />
             </div>
         )
@@ -136,10 +150,29 @@ class SidebarBox extends React.Component {
 }
 
 class Application extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            sidebarInfo: false,
+        }
+    }
+
+    showBoxInfo() {
+        console.log("Hello");
+        this.setState({sidebarInfo: true});
+    }
+
     render() {
         return (
             <div className="wrapper">
-                <Sidebar sidebarLayout={defaultSidebar}/>
+                <Sidebar
+                    sidebarLayout={defaultSidebar}
+                    showBoxInfo={this.showBoxInfo.bind(this)}/>
+
+                { this.state.sidebarInfo ? <h1 className="test">Hello </h1> : null }
+
+
+
             </div>
         )
     }
