@@ -39,6 +39,7 @@ const defaultSidebar = [
         // A home button is pretty, dont know exactly
         // What it should do.
         img: homePng, // Home er fint bilde. kan bli.
+        name: "Home",
         id: 1,
     },
     {
@@ -46,6 +47,7 @@ const defaultSidebar = [
         // This api is for writing notes when learning,
         // it should be topic based but freely written. and open for all.
         img: notesPng, // liker note bildet.
+        name: "Notes",
         id: 2,
     },
     {
@@ -53,6 +55,7 @@ const defaultSidebar = [
         // Glossary is topic based and meant to be a short description.
         // I will make the most reviewd glossary be the default description.
         img: dictionaryPng, // helt ok. laget av  itim2101
+        name: "Dictionary",
         id: 3,
     },
     {
@@ -60,12 +63,14 @@ const defaultSidebar = [
         // Can be topic based but aslo just free writing.
         img: ideasPng, // liker ikke stilen, kommer ikke godt
                        // frem at det er ideer.
+        name: "Ideas",
         id: 4,
     },
     {
         // Social
         // Should have some sort of friend function.
         img: socialPng, // Liker ikke bildet.
+        name: "Social",
         id: 5,
     },
     {
@@ -74,17 +79,20 @@ const defaultSidebar = [
         // and which we get replyes in your own page,
         // color shoud change on update.
         img: questionPng,
+        name: "Questions",
         id: 6,
     },
     {
 
         //projects
         img: projectPng,
+        name: "Projects",
         id: 7,
     },
     {
         // Checklist
         img: listPng,
+        name: "Checklist",
         id: 8,
     },
     {
@@ -92,6 +100,7 @@ const defaultSidebar = [
         // Here we can change what api we need
         // We can also change order.
         img: usersettingPng,
+        name: "Settings",
         id: 9,
     }
 
@@ -101,9 +110,6 @@ const defaultSidebar = [
 
 class Sidebar extends React.Component {
 
-
-
-
     render() {
         return (
             <div className="sidebar">
@@ -112,7 +118,7 @@ class Sidebar extends React.Component {
                         <SidebarBox
                             img={api.img}
                             key={api.id}
-                            showBoxInfo = {this.props.showBoxInfo}/>
+                            name={api.name} />
                     )
                 }.bind(this))}
 
@@ -134,44 +140,35 @@ class SidebarBox extends React.Component {
     }
 
     onHover() {
-        console.log("Hehe");
+        this.setState({hover: true});
+    }
 
+    noHover() {
+        this.setState({hover: false});
     }
 
     // on hover i want to show info about the box.
     render() {
         return(
-            <div className="sidebarBox" onMouseEnter={this.onHover.bind(this)} onClick={this.props.showBoxInfo}>
+            <div className="sidebarBox" onClick={this.props.showBoxInfo}>
+                <div className="sidebarBoxImg" onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.noHover.bind(this)}>
+                    <img src={this.props.img} className="center" />
+                </div>
+                {this.state.hover ? <div className="sidebarBoxInfo"> {this.props.name} </div> :null }
 
-                <img src={this.props.img} className="center" />
             </div>
         )
     }
 }
 
 class Application extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            sidebarInfo: false,
-        }
-    }
-
-    showBoxInfo() {
-        console.log("Hello");
-        this.setState({sidebarInfo: true});
-    }
 
     render() {
         return (
             <div className="wrapper">
                 <Sidebar
                     sidebarLayout={defaultSidebar}
-                    showBoxInfo={this.showBoxInfo.bind(this)}/>
-
-                { this.state.sidebarInfo ? <h1 className="test">Hello </h1> : null }
-
-
+                />
 
             </div>
         )
