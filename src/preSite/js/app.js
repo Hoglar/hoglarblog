@@ -11,7 +11,11 @@ import homePng from '../assets/house.png';
 import notesPng from '../assets/feedback.png';
 import dictionaryPng from '../assets/books.png';
 import ideasPng from '../assets/idea.png';
-
+import socialPng from '../assets/avatar.png';
+import usersettingPng from '../assets/settings.png';
+import questionPng from '../assets/question.png';
+import listPng from '../assets/list.png';
+import projectPng from '../assets/sketch.png';
 
 
 // må også gjøre dette mer modulært.
@@ -62,20 +66,34 @@ const defaultSidebar = [
     {
         // Social
         // Should have some sort of friend function.
-    },
-    {
-        // Profile settings
-        // Here we can change what api we need
-        // We can also change order.
+        img: socialPng,
+        id: 5,
     },
     {
         // Questions
         // also topic based, i want a way to write Questions
         // and which we get replyes in your own page,
         // color shoud change on update.
+        img: questionPng,
+        id: 6,
+    },
+    {
+
+        //projects
+        img: projectPng,
+        id: 7,
     },
     {
         // Checklist
+        img: listPng,
+        id: 8,
+    },
+    {
+        // Profile settings
+        // Here we can change what api we need
+        // We can also change order.
+        img: usersettingPng,
+        id: 9,
     }
 
 ]
