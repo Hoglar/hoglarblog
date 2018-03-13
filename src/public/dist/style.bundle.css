@@ -1,4 +1,3 @@
-<<<<<<< current
 /*http://paletton.com/#uid=23D050kGq2jFa+Pzkay++00++00*/
 body {
 	padding: 0;
@@ -100,73 +99,30 @@ body {
 	color: #01060C;
 	border-top: 1px solid #000000;
 	font-weight: lighter;
+	padding-bottom: 8px;
+}
+
+.attributionHeader {
+	font-weight: lighter;
+	margin-bottom: 0px;
+}
+
+.footerAttribution {
+	align-self: flex-end;
+	width: 80%;
+	text-align: center;
+
+
 }
 
 
 
 .attribution {
-
+	display: inline;
+	font-size: 12px;
 	align-self: flex-end;
 }
 .attribution a{
 	text-decoration: none;
 	color: #01060C;
 }
-=======
-/*http://paletton.com/#uid=23D050kGq2jFa+Pzkay++00++00*/
-body {
-	padding: 0;
-	margin: 0;
-}
-
-.wrapper {
-	display: grid;
-	grid-template-columns: 45px 150px repeat(3, 1fr);
-	text-align: center;
-	background-color: #01060C;
-}
-
-/* Sidebar! */
-
-
-.sidebar {
-	display: grid;
-	grid-column: 1 / 3;
-	grid-template-columns: 45px 150px;
-	grid-template-rows: repeat(9, 45px) 1fr;
-	font-size: 20px;
-	background-color: #01060C;
-	height: 100vh;
-
-}
-
-.sidebarElements {
-	display: grid;
-	grid-column: 1 / 3;
-	grid-template-columns: 45px 150px;
-}
-
-.sidebarBox {
-	grid-column: 1 / 2;
-	border-right: 1px solid #0F78FF;
-	padding-top: 7px;
-}
-
-.sidebarBox:hover {
-	border-right: 1px solid #FF9E00;
-	border-bottom: 1px solid #000000;
-	padding-top: 6px;
-	background-color: #041A37;
-	box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-}
-
-.sidebarInfo {
-	grid-column: 2 / 3;
-}
-
-
-.sidebarFiller {
-    grid-row: 10 / auto;
-    border-right: 1px solid #0F78FF;
-}
->>>>>>> before discard
