@@ -14,7 +14,7 @@ body {
 .mainSection {
 	display: grid;
 	grid-column: 2 / 8;
-	grid-template-rows: 100px 1fr 200px;
+	grid-template-rows: repeat(10, 1fr);
 }
 
 /* Test */
@@ -86,5 +86,6 @@ body {
 /* FOOTER */
 
 .footerWrapper {
-	grid-rows: 3 / 4;
+
+	grid-rows: 2 / 3;
 }
