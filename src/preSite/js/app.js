@@ -164,15 +164,37 @@ class SidebarBox extends React.Component {
     }
 }
 
+
+class Footer extends React.Component {
+    render() {
+        return (
+            <div className="footerWrapper">
+
+            </div>
+        )
+    }
+}
+
+
+
+
 class Application extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showFooter: false;
+        }
+    }
+
+
 
     render() {
         return (
-            <div className="wrapper">
+            <div className="wrapper" onS>
                 <Sidebar
                     sidebarLayout={defaultSidebar}
                 />
-
+                <Footer />
             </div>
         )
     }
