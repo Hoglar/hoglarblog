@@ -40,6 +40,8 @@ const defaultSidebar = [
         // What it should do.
         img: homePng, // Home er fint bilde. kan bli.
         name: "Home",
+        creator: "Freepik",
+        link: "https://www.flaticon.com/authors/freepik",
         id: 1,
     },
     {
@@ -48,6 +50,8 @@ const defaultSidebar = [
         // it should be topic based but freely written. and open for all.
         img: notesPng, // liker note bildet.
         name: "Notes",
+        creator: "Freepik",
+        link: "https://www.flaticon.com/authors/freepik",
         id: 2,
     },
     {
@@ -56,6 +60,8 @@ const defaultSidebar = [
         // I will make the most reviewd glossary be the default description.
         img: dictionaryPng, // helt ok. laget av  itim2101
         name: "Dictionary",
+        creator: "itim2101",
+        link: "https://www.flaticon.com/authors/itim2101",
         id: 3,
     },
     {
@@ -64,6 +70,8 @@ const defaultSidebar = [
         img: ideasPng, // liker ikke stilen, kommer ikke godt
                        // frem at det er ideer.
         name: "Ideas",
+        creator: "Freepik",
+        link: "https://www.flaticon.com/authors/freepik",
         id: 4,
     },
     {
@@ -71,6 +79,8 @@ const defaultSidebar = [
         // Should have some sort of friend function.
         img: socialPng, // Liker ikke bildet.
         name: "Social",
+        creator: "Becris",
+        link: "https://www.flaticon.com/authors/becris",
         id: 5,
     },
     {
@@ -80,6 +90,8 @@ const defaultSidebar = [
         // color shoud change on update.
         img: questionPng,
         name: "Questions",
+        creator: "Freepik",
+        link: "https://www.flaticon.com/authors/freepik",
         id: 6,
     },
     {
@@ -87,12 +99,16 @@ const defaultSidebar = [
         //projects
         img: projectPng,
         name: "Projects",
+        creator: "Smartline",
+        link: "https://www.flaticon.com/authors/smartline",
         id: 7,
     },
     {
         // Checklist
         img: listPng,
         name: "Checklist",
+        creator: "Pixel perfect",
+        link: "https://www.flaticon.com/authors/pixel-perfect",
         id: 8,
     },
     {
@@ -101,6 +117,8 @@ const defaultSidebar = [
         // We can also change order.
         img: usersettingPng,
         name: "Settings",
+        creator: "Gregor Cresnar",
+        link: "https://www.flaticon.com/authors/gregor-cresnar",
         id: 9,
     }
 
@@ -169,7 +187,13 @@ class Footer extends React.Component {
     render() {
         return (
             <div className="footerWrapper">
-                <h1>Hello</h1>
+                {this.props.attributionInfo.map(function(api) {
+                    return (
+                        <p className="attribution">
+                            {api.name} icon made by <a href={api.link}>{api.creator} </a> from <a href="www.flaticon.com">www.flaticon.com</a>
+                        </p>
+                    )
+                })}
             </div>
         )
     }
@@ -206,7 +230,7 @@ class Application extends React.Component {
                 />
 
                 <div className="mainSection" onWheel={this.showFooter.bind(this)}>
-                    { this.state.showFooter ? <Footer /> : null }
+                    { this.state.showFooter ? <Footer attributionInfo={defaultSidebar}/> : null }
                 </div>
             </div>
         )

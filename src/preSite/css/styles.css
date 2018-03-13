@@ -87,10 +87,27 @@ body {
 /* FOOTER */
 
 .footerWrapper {
+	display: flex;
 	z-index: 1;
 	grid-row: 3 / 4;
 	grid-column: 1 /auto;
+
+	flex-direction: row;
+	justify-content: center;
+
 	background-color: #0F78FF;
+	color: #01060C;
 	border-top: 1px solid #000000;
 	font-weight: lighter;
+}
+
+
+
+.attribution {
+
+	align-self: flex-end;
+}
+.attribution a{
+	text-decoration: none;
+	color: #01060C;
 }
