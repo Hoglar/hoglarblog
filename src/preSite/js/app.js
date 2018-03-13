@@ -136,14 +136,21 @@ class SidebarBox extends React.Component {
         super(props)
         this.state = {
             hover: false,
+            timedExecution: undefined,
         }
     }
 
     onHover() {
-        this.setState({hover: true});
+        console.log("Starting timer, running in 2");
+        this.timedExecution = setTimeout(()=>{
+            console.log("Running")
+            this.setState({hover: true});
+        }, 2000)
     }
 
     noHover() {
+        console.log("running nohover");
+        clearTimeout(this.timedExecution);
         this.setState({hover: false});
     }
 
@@ -155,7 +162,6 @@ class SidebarBox extends React.Component {
                     <img src={this.props.img} className="center" />
                 </div>
                 {this.state.hover ? <div className="sidebarBoxInfo"> {this.props.name} </div> :null }
-
             </div>
         )
     }
