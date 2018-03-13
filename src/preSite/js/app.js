@@ -145,7 +145,7 @@ class SidebarBox extends React.Component {
         this.timedExecution = setTimeout(()=>{
             console.log("Running")
             this.setState({hover: true});
-        }, 2000)
+        }, 1000)
     }
 
     noHover() {
