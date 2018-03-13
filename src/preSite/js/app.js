@@ -169,7 +169,7 @@ class Footer extends React.Component {
     render() {
         return (
             <div className="footerWrapper">
-
+                <h1>Hello</h1>
             </div>
         )
     }
@@ -182,7 +182,7 @@ class Application extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showFooter: false;
+            showFooter: false,
         }
     }
 
@@ -190,11 +190,14 @@ class Application extends React.Component {
 
     render() {
         return (
-            <div className="wrapper" onS>
+            <div className="wrapper">
                 <Sidebar
                     sidebarLayout={defaultSidebar}
                 />
-                <Footer />
+
+                <div className="mainSection">
+                    <Footer />
+                </div>
             </div>
         )
     }

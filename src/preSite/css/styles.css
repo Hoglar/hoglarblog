@@ -7,8 +7,14 @@ body {
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(6, 1fr);
-	text-align: center;
 	background-color: #01060C;
+	height: 100vh;
+}
+
+.mainSection {
+	display: grid;
+	grid-column: 2 / 8;
+	grid-template-rows: 100px 1fr 200px;
 }
 
 /* Test */
@@ -22,6 +28,7 @@ body {
 
 
 .sidebar {
+	position: absolute;
 	display: grid;
 	grid-column: 1 / 3;
 	grid-template-columns: 45px 135px;
@@ -46,6 +53,7 @@ body {
 	grid-column: 1 / 2;
 	border-right: 1px solid #0F78FF;
 	padding-top: 7px;
+	text-align: center;
 }
 
 .sidebarBoxInfo {
@@ -76,3 +84,7 @@ body {
 }
 
 /* FOOTER */
+
+.footerWrapper {
+	grid-rows: 3 / 4;
+}
