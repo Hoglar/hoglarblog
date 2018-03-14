@@ -205,9 +205,6 @@ class Footer extends React.Component {
     }
 }
 
-
-
-
 class Application extends React.Component {
     constructor(props) {
         super(props);
