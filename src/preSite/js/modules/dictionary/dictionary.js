@@ -15,10 +15,12 @@ export default class Dictionary extends React.Component {
         return (
             <div className="dictionaryWrapper">
                 <div className="dictionaryTopics">
-                    {this.props.dictionaryData.map((data)=> {
-                        <h2 className="dictionaryTopic">
-                            {data.topic}
-                        </h2>
+                    {this.props.dictionaryData.map(function(data) {
+                        return (
+                            <h2 className="dictionaryTopic">
+                                {data.topic}
+                            </h2>
+                        )
                     })}
 
                 </div>
