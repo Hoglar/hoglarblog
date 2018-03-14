@@ -6,7 +6,14 @@ import PropTypes from 'prop-types';
 
 import '../css/styles.css';
 
+// Importing modules.
+
+import Sidebar from './modules/sidebar/sidebar.js';
+import Footer from './modules/footer/footer.js';
+
 // importing icons from assets to gove to defaultSidebar
+
+
 import homePng from '../assets/house.png';
 import notesPng from '../assets/feedback.png';
 import dictionaryPng from '../assets/open-book.png';
@@ -17,21 +24,6 @@ import questionPng from '../assets/question.png';
 import listPng from '../assets/list.png';
 import projectPng from '../assets/sketch.png';
 
-// må også gjøre dette mer modulært.
-
-// Sidebar indeholder sidebar boxes, det er disse boxene som er
-// hovedgreia, kanskje det ikke trenger være et helt component.
-
-
-// Jeg lager et object som bestemmer hvordan sidebarBoxen skal se ut,
-// Objectet trenger hvilken elementer jeg vil ha i sidebaren
-// objectet må også kunne si hvilken rekkefølge.
-
-// elementene en kan velge mellom vil etterhvert være egne komponeneter,
-// i sidebaren trenger jeg kun deres gjeldene bilder.
-
-
-// Notes, glossary
 
 const defaultSidebar = [
     {
@@ -124,86 +116,6 @@ const defaultSidebar = [
 
 ]
 
-// Sidebar får hittil en props. Den får et object fra Application.
-
-class Sidebar extends React.Component {
-
-    render() {
-        return (
-            <div className="sidebar">
-                {this.props.sidebarLayout.map(function(api, index) {
-                    return (
-                        <SidebarBox
-                            img={api.img}
-                            key={api.id}
-                            name={api.name} />
-                    )
-                }.bind(this))}
-
-                <div className="sidebarFiller"/>
-            </div>
-        )
-    }
-}
-
-// Sidebarboxene er på en måte like, men de skal alle være en
-// forskjellig knapp for en gitt funksionalitet.
-
-class SidebarBox extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            hover: false,
-            timedExecution: undefined,
-        }
-    }
-
-    onHover() {
-        this.timedExecution = setTimeout(()=>{
-            this.setState({hover: true});
-        }, 1200)
-    }
-
-    noHover() {
-        clearTimeout(this.timedExecution);
-        this.setState({hover: false});
-    }
-
-    // on hover i want to show info about the box.
-    render() {
-        return(
-            <div className="sidebarBox" onClick={this.props.showBoxInfo}>
-                <div className="sidebarBoxImg" onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.noHover.bind(this)}>
-                    <img src={this.props.img} className="center" />
-                </div>
-                {this.state.hover ? <div className="sidebarBoxInfo"> {this.props.name} </div> :null }
-            </div>
-        )
-    }
-}
-
-
-class Footer extends React.Component {
-    render() {
-        return (
-            <div className="footerWrapper">
-                <div className="footerTop">
-
-                </div>
-                <div className="footerAttribution">
-                    <h2 className="attributionHeader">Thank you for the images!</h2>
-                    {this.props.attributionInfo.map(function(api) {
-                        return (
-                            <p className="attribution">
-                                {api.name} icon made by <a href={api.link}>{api.creator} </a> from <a href="www.flaticon.com">www.flaticon.com | </a>
-                            </p>
-                        )
-                    })}
-                </div>
-            </div>
-        )
-    }
-}
 
 class Application extends React.Component {
     constructor(props) {
@@ -224,7 +136,6 @@ class Application extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div className="wrapper">
@@ -239,6 +150,5 @@ class Application extends React.Component {
         )
     }
 }
-
 
 ReactDOM.render(<Application />, document.getElementById('root'));
