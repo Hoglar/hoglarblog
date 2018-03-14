@@ -3,7 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Import Css files
 import '../css/styles.css';
+import './modules/dictionary/dictionary.css';
 
 // Importing modules.
 

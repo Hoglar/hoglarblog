@@ -122,3 +122,6 @@ body {
 	text-decoration: none;
 	color: #01060C;
 }
+.dictionaryWrapper {
+    grid-row: 2 / 3;
+}
