@@ -123,13 +123,26 @@ body {
     grid-row: 10 / auto;
     border-right: 1px solid #0F78FF;
 }
+/* Dictionary css! */
+
 .dictionaryWrapper {
     grid-row: 2 / 3;
-    grid-column: 2 / 6;
+    grid-column: 5 / 7;
     z-index: 1;
 
-    display: flex;
+    display: grid;
+    grid-template-rows: 45px 1fr 100px;
+    grid-template-columns: repeat(4, 1fr);
 
     background-color: white;
     border: 1px solid #000000;
+}
+
+.dictionaryTopics {
+    grid-row: 1 / 2;
+    grid-column: 1 / 5;
+    width: 100%;
+    background-color: grey;
+
+    font-weight: lighter;
 }
