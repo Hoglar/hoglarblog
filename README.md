@@ -10,9 +10,10 @@ The hoglarblog repo is where hoglar.com is getting created. Im a guy that is lea
 Hoglar.com is made to be a helpfull learning platform. I want to make a simple page with some functionality. Right now i got 7 different apps i want to implement, some stand alone but in some way i think they all will talk together.
 
 1. Notes
-
+  When writing in notes, i should have some sort of functionality so i can mark a word, press a button and then it gives me a dictionary explanation.
 2. Dictionary
-
+  
+  
 3. Ideas
 
 4. Social
