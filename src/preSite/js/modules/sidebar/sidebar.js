@@ -4,6 +4,9 @@ import React from 'react';
 
 import SidebarBox from './sidebarBox.js';
 
+// Sidebar gets data from app with info on images.
+// it also gets onclick fuinction
+
 export default class Sidebar extends React.Component {
 
     render() {
@@ -14,7 +17,8 @@ export default class Sidebar extends React.Component {
                         <SidebarBox
                             img={api.img}
                             key={api.id}
-                            name={api.name} />
+                            name={api.name}
+                            onSidebarClick={this.props.onSidebarClick} />
                     )
                 }.bind(this))}
 

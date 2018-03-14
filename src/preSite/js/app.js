@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
 import '../css/styles.css';
 
@@ -10,6 +9,7 @@ import '../css/styles.css';
 
 import Sidebar from './modules/sidebar/sidebar.js';
 import Footer from './modules/footer/footer.js';
+import Dictionary from './modules/dictionary/dictionary.js';
 
 // importing icons from assets to gove to defaultSidebar
 
@@ -116,12 +116,27 @@ const defaultSidebar = [
 
 ]
 
+const dictionaryData = [
+    {
+        topic: "HTML",
+    },
+    {
+        topic: "CSS",
+    },
+    {
+        topic: "Javascript",
+    },
+    {
+        topic: "MongoDb",
+    },
+]
 
 class Application extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             showFooter: false,
+            showDictionary: false,
         }
     }
     // I want the footer to show only on scrolling,
@@ -136,14 +151,28 @@ class Application extends React.Component {
         }
     }
 
+    // This function is taking the name of the button clicked and then updates state to show that api!
+    onSidebarClick(name) {
+        // Checking for click.
+        console.log(name);
+        if (name === "Dictionary") {
+            console.log("Clicked Dictionary, changing state");
+            this.setState({showDictionary: true});
+        }
+    }
+
     render() {
         return (
             <div className="wrapper">
                 <Sidebar
                     sidebarLayout={defaultSidebar}
+                    onSidebarClick={this.onSidebarClick.bind(this)}
                 />
 
                 <div className="mainSection" onWheel={this.showFooter.bind(this)}>
+
+                    { this.state.showDictionary ? <Dictionary dictionaryData={dictionaryData}/> : null }
+
                     { this.state.showFooter ? <Footer attributionInfo={defaultSidebar}/> : null }
                 </div>
             </div>
