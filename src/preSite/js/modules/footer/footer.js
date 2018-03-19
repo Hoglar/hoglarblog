@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
         return (
             <div className="footerWrapper">
                 <div className="footerTop">
-
+                    3AtBGhxf1nAYp5kHBTdivQuVfVE99cZYtj
                 </div>
                 <div className="footerAttribution">
                     <h2 className="attributionHeader">Thank you for the images!</h2>
