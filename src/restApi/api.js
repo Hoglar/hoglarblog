@@ -2,7 +2,9 @@
 
 module.exports = function(app, dbs) {
     app.get('/api', function(req, res) {
-        res.send("Hello World");
+        res.json({
+            color: "Red"
+        });
         console.log("app call");
     });
     return app;
