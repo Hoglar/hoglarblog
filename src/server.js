@@ -9,15 +9,12 @@ var bodyParser = require('body-parser');
 var initializeDatabases = require("./dbs");
 const crypto = require('crypto');
 const path = require('path');
-
+//Requiring apiRouter
+const routerApi = require('./routes/api.js')
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-//Requiring routes
-var glossaryRoute = require("./routes/glossary");
-var indexPage = require('./routes/index');
-var checklistPage = require("./routes/checklist");
 
 // We need to serve a public folder to the page, we use index.html as start, this then has acces to the public folder.
 app.use('/static', express.static('public'));
@@ -26,6 +23,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+
 initializeDatabases(function(err, dbs) {
     if (err) {
         console.log("Failed to make database connection!");
@@ -33,8 +31,7 @@ initializeDatabases(function(err, dbs) {
         process.exit(1);
     }
     // Updating app with the routes.
-    glossaryRoute(app, dbs);
-    checklistPage(app, dbs);
+    routerApi(app, dbs);
 
     app.listen(8080, 'localhost', () => {
 
