@@ -143,6 +143,18 @@ class Application extends React.Component {
             showDictionary: false,
         }
     }
+
+    componentDidMount() {
+        console.log("did mount");
+        axios.get('/api')
+            .then(function(response) {
+                console.log(response);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
+
     // I want the footer to show only on scrolling,
     // rest of the page is on page.
     showFooter(e) {
