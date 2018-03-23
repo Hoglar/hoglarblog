@@ -124,8 +124,9 @@ class Application extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            // Kan jeg bare
             showFooter: false,
-            showDictionary: false,
+            showDictionary: true,
         }
     }
 

@@ -25,6 +25,16 @@ const dictionaryData = [
     },
 ]
 
+class DictionaryMain extends React.Component {
+    render() {
+        return (
+            <div className="dictionaryMain">
+
+            </div>
+        )
+    }
+}
+
 export default class Dictionary extends React.Component {
     render() {
         return (
@@ -37,6 +47,9 @@ export default class Dictionary extends React.Component {
                             </h2>
                         )
                     })}
+                </div>
+                <DictionaryMain />
+                <div className="dictionaryFooter">
 
                 </div>
             </div>
