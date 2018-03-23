@@ -120,21 +120,6 @@ const defaultSidebar = [
 
 ]
 
-const dictionaryData = [
-    {
-        topic: "HTML",
-    },
-    {
-        topic: "CSS",
-    },
-    {
-        topic: "Javascript",
-    },
-    {
-        topic: "MongoDb",
-    },
-]
-
 class Application extends React.Component {
     constructor(props) {
         super(props);
@@ -176,7 +161,7 @@ class Application extends React.Component {
 
                 <div className="mainSection" onWheel={this.showFooter.bind(this)}>
 
-                    { this.state.showDictionary ? <Dictionary dictionaryData={dictionaryData}/> : null }
+                    { this.state.showDictionary ? <Dictionary /> : null }
 
                     { this.state.showFooter ? <Footer attributionInfo={defaultSidebar}/> : null }
                 </div>

@@ -10,12 +10,27 @@ import React from 'react';
 // Dictionary takes info from database, for now an array of objects that i create in app.js.
 // we call it dictionaryData in file and in this.
 
+const dictionaryData = [
+    {
+        topic: "HTML",
+    },
+    {
+        topic: "CSS",
+    },
+    {
+        topic: "Javascript",
+    },
+    {
+        topic: "MongoDb",
+    },
+]
+
 export default class Dictionary extends React.Component {
     render() {
         return (
             <div className="dictionaryWrapper">
                 <div className="dictionaryTopics">
-                    {this.props.dictionaryData.map(function(data) {
+                    {dictionaryData.map(function(data) {
                         return (
                             <h2 className="dictionaryTopic">
                                 {data.topic}
