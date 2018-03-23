@@ -21,6 +21,6 @@ Questions I want a way to easly ask questions kinda out in the air.
 One idea is to make the question api a part of notes (maybe also some of the others). When writing notes you can easly put down a question. when someone reads you notes they may get a good feeling of what your asking about since the question comes with a context. Then they can in the notes answer the question. This answer will then go to the users question section and the question api will light up.
 6. Projects
 
-Checklist
+7. Checklist
 
-Settings
+8. Settings
