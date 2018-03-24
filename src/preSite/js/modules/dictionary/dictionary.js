@@ -61,6 +61,7 @@ export default class Dictionary extends React.Component {
     render() {
         return (
             <div className="dictionaryWrapper">
+                <h1></h1>
                 <div className="dictionaryTopics">
                     {dictionaryData.map(function(data) {
                         return (
