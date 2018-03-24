@@ -148,7 +148,12 @@ class Application extends React.Component {
         console.log(name);
         if (name === "Dictionary") {
             console.log("Clicked Dictionary, changing state");
-            this.setState({showDictionary: true});
+            if (this.state.showDictionary) {
+                this.setState({showDictionary: false});
+            }
+            else {
+                this.setState({showDictionary: true});
+            }
         }
     }
 

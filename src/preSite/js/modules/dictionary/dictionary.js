@@ -23,6 +23,9 @@ const dictionaryData = [
     {
         topic: "MongoDb",
     },
+    {
+        topic: "Math",
+    }
 ]
 
 class DictionaryMain extends React.Component {
@@ -35,23 +38,41 @@ class DictionaryMain extends React.Component {
     }
 }
 
+class DictionaryFooter extends React.Component {
+    render() {
+        return (
+            <div className="dictionaryFooter">
+
+            </div>
+        )
+    }
+}
+
 export default class Dictionary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showMain: false,
+            showFooter: false,
+        }
+    }
+
+
     render() {
         return (
             <div className="dictionaryWrapper">
                 <div className="dictionaryTopics">
                     {dictionaryData.map(function(data) {
                         return (
-                            <h2 className="dictionaryTopic">
+                            <p className="dictionaryTopic">
                                 {data.topic}
-                            </h2>
+                            </p>
                         )
                     })}
                 </div>
-                <DictionaryMain />
-                <div className="dictionaryFooter">
+                {this.state.showMain ? <DictionaryMain /> : null}
+                {this.state.showFooter ? <DictionaryFooter /> : null}
 
-                </div>
             </div>
         )
     }
