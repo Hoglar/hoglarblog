@@ -1,0 +1,46 @@
+/* Footer Css */
+
+.footerWrapper {
+	display: flex;
+	z-index: 1;
+	grid-row: 3 / 4;
+	grid-column: 1 / 7;
+
+	flex-direction: column;
+
+	background-color: #0F78FF;
+	color: #01060C;
+	border-top: 1px solid #000000;
+	font-weight: lighter;
+	padding-bottom: 8px;
+}
+
+
+.supportSection {
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+}
+
+.footerAttribution {
+    margin: auto;
+	width: 80%;
+	text-align: center;
+}
+
+.attributionHeader {
+	font-weight: lighter;
+	margin-bottom: 0px;
+}
+
+
+
+.attribution {
+	display: inline;
+	font-size: 12px;
+	align-self: flex-end;
+}
+.attribution a{
+	text-decoration: none;
+	color: #01060C;
+}

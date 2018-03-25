@@ -4,9 +4,10 @@ export default class Footer extends React.Component {
     render() {
         return (
             <div className="footerWrapper">
-                <div className="footerTop">
-                    3AtBGhxf1nAYp5kHBTdivQuVfVE99cZYtj
+                <div className="supportSection">
+                    Support project with Bitcoin: 3AtBGhxf1nAYp5kHBTdivQuVfVE99cZYtj
                 </div>
+
                 <div className="footerAttribution">
                     <h2 className="attributionHeader">Thank you for the images!</h2>
                     {this.props.attributionInfo.map(function(api) {
