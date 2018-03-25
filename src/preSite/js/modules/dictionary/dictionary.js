@@ -28,13 +28,32 @@ const dictionaryData = [
     }
 ]
 
+// Takes props from Dictionary
+// Dictionary sends its showSearch state to the variable selectedTopic.
+
+class DictionaryTopic extends React.Component {
+
+    topicSelector() {
+        this.props.topicSelector(this.props.topicData.topic);
+    }
+
+    render() {
+            return (
+                <button className="dictionaryTopic" onClick={this.topicSelector.bind(this)}>
+                    {this.props.topicData.topic}
+                </button>
+        )
+    }
+}
+
+
 class DictionarySearch extends React.Component {
     render() {
         return (
             <form className="dictionarySearch">
                 <label>
-                    name:
-                    <input id="dictionarySearchField" className="dictionarySearchField" type="text" name="name"/>
+                    {this.props.selectedTopic}
+                    <input className="dictionarySearchField" type="text" name="name"/>
                 </label>
             </form>
         )
@@ -67,8 +86,14 @@ export default class Dictionary extends React.Component {
         this.state = {
             showMain: false,
             showFooter: false,
-            showSearch: "CSS",
+            showSearch: false,
         }
+    }
+
+    //showSearch needs to take the name of the pressed topic as a parameter.
+    showSearch(topic) {
+        console.log(topic);
+        this.setState({showSearch: topic});
     }
 
 
@@ -76,15 +101,13 @@ export default class Dictionary extends React.Component {
         return (
             <div className="dictionaryWrapper">
                 <div className="dictionaryTopics">
-                    {dictionaryData.map(function(data) {
+                    {dictionaryData.map((data) => {
                         return (
-                            <label for="dictionarySearchField" className="dictionaryTopic">
-                                {data.topic}
-                            </label>
+                            <DictionaryTopic topicData={data} topicSelector={this.showSearch.bind(this)}/>
                         )
                     })}
                 </div>
-                {this.state.showSearch ? <DictionarySearch /> : null}
+                {this.state.showSearch ? <DictionarySearch selectedTopic={this.state.showSearch}/> : null}
                 {this.state.showMain ? <DictionaryMain /> : null}
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 
