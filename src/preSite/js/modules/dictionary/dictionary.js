@@ -28,6 +28,19 @@ const dictionaryData = [
     }
 ]
 
+class DictionarySearch extends React.Component {
+    render() {
+        return (
+            <form className="dictionarySearch">
+                <label>
+                    name:
+                    <input id="dictionarySearchField" className="dictionarySearchField" type="text" name="name"/>
+                </label>
+            </form>
+        )
+    }
+}
+
 class DictionaryMain extends React.Component {
     render() {
         return (
@@ -54,6 +67,7 @@ export default class Dictionary extends React.Component {
         this.state = {
             showMain: false,
             showFooter: false,
+            showSearch: "CSS",
         }
     }
 
@@ -61,16 +75,16 @@ export default class Dictionary extends React.Component {
     render() {
         return (
             <div className="dictionaryWrapper">
-                <h1></h1>
                 <div className="dictionaryTopics">
                     {dictionaryData.map(function(data) {
                         return (
-                            <p className="dictionaryTopic">
+                            <label for="dictionarySearchField" className="dictionaryTopic">
                                 {data.topic}
-                            </p>
+                            </label>
                         )
                     })}
                 </div>
+                {this.state.showSearch ? <DictionarySearch /> : null}
                 {this.state.showMain ? <DictionaryMain /> : null}
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 

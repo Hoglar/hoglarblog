@@ -1,13 +1,12 @@
 /* Dictionary css! */
 
 .dictionaryWrapper {
-    grid-row: 2 / 3;
+    grid-row: 1 / 3;
     grid-column: 3 / 5;
     z-index: 1;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .dictionaryTopics {
@@ -35,6 +34,19 @@
     cursor: pointer;
     padding-top: 13px;
 
+}
+
+.dictionarySearch {
+    width: 100%;
+    height: 30px;
+    background-color: #041A37;
+    padding-top: 3px;
+}
+
+.dictionarySearchField {
+    width: 60%;
+    font-size: 18px;
+    height: 20px;
 }
 
 .dictionaryMain {
