@@ -142,7 +142,6 @@ body {
     width: 100%;
     height: 45px;
 
-
 }
 
 .dictionaryTopic {
@@ -159,7 +158,9 @@ body {
     background-color: #FF9E00;
     cursor: pointer;
     padding-top: 4px;
-
+}
+.dictionaryTopic:focus {
+    background-color: #FF9E00;
 }
 
 .dictionarySearch {
