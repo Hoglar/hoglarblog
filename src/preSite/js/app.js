@@ -126,7 +126,7 @@ class Application extends React.Component {
         this.state = {
             // Kan jeg bare
             showFooter: false,
-            showDictionary: true,
+            showDictionary: false,
         }
     }
 
