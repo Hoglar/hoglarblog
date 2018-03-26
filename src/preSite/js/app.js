@@ -8,7 +8,6 @@ import axios from 'axios';
 import '../css/styles.css';
 import './modules/sidebar/sidebar.css'
 import './modules/dictionary/dictionary.css';
-import './modules/footer/footer.css';
 
 // Importing modules.
 
