@@ -94,9 +94,18 @@
 
 
 .dictionaryMain {
+    display: flex;
     width: 100%;
-    background-color: blue;
 }
+
+.dictionaryMainEmpty {
+    font-style: oblique;
+    font-size: 22px;
+    font-weight: lighter;
+    color: white;
+    margin: auto;
+}
+
 
 .dictionaryFooter {
     align-self: flex-end;

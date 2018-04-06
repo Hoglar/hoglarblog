@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import DictionaryMain from "./dictionarySubparts/main.js";
 
 //Dictionary contains user created explanations of different terms within specific topics.
 //The topics must be kinda static but some choice can be made.
@@ -68,18 +69,6 @@ class DictionarySearch extends React.Component {
     }
 }
 
-class DictionaryMain extends React.Component {
-    render() {
-        return (
-            <div className="dictionaryMain">
-                <div className="dictionaryMainEmpty">
-                    <p>Dictionary</p>
-                </div>
-            </div>
-        )
-    }
-}
-
 class DictionaryFooter extends React.Component {
     render() {
         return (
@@ -118,7 +107,7 @@ export default class Dictionary extends React.Component {
                     })}
                 </div>
                 {this.state.showSearch ? <DictionarySearch selectedTopic={this.state.showSearch}/> : null}
-                {this.state.showMain ? <DictionaryMain showMain={this.state.showMain}/> : null}
+                <DictionaryMain showMain={this.state.showMain}/>
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 
             </div>
