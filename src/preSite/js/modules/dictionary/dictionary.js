@@ -15,10 +15,6 @@ import dictionaryData from "./dictionarySubparts/div.js";
 
 
 
-
-
-
-
 export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +32,12 @@ export default class Dictionary extends React.Component {
     }
 
 
+    // Here i can maybe connect to a database?
+    handleTopicSearch(searchData) {
+        console.log("Handling search from dictionary " + searchData);
+    }
+
+
     render() {
         return (
             <div className="dictionaryWrapper">
@@ -46,7 +48,7 @@ export default class Dictionary extends React.Component {
                         )
                     })}
                 </div>
-                {this.state.showSearch ? <DictionarySearch selectedTopic={this.state.showSearch}/> : null}
+                {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch} selectedTopic={this.state.showSearch}/> : null}
                 <DictionaryMain showMain={this.state.showMain}/>
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 
