@@ -37,9 +37,6 @@ class DictionaryTopic extends React.Component {
     // classNameSelector returns either
 
 
-
-    classNameSelector
-
     topicSelector() {
         this.props.topicSelector(this.props.topicData.topic);
     }
@@ -52,7 +49,6 @@ class DictionaryTopic extends React.Component {
         )
     }
 }
-
 
 class DictionarySearch extends React.Component {
 
@@ -76,7 +72,9 @@ class DictionaryMain extends React.Component {
     render() {
         return (
             <div className="dictionaryMain">
-
+                <div className="dictionaryMainEmpty">
+                    <p>Dictionary</p>
+                </div>
             </div>
         )
     }
@@ -96,7 +94,7 @@ export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMain: false,
+            showMain: "empty",
             showFooter: false,
             showSearch: false,
         }
@@ -120,7 +118,7 @@ export default class Dictionary extends React.Component {
                     })}
                 </div>
                 {this.state.showSearch ? <DictionarySearch selectedTopic={this.state.showSearch}/> : null}
-                {this.state.showMain ? <DictionaryMain /> : null}
+                {this.state.showMain ? <DictionaryMain showMain={this.state.showMain}/> : null}
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 
             </div>
