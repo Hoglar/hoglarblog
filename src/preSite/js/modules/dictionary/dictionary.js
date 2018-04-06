@@ -3,31 +3,11 @@
 import React from 'react';
 import DictionaryMain from "./dictionarySubparts/main.js";
 
+import dictionaryData from "./dictionarySubparts/div.js";
 //Dictionary contains user created explanations of different terms within specific topics.
 //The topics must be kinda static but some choice can be made.
 // Topics is like HTML, CSS, Javascript
 // Maybe i should have under topics.
-
-// Dictionary takes info from database, for now an array of objects that i create in app.js.
-// we call it dictionaryData in file and in this.
-
-const dictionaryData = [
-    {
-        topic: "HTML",
-    },
-    {
-        topic: "CSS",
-    },
-    {
-        topic: "Javascript",
-    },
-    {
-        topic: "MongoDb",
-    },
-    {
-        topic: "Math",
-    }
-]
 
 // Takes props from Dictionary
 // Dictionary sends its showSearch state to the variable selectedTopic.
