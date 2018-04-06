@@ -2,6 +2,10 @@
 
 import React from 'react';
 import DictionaryMain from "./dictionarySubparts/main.js";
+import DictionaryFooter from "./dictionarySubparts/Footer.js";
+import DictionaryTopic from "./dictionarySubparts/Topic.js";
+import DictionarySearch from "./dictionarySubparts/Search.js";
+
 
 import dictionaryData from "./dictionarySubparts/div.js";
 //Dictionary contains user created explanations of different terms within specific topics.
@@ -9,55 +13,11 @@ import dictionaryData from "./dictionarySubparts/div.js";
 // Topics is like HTML, CSS, Javascript
 // Maybe i should have under topics.
 
-// Takes props from Dictionary
-// Dictionary sends its showSearch state to the variable selectedTopic.
-// Dictionary also gets its className from parent, its dictionaryTopic if not selectedTopic
-// Dictionary gets dictionaryTopicSelected passed to it, this contains the showSearch state of Dictionary component,
-// The showSearch will have the name of the selectedTopic.
-class DictionaryTopic extends React.Component {
-    // classNameSelector returns either
 
 
-    topicSelector() {
-        this.props.topicSelector(this.props.topicData.topic);
-    }
 
-    render() {
-            return (
-                <label htmlFor="dictionarySearchField" className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"} onClick={this.topicSelector.bind(this)}>
-                        {this.props.topicData.topic}
-                </label>
-        )
-    }
-}
 
-class DictionarySearch extends React.Component {
 
-    render() {
-        return (
-            <form className="dictionarySearch">
-                <div className="dictionarySearchSelectedTopic">
-                    {this.props.selectedTopic}
-                </div>
-                <input id="dictionarySearchField" className="dictionarySearchField" type="text" name="name"/>
-
-                <button className="dictionarySearchButton">
-                    Search
-                </button>
-            </form>
-        )
-    }
-}
-
-class DictionaryFooter extends React.Component {
-    render() {
-        return (
-            <div className="dictionaryFooter">
-
-            </div>
-        )
-    }
-}
 
 export default class Dictionary extends React.Component {
     constructor(props) {
