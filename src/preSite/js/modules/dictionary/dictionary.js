@@ -1,4 +1,5 @@
 'use strict';
+import axios from "axios";
 
 import React from 'react';
 import DictionaryMain from "./dictionarySubparts/main.js";
@@ -35,6 +36,10 @@ export default class Dictionary extends React.Component {
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
         console.log("Handling search from dictionary " + searchData);
+        axios.get('/api').then(function(response){
+            console.log(response.data);
+        })
+
     }
 
 
