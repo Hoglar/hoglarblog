@@ -10,7 +10,7 @@ var initializeDatabases = require("./dbs");
 const crypto = require('crypto');
 const path = require('path');
 //Requiring apiRouter
-const restApi = require('./restApi/api.js')
+const restApi = require('./restApi/api.js');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
