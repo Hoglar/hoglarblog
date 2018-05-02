@@ -68,7 +68,8 @@ I want to explore meritocracy, how do we decide wich posts are good and which de
 
 5. Questions I want a way to easly ask questions kinda out in the air.
 One idea is to make the question api a part of notes (maybe also some of the others). When writing notes you can easly put down a question. when someone reads you notes they may get a good feeling of what your asking about since the question comes with a context. Then they can in the notes answer the question. This answer will then go to the users question section and the question api will light up.
-6. Projects
+6. Projects.
+   I want to make a system where you can create small projects for yourself. Like 3 days of learning math, i then want to make a way to get points for this achievment. It will also be progressive. if you make a 3 day challange enough times, you can make it 5 days and so on. This will also help my site get returning players(users) :)
 
 7. Checklist
 
