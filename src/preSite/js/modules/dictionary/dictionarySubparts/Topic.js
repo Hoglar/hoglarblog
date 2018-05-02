@@ -16,9 +16,11 @@ export default class DictionaryTopic extends React.Component {
 
     render() {
             return (
-                <label htmlFor="dictionarySearchField" className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"} onClick={this.topicSelector.bind(this)}>
+                <button
+                    className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"}
+                    onClick={this.topicSelector.bind(this)}>
                         {this.props.topicData.topic}
-                </label>
+                </button>
         )
     }
 }

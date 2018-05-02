@@ -24,7 +24,7 @@
     text-align: center;
     flex-grow: 1;
     margin: 0;
-    padding-top: 13px;
+    padding-top: 8px;
     background-color: #0F78FF;
     border: solid 1px #000000;
 }
@@ -32,7 +32,7 @@
 .dictionaryTopic:hover {
     background-color: #FF9E00;
     cursor: pointer;
-    padding-top: 12px;
+    padding-top: 7px;
 }
 
 .dictionaryTopicSelected {
@@ -41,7 +41,7 @@
     text-align: center;
     flex-grow: 1;
     margin: 0;
-    padding-top: 13px;
+    padding-top: 8px;
     background-color: #FF9E00;
     border: solid 1px #000000;
 }

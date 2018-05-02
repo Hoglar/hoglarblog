@@ -16,6 +16,18 @@ export default class DictionarySearch extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        console.log("We loaded search");
+        document.getElementById("dictionarySearchField").select();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.selectedTopic !== this.props.selectedTopic) {
+            document.getElementById("dictionarySearchField").select();
+        }
+    }
+
+
 
     handleChange(event) {
         this.setState({searchFormValue: event.target.value});
@@ -29,9 +41,9 @@ export default class DictionarySearch extends React.Component {
     render() {
         return (
             <form className="dictionarySearch">
-                <div className="dictionarySearchSelectedTopic">
+                <label for="dictionarySearchField" className="dictionarySearchSelectedTopic">
                     {this.props.selectedTopic}
-                </div>
+                </label>
                 <input
                     id="dictionarySearchField"
                     className="dictionarySearchField"

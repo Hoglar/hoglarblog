@@ -1,7 +1,6 @@
 'use strict';
-import axios from "axios";
-
 import React from 'react';
+
 import DictionaryMain from "./dictionarySubparts/main.js";
 import DictionaryFooter from "./dictionarySubparts/Footer.js";
 import DictionaryTopic from "./dictionarySubparts/Topic.js";
@@ -27,7 +26,10 @@ export default class Dictionary extends React.Component {
     }
 
     //showSearch needs to take the name of the pressed topic as a parameter.
+    //When showSearch state is changed, it will be trusly,and we show search form.
+
     showSearch(topic) {
+        // Maybe i should clear search field to?
         console.log(topic);
         this.setState({showSearch: topic});
     }
@@ -36,9 +38,6 @@ export default class Dictionary extends React.Component {
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
         console.log("Handling search from dictionary " + searchData);
-        axios.get('/api').then(function(response){
-            console.log(response.data);
-        })
 
     }
 
@@ -53,6 +52,7 @@ export default class Dictionary extends React.Component {
                         )
                     })}
                 </div>
+
                 {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch} selectedTopic={this.state.showSearch}/> : null}
                 <DictionaryMain showMain={this.state.showMain}/>
                 {this.state.showFooter ? <DictionaryFooter /> : null}
