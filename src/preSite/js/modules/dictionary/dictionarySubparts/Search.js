@@ -17,7 +17,6 @@ export default class DictionarySearch extends React.Component {
     }
 
     componentDidMount() {
-        console.log("We loaded search");
         document.getElementById("dictionarySearchField").select();
     }
 
@@ -34,8 +33,9 @@ export default class DictionarySearch extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.topicSearch(this.state.searchFormValue);
         event.preventDefault();
+        this.props.topicSearch(this.state.searchFormValue);
+
     }
 
     render() {

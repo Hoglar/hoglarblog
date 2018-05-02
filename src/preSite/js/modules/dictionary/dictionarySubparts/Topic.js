@@ -7,10 +7,8 @@ import React from "react";
 // Dictionary gets dictionaryTopicSelected passed to it, this contains the showSearch state of Dictionary component,
 // The showSearch will have the name of the selectedTopic.
 export default class DictionaryTopic extends React.Component {
-    // classNameSelector returns either
 
-
-    topicSelector() {
+    topicSelector() { // Selects the active topic
         this.props.topicSelector(this.props.topicData.topic);
     }
 
