@@ -1,10 +1,10 @@
 "use strict";
 import React from 'react';
 
-
-// Dictionary main is the section under the search function.
 // When the dictionary is first rendered the main will only
 // hold the word Dictionary.
+// Dictionary main is the section under the search function.
+
 
 
 // DictionaryMain takes one propt from Dictionary,
