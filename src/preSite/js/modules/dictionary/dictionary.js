@@ -38,6 +38,7 @@ export default class Dictionary extends React.Component {
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
         console.log("Handling search from dictionary " + searchData);
+        // Must get data from database based on search
 
     }
 
@@ -53,6 +54,7 @@ export default class Dictionary extends React.Component {
                 </div>
 
                 {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch} selectedTopic={this.state.showSearch}/> : null}
+
                 <DictionaryMain showMain={this.state.showMain}/>
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 

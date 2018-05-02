@@ -26,8 +26,6 @@ export default class DictionarySearch extends React.Component {
         }
     }
 
-
-
     handleChange(event) {
         this.setState({searchFormValue: event.target.value});
     }
@@ -35,7 +33,6 @@ export default class DictionarySearch extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.topicSearch(this.state.searchFormValue);
-
     }
 
     render() {

@@ -92,18 +92,34 @@
     cursor: pointer;
 }
 
+/**********************************
+
+        Main Section
+*/
 
 .dictionaryMain {
     display: flex;
     width: 100%;
+    color: white;
+    margin-top: 20px;
 }
 
 .dictionaryMainEmpty {
     font-style: oblique;
     font-size: 22px;
     font-weight: lighter;
-    color: white;
     margin: auto;
+}
+
+.dictionaryMainContent {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.dictionaryMainContent h2 {
+    font-weight: lighter;
 }
 
 

@@ -11,6 +11,10 @@ import React from 'react';
 // it takes the showMain attribute wich is based on the state.showMain
 // if this is empty we will only show dictionaryMainEmpty
 
+
+// Main should get data from dictionary, this data should come from database.
+    // Maybe in three parts. 1. The description 2. the example 3. the reference
+
 export default class DictionaryMain extends React.Component {
     render() {
         return (
@@ -19,7 +23,22 @@ export default class DictionaryMain extends React.Component {
                     <div className="dictionaryMainEmpty">
                         <p>Dictionary</p>
                     </div>
-                ) : null
+                )
+                : (
+                    <div className="dictionaryMainContent">
+                        <h2>Topic selected by algorithm</h2>
+                        <div className="dictionaryMainExplanation">
+                            <p>lorum ipsum max how long shosdasdasd asdasdasduld this be?</p>
+                        </div>
+                        <div className="dictionaryMainExample">
+                            <p>This should kinda look good</p>
+                        </div>
+                        <div className="dictionaryMainReference">
+                            <p>This is the easy part i guess</p>
+                        </div>
+                        <p>Author: Creation Date</p>
+                    </div>
+                )
                 }
 
             </div>
