@@ -12,10 +12,16 @@ module.exports = function(app, dbs) {
         console.log("app call");
     });
 
-    app.get('/api/dictionary?id', function(req, res) {
+    app.get('/api/dictionary/:user', function(req, res) {
+        let loggedInUser = req.params.user;
+        let searchData = req.query.search;
+        console.log(loggedInUser, searchData);
 
-        console.log("Getting dictionary search");
-        console.log(req.params.id);
+
+        res.json({
+            welcome: "Hello, you made a request to the dictionary!",
+            data: "Data not yet connected"
+        });
     });
 
     return app;

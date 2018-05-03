@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 
 // Import Css files
 import '../css/styles.css';
@@ -125,7 +124,9 @@ class Application extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // Kan jeg bare
+
+            //Lager en state for guest user
+            loggedInUser: "guest",
             showFooter: false,
             showDictionary: false,
         }
@@ -168,9 +169,13 @@ class Application extends React.Component {
 
                 <div className="mainSection" onWheel={this.showFooter.bind(this)}>
 
-                    { this.state.showDictionary ? <Dictionary /> : null }
+                    { this.state.showDictionary ? <Dictionary
+                        loggedInUser={this.state.loggedInUser} />
+                        : null }
 
-                    { this.state.showFooter ? <Footer attributionInfo={defaultSidebar}/> : null }
+                    { this.state.showFooter ? <Footer
+                        attributionInfo={defaultSidebar}/>
+                        : null }
                 </div>
             </div>
         )

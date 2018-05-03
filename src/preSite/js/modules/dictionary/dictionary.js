@@ -13,7 +13,8 @@ import dictionaryData from "./dictionarySubparts/div.js";
 // Topics is like HTML, CSS, Javascript
 // Maybe i should have under topics.
 
-
+// Props
+// loggedInUser, state in application. should reflect the user.
 
 export default class Dictionary extends React.Component {
     constructor(props) {
@@ -40,7 +41,15 @@ export default class Dictionary extends React.Component {
         console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
 
-        fetch("api/dictionary);
+        let user = this.props.loggedInUser;
+
+        fetch("/api/dictionary/"+ user +"/?search="+ searchData)
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                console.log(data);
+            });
 
     }
 
@@ -55,7 +64,7 @@ export default class Dictionary extends React.Component {
                     })}
                 </div>
 
-                {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch} selectedTopic={this.state.showSearch}/> : null}
+                {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
 
                 <DictionaryMain showMain={this.state.showMain}/>
                 {this.state.showFooter ? <DictionaryFooter /> : null}
