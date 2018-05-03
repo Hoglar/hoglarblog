@@ -12,14 +12,11 @@ module.exports = function(app, dbs) {
         console.log("app call");
     });
 
-    app.get('/api/dictionary', function(req, res) {
+    app.get('/api/dictionary?id', function(req, res) {
 
         console.log("Getting dictionary search");
-        console.log(req);
+        console.log(req.params.id);
     });
-
-
-
 
     return app;
 };

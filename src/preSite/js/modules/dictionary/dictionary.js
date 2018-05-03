@@ -40,7 +40,7 @@ export default class Dictionary extends React.Component {
         console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
 
-        fetch("api/dictionary/?"+ searchData);
+        fetch("api/dictionary);
 
     }
 
