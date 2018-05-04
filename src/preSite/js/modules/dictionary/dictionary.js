@@ -41,9 +41,7 @@ export default class Dictionary extends React.Component {
         console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
 
-        let user = this.props.loggedInUser;
-
-        fetch("/api/dictionary/"+ user +"/?search="+ searchData)
+        fetch("/api/dictionary/?search="+ searchData)
             .then(response => {
                 return response.json()
             })

@@ -12,14 +12,11 @@ module.exports = function(app, dbs) {
         console.log("app call");
     });
 
-    app.get('/api/dictionary/:user', function(req, res) {
-        let loggedInUser = req.params.user;
+    app.get('/api/dictionary/', function(req, res) {
         let searchData = req.query.search;
-        console.log(loggedInUser, searchData);
+        console.log(searchData);
 
-        dbs.dictionary.collection('html').find().toArray(function(err, results) {
-            console.log(JSON.stringify(results));
-        });
+        // dbs.dictionary.collection
 
         res.json({
             welcome: "Hello, you made a request to the dictionary!",
