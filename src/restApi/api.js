@@ -17,6 +17,9 @@ module.exports = function(app, dbs) {
         let searchData = req.query.search;
         console.log(loggedInUser, searchData);
 
+        dbs.dictionary.collection('html').find().toArray(function(err, results) {
+            console.log(JSON.stringify(results));
+        });
 
         res.json({
             welcome: "Hello, you made a request to the dictionary!",

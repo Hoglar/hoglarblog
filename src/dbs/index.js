@@ -6,9 +6,11 @@ var async = require('async');
 var MongoClient = require('mongodb').MongoClient;
 
 var hoglarBlog_URI = "mongodb://localhost:27017/hoglarBlog";
+var dictionary_URI = "mongodb://localhost:27017/dictionary";
 
 var database = {
-    hoglarBlog: async.apply(MongoClient.connect, hoglarBlog_URI)
+    hoglarBlog: async.apply(MongoClient.connect, hoglarBlog_URI),
+    dictionary: async.apply(MongoClient.connect, dictionary_URI)
 };
 
 module.exports = function (cb) {
