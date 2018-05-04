@@ -15,20 +15,21 @@ import React from 'react';
 // Main should get data from dictionary, this data should come from database.
     // Maybe in three parts. 1. The description 2. the example 3. the reference
 
+// Main gets searchData from dictionary after a search is done.
 export default class DictionaryMain extends React.Component {
     render() {
         return (
             <div className="dictionaryMain">
-                { (this.props.showMain === "empty") ? (
+                { (this.props.searchData === "") ? (
                     <div className="dictionaryMainEmpty">
                         <p>Dictionary</p>
                     </div>
                 )
                 : (
                     <div className="dictionaryMainContent">
-                        <h2>Topic selected by algorithm</h2>
+                        <h2>{this.props.searchData.data}</h2>
                         <div className="dictionaryMainExplanation">
-                            <p>lorum ipsum max how long shosdasdasd asdasdasduld this be?</p>
+                            <p>{this.props.searchData.welcome}</p>
                         </div>
                         <div className="dictionaryMainExample">
                             <p>This should kinda look good</p>
