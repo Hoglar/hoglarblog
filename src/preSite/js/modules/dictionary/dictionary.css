@@ -123,6 +123,34 @@
     font-weight: lighter;
 }
 
+/*              DictionaryCreate              */
+
+.dictionaryCreate {
+    display: flex;
+    width: 100%;
+    color: white;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.dictionaryCreateForm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+#dictionaryCreateExplanation {
+    height: 100px;
+}
+
+#dictionaryCreateExample {
+    height: 100px;
+}
+
+#dictionaryCreateReference {
+    height: 50px;
+}
+
 
 
 

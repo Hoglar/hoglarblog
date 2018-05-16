@@ -56,7 +56,18 @@ export default class Dictionary extends React.Component {
 
     showCreateForm() {
         console.log("Pressed create!");
-        this.setState({createData: true});
+
+        (this.state.createData === false) ?
+        this.setState({createData: true}) :
+        this.setState({createData: false})
+    }
+
+
+    // This functions gets parameters from form in create.js, ugly?
+    handleCreateSubmit(createData) {
+        console.log(createData);
+
+
     }
 
     render() {
@@ -73,13 +84,11 @@ export default class Dictionary extends React.Component {
                 {this.state.dictionaryTopic ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
 
                 {this.state.createData ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} />
+                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)} />
                     :
                     <DictionaryMain searchData={this.state.searchData}/>}
 
-                <DictionaryFooter
-                    showCreateForm={this.showCreateForm.bind(this)}
-                />
+                <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}/>
 
             </div>
         )
