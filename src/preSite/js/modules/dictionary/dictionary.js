@@ -22,7 +22,7 @@ export default class Dictionary extends React.Component {
         super(props);
         this.state = {
             searchData: "", // Sendt to dictionaryMain
-            showSearch: false,
+            dictionaryTopic: false,
             createData: false,
         }
     }
@@ -33,7 +33,7 @@ export default class Dictionary extends React.Component {
     showSearch(topic) {
         // Maybe i should clear search field to?
         console.log(topic);
-        this.setState({showSearch: topic});
+        this.setState({dictionaryTopic: topic});
     }
 
 
@@ -64,15 +64,17 @@ export default class Dictionary extends React.Component {
                 <div className="dictionaryTopics">
                     {dictionaryData.map((data) => {
                         return (
-                            <DictionaryTopic dictionaryTopicSelected={(this.state.showSearch === data.topic) ? true : false} topicData={data} topicSelector={this.showSearch.bind(this)}/>
+                            <DictionaryTopic dictionaryTopicSelected={(this.state.dictionaryTopic === data.topic) ? true : false} topicData={data} topicSelector={this.showSearch.bind(this)}/>
                         )
                     })}
                 </div>
 
-                {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
+                {this.state.dictionaryTopic ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
 
                 {this.state.createData ?
-                    <DictionaryCreate /> :
+                    <DictionaryCreate
+                        topic={this.state.dictionaryTopic}
+                        title={this.state.searchData}/> :
                     <DictionaryMain searchData={this.state.searchData}/>}
 
                 <DictionaryFooter
