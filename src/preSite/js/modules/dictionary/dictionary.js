@@ -70,10 +70,10 @@ export default class Dictionary extends React.Component {
                     })}
                 </div>
 
-                {this.state.dictionaryTopic ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
+                {this.state.dictionaryTopic ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
 
                 {this.state.createData ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} /> 
+                    <DictionaryCreate topic={this.state.dictionaryTopic} />
                     :
                     <DictionaryMain searchData={this.state.searchData}/>}
 
