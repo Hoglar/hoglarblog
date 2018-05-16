@@ -21,6 +21,7 @@ export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+
             searchData: "", // Sendt to dictionaryMain
             dictionaryTopic: false,
             createData: false,
@@ -72,9 +73,8 @@ export default class Dictionary extends React.Component {
                 {this.state.dictionaryTopic ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
 
                 {this.state.createData ?
-                    <DictionaryCreate
-                        topic={this.state.dictionaryTopic}
-                        title={this.state.searchData}/> :
+                    <DictionaryCreate topic={this.state.dictionaryTopic} /> 
+                    :
                     <DictionaryMain searchData={this.state.searchData}/>}
 
                 <DictionaryFooter

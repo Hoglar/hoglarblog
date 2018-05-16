@@ -7,7 +7,7 @@ export default class DictionaryCreate extends React.Component {
         return (
             <div className="dictionaryCreate">
                 <form>
-                    <input></input>
+                    <input type="text" placeholder={(this.props.topic) ? this.props.topic : "hello"}></input>
 
                 </form>
             </div>
