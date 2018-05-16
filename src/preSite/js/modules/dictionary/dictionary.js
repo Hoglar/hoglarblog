@@ -5,6 +5,7 @@ import DictionaryMain from "./dictionarySubparts/main.js";
 import DictionaryFooter from "./dictionarySubparts/Footer.js";
 import DictionaryTopic from "./dictionarySubparts/Topic.js";
 import DictionarySearch from "./dictionarySubparts/Search.js";
+import DictionaryCreate from "./dictionarySubparts/create.js";
 
 
 import dictionaryData from "./dictionarySubparts/div.js";
@@ -21,8 +22,8 @@ export default class Dictionary extends React.Component {
         super(props);
         this.state = {
             searchData: "", // Sendt to dictionaryMain
-            showFooter: false,
             showSearch: false,
+            createData: false,
         }
     }
 
@@ -52,6 +53,11 @@ export default class Dictionary extends React.Component {
             });
     }
 
+    showCreateForm() {
+        console.log("Pressed create!");
+        this.setState({createData: true});
+    }
+
     render() {
         return (
             <div className="dictionaryWrapper">
@@ -65,9 +71,13 @@ export default class Dictionary extends React.Component {
 
                 {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
 
-                <DictionaryMain searchData={this.state.searchData}/>
+                {this.state.createData ?
+                    <DictionaryCreate /> :
+                    <DictionaryMain searchData={this.state.searchData}/>}
 
-                {this.state.showFooter ? <DictionaryFooter /> : null}
+                <DictionaryFooter
+                    showCreateForm={this.showCreateForm.bind(this)}
+                />
 
             </div>
         )
