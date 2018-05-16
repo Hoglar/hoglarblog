@@ -20,7 +20,7 @@ export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchData: "",
+            searchData: "", // Sendt to dictionaryMain
             showFooter: false,
             showSearch: false,
         }
@@ -46,10 +46,10 @@ export default class Dictionary extends React.Component {
                 return response.json()
             })
             .then(data => {
-                this.setState({searchData: data});
+                // This needs some error handling i guess
+                this.setState({searchData: data}); // Setting searchData to the returned object. This is sent to main!
 
             });
-
     }
 
     render() {
@@ -66,6 +66,7 @@ export default class Dictionary extends React.Component {
                 {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.showSearch}/> : null}
 
                 <DictionaryMain searchData={this.state.searchData}/>
+
                 {this.state.showFooter ? <DictionaryFooter /> : null}
 
             </div>

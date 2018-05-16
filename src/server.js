@@ -4,7 +4,6 @@
 const express = require('express');
 var app = express();
 const MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
 var bodyParser = require('body-parser');
 var initializeDatabases = require("./dbs");
 const crypto = require('crypto');
