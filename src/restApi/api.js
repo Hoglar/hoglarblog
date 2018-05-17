@@ -25,31 +25,36 @@ module.exports = function(app, dbs) {
     });
 
 
-    app.post('/api/dictionary', function(req, res) {
+    app.post('/api/dictionary/create', function(req, res) {
         // Må først hente data fra client.
-        // trenger:
-            // Topic
-            // Title
-            // explanation
-            // example
-            // reference
-            // score
-            // date
-            // Author
+            let dataFromUser = req.body;
 
+            console.log(dataFromUser);
+            // Must send back message on complete or fail.!
 
         // Collection vil avhenge av hva de har valgt( html, css, etc)
-        dbs.dictionary.collection('test').insertOne({test: "Ser ut som det funka."}, function(err, r) {
+        dbs.dictionary.collection('test').insertOne({
+            topic: dataFromUser.topic,
+            title: dataFromUser.title,
+            explanation: dataFromUser.explanation,
+            example: dataFromUser.example,
+            reference: dataFromUser.reference,
+            date: new Date()
+        }, function(err, r) {
             if (err) {
                 console.log("Something went wrong with db connection");
                 console.log(err);
+                res.json({
+                    failMessage: "Something went wrong with database"
+                })
             }
             else {
                 console.log("Succesfully insertet " + r.insertedCount + " Documents!");
+                res.json({
+                    successMessage: "You have saved to the database"
+                })
             }
         });
-
-
     })
 
     return app;

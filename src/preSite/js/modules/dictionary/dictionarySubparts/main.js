@@ -23,6 +23,7 @@ export default class DictionaryMain extends React.Component {
                 { (this.props.searchData === "") ? (
                     <div className="dictionaryMainEmpty">
                         <p>Dictionary</p>
+                        <p>{this.props.statusMessage}</p>
                     </div>
                 )
                 : (

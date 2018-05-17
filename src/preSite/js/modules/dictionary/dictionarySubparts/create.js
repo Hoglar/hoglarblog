@@ -17,7 +17,12 @@ export default class DictionaryCreate extends React.Component {
             reference: this.refs.reference.value
         }
 
-        this.props.handleSubmit(createData);
+        if (createData.topic === "false") {
+            alert("Sorry for alert, but you must select topic!");
+        }
+        else {
+            this.props.handleSubmit(createData);
+        }
     }
 
     render() {
@@ -44,7 +49,7 @@ export default class DictionaryCreate extends React.Component {
                     <label for="dictionaryCreateReference">Reference</label>
                     <input id="dictionaryCreateReference" ref="reference" type="textarea"></input>
 
-                    <button type="submit" onClick={this.handleSubmit.bind(this)}>Save to dictionary</button>
+                    <button type="submit" onClick={this.handleSubmit.bind(this)}>Save</button>
                 </form>
             </div>
         )

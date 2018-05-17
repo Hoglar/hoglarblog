@@ -25,6 +25,7 @@ export default class Dictionary extends React.Component {
             searchData: "", // Sendt to dictionaryMain
             dictionaryTopic: false,
             createData: false,
+            statusMessage: "",
         }
     }
 
@@ -50,7 +51,6 @@ export default class Dictionary extends React.Component {
             .then(data => {
                 // This needs some error handling i guess
                 this.setState({searchData: data}); // Setting searchData to the returned object. This is sent to main!
-
             });
     }
 
@@ -66,8 +66,29 @@ export default class Dictionary extends React.Component {
     // This functions gets parameters from form in create.js, ugly?
     handleCreateSubmit(createData) {
         console.log(createData);
+        // need to post data to server.
+        const url = "/api/dictionary/create";
+        let data = createData;
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then((response) => {
+            // On success we cast a function that creates a success page
+            if (response.successMessage) {
+                this.setState({createData: false, statusMessage: "Succesfully saved to database!"});
+
+            }
+            // On fail, we create fail page?
 
 
+            console.log(response.successMessage);
+        });
     }
 
     render() {
@@ -86,7 +107,7 @@ export default class Dictionary extends React.Component {
                 {this.state.createData ?
                     <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)} />
                     :
-                    <DictionaryMain searchData={this.state.searchData}/>}
+                    <DictionaryMain searchData={this.state.searchData} statusMessage={this.state.statusMessage}/>}
 
                 <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}/>
 
