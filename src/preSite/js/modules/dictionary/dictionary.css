@@ -135,12 +135,25 @@
 
 .dictionaryCreateForm {
     display: flex;
-    width: 100%;
+    width:100%;
     flex-direction: column;
 }
 
+.dictionaryCreateFormTop {
+    width: 95%;
+    margin: auto;
+}
+
+
+.dictionaryCreateInputSection {
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    margin: auto;
+}
+
 #dictionaryCreateExplanation {
-    height: 100px;
+    height: 300px;
 }
 
 #dictionaryCreateExample {
@@ -163,7 +176,7 @@
 }
 
 .dictionaryFooterCreateButton {
-    width: 80%;
+    width: 95%;
     height: 80%;
     margin: auto;
     border: solid 1px #000000;
