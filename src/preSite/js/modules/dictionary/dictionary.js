@@ -109,7 +109,7 @@ export default class Dictionary extends React.Component {
                     :
                     <DictionaryMain searchData={this.state.searchData} statusMessage={this.state.statusMessage}/>}
 
-                <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}/>
+                <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
 
             </div>
         )
