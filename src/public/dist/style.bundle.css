@@ -232,9 +232,30 @@ body {
     margin: auto;
 }
 
+.dictionaryCreateInputSection textarea {
+
+    margin-top: 1px;
+    margin-bottom: 1px;
+
+    padding-left: 20px;
+
+
+    color: white;
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: Courier, monospace;
+
+    background-color: #041A37;
+    border: solid 1px #000000;
+    outline: none;
+    resize: none;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+}
+
 #dictionaryCreateExplanation {
     height: 300px;
 }
+
 
 #dictionaryCreateExample {
     height: 100px;

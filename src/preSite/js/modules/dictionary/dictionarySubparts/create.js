@@ -29,24 +29,18 @@ export default class DictionaryCreate extends React.Component {
         return (
             <div className="dictionaryCreate">
                 <form className="dictionaryCreateForm">
-                    {(!this.props.topic) ? <p>Select topic from above!</p> : null}
-
                     <div className="dictionaryCreateFormTop">
-
                         <input ref="topic" type="text" value={this.props.topic} hidden></input>
 
                         <label for="dictionaryCreateTitle">Title</label>
                         <input id="dictionaryCreateTitle" ref="title" type="text"></input>
                     </div>
                     <div className="dictionaryCreateInputSection">
-                        <label for="dictionaryCreateExplanation">Explanation</label>
-                        <input id="dictionaryCreateExplanation" ref="explanation" type="textarea"></input>
+                        <textarea id="dictionaryCreateExplanation" ref="explanation" type="text" placeholder="Explanation"/>
 
-                        <label for="dictionaryCreateExample">Example</label>
-                        <input id="dictionaryCreateExample" ref="example" type="textarea"></input>
+                        <textarea id="dictionaryCreateExample" ref="example" type="text" placeholder="Example"/>
 
-                        <label for="dictionaryCreateReference">Reference</label>
-                        <input id="dictionaryCreateReference" ref="reference" type="textarea"></input>
+                        <textarea id="dictionaryCreateReference" ref="reference" type="text" placeholder="Reference"/>
                         <button type="submit" onClick={this.handleSubmit.bind(this)}>Save</button>
                     </div>
 
