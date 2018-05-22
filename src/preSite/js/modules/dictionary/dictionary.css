@@ -27,6 +27,8 @@
     padding-top: 8px;
     background-color: #0F78FF;
     border: solid 1px #000000;
+    outline: none;
+
 }
 
 .dictionaryTopic:hover {
@@ -44,6 +46,7 @@
     padding-top: 8px;
     background-color: #FF9E00;
     border: solid 1px #000000;
+    outline: none;
 }
 
 .dictionarySearch {

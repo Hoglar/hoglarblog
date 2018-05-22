@@ -4,6 +4,10 @@ import React from 'react';
 
 export default class DictionaryCreate extends React.Component {
 
+    componentDidMount() {
+        document.getElementById("dictionaryCreateTitle").select();
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
@@ -31,7 +35,7 @@ export default class DictionaryCreate extends React.Component {
                     <div className="dictionaryCreateFormTop">
                         <input ref="topic" type="text" value={this.props.topic} hidden></input>
 
-                        <input className="dictionaryCreateTitle" ref="title" type="text" placeholder="Title:"></input>
+                        <input className="dictionaryCreateTitle" id="dictionaryCreateTitle" ref="title" type="text" placeholder="Title:"></input>
                     </div>
                     <div className="dictionaryCreateInputSection">
                         <textarea id="dictionaryCreateExplanation" ref="explanation" type="text" placeholder="Explanation:"/>
