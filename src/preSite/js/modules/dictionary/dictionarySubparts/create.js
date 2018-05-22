@@ -43,8 +43,6 @@ export default class DictionaryCreate extends React.Component {
                         <textarea id="dictionaryCreateReference" ref="reference" type="text" placeholder="Reference:"/>
                         <button type="submit" onClick={this.handleSubmit.bind(this)}>Save</button>
                     </div>
-
-
                 </form>
             </div>
         )
