@@ -9,7 +9,7 @@ var initializeDatabases = require("./dbs");
 const crypto = require('crypto');
 const path = require('path');
 //Requiring apiRouter
-const restApi = require('./restApi/api.js');
+const dictionaryApi = require('./restApi/dictionaryApi.js');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -30,7 +30,7 @@ initializeDatabases(function(err, dbs) {
         process.exit(1);
     }
     // Updating app with the routes.
-    restApi(app, dbs);
+    dictionaryApi(app, dbs);
 
     app.listen(8080, 'localhost', () => {
 
