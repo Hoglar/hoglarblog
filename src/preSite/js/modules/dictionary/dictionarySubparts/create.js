@@ -41,14 +41,26 @@ export default class DictionaryCreate extends React.Component {
                     </div>
 
                     <div className="dictionaryCreateInputSection">
-                        <textarea id="dictionaryCreateExplanation" ref="explanation" type="text" placeholder="Explanation:"/>
+                        <textarea id="dictionaryCreateExplanation"
+                            ref="explanation"
+                            type="text"
+                            placeholder="Explanation:"
+                            maxlength="500"/>
 
-                        <textarea id="dictionaryCreateExample" ref="example" type="text" placeholder="Example:"/>
+                        <textarea id="dictionaryCreateExample"
+                            ref="example"
+                            type="text"
+                            placeholder="Example:"
+                            maxlength="200"/>
 
-                        <textarea id="dictionaryCreateReference" ref="reference" type="text" placeholder="Reference:"/>
+                        <textarea id="dictionaryCreateReference"
+                            ref="reference"
+                            type="text"
+                            placeholder="Reference:"
+                            maxlength="150"/>
                         <button className="dictionaryCreateInputButton" type="submit" onClick={this.handleSubmit.bind(this)}>Save</button>
                     </div>
-                    
+
                 </form>
             </div>
         )
