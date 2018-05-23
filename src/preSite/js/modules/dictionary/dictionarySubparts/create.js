@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 
+// Create needs some work on the text areas, i must make some limits on how to use them .
 
 export default class DictionaryCreate extends React.Component {
 
@@ -32,11 +33,13 @@ export default class DictionaryCreate extends React.Component {
         return (
             <div className="dictionaryCreate">
                 <form className="dictionaryCreateForm">
+
                     <div className="dictionaryCreateFormTop">
                         <input ref="topic" type="text" value={this.props.topic} hidden></input>
 
                         <input className="dictionaryCreateTitle" id="dictionaryCreateTitle" ref="title" type="text" placeholder="Title:"></input>
                     </div>
+
                     <div className="dictionaryCreateInputSection">
                         <textarea id="dictionaryCreateExplanation" ref="explanation" type="text" placeholder="Explanation:"/>
 
@@ -45,6 +48,7 @@ export default class DictionaryCreate extends React.Component {
                         <textarea id="dictionaryCreateReference" ref="reference" type="text" placeholder="Reference:"/>
                         <button className="dictionaryCreateInputButton" type="submit" onClick={this.handleSubmit.bind(this)}>Save</button>
                     </div>
+                    
                 </form>
             </div>
         )

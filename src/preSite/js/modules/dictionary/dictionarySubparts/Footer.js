@@ -6,6 +6,7 @@ import React from "react";
     // 2: topic which is false by default, otherwise it is a string with the name of the selected topic.
 
 export default class DictionaryFooter extends React.Component {
+
     render() {
         return (
             <div className="dictionaryFooter">
