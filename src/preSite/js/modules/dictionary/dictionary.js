@@ -43,15 +43,7 @@ export default class Dictionary extends React.Component {
     handleTopicSearch(searchData) {
         console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
-
-        fetch("/api/dictionary/?search="+ searchData)
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                // This needs some error handling i guess
-                this.setState({searchData: data}); // Setting searchData to the returned object. This is sent to main!
-            });
+        this.setState({searchData: searchData});
     }
 
     showCreateForm() {
@@ -111,9 +103,9 @@ export default class Dictionary extends React.Component {
                 {(this.state.dictionaryTopic && (!this.state.createData)) ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
 
                 {this.state.createData ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)} />
+                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)} title={this.state.searchData} />
                     :
-                    <DictionaryMain searchData={this.state.searchData} statusMessage={this.state.statusMessage}/>}
+                    <DictionaryMain statusMessage={this.state.statusMessage}/>}
 
                 <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
 

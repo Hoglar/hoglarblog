@@ -20,29 +20,10 @@ export default class DictionaryMain extends React.Component {
     render() {
         return (
             <div className="dictionaryMain">
-                { (this.props.searchData === "") ? (
                     <div className="dictionaryMainEmpty">
                         <p>Dictionary</p>
                         <p>{this.props.statusMessage}</p>
                     </div>
-                )
-                : (
-                    <div className="dictionaryMainContent">
-                        <h2>{this.props.searchData.data}</h2>
-                        <div className="dictionaryMainExplanation">
-                            <p>{this.props.searchData.welcome}</p>
-                        </div>
-                        <div className="dictionaryMainExample">
-                            <p>This should kinda look good</p>
-                        </div>
-                        <div className="dictionaryMainReference">
-                            <p>This is the easy part i guess</p>
-                        </div>
-                        <p>Author: Creation Date</p>
-                    </div>
-                )
-                }
-
             </div>
         )
     }
