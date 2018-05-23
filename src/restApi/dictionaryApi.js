@@ -27,10 +27,11 @@ module.exports = function(app, dbs) {
 
     app.post('/api/dictionary/create', function(req, res) {
         // Må først hente data fra client.
-            let dataFromUser = req.body;
+        let dataFromUser = req.body;
 
-            console.log(dataFromUser);
-            // Must send back message on complete or fail.!
+        console.log(dataFromUser);
+        // Must send back message on complete or fail.!
+
 
         // Collection vil avhenge av hva de har valgt( html, css, etc)
         dbs.dictionary.collection('test').insertOne({

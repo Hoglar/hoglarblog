@@ -70,6 +70,8 @@ export default class Dictionary extends React.Component {
         const url = "/api/dictionary/create";
         let data = createData;
 
+
+
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(data),

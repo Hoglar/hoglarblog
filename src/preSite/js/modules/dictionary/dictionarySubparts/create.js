@@ -21,8 +21,16 @@ export default class DictionaryCreate extends React.Component {
             reference: this.refs.reference.value
         }
 
-        if (createData.topic === "false") {
-            alert("Sorry for alert, but you must select topic!");
+        if (createData.title === "") {
+            alert("Sorry for alert, but you must write a title!");
+        }
+        else if (createData.explanation.length < 10 ||
+                 createData.explanation.length > 500) {
+            alert("The explanation must be longer than 10 chars and no longer than 500 chars!");
+        }
+        else if (createData.example.length > 200 ||
+                 createData.reference.length > 150) {
+            alert("Example or reference is to long!")
         }
         else {
             this.props.handleSubmit(createData);
