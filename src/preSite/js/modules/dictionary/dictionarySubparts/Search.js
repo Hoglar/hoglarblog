@@ -16,6 +16,7 @@ export default class DictionarySearch extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // Just for selection.
     componentDidMount() {
         document.getElementById("dictionarySearchField").select();
     }

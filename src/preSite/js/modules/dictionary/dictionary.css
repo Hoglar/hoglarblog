@@ -212,7 +212,8 @@
     height: 30px;
     border: solid 1px #000000;
     background-color: #543400;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: lighter;
 }
 
 .dictionaryCreateInputButton:hover {
