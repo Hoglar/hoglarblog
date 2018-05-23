@@ -302,6 +302,17 @@ body {
 }
 
 
+/* SearchResults */
+.dictionarySearchResults {
+    display: flex;
+    width: 100%;
+    color: white;
+    margin-top: 20px;
+    flex: 1;
+}
+
+
+
 /*                     FOOTER                              */
 .dictionaryFooter {
     display: flex;

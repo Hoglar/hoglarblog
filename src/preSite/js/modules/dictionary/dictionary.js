@@ -6,6 +6,7 @@ import DictionaryFooter from "./dictionarySubparts/Footer.js";
 import DictionaryTopic from "./dictionarySubparts/Topic.js";
 import DictionarySearch from "./dictionarySubparts/Search.js";
 import DictionaryCreate from "./dictionarySubparts/create.js";
+import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
 
 
 import dictionaryData from "./dictionarySubparts/div.js";
@@ -26,11 +27,14 @@ export default class Dictionary extends React.Component {
             dictionaryTopic: false,
             createData: false,
             statusMessage: "",
+            displayMain: "main",
         }
     }
 
     //showSearch needs to take the name of the pressed topic as a parameter.
     //When showSearch state is changed, it will be trusly,and we show search form.
+
+
 
     showSearch(topic) {
         // Maybe i should clear search field to?
@@ -43,15 +47,17 @@ export default class Dictionary extends React.Component {
     handleTopicSearch(searchData) {
         console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
-        this.setState({searchData: searchData});
+
+        this.setState({searchData: searchData, displayMain: "searchResults"});
+
     }
 
     showCreateForm() {
         console.log("Pressed create!");
 
-        (this.state.createData === false) ?
-        this.setState({createData: true}) :
-        this.setState({createData: false})
+        (this.state.displayMain === "main") ?
+        this.setState({displayMain: "createForm"}) :
+        this.setState({displayMain: "main"})
     }
 
 
@@ -100,12 +106,20 @@ export default class Dictionary extends React.Component {
                     })}
                 </div>
 
-                {(this.state.dictionaryTopic && (!this.state.createData)) ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
+                {(this.state.dictionaryTopic && (this.state.displayMain !== "createForm")) ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
 
-                {this.state.createData ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)} title={this.state.searchData} />
+                {(this.state.displayMain === "main") ?
+                    <DictionaryMain statusMessage={this.state.statusMessage}/> :
+                    null}
+
+                {(this.state.displayMain === "createForm") ?
+                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)}/>
                     :
-                    <DictionaryMain statusMessage={this.state.statusMessage}/>}
+                    null}
+
+                {(this.state.displayMain === "searchResults") ?
+                    <DictionarySearchResults searchData={this.state.searchData}/> :
+                    null}
 
                 <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
 

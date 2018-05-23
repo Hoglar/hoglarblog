@@ -47,6 +47,7 @@ export default class DictionarySearch extends React.Component {
                     id="dictionarySearchField"
                     className="dictionarySearchField"
                     type="text" name="name"
+                    autocomplete="off"
                     value={this.state.value}
                     onChange={this.handleChange}
                     />
