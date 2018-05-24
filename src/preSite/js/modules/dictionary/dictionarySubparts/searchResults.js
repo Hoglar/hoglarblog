@@ -6,16 +6,22 @@ export default class DictionarySearchResults extends React.Component {
     // props will get searchData
 
     componentDidUpdate() {
-        console.log("The props have changed to " + this.props.searchData);
 
         // her kan vi gjøre api call.
         const url = "/api/dictionary/search?searchData=";
         let searchData = this.props.searchData;
+        let topic = this.props.topic;
 
-        fetch(url + searchData)
-            .then(function(response) {
+        if (searchData.length > 0) {
 
-            })
+            fetch(url + searchData + "&topic=" + topic)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(myJson) {
+                    console.log(myJson);
+                });
+        }
     }
 
 

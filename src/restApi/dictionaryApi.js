@@ -12,16 +12,33 @@ module.exports = function(app, dbs) {
 
     // Burde kanskje lage post først, lære hvordan jeg lager documentene.
 
-    app.get('/api/dictionary/', function(req, res) {
-        let searchData = req.query.search;
-        console.log(searchData);
+    app.get('/api/dictionary/search', function(req, res) {
 
-        // dbs.dictionary.collection
+        if (req.query.searchData !== "") {
+            let searchData = req.query.searchData.toLowerCase();
+            let searchTopic = req.query.topic
+            let regSearch = new RegExp(searchData);
+            let query = { topic: searchTopic, title: regSearch }
+            // dbs.dictionary.collection
+            // Need to make a title search with searchData. maybe use regex?
 
-        res.json({
-            welcome: "Hello, you made a request to the dictionary!",
-            data: "Data not yet connected"
-        });
+
+            dbs.dictionary.collection("test").find(query).toArray(function(err, result) {
+                if(err) throw err;
+
+                if (result.length > 0) {
+                    res.json(result);
+                }
+                else {
+                    res.json({searchMessage: "Nothing found"});
+                }
+            });
+                // need to get a number of documents based on something.
+                // need to send those documents back.
+        }
+        else {
+            res.json({searchMessage: "Nothing found"});
+        }
     });
 
 

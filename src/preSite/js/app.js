@@ -47,9 +47,7 @@ class Application extends React.Component {
     // This function is taking the name of the button clicked and then updates state to show that api!
     onSidebarClick(name) {
         // Checking for click.
-        console.log(name);
         if (name === "Dictionary") {
-            console.log("Clicked Dictionary, changing state");
             if (this.state.showDictionary) {
                 this.setState({showDictionary: false});
             }

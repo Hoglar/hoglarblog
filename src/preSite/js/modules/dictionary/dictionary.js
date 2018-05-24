@@ -38,14 +38,12 @@ export default class Dictionary extends React.Component {
 
     showSearch(topic) {
         // Maybe i should clear search field to?
-        console.log(topic);
         this.setState({dictionaryTopic: topic});
     }
 
 
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
-        console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
 
         this.setState({searchData: searchData, displayMain: "searchResults"});
@@ -53,7 +51,6 @@ export default class Dictionary extends React.Component {
     }
 
     showCreateForm() {
-        console.log("Pressed create!");
 
         (this.state.displayMain === "main") ?
         this.setState({displayMain: "createForm"}) :
@@ -63,7 +60,6 @@ export default class Dictionary extends React.Component {
 
     // This functions gets parameters from form in create.js, ugly?
     handleCreateSubmit(createData) {
-        console.log(createData);
         // need to post data to server.
         const url = "/api/dictionary/create";
         let data = createData;
@@ -118,7 +114,7 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "searchResults") ?
-                    <DictionarySearchResults searchData={this.state.searchData}/> :
+                    <DictionarySearchResults searchData={this.state.searchData} topic={this.state.dictionaryTopic}/> :
                     null}
 
                 <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
