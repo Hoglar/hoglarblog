@@ -13,6 +13,7 @@ module.exports = function(app, dbs) {
     // Burde kanskje lage post først, lære hvordan jeg lager documentene.
 
     app.get('/api/dictionary/search', function(req, res) {
+        console.log("Getting lots of requests!");
 
         if (req.query.searchData !== "") {
             let searchData = req.query.searchData.toLowerCase();

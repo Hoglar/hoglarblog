@@ -2,24 +2,42 @@
 import React from 'react';
 
 export default class DictionarySearchResults extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchResults: [],
+        }
+    }
     // This component needs the temorarly seatch results that gets updated every key stroke.
     // props will get searchData
 
-    componentDidUpdate() {
-
+    componentDidUpdate(prevProps) {
+        if(prevProps.searchData === this.props.searchData) {
+            return;
+        }
         // her kan vi gjøre api call.
         const url = "/api/dictionary/search?searchData=";
         let searchData = this.props.searchData;
         let topic = this.props.topic;
+        let result = [];
 
         if (searchData.length > 0) {
 
             fetch(url + searchData + "&topic=" + topic)
-                .then(function(response) {
+                .then((response) => {
                     return response.json();
                 })
-                .then(function(myJson) {
-                    console.log(myJson);
+                .then((searchResult) => {
+                    // I do this to check if i have a kinda valid array.
+
+                    if(searchResult.searchMessage) {
+                        console.log(searchResult.searchMessage);
+                        this.setState({searchResults: [] });
+                    }
+                    else {
+                        this.setState({searchResults: searchResult});
+                    }
                 });
         }
     }
@@ -28,6 +46,8 @@ export default class DictionarySearchResults extends React.Component {
     render() {
         return(
             <div className="dictionarySearchResults">
+                {(this.state.searchResults.length > 0) ? <div>Hello</div> : <div>Noo!</div>}
+
 
             </div>
         )
