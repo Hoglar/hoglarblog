@@ -311,6 +311,23 @@ body {
     flex: 1;
 }
 
+.dictionarySearchResultsWrapper {
+    width: 100%;
+}
+
+.dictionarySearchSingleResult {
+    display: flex;
+    width: 95%;
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    margin: auto;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 75px;
+
+}
+
 
 
 /*                     FOOTER                              */

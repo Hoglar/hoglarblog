@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 
+
 export default class DictionarySearchResults extends React.Component {
 
     constructor(props) {
@@ -46,9 +47,17 @@ export default class DictionarySearchResults extends React.Component {
     render() {
         return(
             <div className="dictionarySearchResults">
-                {(this.state.searchResults.length > 0) ? <div>Hello</div> : <div>Noo!</div>}
-
-
+                {(this.state.searchResults.length > 0) ?
+                <div className="dictionarySearchResultsWrapper">
+                    {this.state.searchResults.map(function(searchResult) {
+                        return (
+                            <div className="dictionarySearchSingleResult">
+                                Jaja
+                            </div>
+                        )
+                    })}
+                </div> :
+                null }
             </div>
         )
     }
