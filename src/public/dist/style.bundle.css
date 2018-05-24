@@ -305,15 +305,13 @@ body {
 /* SearchResults */
 .dictionarySearchResults {
     display: flex;
+    flex-direction: column;
     width: 100%;
     color: white;
     margin-top: 20px;
     flex: 1;
 }
 
-.dictionarySearchResultsWrapper {
-    width: 100%;
-}
 
 .dictionarySearchSingleResult {
     display: flex;

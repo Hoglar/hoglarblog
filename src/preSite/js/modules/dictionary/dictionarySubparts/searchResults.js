@@ -46,9 +46,8 @@ export default class DictionarySearchResults extends React.Component {
 
     render() {
         return(
-            <div className="dictionarySearchResults">
-                {(this.state.searchResults.length > 0) ?
-                <div className="dictionarySearchResultsWrapper">
+                (this.state.searchResults.length > 0) ?
+                <div className="dictionarySearchResults">
                     {this.state.searchResults.map(function(searchResult) {
                         return (
                             <div className="dictionarySearchSingleResult">
@@ -57,8 +56,9 @@ export default class DictionarySearchResults extends React.Component {
                         )
                     })}
                 </div> :
-                null }
-            </div>
+                <div className="dictionarySearchResults">
+
+                </div>
         )
     }
 }
