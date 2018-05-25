@@ -10,6 +10,8 @@ const crypto = require('crypto');
 const path = require('path');
 //Requiring apiRouter
 const dictionaryApi = require('./restApi/dictionaryApi.js');
+const userAuth = require('./restApi/userAuth.js');
+
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -22,6 +24,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+// I should have separate create account page.
+app.get('/createuser', (req, res) => {
+    res.sendFile(path.join(__dirname + '/createuser.html'));
+
+});
+
+
 
 initializeDatabases(function(err, dbs) {
     if (err) {
@@ -30,7 +39,9 @@ initializeDatabases(function(err, dbs) {
         process.exit(1);
     }
     // Updating app with the routes.
+
     dictionaryApi(app, dbs);
+    userAuth(app, dbs);
 
     app.listen(8080, 'localhost', () => {
 
