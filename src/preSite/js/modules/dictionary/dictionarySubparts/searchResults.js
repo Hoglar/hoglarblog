@@ -51,7 +51,16 @@ export default class DictionarySearchResults extends React.Component {
                     {this.state.searchResults.map(function(searchResult) {
                         return (
                             <div className="dictionarySearchSingleResult">
-                                Jaja
+                                <div className="dictionarySearchSingleResultTop">
+                                    <h1>{searchResult.title}</h1>
+
+                                </div>
+                                <div className="dictionarySearchSingleResultMain">
+                                    <p>{searchResult.explanation.substring(0, 50)}...</p>
+                                </div>
+                                <div className="dictionarySearchSingleResultFooter">
+                                    <p>{searchResult.date.substring(0, 10)}</p>
+                                </div>
                             </div>
                         )
                     })}

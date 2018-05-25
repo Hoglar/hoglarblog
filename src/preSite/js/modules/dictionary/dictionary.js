@@ -77,11 +77,11 @@ export default class Dictionary extends React.Component {
         .then((response) => {
             // On success we cast a function that creates a success page
             if (response.successMessage) {
-                this.setState({createData: false, statusMessage: "Succesfully saved to database!"});
+                this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
                 console.log(response.successMessage);
             }
             else {
-                this.setState({createData: false, statusMessage: "Failed to save to database!"});
+                this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
                 console.log(response.failMessage);
             }
             // On fail, we create fail page?
