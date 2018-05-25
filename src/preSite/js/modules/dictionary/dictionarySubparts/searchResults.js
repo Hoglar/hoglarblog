@@ -43,7 +43,6 @@ export default class DictionarySearchResults extends React.Component {
         }
     }
 
-
     render() {
         return(
                 (this.state.searchResults.length > 0) ?
