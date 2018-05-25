@@ -25,12 +25,6 @@ app.get('/', (req, res) => {
 });
 
 // I should have separate create account page.
-app.get('/createuser', (req, res) => {
-    res.sendFile(path.join(__dirname + '/createuser.html'));
-
-});
-
-
 
 initializeDatabases(function(err, dbs) {
     if (err) {
