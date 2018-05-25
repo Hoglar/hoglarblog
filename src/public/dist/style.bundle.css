@@ -307,14 +307,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    color: white;
+    color: #a9a9a9;
     margin-top: 20px;
     flex: 1;
 }
 
-
 .dictionarySearchSingleResult {
     display: flex;
+    flex-direction: column;
     width: 95%;
     background-color: #041A37;
     border: solid 1px #000000;
@@ -322,10 +322,36 @@ body {
     margin: auto;
     margin-top: 1px;
     margin-bottom: 1px;
-    height: 75px;
+    height: 100px;
+    font-family: Courier, monospace;
+    justify-content: center;
+}
+
+.dictionarySearchSingleResultTop {
+    display: flex;
+    margin-left: 10px;
 
 }
 
+.dictionarySearchSingleResultTop h1 {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.dictionarySearchSingleResultTop h1::first-letter {
+    text-transform: capitalize;
+}
+
+.dictionarySearchSingleResultMain {
+    display: flex;
+    margin-left: 10px;
+}
+.dictionarySearchSingleResultFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
 
 
 /*                     FOOTER                              */

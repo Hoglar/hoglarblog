@@ -56,7 +56,7 @@ export default class DictionarySearchResults extends React.Component {
 
                                 </div>
                                 <div className="dictionarySearchSingleResultMain">
-                                    <p>{searchResult.explanation.substring(0, 50)}...</p>
+                                    <p>{searchResult.explanation.substring(0, 80)}...</p>
                                 </div>
                                 <div className="dictionarySearchSingleResultFooter">
                                     <p>{searchResult.date.substring(0, 10)}</p>
