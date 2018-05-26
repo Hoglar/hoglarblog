@@ -35,13 +35,13 @@ class Application extends React.Component {
 
     // I want the footer to show only on scrolling,
     // rest of the page is on page.
-    showFooter(e) {
+    showOnWheelchange(e) {
         if (e.deltaY === 100) {
-            this.setState({showFooter: true});
+            (this.state.showHeader === true) ? this.setState({showHeader: false}) : this.setState({showFooter: true});
         }
 
         if (e.deltaY === -100) {
-            this.setState({showFooter: false});
+            (this.state.showFooter === true) ? this.setState({showFooter: false}) : this.setState({showHeader: true});
         }
     }
 
@@ -66,11 +66,13 @@ class Application extends React.Component {
                     onSidebarClick={this.onSidebarClick.bind(this)}
                 />
 
-                <div className="mainSection" onWheel={this.showFooter.bind(this)}>
+                <div className="mainSection" onWheel={this.showOnWheelchange.bind(this)}>
 
                     { this.state.showDictionary ? <Dictionary
                         loggedInUser={this.state.loggedInUser} />
                         : null }
+
+                    { this.state.showHeader ? <Header /> : null }
 
                     { this.state.showFooter ? <Footer
                         attributionInfo={defaultSidebar}/>
