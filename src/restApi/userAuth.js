@@ -1,4 +1,4 @@
-// This file is not connected to file. 
+// This file is not connected to file.
 
 'use strict';
 const crypto = require('crypto');
@@ -30,6 +30,7 @@ module.exports = function(app, dbs) {
             }
             else {
                 res.send("success");
+                // We must return hash
                 res.redirect('/');
             }
         )}

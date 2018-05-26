@@ -24,14 +24,22 @@ class Application extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
             //Lager en state for guest user
-            loggedInUser: "guest",
             showHeader: false,
             showFooter: false,
             showDictionary: false,
         }
+
+        if(window.localStorage.username) {
+            console.log("Do something")
+        }
+        else {
+            console.log("setting user to guest!");
+            this.state.loggedInUser = "guest";
+        }
     }
+
+
 
     // I want the footer to show only on scrolling,
     // rest of the page is on page.
@@ -72,7 +80,7 @@ class Application extends React.Component {
                         loggedInUser={this.state.loggedInUser} />
                         : null }
 
-                    { this.state.showHeader ? <Header /> : null }
+                    { this.state.showHeader ? <Header loggedInUser={this.state.loggedInUser}/> : null }
 
                     { this.state.showFooter ? <Footer
                         attributionInfo={defaultSidebar}/>

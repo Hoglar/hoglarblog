@@ -432,6 +432,7 @@ body {
     grid-template-rows: 45px 45px;
 	grid-template-columns: repeat(6, 1fr);
 
+    color: white;
 
     background-color: #01060C;
     border-bottom: solid 1px #0F78FF;
