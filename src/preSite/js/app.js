@@ -7,18 +7,18 @@ import ReactDOM from 'react-dom';
 import '../css/styles.css';
 import './modules/sidebar/sidebar.css'
 import './modules/dictionary/dictionary.css';
-import './modules/footer/footer.css'
+import './modules/footer/footer.css';
+import './modules/header/header.css';
 
 // Importing modules.
-
 import Sidebar from './modules/sidebar/sidebar.js';
 import Footer from './modules/footer/footer.js';
 import Dictionary from './modules/dictionary/dictionary.js';
+import Header from './modules/header/header.js';
 
 // importing icons from assets to gove to defaultSidebar
 
 import defaultSidebar from './data/sidebarData.js';
-
 
 class Application extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ class Application extends React.Component {
 
             //Lager en state for guest user
             loggedInUser: "guest",
+            showHeader: false,
             showFooter: false,
             showDictionary: false,
         }

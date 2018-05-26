@@ -10,7 +10,6 @@ const crypto = require('crypto');
 const path = require('path');
 //Requiring apiRouter
 const dictionaryApi = require('./restApi/dictionaryApi.js');
-const userAuth = require('./restApi/userAuth.js');
 
 
 app.use(bodyParser.json()); // support json encoded bodies
@@ -35,7 +34,6 @@ initializeDatabases(function(err, dbs) {
     // Updating app with the routes.
 
     dictionaryApi(app, dbs);
-    userAuth(app, dbs);
 
     app.listen(8080, 'localhost', () => {
 
