@@ -22,14 +22,15 @@ export default class Header extends React.Component {
         return(
             <div className="header">
                 <div className="loggedInAsInfo">Logged in as {this.props.loggedInUser} </div>
-                <div className="loginForm">
-                    <form>
-                        <input type="text" ref="username" placeholder="Username:"/>
-                        <input type="password" ref="password" placeholder="Password"/>
-                        <button type="submit" onClick={this.login.bind(this)}>Login</button>
-                    </form>
-                </div>
-                <div className="registerUser">Register</div>
+                <form className="loginForm">
+                    <input type="text" ref="username" placeholder="Username:"/>
+                    <input type="password" ref="password:" placeholder="Password"/>
+                    <button type="submit" onClick={this.login.bind(this)}>Login</button>
+                </form>
+                <div className="registerUser">Register user?</div>
+                {(this.props.loggedInUser === "guest") ? null :
+                <div className="logoutUser">Logout</div>}
+
             </div>
         )
     }
