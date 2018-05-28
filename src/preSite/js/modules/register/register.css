@@ -1,0 +1,39 @@
+/* Register css*/
+
+.registerPage {
+    grid-row: 3 / 6;
+    grid-column: 2 / 6;
+
+}
+
+.registerPageForm {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 40%;
+}
+
+.registerPageForm input {
+    height: 35px;
+    background-color: #041A37;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    font-family: Courier, monospace;
+    font-size: 18px;
+    color: white;
+    border: solid 1px #000000;
+    padding-left: 10px;
+    outline: none;
+}
+
+.registerPageForm button {
+    height: 39px;
+    border: solid 1px #000000;
+    font-size: 20px;
+    background-color: #543400;
+    outline: none;
+}
+
+.registerPageForm button:hover {
+    background-color: #FF9E00;
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
 'use strict';
 // Header gets imported into app.js
 
-// Gets props from app: loggedInUser
+// Gets props from app: loggedInUser, registerButtonClicked()
 
 import React from 'react';
 
@@ -27,7 +27,7 @@ export default class Header extends React.Component {
                     <input type="password" ref="password:" placeholder="Password"/>
                     <button type="submit" onClick={this.login.bind(this)}>Login</button>
                 </form>
-                <div className="registerUser">Register user?</div>
+                <a className="registerUser" onClick={this.props.registerButtonClicked}>Register user?</a>
                 {(this.props.loggedInUser === "guest") ? null :
                 <div className="logoutUser">Logout</div>}
 
