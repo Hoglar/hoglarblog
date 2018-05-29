@@ -22,6 +22,10 @@ import Register from './modules/register/register.js';
 
 import defaultSidebar from './data/sidebarData.js';
 
+// importing special functionality
+
+import userAuthentication from './functionality/userAuthentication.js';
+
 class Application extends React.Component {
     constructor(props) {
         super(props);
@@ -34,19 +38,18 @@ class Application extends React.Component {
             showDictionary: false,
             showRegister: false,
         }
-
-        if(window.localStorage.username) {
-            console.log("Do something")
-        }
-        else {
-            console.log("setting user to guest!");
-            this.state.loggedInUser = "guest";
-        }
+        let username = userAuthentication();
+        console.log(username);
     }
 
 
     registerButtonClicked() {
         this.setState({ mode: "administation", showRegister: true, showHeader: false})
+    }
+
+    // This function is triggered by pressing the create user button in <Register />
+    userCreationIsDone() {
+        this.setState({mode: "app", showRegister: false});
     }
 
     // I want the footer to show only on scrolling,
@@ -99,7 +102,7 @@ class Application extends React.Component {
                         attributionInfo={defaultSidebar}/>
                         : null }
 
-                    { ((this.state.mode === "administation") && this.state.showRegister) ? <Register /> : null}
+                    { ((this.state.mode === "administation") && this.state.showRegister) ? <Register userCreationIsDone={this.userCreationIsDone.bind(this)}/> : null}
                 </div>
             </div>
         )

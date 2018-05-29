@@ -2,6 +2,9 @@
 
 import React from 'react';
 
+
+// Gets props from app: userCreationIsDone
+
 export default class Register extends React.Component {
 
     registerUser(event) {
@@ -45,12 +48,19 @@ export default class Register extends React.Component {
         .then((response) => {
             // On success we cast a function that creates a success page
             if (response.successMessage) {
-
                 console.log(response.successMessage);
+                sessionStorage.setItem('username', userData.username)
+                sessionStorage.setItem('password', response.password);
+                this.props.userCreationIsDone();
             }
             else {
-
-                console.log(response.failMessage);
+                if(response.failMessage === "username already taken") {
+                    alert("Username is taken");
+                }
+                else {
+                    console.log(response.failMessage);
+                    this.props.userCreationIsDone();
+                }
             }
             // On fail, we create fail page?
         });
