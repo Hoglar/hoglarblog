@@ -38,8 +38,13 @@ class Application extends React.Component {
             showDictionary: false,
             showRegister: false,
         }
-        let username = userAuthentication();
-        console.log(username);
+
+
+        userAuthentication(window.sessionStorage.getItem('username'), (result) => {
+            console.log(result);
+            this.state.loggedInUser = result;
+        });
+
     }
 
 
