@@ -29,6 +29,8 @@ const passwordChecker = function(username, func) {
 }
 
 function userAuthentication(username, func) {
+
+    // Kan prøve og droppe username, og heller her sjekke for sessionstorage eller local storage
     if(!username) {
         console.log("Could not find user");
         func("Guest");
