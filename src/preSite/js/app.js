@@ -54,7 +54,8 @@ class Application extends React.Component {
 
     // This function is triggered by pressing the create user button in <Register />
     userCreationIsDone() {
-        this.setState({mode: "app", showRegister: false});
+        console.log("refreshing");
+        window.location.reload();
     }
 
     // I want the footer to show only on scrolling,

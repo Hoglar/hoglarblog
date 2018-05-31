@@ -38,7 +38,7 @@ function userAuthentication(func) {
         passwordChecker(username, func);
     }
 
-    else if (window.localStorage.getItem('username') {
+    else if (window.localStorage.getItem('username')) {
         console.log("Found localstorage");
         let username = window.localStorage.getItem('username');
         passwordChecker(username, func);
