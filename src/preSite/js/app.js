@@ -39,8 +39,8 @@ class Application extends React.Component {
             showRegister: false,
         }
 
-
-        userAuthentication(window.sessionStorage.getItem('username'), (result) => {
+        // userAuthentication is defined in functionality/userAuthentication.js
+        userAuthentication((result) => {
             console.log(result);
             this.state.loggedInUser = result;
         });

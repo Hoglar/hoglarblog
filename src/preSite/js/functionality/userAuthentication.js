@@ -28,16 +28,24 @@ const passwordChecker = function(username, func) {
     });
 }
 
-function userAuthentication(username, func) {
+function userAuthentication(func) {
 
     // Kan prøve og droppe username, og heller her sjekke for sessionstorage eller local storage
-    if(!username) {
-        console.log("Could not find user");
-        func("Guest");
+
+    if (window.sessionStorage.getItem('username')) {
+        console.log("Found session sessionStorage");
+        let username = window.sessionStorage.getItem('username');
+        passwordChecker(username, func);
+    }
+
+    else if (window.localStorage.getItem('username') {
+        console.log("Found localstorage");
+        let username = window.localStorage.getItem('username');
+        passwordChecker(username, func);
     }
     else {
-        console.log("Checking password");
-        passwordChecker(username, func)
+        console.log("Didnt found user, logging in as guest");
+        func("guest");
     }
 }
 
