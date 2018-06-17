@@ -63,12 +63,13 @@ export default class Dictionary extends React.Component {
         // need to post data to server.
         const url = "/api/dictionary/create";
         let data = createData;
-
-
+        let auth = {
+            username: this.props.loggedInUser    
+        }
 
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(data, auth),
             headers: new Headers({
                 'Content-type': 'application/json'
             })

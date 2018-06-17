@@ -1,11 +1,11 @@
 'use strict';
 
-const passwordChecker = function(username, func) {
+const passwordChecker = function(username, password, func) {
 
     const url = "/user/userAuthentication";
     let data = {
         username: username,
-        password: sessionStorage.getItem('password')
+        password: password
     }
 
     let check = fetch(url, {
@@ -35,13 +35,15 @@ function userAuthentication(func) {
     if (window.sessionStorage.getItem('username')) {
         console.log("Found session sessionStorage");
         let username = window.sessionStorage.getItem('username');
-        passwordChecker(username, func);
+        let password = window.sessionStorage.getItem('password');
+        passwordChecker(username, password, func);
     }
 
     else if (window.localStorage.getItem('username')) {
         console.log("Found localstorage");
         let username = window.localStorage.getItem('username');
-        passwordChecker(username, func);
+        let password = window.localStorage.getItem('password');
+        passwordChecker(username, password, func);
     }
     else {
         console.log("Didnt found user, logging in as guest");
