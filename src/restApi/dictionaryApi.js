@@ -1,5 +1,6 @@
 'use strict';
 // To get to this from within the app i just fetch("api")
+const serverUserAuth = require('../serverUtilities/userAuth.js');
 
 module.exports = function(app, dbs) {
 
@@ -50,30 +51,43 @@ module.exports = function(app, dbs) {
         console.log(dataFromUser);
         // Must send back message on complete or fail.!
 
+        // Kan lage en auth funksjon her, server auth!
+        let username = dataFromUser.auth.username;
+        let password = dataFromUser.auth.password;
 
-        // Collection vil avhenge av hva de har valgt( html, css, etc)
-        dbs.dictionary.collection('test').insertOne({
-            topic: dataFromUser.topic,
-            title: dataFromUser.title,
-            explanation: dataFromUser.explanation,
-            example: dataFromUser.example,
-            reference: dataFromUser.reference,
-            date: new Date()
-        }, function(err, r) {
-            if (err) {
-                console.log("Something went wrong with db connection");
-                console.log(err);
-                res.json({
-                    failMessage: "Something went wrong with database"
-                })
+        serverUserAuth(username, password, dbs, (results) => {
+            if(results) {
+                console.log("Kjør på!")
+                dbs.dictionary.collection('test').insertOne({
+                    topic: dataFromUser.topic,
+                    title: dataFromUser.title,
+                    explanation: dataFromUser.explanation,
+                    example: dataFromUser.example,
+                    reference: dataFromUser.reference,
+                    date: new Date()
+                }, function(err, r) {
+                    if (err) {
+                        console.log("Something went wrong with db connection");
+                        console.log(err);
+                        res.json({
+                            failMessage: "Something went wrong with database"
+                        })
+                    }
+                    else {
+                        console.log("Succesfully insertet " + r.insertedCount + " Documents!");
+                        res.json({
+                            successMessage: "You have saved to the database"
+                        })
+                    }
+                });
             }
             else {
-                console.log("Succesfully insertet " + r.insertedCount + " Documents!");
-                res.json({
-                    successMessage: "You have saved to the database"
-                })
+                console.log("Thats not Right, wont save that!");
+                res.json({"failMessage": "Something wrong with userAuth"});
             }
-        });
+        })
+// Collection vil avhenge av hva de har valgt( html, css, etc)
+
     })
 
     return app;
