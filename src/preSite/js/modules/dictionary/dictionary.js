@@ -60,12 +60,23 @@ export default class Dictionary extends React.Component {
 
     // This functions gets parameters from form in create.js, ugly?
     handleCreateSubmit(createData) {
+
+
+
         // need to post data to server.
         const url = "/api/dictionary/create";
         let data = createData;
         let auth = {
-            username: this.props.loggedInUser    
+            username: this.props.loggedInUser
         }
+
+        if(window.sessionStorage.getItem('password')) {
+            auth.password = window.sessionStorage.getItem('password');
+        }
+        else {
+            auth.password = window.localStorage.getItem('password');
+        }
+        console.log(auth);
 
         fetch(url, {
             method: 'POST',
