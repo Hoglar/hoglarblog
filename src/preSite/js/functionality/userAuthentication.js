@@ -19,8 +19,8 @@ const passwordChecker = function(username, password, func) {
     .then((response) => {
         // On success we cast a function that creates a success page
             if(response.failMessage){
-                console.log("Getting fail message from server");
-                func("guests");
+                console.log("Doing a database search but getting fail message from server");
+                func("guest");
             }
             else {
                 func(username);
@@ -31,22 +31,26 @@ const passwordChecker = function(username, password, func) {
 function userAuthentication(func) {
 
     // Kan prøve og droppe username, og heller her sjekke for sessionstorage eller local storage
-
     if (window.sessionStorage.getItem('username')) {
-        console.log("Found session sessionStorage");
-        let username = window.sessionStorage.getItem('username');
-        let password = window.sessionStorage.getItem('password');
-        passwordChecker(username, password, func);
-    }
+        if (window.sessionStorage.getItem('username') !== "guest") {
+            console.log("Found session sessionStorage");
+            let username = window.sessionStorage.getItem('username');
+            let password = window.sessionStorage.getItem('password');
+            passwordChecker(username, password, func);
+        }
 
-    else if (window.localStorage.getItem('username')) {
-        console.log("Found localstorage");
-        let username = window.localStorage.getItem('username');
-        let password = window.localStorage.getItem('password');
-        passwordChecker(username, password, func);
+        else if (window.localStorage.getItem('username') !== "guest") {
+            console.log("Found localstorage");
+            let username = window.localStorage.getItem('username');
+            let password = window.localStorage.getItem('password');
+            passwordChecker(username, password, func);
+        }
+        else {
+            console.log("Didnt found user, logging in as guest");
+            func("guest");
+        }
     }
     else {
-        console.log("Didnt found user, logging in as guest");
         func("guest");
     }
 }

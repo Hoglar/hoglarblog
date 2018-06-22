@@ -41,7 +41,7 @@ class Application extends React.Component {
 
         // userAuthentication is defined in functionality/userAuthentication.js
         userAuthentication((result) => {
-            console.log(result);
+            console.log("Under app constructor we set logged in user to: ", result);
             this.state.loggedInUser = result;
         });
 
