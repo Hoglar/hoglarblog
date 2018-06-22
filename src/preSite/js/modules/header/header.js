@@ -46,6 +46,15 @@ export default class Header extends React.Component {
         }
     }
 
+    logout(event) {
+        event.preventDefault();
+        window.localStorage.setItem('username', "guest");
+        window.localStorage.setItem('password', "");
+        window.sessionStorage.setItem('username', "guest");
+        window.sessionStorage.setItem('password', "");
+        window.location.reload();
+    }
+
 
     render() {
         return(
@@ -63,7 +72,7 @@ export default class Header extends React.Component {
                     <input type="checkbox" ref="memberMeBox" id="keepLoggedInnCheckbox"/>
                 </div>
                 {(this.props.loggedInUser === "guest") ? null :
-                <div className="logoutUser">Logout</div>}
+                <button type="submit" className="logoutUser" onClick={this.logout.bind(this)}>Logout</button>}
 
             </div>
         )

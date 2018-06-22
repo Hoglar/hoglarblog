@@ -50,7 +50,7 @@ export default class Register extends React.Component {
             if (response.successMessage) {
                 console.log(response.successMessage);
                 sessionStorage.setItem('username', userData.username)
-                sessionStorage.setItem('password', response.password);
+                sessionStorage.setItem('password', userData.password);
                 this.props.userCreationIsDone();
             }
             else {

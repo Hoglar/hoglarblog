@@ -10,6 +10,7 @@ module.exports = function(app, dbs) {
     app.post('/user/userAuthentication', function(req, res) {
         let username = req.body.username;
         let password = req.body.password;
+        console.log("Trying to log in", password);
 
         dbs.users.collection('userAuth').findOne({"username": username})
             .then(function(doc) {
@@ -17,18 +18,20 @@ module.exports = function(app, dbs) {
                     res.send({"failMessage": "Could not find username"});
                 }
                 else {
+                    let password = crypto.createHash('sha256').update(doc.password + doc.salt).digest('hex');
                     if(password === doc.password) {
                         console.log("successfully logged in");
                         res.send({"successMessage": username});
                     }
                     else {
+                        console.log(doc);
+                        console.log(password);
                         console.log("Password did not match");
                         res. send({"failMessage": "password did not match"});
                     }
                 }
             })
     })
-
 
 
     // Create User
@@ -73,7 +76,7 @@ module.exports = function(app, dbs) {
                                             }
                                             else {
                                                 console.log(r.deletedCount);
-                                                res.send({"successMessage": "User created!", "password": password});
+                                                res.send({"successMessage": "User created!");
                                             }
                                         });
                                     }
