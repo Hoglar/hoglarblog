@@ -4,13 +4,14 @@
 const express = require('express');
 var app = express();
 const MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
 var bodyParser = require('body-parser');
 var initializeDatabases = require("./dbs");
 const crypto = require('crypto');
 const path = require('path');
 //Requiring apiRouter
-const restApi = require('./restApi/api.js')
+const dictionaryApi = require('./restApi/dictionaryApi.js');
+const userAuthApi = require('./restApi/userAuth.js');
+
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+// I should have separate create account page.
 
 initializeDatabases(function(err, dbs) {
     if (err) {
@@ -31,7 +33,9 @@ initializeDatabases(function(err, dbs) {
         process.exit(1);
     }
     // Updating app with the routes.
-    restApi(app, dbs);
+
+    dictionaryApi(app, dbs);
+    userAuthApi(app, dbs);
 
     app.listen(8080, 'localhost', () => {
 

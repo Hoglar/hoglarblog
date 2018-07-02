@@ -1,7 +1,7 @@
 /* Dictionary css! */
 
 .dictionaryWrapper {
-    grid-row: 1 / 6;
+    grid-row: 1 / 7;
     grid-column: 5 / 7;
     z-index: 1;
     border-left: solid 1px #000000;
@@ -27,6 +27,8 @@
     padding-top: 8px;
     background-color: #0F78FF;
     border: solid 1px #000000;
+    outline: none;
+
 }
 
 .dictionaryTopic:hover {
@@ -44,6 +46,7 @@
     padding-top: 8px;
     background-color: #FF9E00;
     border: solid 1px #000000;
+    outline: none;
 }
 
 .dictionarySearch {
@@ -102,6 +105,7 @@
     width: 100%;
     color: white;
     margin-top: 20px;
+    flex: 1;
 }
 
 .dictionaryMainEmpty {
@@ -122,11 +126,173 @@
     font-weight: lighter;
 }
 
+/*              DictionaryCreate              */
 
+.dictionaryCreate {
+    display: flex;
+    width: 100%;
+    color: white;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.dictionaryCreateForm {
+    display: flex;
+    width:100%;
+    flex-direction: column;
+}
+
+.dictionaryCreateFormTop {
+    display: flex;
+
+    height: 45px;
+    width: 95%;
+    margin: auto;
+
+
+}
+
+.dictionaryCreateTitle {
+    width: 100%;
+    background-color: #041A37;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    font-family: Courier, monospace;
+    font-size: 24px;
+    color: white;
+    border: solid 1px #000000;
+    outline: none;
+
+    padding-left: 20px;
+
+}
+
+
+
+.dictionaryCreateInputSection {
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    margin: auto;
+}
+
+.dictionaryCreateInputSection textarea {
+
+    margin-top: 1px;
+    margin-bottom: 1px;
+
+    padding: 20px;
+
+
+    color: white;
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: Courier, monospace;
+
+    background-color: #041A37;
+    border: solid 1px #000000;
+    outline: none;
+    resize: none;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+}
+
+#dictionaryCreateExplanation {
+    height: 300px;
+}
+
+
+#dictionaryCreateExample {
+    height: 100px;
+}
+
+#dictionaryCreateReference {
+    height: 50px;
+}
+
+.dictionaryCreateInputButton {
+    height: 30px;
+    border: solid 1px #000000;
+    background-color: #543400;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.dictionaryCreateInputButton:hover {
+    background-color: #FF9E00;
+    cursor: pointer;
+}
+
+
+/* SearchResults */
+.dictionarySearchResults {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #a9a9a9;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.dictionarySearchSingleResult {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    margin: auto;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 100px;
+    font-family: Courier, monospace;
+    justify-content: center;
+}
+
+.dictionarySearchSingleResultTop {
+    display: flex;
+    margin-left: 10px;
+
+}
+
+.dictionarySearchSingleResultTop h1 {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.dictionarySearchSingleResultTop h1::first-letter {
+    text-transform: capitalize;
+}
+
+.dictionarySearchSingleResultMain {
+    display: flex;
+    margin-left: 10px;
+}
+.dictionarySearchSingleResultFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+
+/*                     FOOTER                              */
 .dictionaryFooter {
+    display: flex;
     align-self: flex-end;
     width: 100%;
     height:100px;
-    background-color: blue;
+}
 
+.dictionaryFooterCreateButton {
+    width: 95%;
+    height: 80%;
+    margin: auto;
+    border: solid 1px #000000;
+    background-color: #041A37;
+    color: white;
+    font-size: 20px;
+    font-weight: lighter;
+}
+.dictionaryFooterCreateButton:hover {
+    border: solid 1px #FF9E00;
+    cursor: pointer;
 }

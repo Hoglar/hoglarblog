@@ -5,6 +5,8 @@ import DictionaryMain from "./dictionarySubparts/main.js";
 import DictionaryFooter from "./dictionarySubparts/Footer.js";
 import DictionaryTopic from "./dictionarySubparts/Topic.js";
 import DictionarySearch from "./dictionarySubparts/Search.js";
+import DictionaryCreate from "./dictionarySubparts/create.js";
+import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
 
 
 import dictionaryData from "./dictionarySubparts/div.js";
@@ -13,33 +15,91 @@ import dictionaryData from "./dictionarySubparts/div.js";
 // Topics is like HTML, CSS, Javascript
 // Maybe i should have under topics.
 
-
+// Props
+// loggedInUser, state in application. should reflect the user.
 
 export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMain: "empty",
-            showFooter: false,
-            showSearch: false,
+
+            searchData: "", // Sendt to dictionaryMain
+            dictionaryTopic: false,
+            createData: false,
+            statusMessage: "",
+            displayMain: "main",
         }
     }
 
     //showSearch needs to take the name of the pressed topic as a parameter.
     //When showSearch state is changed, it will be trusly,and we show search form.
 
+
+
     showSearch(topic) {
         // Maybe i should clear search field to?
-        console.log(topic);
-        this.setState({showSearch: topic});
+        this.setState({dictionaryTopic: topic});
     }
 
 
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
-        console.log("Handling search from dictionary " + searchData);
         // Must get data from database based on search
 
+        this.setState({searchData: searchData, displayMain: "searchResults"});
+
+    }
+
+    showCreateForm() {
+
+        (this.state.displayMain === "main") ?
+        this.setState({displayMain: "createForm"}) :
+        this.setState({displayMain: "main"})
+    }
+
+
+    // This functions gets parameters from form in create.js, ugly?
+    handleCreateSubmit(createData) {
+
+
+
+        // need to post data to server.
+        const url = "/api/dictionary/create";
+        let data = createData;
+        data.auth = {
+            username: this.props.loggedInUser
+        }
+
+        if(window.sessionStorage.getItem('password')) {
+            data.auth.password = window.sessionStorage.getItem('password');
+        }
+        else {
+            data.auth.password = window.localStorage.getItem('password');
+        }
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then((response) => {
+            // On success we cast a function that creates a success page
+            if (response.successMessage) {
+                this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
+                console.log(response.successMessage);
+            }
+            else {
+                this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
+                console.log(response.failMessage);
+            }
+            // On fail, we create fail page?
+
+
+
+        });
     }
 
     render() {
@@ -48,15 +108,27 @@ export default class Dictionary extends React.Component {
                 <div className="dictionaryTopics">
                     {dictionaryData.map((data) => {
                         return (
-                            <DictionaryTopic dictionaryTopicSelected={(this.state.showSearch === data.topic) ? true : false} topicData={data} topicSelector={this.showSearch.bind(this)}/>
+                            <DictionaryTopic dictionaryTopicSelected={(this.state.dictionaryTopic === data.topic) ? true : false} topicData={data} topicSelector={this.showSearch.bind(this)}/>
                         )
                     })}
                 </div>
 
-                {this.state.showSearch ? <DictionarySearch topicSearch={this.handleTopicSearch} selectedTopic={this.state.showSearch}/> : null}
+                {(this.state.dictionaryTopic && (this.state.displayMain !== "createForm")) ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
 
-                <DictionaryMain showMain={this.state.showMain}/>
-                {this.state.showFooter ? <DictionaryFooter /> : null}
+                {(this.state.displayMain === "main") ?
+                    <DictionaryMain statusMessage={this.state.statusMessage}/> :
+                    null}
+
+                {(this.state.displayMain === "createForm") ?
+                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)}/>
+                    :
+                    null}
+
+                {(this.state.displayMain === "searchResults") ?
+                    <DictionarySearchResults searchData={this.state.searchData} topic={this.state.dictionaryTopic}/> :
+                    null}
+
+                <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
 
             </div>
         )

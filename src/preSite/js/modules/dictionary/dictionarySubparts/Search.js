@@ -16,6 +16,7 @@ export default class DictionarySearch extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // Just for selection.
     componentDidMount() {
         document.getElementById("dictionarySearchField").select();
     }
@@ -28,6 +29,7 @@ export default class DictionarySearch extends React.Component {
 
     handleChange(event) {
         this.setState({searchFormValue: event.target.value});
+        this.props.topicSearch(event.target.value);
     }
 
     handleSubmit(event) {
@@ -45,6 +47,7 @@ export default class DictionarySearch extends React.Component {
                     id="dictionarySearchField"
                     className="dictionarySearchField"
                     type="text" name="name"
+                    autocomplete="off"
                     value={this.state.value}
                     onChange={this.handleChange}
                     />
