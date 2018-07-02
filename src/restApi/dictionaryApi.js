@@ -48,7 +48,6 @@ module.exports = function(app, dbs) {
         // Må først hente data fra client.
         let dataFromUser = req.body;
 
-        console.log(dataFromUser);
         // Must send back message on complete or fail.!
 
         // Kan lage en auth funksjon her, server auth!

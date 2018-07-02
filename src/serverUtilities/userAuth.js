@@ -1,6 +1,6 @@
 'use strict'
-
-function serverUserAuth(username, password, dbs, func) {
+const crypto = require('crypto');
+function serverUserAuth(username, passwordFromUser, dbs, func) {
 
     dbs.users.collection('userAuth').findOne({"username": username})
         .then(function(doc) {
@@ -8,6 +8,8 @@ function serverUserAuth(username, password, dbs, func) {
                 func(false);
             }
             else {
+                let salt = doc.salt.toString();
+                let password = crypto.createHash('sha256').update(passwordFromUser + salt).digest('hex');
                 if(password === doc.password) {
                     func(true);
                 }
