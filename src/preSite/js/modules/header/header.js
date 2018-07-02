@@ -14,7 +14,7 @@ export default class Header extends React.Component {
 
     login(event) {
         event.preventDefault();
-
+        // Login with remember box checked. This will save username and password in localStorage.
         if (this.refs.memberMeBox.checked) {
             window.localStorage.setItem('username', this.refs.username.value);
             window.localStorage.setItem('password', this.refs.password.value);
@@ -60,17 +60,26 @@ export default class Header extends React.Component {
         return(
             <div className="header">
                 <div className="loggedInAsInfo">Logged in as {this.props.loggedInUser} </div>
+                {(this.props.loggedInUser === "guest") ?
                 <form className="loginForm">
                     <input type="text" ref="username" placeholder="Username:"/>
                     <input type="password" ref="password" placeholder="Password"/>
                     <button type="submit" onClick={this.login.bind(this)}>Login</button>
 
-                </form>
-                <a className="registerUser" onClick={this.props.registerButtonClicked}>Register user?</a>
+                </form> :
+                null}
+
+                {(this.props.loggedInUser === "guest") ?
+                <a className="registerUser" onClick={this.props.registerButtonClicked}>Register user?</a> :
+                null}
+
+                {(this.props.loggedInUser === "guest") ?
                 <div className="loginRememberMeCheckbox">
                     <label for="keepLoggedInnCheckbox">Remember me</label>
                     <input type="checkbox" ref="memberMeBox" id="keepLoggedInnCheckbox"/>
-                </div>
+                </div> :
+                null}
+
                 {(this.props.loggedInUser === "guest") ? null :
                 <button type="submit" className="logoutUser" onClick={this.logout.bind(this)}>Logout</button>}
 
