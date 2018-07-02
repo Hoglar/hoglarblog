@@ -31,18 +31,18 @@ const passwordChecker = function(username, password, func) {
 function userAuthentication(func) {
 
     // Kan prøve og droppe username, og heller her sjekke for sessionstorage eller local storage
-    if (window.sessionStorage.getItem('username')) {
-        if (window.sessionStorage.getItem('username') !== "guest") {
-            console.log("Found session sessionStorage");
-            let username = window.sessionStorage.getItem('username');
-            let password = window.sessionStorage.getItem('password');
+    if (window.localStorage.getItem('username')) {
+        if (window.localStorage.getItem('username') !== "guest") {
+            console.log("Found local sessionStorage");
+            let username = window.localStorage.getItem('username');
+            let password = window.localStorage.getItem('password');
             passwordChecker(username, password, func);
         }
 
-        else if (window.localStorage.getItem('username') !== "guest") {
-            console.log("Found localstorage");
-            let username = window.localStorage.getItem('username');
-            let password = window.localStorage.getItem('password');
+        else if (window.sessionStorage.getItem('username') !== "guest") {
+            console.log("Found sessionstorage");
+            let username = window.sessionStorage.getItem('username');
+            let password = window.sessionStorage.getItem('password');
             passwordChecker(username, password, func);
         }
         else {
