@@ -10,7 +10,6 @@ module.exports = function(app, dbs) {
     app.post('/user/userAuthentication', function(req, res) {
         let username = req.body.username;
         let passwordFromUser = req.body.password;
-        console.log("Trying to log in", passwordFromUser);
 
         dbs.users.collection('userAuth').findOne({"username": username})
             .then(function(doc) {
@@ -21,7 +20,7 @@ module.exports = function(app, dbs) {
                     let salt = doc.salt.toString();
                     let password = crypto.createHash('sha256').update(passwordFromUser + salt).digest('hex');
                     if(password === doc.password) {
-                        console.log("successfully logged in");
+                        console.log("successfully logged in " + username);
                         res.send({"successMessage": username});
                     }
                     else {
