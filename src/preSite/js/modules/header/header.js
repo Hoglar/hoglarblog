@@ -11,7 +11,9 @@ export default class Header extends React.Component {
         super(props);
     }
 
-
+    // The login should be used to store username and auth token so that we can auto log into the page.
+    // The login doesnt need to log the user in, if we get the username and token.
+    // Should we make the token based on ip address?
     login(event) {
         event.preventDefault();
         // Login with remember box checked. This will save username and password in localStorage.

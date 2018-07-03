@@ -40,6 +40,8 @@ class Application extends React.Component {
         }
 
         // userAuthentication is defined in functionality/userAuthentication.js
+        // This is run when page is refreshed. It checks for data in local or session storage to auto log in user.
+        // If user is not logged in, we need to do this with another function.
         userAuthentication((result) => {
             console.log("Under app constructor we set logged in user to: ", result);
             this.state.loggedInUser = result;

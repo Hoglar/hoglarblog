@@ -1,5 +1,9 @@
 'use strict';
 
+// passwordChecker is called from the userAuthentication function.
+// userAuthentication is getting username and password from localStorage or sessionStorage.
+
+// Should maybe not get password but the token from local or session?
 const passwordChecker = function(username, password, func) {
 
     const url = "/user/userAuthentication";
@@ -17,7 +21,7 @@ const passwordChecker = function(username, password, func) {
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then((response) => {
-        // On success we cast a function that creates a success page
+
             if(response.failMessage){
                 console.log("Doing a database search but getting fail message from server");
                 func("guest");
