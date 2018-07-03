@@ -92,7 +92,48 @@ module.exports = function(app, dbs) {
             });
     });
 
-    // We need a login api. The login endpoint should do one thing. 
+    // We need a login api. The login endpoint should do one thing: return a valid auth token to the client!
+
+    app.post('/user/login', function(req, res) {
+        // Login needs to get the real username and password, this should be the only place we handle those after register.
+        let username = req.body.username.toLowerCase();
+        let password = req.body.password;
+        // we need to check this aginst database
+        dbs.users.collection('userAuth').findOne({"username": username})
+            .then(function(doc) {
+                if(!doc) {
+                    res.send({"failMessage": "Could not find username"});
+                }
+                else {
+                    let salt = doc.salt.toString();
+                    let passwordHashed = crypto.createHash('sha256').update(password + salt).digest('hex');
+
+                    if(passwordHashed === doc.password) {
+                        // Only when the real user is logging in we can create a token.
+                        let randomNumber =  Math.random().toString();
+                        // We need to create the token based on the hashed password. a hashed password should be unique.
+                        let clientToken = crypto.createHash('sha256').update(passwordHashed + randomNumber).digest('hex');
+                        let databaseToken = crypto.createHash('sha256').update(clientToken).digest('hex');
+
+                        // We should create a unique token based on the hashed password. then we hash a version of this and save at the
+                        // database. when we have this pair, we dont need anything else to find a user.
+                        // Need to update database.
+                        dbs.users.collection('userAuth').updateOne(
+                            {"username": username},
+                            { $set: {"authToken": databaseToken},
+                              $currentDate: {lastModified: true } })
+                        .then(function(result) {
+                            console.log(result);
+                            res.send({"successMessage": "User login completed!","token": clientToken});
+                        })
+
+                    }
+                    else {
+                        res. send({"failMessage": "password did not match"});
+                    }
+                }
+            })
+    });
 
     return app;
 };
