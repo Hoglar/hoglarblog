@@ -3,7 +3,8 @@
 // passwordChecker is called from the userAuthentication function.
 // userAuthentication is getting username and password from localStorage or sessionStorage.
 
-// Should maybe not get password but the token from local or session?
+// Should maybe not get username and password but the token from local or session? If the token is unique we can use this to
+// autherize. no need for password and username anywhere. 
 const passwordChecker = function(username, password, func) {
 
     const url = "/user/userAuthentication";

@@ -4,7 +4,8 @@ import React from 'react';
 
 
 // Gets props from app: userCreationIsDone
-
+// The register form has one purpose, to send username and password to server.
+// I will not make a big deal of auto login after usercreation. this might be easy to do later.
 export default class Register extends React.Component {
 
     registerUser(event) {
@@ -29,7 +30,7 @@ export default class Register extends React.Component {
             alert("Enter valid alpha key!");
             return;
         }
-
+        // api endpoint for user creation. 
         const url = "/user/createUser";
         let userData = {
             username: this.refs.username.value,
@@ -49,8 +50,8 @@ export default class Register extends React.Component {
             // On success we cast a function that creates a success page
             if (response.successMessage) {
                 console.log(response.successMessage);
-                sessionStorage.setItem('username', userData.username)
-                sessionStorage.setItem('password', userData.password);
+                // we might get back in response an auth token.
+                alert("User created: log in plz.");
                 this.props.userCreationIsDone();
             }
             else {
@@ -62,7 +63,6 @@ export default class Register extends React.Component {
                     this.props.userCreationIsDone();
                 }
             }
-            // On fail, we create fail page?
         });
     }
 

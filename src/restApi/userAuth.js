@@ -6,9 +6,9 @@ module.exports = function(app, dbs) {
 
 
 
-    // autoUserAuthentication
+    // autoUserAuthentication needs some work. i only want one auth token here.
     app.post('/user/userAuthentication', function(req, res) {
-        let username = req.body.username;
+        let username = req.body.username.toLowerCase();
         let passwordFromUser = req.body.password;
 
         dbs.users.collection('userAuth').findOne({"username": username})
@@ -31,8 +31,11 @@ module.exports = function(app, dbs) {
             })
     })
 
+    // Create user does one thing, inserting username, password and salt into the database.
 
-    // Create User
+    // CreateUser is the place where we create new users for our app. Humans can use the register form and send
+    // Username and password, now we also want an alpha key.
+    // createUser Api will save username and save a hashed and salted password on the database.
     app.post('/user/createUser', function(req, res) {
         console.log("Getting user creation request!");
         // first check alpha key
@@ -40,7 +43,7 @@ module.exports = function(app, dbs) {
         let username = req.body.username.toLowerCase();
         console.log(alphaKey);
 
-        //First we check username
+        //First we check username so that all have a unique username.
         dbs.users.collection('userAuth').findOne({"username": username})
             .then(function(doc) {
                 if(doc) {
@@ -54,8 +57,11 @@ module.exports = function(app, dbs) {
                             }
                             else {
                                 console.log("Found alpha key, creating account!");
+                                // The password needs to be salted and hashed before database insertion.
                                 let salt = Math.random().toString();
                                 let password = crypto.createHash('sha256').update(req.body.password + salt).digest('hex');
+
+                                // The database gets username, password and salt. We only interact with this values when login in.
 
                                 dbs.users.collection('userAuth').insertOne({
                                     username: username,
@@ -63,10 +69,10 @@ module.exports = function(app, dbs) {
                                     salt: salt
                                 }, function(error, response) {
                                     if(error) {
-                                        res.send({"failMessage": "Something went wrong in database"});
+                                        res.send({"failMessage": "Something went wrong inserting database document in user creation"});
                                     }
                                     else {
-                                        console.log("Created account.");
+                                        console.log("Account created!");
                                         dbs.users.collection('alphaKeys').deleteOne({"key": alphaKey}, function(error, r) {
                                             if (error) {
                                                 console.log("Failed deleting alpha-key");
@@ -85,6 +91,8 @@ module.exports = function(app, dbs) {
                 }
             });
     });
+
+    // We need a login api. The login endpoint should do one thing. 
 
     return app;
 };
