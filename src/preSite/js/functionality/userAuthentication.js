@@ -4,13 +4,12 @@
 // userAuthentication is getting username and password from localStorage or sessionStorage.
 
 // Should maybe not get username and password but the token from local or session? If the token is unique we can use this to
-// autherize. no need for password and username anywhere. 
-const passwordChecker = function(username, password, func) {
+// autherize. no need for password and username anywhere.
+const passwordChecker = function(token, func) {
 
     const url = "/user/userAuthentication";
     let data = {
-        username: username,
-        password: password
+        token: token
     }
 
     let check = fetch(url, {
@@ -24,11 +23,11 @@ const passwordChecker = function(username, password, func) {
     .then((response) => {
 
             if(response.failMessage){
-                console.log("Doing a database search but getting fail message from server");
+                console.log(response.failMessage);
                 func("guest");
             }
             else {
-                func(username);
+                func(response.user);
             }
     });
 }
@@ -36,25 +35,23 @@ const passwordChecker = function(username, password, func) {
 function userAuthentication(func) {
 
     // Kan prøve og droppe username, og heller her sjekke for sessionstorage eller local storage
-    if (window.localStorage.getItem('username')) {
-        if (window.localStorage.getItem('username') !== "guest") {
+    // Needs to get the token saved on computer and pass it to the checker function
+    if (window.localStorage.getItem('token')) {
+        if (window.localStorage.getItem('token') !== "") {
             console.log("Found local sessionStorage");
-            let username = window.localStorage.getItem('username');
-            let password = window.localStorage.getItem('password');
-            passwordChecker(username, password, func);
+            let token = window.localStorage.getItem('token');
+            passwordChecker(token, func);
         }
 
-        else if (window.sessionStorage.getItem('username') !== "guest") {
+    }
+    else if(window.sessionStorage.getItem('token')) {
+        if (window.sessionStorage.getItem('token') !== "") {
             console.log("Found sessionstorage");
-            let username = window.sessionStorage.getItem('username');
-            let password = window.sessionStorage.getItem('password');
-            passwordChecker(username, password, func);
-        }
-        else {
-            console.log("Didnt found user, logging in as guest");
-            func("guest");
+            let token = window.sessionStorage.getItem('token');
+            passwordChecker(token, func);
         }
     }
+
     else {
         func("guest");
     }

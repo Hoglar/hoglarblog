@@ -40,8 +40,17 @@ export default class Header extends React.Component {
             if (response.successMessage) {
                 console.log(response.successMessage);
                 console.log(response.token)
-                // we might get back in response an auth token.
-                alert("User created: log in plz.");
+
+                // Need to store the token based on memberMeBox
+                if(this.refs.memberMeBox.checked) {
+                    window.location.reload();
+                    window.localStorage.setItem("token", response.token);
+                }
+                else {
+                    window.location.reload();
+                    window.sessionStorage.setItem("token", response.token);
+                }
+
             }
             else {
                 if(response.failMessage) {
@@ -54,10 +63,9 @@ export default class Header extends React.Component {
 
     logout(event) {
         event.preventDefault();
-        window.localStorage.setItem('username', "guest");
-        window.localStorage.setItem('password', "");
-        window.sessionStorage.setItem('username', "guest");
-        window.sessionStorage.setItem('password', "");
+        window.localStorage.setItem('token', "");
+        window.sessionStorage.setItem('token', "");
+
         window.location.reload();
     }
 

@@ -1,38 +1,30 @@
 
 'use strict';
 const crypto = require('crypto');
+// serverUserAuth(tokenFromUser, dbs, func)
+const serverUserAuth = require('../serverUtilities/userAuth.js');
 
 module.exports = function(app, dbs) {
 
 
 
     // autoUserAuthentication needs some work. i only want one auth token here.
+    // gets requests from many apps. Should mainly give acces to user database.
+    // could make that as own function? which only returns true or false.
     app.post('/user/userAuthentication', function(req, res) {
-        let username = req.body.username;
-        if (username !== null) {
-            username = req.body.username.toLowerCase();
-        }
+        let token = req.body.token;
 
-        let passwordFromUser = req.body.password;
+        serverUserAuth(token, dbs, (result) => {
 
-        dbs.users.collection('userAuth').findOne({"username": username})
-            .then(function(doc) {
-                if(!doc) {
-                    res.send({"failMessage": "Could not find username"});
-                }
-                else {
-                    let salt = doc.salt.toString();
-                    let password = crypto.createHash('sha256').update(passwordFromUser + salt).digest('hex');
-                    if(password === doc.password) {
-                        console.log("successfully logged in " + username);
-                        res.send({"successMessage": username});
-                    }
-                    else {
-                        console.log("Password did not match");
-                        res. send({"failMessage": "password did not match"});
-                    }
-                }
-            })
+            if(!result) {
+                res.send({"failMessage": "token not found on server"});
+            }
+            else {
+                console.log("Logged in user " + result);
+                res.send({"user": result});
+            }
+        })
+
     })
 
     // Create user does one thing, inserting username, password and salt into the database.
