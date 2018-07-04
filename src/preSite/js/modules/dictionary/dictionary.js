@@ -71,10 +71,10 @@ export default class Dictionary extends React.Component {
         }
 
         if(window.sessionStorage.getItem('password')) {
-            data.auth.password = window.sessionStorage.getItem('password');
+            data.auth.token = window.sessionStorage.getItem('token');
         }
         else {
-            data.auth.password = window.localStorage.getItem('password');
+            data.auth.token = window.localStorage.getItem('token');
         }
 
         fetch(url, {

@@ -51,10 +51,10 @@ module.exports = function(app, dbs) {
         // Must send back message on complete or fail.!
 
         // Kan lage en auth funksjon her, server auth!
-        let username = dataFromUser.auth.username;
-        let password = dataFromUser.auth.password;
+        let token = dataFromUser.auth.token;
 
-        serverUserAuth(username, password, dbs, (results) => {
+
+        serverUserAuth(token, dbs, (results) => {
             if(results) {
                 console.log("Kjør på!")
                 dbs.dictionary.collection('test').insertOne({
