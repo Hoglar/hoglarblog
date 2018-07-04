@@ -25,6 +25,7 @@ import defaultSidebar from './data/sidebarData.js';
 // importing special functionality
 
 import userAuthentication from './functionality/userAuthentication.js';
+import capitalizeFirstLetter from './functionality/capitalizeFirstLetter.js';
 
 class Application extends React.Component {
     constructor(props) {
@@ -44,7 +45,8 @@ class Application extends React.Component {
         // If user is not logged in, we need to do this with another function.
         userAuthentication((result) => {
             console.log("Under app constructor we set logged in user to: ", result);
-            this.state.loggedInUser = result;
+            let username = capitalizeFirstLetter(result);
+            this.state.loggedInUser = username;
         });
 
     }

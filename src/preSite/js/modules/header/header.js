@@ -74,7 +74,7 @@ export default class Header extends React.Component {
         return(
             <div className="header">
                 <div className="loggedInAsInfo">Logged in as {this.props.loggedInUser} </div>
-                {(this.props.loggedInUser === "guest") ?
+                {(this.props.loggedInUser === "Guest") ?
                 <form className="loginForm">
                     <input type="text" ref="username" placeholder="Username:"/>
                     <input type="password" ref="password" placeholder="Password"/>
@@ -83,18 +83,18 @@ export default class Header extends React.Component {
                 </form> :
                 null}
 
-                {(this.props.loggedInUser === "guest") ?
+                {(this.props.loggedInUser === "Guest") ?
                 <a className="registerUser" onClick={this.props.registerButtonClicked}>Register user?</a> :
                 null}
 
-                {(this.props.loggedInUser === "guest") ?
+                {(this.props.loggedInUser === "Guest") ?
                 <div className="loginRememberMeCheckbox">
                     <label for="keepLoggedInnCheckbox">Remember me</label>
                     <input type="checkbox" ref="memberMeBox" id="keepLoggedInnCheckbox"/>
                 </div> :
                 null}
 
-                {(this.props.loggedInUser === "guest") ? null :
+                {(this.props.loggedInUser === "Guest") ? null :
                 <button type="submit" className="logoutUser" onClick={this.logout.bind(this)}>Logout</button>}
 
             </div>
