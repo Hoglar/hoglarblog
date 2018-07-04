@@ -34,8 +34,6 @@ export default class Dictionary extends React.Component {
     //showSearch needs to take the name of the pressed topic as a parameter.
     //When showSearch state is changed, it will be trusly,and we show search form.
 
-
-
     showSearch(topic) {
         // Maybe i should clear search field to?
         this.setState({dictionaryTopic: topic});
@@ -61,8 +59,6 @@ export default class Dictionary extends React.Component {
     // This functions gets parameters from form in create.js, ugly?
     handleCreateSubmit(createData) {
 
-
-
         // need to post data to server.
         const url = "/api/dictionary/create";
         let data = createData;
@@ -70,11 +66,11 @@ export default class Dictionary extends React.Component {
             username: this.props.loggedInUser
         }
 
-        if(window.sessionStorage.getItem('password')) {
-            data.auth.token = window.sessionStorage.getItem('token');
-        }
-        else {
+        if(window.localStorage.getItem('token')) {
             data.auth.token = window.localStorage.getItem('token');
+        }
+        else if(window.sessionStorage.getItem('token')) {
+            data.auth.token = window.sessionStorage.getItem('token');
         }
 
         fetch(url, {
