@@ -17,35 +17,39 @@ export default class Header extends React.Component {
     login(event) {
         event.preventDefault();
         // Login with remember box checked. This will save username and password in localStorage.
-        if (this.refs.memberMeBox.checked) {
-            window.localStorage.setItem('username', this.refs.username.value);
-            window.localStorage.setItem('password', this.refs.password.value);
-            userAuthentication((result) => {
-                if(result === "guest") {
-                    window.localStorage.setItem('username', "guest");
-                    window.localStorage.setItem('password', "");
-                    alert("Wrong username or password!");
-                }
-                else {
-                    window.location.reload();
-                }
-                console.log(result);
-            });
+        // this.refs.memberMeBox.checked
+        // this.refs.username.value
+        // this.refs.password.value
+
+        const url = "/user/login";
+        let userData = {
+            username: this.refs.username.value,
+            password: this.refs.password.value,
         }
-        else {
-            window.sessionStorage.setItem('username', this.refs.username.value);
-            window.sessionStorage.setItem('password', this.refs.password.value);
-            userAuthentication((result) => {
-                if(result === "guest") {
-                    window.sessionStorage.setItem('username', "guest");
-                    window.sessionStorage.setItem('password', "");
-                    alert("Wrong username or password!");
+
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(userData),
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then((response) => {
+            // On success we cast a function that creates a success page
+            if (response.successMessage) {
+                console.log(response.successMessage);
+                console.log(response.token)
+                // we might get back in response an auth token.
+                alert("User created: log in plz.");
+            }
+            else {
+                if(response.failMessage) {
+                    alert("Unable to log in, wrong username or password.");
                 }
-                else {
-                    window.location.reload();
-                }
-            });
-        }
+            }
+        });
+
     }
 
     logout(event) {

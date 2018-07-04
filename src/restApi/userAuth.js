@@ -8,7 +8,11 @@ module.exports = function(app, dbs) {
 
     // autoUserAuthentication needs some work. i only want one auth token here.
     app.post('/user/userAuthentication', function(req, res) {
-        let username = req.body.username.toLowerCase();
+        let username = req.body.username;
+        if (username !== null) {
+            username = req.body.username.toLowerCase();
+        }
+
         let passwordFromUser = req.body.password;
 
         dbs.users.collection('userAuth').findOne({"username": username})
@@ -92,7 +96,7 @@ module.exports = function(app, dbs) {
             });
     });
 
-    // We need a login api. The login endpoint should do one thing: return a valid auth token to the client!
+    // We need a login api. The login endpoint should do two things: 1: return a valid auth token to the client! 2: update database with authtoken.
 
     app.post('/user/login', function(req, res) {
         // Login needs to get the real username and password, this should be the only place we handle those after register.
@@ -123,13 +127,15 @@ module.exports = function(app, dbs) {
                             { $set: {"authToken": databaseToken},
                               $currentDate: {lastModified: true } })
                         .then(function(result) {
-                            console.log(result);
+                            console.log("Database successfully updated");
                             res.send({"successMessage": "User login completed!","token": clientToken});
+                        }, function(err) {
+                            console.log(err);
+                            res.send({"failMessage": "Something went wrong updating database with token."})
                         })
-
                     }
                     else {
-                        res. send({"failMessage": "password did not match"});
+                        res.send({"failMessage": "password did not match"});
                     }
                 }
             })

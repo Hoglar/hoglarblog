@@ -30,7 +30,7 @@ export default class Register extends React.Component {
             alert("Enter valid alpha key!");
             return;
         }
-        // api endpoint for user creation. 
+        // api endpoint for user creation.
         const url = "/user/createUser";
         let userData = {
             username: this.refs.username.value,
