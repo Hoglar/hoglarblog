@@ -38,7 +38,6 @@ module.exports = function(app, dbs) {
         }
     });
 
-
     app.post('/api/dictionary/create', function(req, res) {
         // Må først hente data fra client.
         let dataFromUser = req.body;
