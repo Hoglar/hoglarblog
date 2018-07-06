@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-
+import capitalizeFirstLetter from '../../../functionality/capitalizeFirstLetter.js';
 
 export default class DictionarySearchResults extends React.Component {
 
@@ -58,7 +58,8 @@ export default class DictionarySearchResults extends React.Component {
                                     <p>{searchResult.explanation.substring(0, 80)}...</p>
                                 </div>
                                 <div className="dictionarySearchSingleResultFooter">
-                                    <p>{searchResult.date.substring(0, 10)}</p>
+                                    <p>{"By: " + (searchResult.author ? capitalizeFirstLetter(searchResult.author) : "anon")}</p>
+                                    <p>{"-" + searchResult.date.substring(0, 10)}</p>
                                 </div>
                             </div>
                         )

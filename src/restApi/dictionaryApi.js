@@ -7,8 +7,9 @@ module.exports = function(app, dbs) {
 
     // Burde kanskje lage post først, lære hvordan jeg lager documentene.
 
+    // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
+    // Maybe base it on some scoring system. and maybe author.
     app.get('/api/dictionary/search', function(req, res) {
-        console.log("Getting lots of requests!");
 
         if (req.query.searchData !== "") {
             let searchData = req.query.searchData.toLowerCase();
@@ -19,7 +20,7 @@ module.exports = function(app, dbs) {
             // Need to make a title search with searchData. maybe use regex?
 
 
-            dbs.dictionary.collection("test").find(query).toArray(function(err, result) {
+            dbs.dictionary.collection("test").find(query).limit(5).toArray(function(err, result) {
                 if(err) throw err;
 
                 if (result.length > 0) {
