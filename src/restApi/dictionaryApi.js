@@ -4,12 +4,6 @@ const serverUserAuth = require('../serverUtilities/userAuth.js');
 
 module.exports = function(app, dbs) {
 
-    app.get('/api', function(req, res) {
-        res.json({
-            color: "Magic"
-        });
-        console.log("app call");
-    });
 
     // Burde kanskje lage post først, lære hvordan jeg lager documentene.
 

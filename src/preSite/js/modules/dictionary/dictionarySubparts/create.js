@@ -20,8 +20,17 @@ export default class DictionaryCreate extends React.Component {
             title: this.refs.title.value,
             explanation: this.refs.explanation.value,
             example: this.refs.example.value,
-            reference: this.refs.reference.value
+            reference: this.refs.reference.value,
         }
+
+        // We need to send token to server to get server side authentication.
+        if(window.localStorage.getItem('token')) {
+            createData.auth.token = window.localStorage.getItem('token');
+        }
+        else if (window.sessionStorage.getItem('token')) {
+            createData.auth.token = window.sessionStorage.getItem('token');
+        }
+
         // First we do some simple checking of the input.
         if (createData.title === "") {
             alert("Sorry for alert, but you must write a title!");
@@ -35,41 +44,37 @@ export default class DictionaryCreate extends React.Component {
             alert("Example or reference is to long!")
         }
         else {
-            // Then we need to authenterize with server.
-            // We use the userAuthentication function which can cast a function with either quest or username as result.
-            userAuthentication((result) => {
-                if(result === "guest") {
-                    console.log("Could not find user");
-                    this.props.handleCreateSubmit(false);
-                }
-                else {
-                    // We are good to go, lets uppload.
-                    const url = "/api/dictionary/create";
 
-                    fetch(url, {
-                        method: 'POST',
-                        body: JSON.stringify(data),
-                        headers: new Headers({
-                            'Content-type': 'application/json'
-                        })
-                    }).then(res => res.json())
-                    .catch(error => console.error('Error:', error))
-                    .then((response) => {
-                        // On success we cast a function that creates a success page
-                        if (response.successMessage) {
-                            this.props.handleCreateSubmit(true);
+            if(!createData.auth.token) {
+                console.log("Could not find token");
+                this.props.handleCreateSubmit(false);
+            }
+            else {
+                // We are good to go, lets uppload.
+                const url = "/api/dictionary/create";
 
-                            console.log(response.successMessage);
-                        }
-                        else {
-                            this.props.handleCreateSubmit(false)
-                            console.log(response.failMessage);
-                        }
-                    });
+                fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-type': 'application/json'
+                    })
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then((response) => {
+                    // On success we cast a function that creates a success page
+                    if (response.successMessage) {
+                        this.props.handleCreateSubmit(true);
 
-                }
-            });
+                        console.log(response.successMessage);
+                    }
+                    else {
+                        this.props.handleCreateSubmit(false)
+                        console.log(response.failMessage);
+                    }
+                });
 
+            }
         }
     }
 
