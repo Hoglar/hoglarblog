@@ -56,46 +56,22 @@ export default class Dictionary extends React.Component {
     }
 
 
-    // This functions gets parameters from form in create.js, ugly?
-    handleCreateSubmit(createData) {
+    // handleCreateSubmit just takes info from create to update state. Everything with creations happends in create.js
+    handleCreateSubmit(success) {
 
         // need to post data to server.
-        const url = "/api/dictionary/create";
-        let data = createData;
-        data.auth = {
-            username: this.props.loggedInUser
+        if(success) {
+            this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
+        }
+        else {
+            this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
         }
 
-        if(window.localStorage.getItem('token')) {
-            data.auth.token = window.localStorage.getItem('token');
-        }
-        else if(window.sessionStorage.getItem('token')) {
-            data.auth.token = window.sessionStorage.getItem('token');
-        }
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-type': 'application/json'
-            })
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then((response) => {
-            // On success we cast a function that creates a success page
-            if (response.successMessage) {
-                this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
-                console.log(response.successMessage);
-            }
-            else {
-                this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
-                console.log(response.failMessage);
-            }
-            // On fail, we create fail page?
 
 
 
-        });
+
+
     }
 
     render() {
