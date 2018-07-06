@@ -20,7 +20,7 @@ module.exports = function(app, dbs) {
             // Need to make a title search with searchData. maybe use regex?
 
 
-            dbs.dictionary.collection("test").find(query).limit(5).toArray(function(err, result) {
+            dbs.dictionary.collection(searchTopic).find(query).limit(5).toArray(function(err, result) {
                 if(err) throw err;
 
                 if (result.length > 0) {
@@ -51,9 +51,10 @@ module.exports = function(app, dbs) {
         serverUserAuth(token, dbs, (results) => {
             if(results) {
                 console.log("Kjør på!")
-                dbs.dictionary.collection('test').insertOne({
+                // We save in collections based on topic.
+                dbs.dictionary.collection(dataFromUser.topic).insertOne({
                     topic: dataFromUser.topic,
-                    title: dataFromUser.title,
+                    title: dataFromUser.title.toLowerCase(),
                     explanation: dataFromUser.explanation,
                     example: dataFromUser.example,
                     reference: dataFromUser.reference,
