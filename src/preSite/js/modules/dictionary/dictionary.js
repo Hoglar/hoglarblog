@@ -58,7 +58,6 @@ export default class Dictionary extends React.Component {
 
     // handleCreateSubmit just takes info from create to update state. Everything with creations happends in create.js
     handleCreateSubmit(success) {
-
         // need to post data to server.
         if(success) {
             this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
@@ -66,12 +65,6 @@ export default class Dictionary extends React.Component {
         else {
             this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
         }
-
-
-
-
-
-
     }
 
     render() {
@@ -92,15 +85,16 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "createForm") ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)}/>
+                    <DictionaryCreate topic={this.state.dictionaryTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
                     :
                     null}
 
                 {(this.state.displayMain === "searchResults") ?
                     <DictionarySearchResults searchData={this.state.searchData} topic={this.state.dictionaryTopic}/> :
                     null}
-
-                <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
+                {(this.props.loggedInUser !== "guest") ?
+                    <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/> :
+                    null }
 
             </div>
         )

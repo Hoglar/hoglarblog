@@ -47,7 +47,6 @@ module.exports = function(app, dbs) {
         // Kan lage en auth funksjon her, server auth!
         let token = dataFromUser.auth.token;
 
-
         serverUserAuth(token, dbs, (results) => {
             if(results) {
                 console.log("Kjør på!")
@@ -57,6 +56,7 @@ module.exports = function(app, dbs) {
                     explanation: dataFromUser.explanation,
                     example: dataFromUser.example,
                     reference: dataFromUser.reference,
+                    author: results,
                     date: new Date()
                 }, function(err, r) {
                     if (err) {

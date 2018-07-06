@@ -1,7 +1,8 @@
 'use strict';
 import React from 'react';
-import userAuthentication from '../../../functionality/userAuthentication.js';
 // Create needs some work on the text areas, i must make some limits on how to use them .
+
+import localOrSessionToken from '../../../functionality/localOrSession.js';
 
 export default class DictionaryCreate extends React.Component {
 
@@ -15,21 +16,18 @@ export default class DictionaryCreate extends React.Component {
         event.preventDefault();
 
         //handleCreateSubmit(topic, title, explanation, example, reference)
+        var token = localOrSessionToken();
         let createData = {
             topic: this.refs.topic.value,
             title: this.refs.title.value,
             explanation: this.refs.explanation.value,
             example: this.refs.example.value,
             reference: this.refs.reference.value,
+            auth: {
+                "token": token
+            }
         }
-
-        // We need to send token to server to get server side authentication.
-        if(window.localStorage.getItem('token')) {
-            createData.auth.token = window.localStorage.getItem('token');
-        }
-        else if (window.sessionStorage.getItem('token')) {
-            createData.auth.token = window.sessionStorage.getItem('token');
-        }
+        // Need to store the auth token.
 
         // First we do some simple checking of the input.
         if (createData.title === "") {
@@ -44,37 +42,29 @@ export default class DictionaryCreate extends React.Component {
             alert("Example or reference is to long!")
         }
         else {
+            // We are good to go, lets uppload.
+            const url = "/api/dictionary/create";
 
-            if(!createData.auth.token) {
-                console.log("Could not find token");
-                this.props.handleCreateSubmit(false);
-            }
-            else {
-                // We are good to go, lets uppload.
-                const url = "/api/dictionary/create";
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(createData),
+                headers: new Headers({
+                    'Content-type': 'application/json'
+                })
+            }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then((response) => {
+                // On success we cast a function that creates a success page
+                if (response.successMessage) {
+                    this.props.handleCreateSubmit(true);
 
-                fetch(url, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: new Headers({
-                        'Content-type': 'application/json'
-                    })
-                }).then(res => res.json())
-                .catch(error => console.error('Error:', error))
-                .then((response) => {
-                    // On success we cast a function that creates a success page
-                    if (response.successMessage) {
-                        this.props.handleCreateSubmit(true);
-
-                        console.log(response.successMessage);
-                    }
-                    else {
-                        this.props.handleCreateSubmit(false)
-                        console.log(response.failMessage);
-                    }
-                });
-
-            }
+                    console.log(response.successMessage);
+                }
+                else {
+                    this.props.handleCreateSubmit(false);
+                    console.log(response.failMessage);
+                }
+            });
         }
     }
 
