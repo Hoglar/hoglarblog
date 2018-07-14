@@ -1,11 +1,9 @@
 'use strict';
 // To get to this from within the app i just fetch("api")
 const serverUserAuth = require('../serverUtilities/userAuth.js');
-
+const compareScore = require('../serverUtilities/compareScore.js');
 module.exports = function(app, dbs) {
 
-
-    // Burde kanskje lage post først, lære hvordan jeg lager documentene.
 
     // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
     // Maybe base it on some scoring system. and maybe author.
@@ -19,12 +17,22 @@ module.exports = function(app, dbs) {
             // dbs.dictionary.collection
             // Need to make a title search with searchData. maybe use regex?
 
+            // We need an algorithm here..
 
-            dbs.dictionary.collection(searchTopic).find(query).limit(5).toArray(function(err, result) {
+            dbs.dictionary.collection(searchTopic).find(query).toArray(function(err, result) {
                 if(err) throw err;
 
                 if (result.length > 0) {
-                    res.json(result);
+                    // We got an array with objects.
+                    console.log(result.length);
+                    // we check for size
+                    let returnArray = result.sort(compareScore);
+                    returnArray = returnArray.splice(0,5);
+
+                    // We need to iterate over the array to check the documentScore of all items in it.
+
+
+                    res.json(returnArray);
                 }
                 else {
                     res.json({searchMessage: "Nothing found"});
@@ -58,6 +66,7 @@ module.exports = function(app, dbs) {
                     example: dataFromUser.example,
                     reference: dataFromUser.reference,
                     author: results,
+                    documentScore: 0,
                     date: new Date()
                 }, function(err, r) {
                     if (err) {
