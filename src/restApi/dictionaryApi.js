@@ -24,8 +24,7 @@ module.exports = function(app, dbs) {
 
                 if (result.length > 0) {
                     // We got an array with objects.
-                    console.log(result.length);
-                    // we check for size
+                    // We sort it based on score and return the 5 first.
                     let returnArray = result.sort(compareScore);
                     returnArray = returnArray.splice(0,5);
 
