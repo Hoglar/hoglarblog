@@ -10,6 +10,7 @@ export default class DictionaryFooter extends React.Component {
     render() {
         return (
             <div className="dictionaryFooter">
+
                 {this.props.topic ? (
                     <button
                         className="dictionaryFooterCreateButton"
