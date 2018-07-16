@@ -9,9 +9,18 @@ export default class DictionarySearchResults extends React.Component {
         this.state = {
             searchResults: [],
         }
+
     }
     // This component needs the temorarly seatch results that gets updated every key stroke.
     // props will get searchData
+    // gets handleSearchResult function which need a document.
+
+    handleResultClick(event, searchResult) {
+        event.preventDefault();
+
+        this.props.handleFinalResult(searchResult);
+    }
+
 
     componentDidUpdate(prevProps) {
         if(prevProps.searchData === this.props.searchData) {
@@ -47,9 +56,9 @@ export default class DictionarySearchResults extends React.Component {
         return(
                 (this.state.searchResults.length > 0) ?
                 <div className="dictionarySearchResults">
-                    {this.state.searchResults.map(function(searchResult) {
+                    {this.state.searchResults.map((searchResult) => {
                         return (
-                            <div className="dictionarySearchSingleResult">
+                            <div className="dictionarySearchSingleResult" onClick={(event) => {this.handleResultClick(event, searchResult)}}>
                                 <div className="dictionarySearchSingleResultTop">
                                     <h1>{searchResult.title}</h1>
 

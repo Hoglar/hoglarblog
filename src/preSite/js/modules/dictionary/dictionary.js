@@ -7,6 +7,7 @@ import DictionaryTopic from "./dictionarySubparts/Topic.js";
 import DictionarySearch from "./dictionarySubparts/Search.js";
 import DictionaryCreate from "./dictionarySubparts/create.js";
 import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
+import DictionaryFinalResult from "./dictionarySubparts/finalResult.js";
 
 
 import dictionaryData from "./dictionarySubparts/div.js";
@@ -28,6 +29,7 @@ export default class Dictionary extends React.Component {
             createData: false,
             statusMessage: "",
             displayMain: "main",
+            finalResult: false,
         }
     }
 
@@ -39,7 +41,6 @@ export default class Dictionary extends React.Component {
         this.setState({dictionaryTopic: topic});
     }
 
-
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
         // Must get data from database based on search
@@ -48,8 +49,14 @@ export default class Dictionary extends React.Component {
 
     }
 
-    showCreateForm() {
+    handleFinalResult(finalResult) {
 
+
+        this.setState({finalResult: finalResult, displayMain: "finalResult"});
+    }
+
+    showCreateForm() {
+        // Denne funksjonen er litt treg, burde fikse den da det ofte blir nødvendig med 2 klikk.
         (this.state.displayMain === "main") ?
         this.setState({displayMain: "createForm"}) :
         this.setState({displayMain: "main"})
@@ -90,8 +97,15 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "searchResults") ?
-                    <DictionarySearchResults searchData={this.state.searchData} topic={this.state.dictionaryTopic}/> :
+                    <DictionarySearchResults    searchData={this.state.searchData}
+                                                topic={this.state.dictionaryTopic}
+                                                handleFinalResult={this.handleFinalResult.bind(this)}/> :
                     null}
+
+                {(this.state.displayMain === "finalResult") ?
+                    <DictionaryFinalResult finalResult={this.state.finalResult}/> :
+                    null}
+
                 {(this.props.loggedInUser !== "guest") ?
                     <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/> :
                     null }
