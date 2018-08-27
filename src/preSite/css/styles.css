@@ -8,8 +8,8 @@ body {
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(6, 1fr);
+	grid-template-rows: 100vh auto;
 	background-color: #01060C;
-	height: 100vh;
 }
 
 .mainSection {

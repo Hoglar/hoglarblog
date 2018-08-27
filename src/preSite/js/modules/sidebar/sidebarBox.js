@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-// Gets onclick and sshowBoxInfo
+// Gets onclick and showBoxInfo
 export default class SidebarBox extends React.Component {
     constructor(props) {
         super(props)
