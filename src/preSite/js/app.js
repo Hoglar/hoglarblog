@@ -65,7 +65,7 @@ class Application extends React.Component {
     // This function is taking the name of the button clicked and then updates state to show that api!
     // Its from here i launch the apps
     onSidebarClick(name) {
-        console.log(name);
+
         // Her er det noe rart som bør endres
         if (this.state.mode === "administation") {
             this.setState({mode: "app"});
@@ -73,7 +73,6 @@ class Application extends React.Component {
 
         if (name === "Home") {
             (this.state.showHeader === true) ? this.setState({showHeader: false}) : this.setState({showHeader: true});
-
 
         }
 
