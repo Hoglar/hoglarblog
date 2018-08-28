@@ -309,7 +309,7 @@ body {
 }
 
 
-/* SearchResults */
+/*                                SearchResults                   */
 .dictionarySearchResults {
     display: flex;
     flex-direction: column;
@@ -332,6 +332,11 @@ body {
     height: 100px;
     font-family: Courier, monospace;
     justify-content: center;
+}
+
+.dictionarySearchSingleResult:hover {
+    cursor: pointer;
+    border: solid 1px #FF9E00;
 }
 
 .dictionarySearchSingleResultTop {
@@ -359,6 +364,23 @@ body {
     margin-right: 10px;
     margin-bottom: 5px;
 }
+
+/*                     FinalResult                         */
+.dictionaryFinalResult {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    color: #a9a9a9;
+    margin: auto;
+    margin-top: 20px;
+    flex: 1;
+    font-family: Courier, monospace;
+    padding-left: 10px;
+}
+
 
 
 /*                     FOOTER                              */

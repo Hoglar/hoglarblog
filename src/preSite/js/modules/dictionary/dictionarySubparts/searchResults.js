@@ -17,7 +17,7 @@ export default class DictionarySearchResults extends React.Component {
 
     handleResultClick(event, searchResult) {
         event.preventDefault();
-
+        console.log("Going for final result");
         this.props.handleFinalResult(searchResult);
     }
 

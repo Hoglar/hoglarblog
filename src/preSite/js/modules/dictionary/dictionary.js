@@ -51,8 +51,8 @@ export default class Dictionary extends React.Component {
 
     handleFinalResult(finalResult) {
 
-
         this.setState({finalResult: finalResult, displayMain: "finalResult"});
+        console.log(finalResult);
     }
 
     showCreateForm() {
