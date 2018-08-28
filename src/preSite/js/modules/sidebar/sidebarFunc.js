@@ -1,6 +1,6 @@
 "use strict";
 
-const boxColorChange = function(boxId) {
+export default function boxColorChange(boxId) {
     // This function gets the name of the box and not the ID, we need to make it into a valid id.
     let Id = "sideBarBox" + boxId;
     let element = document.getElementById(Id);
@@ -12,5 +12,3 @@ const boxColorChange = function(boxId) {
         element.classList.add("activeBox");
     }
 }
-
-export default boxColorChange;
