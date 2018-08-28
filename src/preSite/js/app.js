@@ -50,7 +50,6 @@ class Application extends React.Component {
 
     }
 
-
     registerButtonClicked() {
         this.setState({ mode: "administation", showRegister: true, showHeader: false})
     }
@@ -61,25 +60,23 @@ class Application extends React.Component {
         window.location.reload();
     }
 
-    // I want the footer to show only on scrolling,
-    // rest of the page is on page.
-    showOnWheelchange(e) {
-        if (e.deltaY === 100) {
-            (this.state.showHeader === true) ? this.setState({showHeader: false}) : this.setState({showFooter: true});
-        }
 
-        if (e.deltaY === -100) {
-            (this.state.showFooter === true) ? this.setState({showFooter: false}) : this.setState({showHeader: true});
-        }
-    }
 
     // This function is taking the name of the button clicked and then updates state to show that api!
+    // Its from here i launch the apps
     onSidebarClick(name) {
+
+        // Her er det noe rart som bør endres
         if (this.state.mode === "administation") {
             this.setState({mode: "app"});
         }
 
-        else if (name === "Dictionary") {
+        if (name === "Home") {
+            (this.state.showHeader === true) ? this.setState({showHeader: false}) : this.setState({showHeader: true});
+
+        }
+
+        if (name === "Dictionary") {
             if (this.state.showDictionary) {
                 this.setState({showDictionary: false});
             }
@@ -97,7 +94,7 @@ class Application extends React.Component {
                     onSidebarClick={this.onSidebarClick.bind(this)}
                 />
 
-                <div className="mainSection" onWheel={this.showOnWheelchange.bind(this)}>
+                <div className="mainSection">
 
                     { (this.state.showDictionary && (this.state.mode === "app")) ? <Dictionary
                         loggedInUser={this.state.loggedInUser} />
@@ -107,12 +104,11 @@ class Application extends React.Component {
                         loggedInUser={this.state.loggedInUser}
                         registerButtonClicked={this.registerButtonClicked.bind(this)}/> : null }
 
-                    { this.state.showFooter ? <Footer
-                        attributionInfo={defaultSidebar}/>
-                        : null }
 
                     { ((this.state.mode === "administation") && this.state.showRegister) ? <Register userCreationIsDone={this.userCreationIsDone.bind(this)}/> : null}
                 </div>
+
+                <Footer attributionInfo={defaultSidebar}/>
             </div>
         )
     }

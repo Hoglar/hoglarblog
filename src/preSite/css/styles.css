@@ -1,5 +1,14 @@
 /*http://paletton.com/#uid=23D050kGq2jFa+Pzkay++00++00*/
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
+	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
@@ -8,8 +17,8 @@ body {
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(6, 1fr);
+	grid-template-rows: 100vh auto;
 	background-color: #01060C;
-	height: 100vh;
 }
 
 .mainSection {

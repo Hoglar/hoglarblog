@@ -7,6 +7,7 @@ import DictionaryTopic from "./dictionarySubparts/Topic.js";
 import DictionarySearch from "./dictionarySubparts/Search.js";
 import DictionaryCreate from "./dictionarySubparts/create.js";
 import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
+import DictionaryFinalResult from "./dictionarySubparts/finalResult.js";
 
 
 import dictionaryData from "./dictionarySubparts/div.js";
@@ -28,6 +29,7 @@ export default class Dictionary extends React.Component {
             createData: false,
             statusMessage: "",
             displayMain: "main",
+            finalResult: false,
         }
     }
 
@@ -39,7 +41,6 @@ export default class Dictionary extends React.Component {
         this.setState({dictionaryTopic: topic});
     }
 
-
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
         // Must get data from database based on search
@@ -48,54 +49,29 @@ export default class Dictionary extends React.Component {
 
     }
 
-    showCreateForm() {
+    handleFinalResult(finalResult) {
 
+        this.setState({finalResult: finalResult, displayMain: "finalResult"});
+        console.log(finalResult);
+    }
+
+    showCreateForm() {
+        // Denne funksjonen er litt treg, burde fikse den da det ofte blir nødvendig med 2 klikk.
         (this.state.displayMain === "main") ?
         this.setState({displayMain: "createForm"}) :
         this.setState({displayMain: "main"})
     }
 
 
-    // This functions gets parameters from form in create.js, ugly?
-    handleCreateSubmit(createData) {
-
+    // handleCreateSubmit just takes info from create to update state. Everything with creations happends in create.js
+    handleCreateSubmit(success) {
         // need to post data to server.
-        const url = "/api/dictionary/create";
-        let data = createData;
-        data.auth = {
-            username: this.props.loggedInUser
+        if(success) {
+            this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
         }
-
-        if(window.localStorage.getItem('token')) {
-            data.auth.token = window.localStorage.getItem('token');
+        else {
+            this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
         }
-        else if(window.sessionStorage.getItem('token')) {
-            data.auth.token = window.sessionStorage.getItem('token');
-        }
-
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-type': 'application/json'
-            })
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then((response) => {
-            // On success we cast a function that creates a success page
-            if (response.successMessage) {
-                this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
-                console.log(response.successMessage);
-            }
-            else {
-                this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
-                console.log(response.failMessage);
-            }
-            // On fail, we create fail page?
-
-
-
-        });
     }
 
     render() {
@@ -116,15 +92,23 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "createForm") ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} handleSubmit={this.handleCreateSubmit.bind(this)}/>
+                    <DictionaryCreate topic={this.state.dictionaryTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
                     :
                     null}
 
                 {(this.state.displayMain === "searchResults") ?
-                    <DictionarySearchResults searchData={this.state.searchData} topic={this.state.dictionaryTopic}/> :
+                    <DictionarySearchResults    searchData={this.state.searchData}
+                                                topic={this.state.dictionaryTopic}
+                                                handleFinalResult={this.handleFinalResult.bind(this)}/> :
                     null}
 
-                <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/>
+                {(this.state.displayMain === "finalResult") ?
+                    <DictionaryFinalResult finalResult={this.state.finalResult}/> :
+                    null}
+
+                {(this.props.loggedInUser !== "guest") ?
+                    <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/> :
+                    null }
 
             </div>
         )

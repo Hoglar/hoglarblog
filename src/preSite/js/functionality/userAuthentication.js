@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 // passwordChecker is called from the userAuthentication function.
 // userAuthentication is getting username and password from localStorage or sessionStorage.
 
@@ -32,10 +34,11 @@ const passwordChecker = function(token, func) {
     });
 }
 
+
+
 function userAuthentication(func) {
 
-    // Kan prøve og droppe username, og heller her sjekke for sessionstorage eller local storage
-    // Needs to get the token saved on computer and pass it to the checker function
+
     if (window.localStorage.getItem('token')) {
         if (window.localStorage.getItem('token') !== "") {
             console.log("Found local sessionStorage");

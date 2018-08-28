@@ -1,7 +1,9 @@
 
 import React from 'react';
 
-// Gets onclick and sshowBoxInfo
+import boxColorChange from "./sidebarFunc.js";
+
+// Gets onclick and showBoxInfo
 export default class SidebarBox extends React.Component {
     constructor(props) {
         super(props)
@@ -14,6 +16,8 @@ export default class SidebarBox extends React.Component {
     // Thos function is getting cast on box click, i make function to send the right props back to Application.
     giveNameData() {
         this.props.onSidebarClick(this.props.name);
+        boxColorChange(this.props.name);
+
     }
 
     onHover() {
@@ -31,7 +35,7 @@ export default class SidebarBox extends React.Component {
     render() {
         return(
             <div className="sidebarBox">
-                <div className="sidebarBoxImg" onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.noHover.bind(this)} onClick={this.giveNameData.bind(this)}>
+                <div className="sidebarBoxImg" id={"sideBarBox" + this.props.name} onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.noHover.bind(this)} onClick={this.giveNameData.bind(this)}>
                     <img src={this.props.img} className="center" />
                 </div>
                 {this.state.hover ? <div className="sidebarBoxInfo"> {this.props.name} </div> :null }

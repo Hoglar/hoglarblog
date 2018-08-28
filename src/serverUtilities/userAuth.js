@@ -10,7 +10,7 @@ function serverUserAuth(tokenFromUser, dbs, func) {
                 func(false);
             }
             else {
-                console.log("Fount user, returning name");
+                console.log("Found user, returning name");
                 func(doc.username);
             }
         })

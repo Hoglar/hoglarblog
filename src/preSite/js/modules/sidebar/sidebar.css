@@ -2,7 +2,7 @@
 
 
 .sidebar {
-	position: absolute;
+	position: fixed;
 	display: grid;
 	grid-column: 1 / 3;
 	grid-template-columns: 45px 135px;
@@ -57,4 +57,11 @@
 .sidebarFiller {
     grid-row: 10 / auto;
     border-right: 1px solid #0F78FF;
+}
+
+.activeBox {
+	border-right: 1px solid #FF9E00;
+	border-bottom: 1px solid #000000;
+	background-color: #041A37;
+	box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
 }

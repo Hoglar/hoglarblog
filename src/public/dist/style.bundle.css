@@ -1,5 +1,14 @@
 /*http://paletton.com/#uid=23D050kGq2jFa+Pzkay++00++00*/
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
+	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
@@ -8,8 +17,8 @@ body {
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(6, 1fr);
+	grid-template-rows: 100vh auto;
 	background-color: #01060C;
-	height: 100vh;
 }
 
 .mainSection {
@@ -22,7 +31,7 @@ body {
 
 
 .sidebar {
-	position: absolute;
+	position: fixed;
 	display: grid;
 	grid-column: 1 / 3;
 	grid-template-columns: 45px 135px;
@@ -77,6 +86,13 @@ body {
 .sidebarFiller {
     grid-row: 10 / auto;
     border-right: 1px solid #0F78FF;
+}
+
+.activeBox {
+	border-right: 1px solid #FF9E00;
+	border-bottom: 1px solid #000000;
+	background-color: #041A37;
+	box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
 }
 /* Dictionary css! */
 
@@ -136,7 +152,7 @@ body {
 
     font-size: 18px;
     width: auto;
-    height: 30px;
+    height: 34px;
     background-color: #0F78FF;
     padding-top:2px;
     padding-bottom: 2px;
@@ -224,11 +240,9 @@ body {
 
 .dictionaryCreateFormTop {
     display: flex;
-
     height: 45px;
     width: 95%;
-    margin: auto;
-
+    align-self: center;
 
 }
 
@@ -246,17 +260,14 @@ body {
 
 }
 
-
-
 .dictionaryCreateInputSection {
     display: flex;
     width: 95%;
     flex-direction: column;
-    margin: auto;
+    align-self: center;
 }
 
 .dictionaryCreateInputSection textarea {
-
     margin-top: 1px;
     margin-bottom: 1px;
 
@@ -285,7 +296,7 @@ body {
 }
 
 #dictionaryCreateReference {
-    height: 50px;
+    height: 100px;
 }
 
 .dictionaryCreateInputButton {
@@ -302,7 +313,7 @@ body {
 }
 
 
-/* SearchResults */
+/*                                SearchResults                   */
 .dictionarySearchResults {
     display: flex;
     flex-direction: column;
@@ -325,6 +336,11 @@ body {
     height: 100px;
     font-family: Courier, monospace;
     justify-content: center;
+}
+
+.dictionarySearchSingleResult:hover {
+    cursor: pointer;
+    border: solid 1px #FF9E00;
 }
 
 .dictionarySearchSingleResultTop {
@@ -352,6 +368,56 @@ body {
     margin-right: 10px;
     margin-bottom: 5px;
 }
+
+/*                     FinalResult                         */
+.dictionaryFinalResult {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    color: #a9a9a9;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.dictionaryBox {
+    width: 95%;
+    margin: auto;
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    font-size: 18px;
+    font-weight: lighter;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dictionaryFinalResultTop {
+    display: flex;
+    flex-direction: column;
+
+    flex: 2;
+}
+
+.dictionaryFinalResultExample {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.dictionaryFinalResultReference {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dictionaryFinalResultCredentials {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
 
 
 /*                     FOOTER                              */
@@ -381,8 +447,7 @@ body {
 .footerWrapper {
 	display: flex;
 	z-index: 1;
-	grid-row: 6 / 7;
-	grid-column: 1 / 7;
+	grid-column: 2 / 8;
 
 	flex-direction: column;
 	justify-content: space-between;

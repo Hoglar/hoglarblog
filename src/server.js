@@ -42,5 +42,4 @@ initializeDatabases(function(err, dbs) {
     console.log("server is up and running");
 
     });
-
 });
