@@ -261,7 +261,8 @@
     margin-bottom: 5px;
 }
 
-/*                     FinalResult                         */
+    /*                     FinalResult                         */
+
 .dictionaryFinalResult {
     display: flex;
     flex-direction: column;
@@ -304,10 +305,33 @@
 }
 
 
+.dictionaryFinalResultFooter {
+    flex: 0.2;
+    display: grid;
+	grid-template-columns: repeat(6, 1fr);
+
+}
+
+.dictionaryEditDocument {
+    grid-column: 1 / 4;
+    display: flex;
+    align-items: center;
+}
+
 .dictionaryFinalResultCredentials {
+    grid-column: 4 / 7;
+
     display: flex;
     flex-direction: row;
+
     justify-content: flex-end;
+    align-items: center;
+}
+
+#dictionaryDocumentDate {
+    margin-left: 10px;
+    font-size: 14px;
+    font-family: Courier, monospace;
 }
 
 
