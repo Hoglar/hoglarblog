@@ -10,7 +10,7 @@ export default class EditDocument extends React.Component {
     render() {
         return (
             <div className="dictionaryEditDocument">
-                <button>Delete</button>
+                <button className="dictionaryDocumentDeleteButton">Delete</button>
             </div>
         )
     }

@@ -4,7 +4,7 @@
  // finalResult is getting the finalResult prop, which is a object of document details.
 
  import React from "react";
- import editDocument from "./editDocument.js";
+ import EditDocument from "./editDocument.js";
 
  import capitalizeFirstLetter from '../../../functionality/capitalizeFirstLetter.js';
 
@@ -29,7 +29,7 @@
 
 
                      {(this.props.loggedInUser === this.props.finalResult.author) ?
-                         <editDocument /> :
+                         <EditDocument /> :
                          null}
 
                      <div className="dictionaryFinalResultCredentials">
