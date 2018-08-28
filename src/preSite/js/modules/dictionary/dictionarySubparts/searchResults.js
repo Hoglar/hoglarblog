@@ -42,7 +42,7 @@ export default class DictionarySearchResults extends React.Component {
                     // I do this to check if i have a kinda valid array.
 
                     if(searchResult.searchMessage) {
-                        console.log(searchResult.searchMessage);
+
                         this.setState({searchResults: [] });
                     }
                     else {

@@ -17,7 +17,6 @@ export default class SidebarBox extends React.Component {
     giveNameData() {
         this.props.onSidebarClick(this.props.name);
         boxColorChange(this.props.name);
-        logger();
 
     }
 

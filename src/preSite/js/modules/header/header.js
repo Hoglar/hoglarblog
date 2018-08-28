@@ -39,9 +39,6 @@ export default class Header extends React.Component {
         .then((response) => {
             // On success we cast a function that creates a success page
             if (response.successMessage) {
-                console.log(response.successMessage);
-                console.log(response.token)
-
                 // Need to store the token based on memberMeBox
                 if(this.refs.memberMeBox.checked) {
                     window.location.reload();
