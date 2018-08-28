@@ -10,20 +10,21 @@
      render() {
          return (
              <div className="dictionaryFinalResult">
-                 <div className="dictionaryFinalResultTop">
+                 <div className="dictionaryFinalResultTop dictionaryBox">
                      <h3>{capitalizeFirstLetter(this.props.finalResult.title) + ":"}</h3>
                      <p>{this.props.finalResult.explanation}</p>
                  </div>
-                 <div class="dictionaryFinalResultExample">
+                 <div class="dictionaryFinalResultExample dictionaryBox">
                      <p>Example:</p>
                      <p>{this.props.finalResult.example}</p>
                  </div>
-                 <div>
+                 <div className="dictionaryFinalResultReference dictionaryBox">
                      <p>Reference:</p>
                      <p>{this.props.finalResult.reference}</p>
                  </div>
-                 <div className="dictionaryFinalResultCredentials">
-                     <p>{capitalizeFirstLetter(this.props.finalResult.author)}</p>
+                 <div className="dictionaryFinalResultCredentials dictionaryBox">
+                     <p>{"By: " + capitalizeFirstLetter(this.props.finalResult.author)}</p>
+                     <p>{"."}</p>
                      <p>{this.props.finalResult.date.substring(0, 10)}</p>
                  </div>
 

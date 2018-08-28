@@ -1,5 +1,14 @@
 /*http://paletton.com/#uid=23D050kGq2jFa+Pzkay++00++00*/
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
+	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	font-family: sans-serif;
@@ -143,7 +152,7 @@ body {
 
     font-size: 18px;
     width: auto;
-    height: 30px;
+    height: 34px;
     background-color: #0F78FF;
     padding-top:2px;
     padding-bottom: 2px;
@@ -231,11 +240,9 @@ body {
 
 .dictionaryCreateFormTop {
     display: flex;
-
     height: 45px;
     width: 95%;
-    margin: auto;
-
+    align-self: center;
 
 }
 
@@ -253,17 +260,14 @@ body {
 
 }
 
-
-
 .dictionaryCreateInputSection {
     display: flex;
     width: 95%;
     flex-direction: column;
-    margin: auto;
+    align-self: center;
 }
 
 .dictionaryCreateInputSection textarea {
-
     margin-top: 1px;
     margin-bottom: 1px;
 
@@ -292,7 +296,7 @@ body {
 }
 
 #dictionaryCreateReference {
-    height: 50px;
+    height: 100px;
 }
 
 .dictionaryCreateInputButton {
@@ -369,16 +373,49 @@ body {
 .dictionaryFinalResult {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    color: #a9a9a9;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.dictionaryBox {
     width: 95%;
+    margin: auto;
     background-color: #041A37;
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    color: #a9a9a9;
-    margin: auto;
-    margin-top: 20px;
+    font-size: 18px;
+    font-weight: lighter;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dictionaryFinalResultTop {
+    display: flex;
+    flex-direction: column;
+
+    flex: 2;
+}
+
+.dictionaryFinalResultExample {
+    display: flex;
+    flex-direction: column;
+
     flex: 1;
-    font-family: Courier, monospace;
-    padding-left: 10px;
+}
+
+.dictionaryFinalResultReference {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dictionaryFinalResultCredentials {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 
