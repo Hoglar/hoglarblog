@@ -1,6 +1,6 @@
 "use strict";
  // When we press one of the 5 returned results, we will get one page back on the dictionary site.
- // This will show the topic.
+ // This will show the
 
  import React from "react";
 

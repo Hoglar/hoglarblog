@@ -13,7 +13,6 @@ export default class DictionarySearch extends React.Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // Just for selection.
@@ -32,10 +31,6 @@ export default class DictionarySearch extends React.Component {
         this.props.topicSearch(event.target.value);
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.topicSearch(this.state.searchFormValue);
-    }
 
     render() {
         return (
@@ -51,10 +46,6 @@ export default class DictionarySearch extends React.Component {
                     value={this.state.value}
                     onChange={this.handleChange}
                     />
-
-                <button className="dictionarySearchButton" onClick={this.handleSubmit}>
-                    Search
-                </button>
             </form>
         )
     }
