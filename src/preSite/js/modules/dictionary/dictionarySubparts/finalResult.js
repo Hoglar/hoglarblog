@@ -29,7 +29,7 @@
 
 
                      {(this.props.loggedInUser === this.props.finalResult.author) ?
-                         <EditDocument /> :
+                         <EditDocument document={this.props.finalResult}/> :
                          null}
 
                      <div className="dictionaryFinalResultCredentials">
