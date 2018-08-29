@@ -103,7 +103,8 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "finalResult") ?
-                    <DictionaryFinalResult finalResult={this.state.finalResult}/> :
+                    <DictionaryFinalResult finalResult={this.state.finalResult}
+                                           loggedInUser={this.props.loggedInUser}/> :
                     null}
 
                 {(this.props.loggedInUser !== "guest") ?

@@ -1,8 +1,10 @@
 "use strict";
  // When we press one of the 5 returned results, we will get one page back on the dictionary site.
- // This will show the topic.
+ // This will show the
+ // finalResult is getting the finalResult prop, which is a object of document details.
 
  import React from "react";
+ import EditDocument from "./editDocument.js";
 
  import capitalizeFirstLetter from '../../../functionality/capitalizeFirstLetter.js';
 
@@ -22,11 +24,21 @@
                      <p>Reference:</p>
                      <p>{this.props.finalResult.reference}</p>
                  </div>
-                 <div className="dictionaryFinalResultCredentials dictionaryBox">
-                     <p>{"By: " + capitalizeFirstLetter(this.props.finalResult.author)}</p>
-                     <p>{"."}</p>
-                     <p>{this.props.finalResult.date.substring(0, 10)}</p>
+
+                 <div className="dictionaryFinalResultFooter dictionaryBox">
+
+
+                     {(this.props.loggedInUser === this.props.finalResult.author) ?
+                         <EditDocument document={this.props.finalResult}/> :
+                         null}
+
+                     <div className="dictionaryFinalResultCredentials">
+                         <p>{capitalizeFirstLetter(this.props.finalResult.author)}</p>
+                         <p id="dictionaryDocumentDate">{this.props.finalResult.date.substring(0, 10)}</p>
+                     </div>
+
                  </div>
+
 
              </div>
          )

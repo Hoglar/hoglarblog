@@ -157,7 +157,6 @@ body {
     padding-top:2px;
     padding-bottom: 2px;
     padding-left: 12px;
-    padding-right: 12px;
     border-bottom: solid 1px #000000;
     border-left: solid 1px #000000;
     border-right: solid 1px #000000;
@@ -165,6 +164,7 @@ body {
 }
 
 .dictionarySearchSelectedTopic {
+    width: 30%;
     align-self: center;
 }
 
@@ -172,23 +172,11 @@ body {
     flex-grow: 1;
     margin-left: 10px;
     font-size: 18px;
-    margin-right: 12px;
+    margin-right: 4px;
     background-color: #041A37;
     color: white;
     border: solid 0px;
     padding-left: 5px;
-}
-
-.dictionarySearchButton {
-    border: solid 1px #000000;
-    font-size: 18px;
-    flex-grow: 1;
-    background-color: #543400;
-}
-
-.dictionarySearchButton:hover {
-    background-color: #FF9E00;
-    cursor: pointer;
 }
 
 /**********************************
@@ -369,7 +357,8 @@ body {
     margin-bottom: 5px;
 }
 
-/*                     FinalResult                         */
+    /*                     FinalResult                         */
+
 .dictionaryFinalResult {
     display: flex;
     flex-direction: column;
@@ -412,10 +401,39 @@ body {
 }
 
 
+.dictionaryFinalResultFooter {
+    flex: 0.2;
+    display: grid;
+	grid-template-columns: repeat(6, 1fr);
+}
+
+.dictionaryEditDocument {
+    grid-column: 1 / 4;
+    display: flex;
+    align-items: center;
+}
+
+.dictionaryDocumentDeleteButton {
+    background-color: #FF9E00;
+    cursor: pointer;
+    border: solid 1px #000000;
+
+}
+
 .dictionaryFinalResultCredentials {
+    grid-column: 4 / 7;
+
     display: flex;
     flex-direction: row;
+
     justify-content: flex-end;
+    align-items: center;
+}
+
+#dictionaryDocumentDate {
+    margin-left: 10px;
+    font-size: 14px;
+    font-family: Courier, monospace;
 }
 
 

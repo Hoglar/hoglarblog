@@ -4,7 +4,6 @@ const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
 module.exports = function(app, dbs) {
 
-
     // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
     // Maybe base it on some scoring system. and maybe author.
     app.get('/api/dictionary/search', function(req, res) {
@@ -89,6 +88,54 @@ module.exports = function(app, dbs) {
             }
         })
 // Collection vil avhenge av hva de har valgt( html, css, etc)
+
+    })
+
+    app.post('/api/dictionary/delete', function(req, res) {
+
+        // Input: Needs a auth token from client
+        //        Needs data regarding wich document it shal delete.
+
+        // Api will delete said document,
+
+        // Returns successMessage on deletion.
+
+        let dataFromUser = req.body;
+        let token = dataFromUser.auth.token;
+
+        serverUserAuth(token, dbs, (result) => {
+            if(result) {
+                console.log("kjør på");
+                var myQuery = {
+                    title: dataFromUser.titled
+                }
+
+                dbs.dictionary.collection(dataFromUser.topic).deleteOne(myQuery, function(err, results) {
+                        if (err) {
+                            res.json({
+                                "failMessage": "Something wrong in database"
+                            })
+                        }
+                        else {
+                            if(results.deletedCount) {
+                                res.json({
+                                    successMessage: "You have deleted document"
+                                })
+                            }
+                            else {
+                                res.json({
+                                    failMessage: "Could not find document"
+                                })
+                            }
+
+                        }
+                    });
+            }
+            else {
+                console.error("Something went wrong with user auth trying to delete dictionary collection.");
+                res.json({"failMessage": "Something wrong with userAuth"});
+            }
+        })
 
     })
 
