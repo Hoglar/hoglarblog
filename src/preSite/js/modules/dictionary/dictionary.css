@@ -282,11 +282,14 @@
     font-weight: lighter;
     padding-left: 20px;
     padding-right: 20px;
+    white-space: pre-wrap;
+
 }
 
 .dictionaryFinalResultTop {
     display: flex;
     flex-direction: column;
+
 
     flex: 2;
 }
