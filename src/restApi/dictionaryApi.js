@@ -104,8 +104,6 @@ module.exports = function(app, dbs) {
 
         serverUserAuth(token, dbs, (result) => {
             if(result) {
-                console.log("kjør på");
-
                 dbs.dictionary.collection(dataFromUser.topic).deleteOne({_id: new mongo.ObjectId(dataFromUser.document_id)}, function(err, results) {
                         if (err) {
                             res.json({
