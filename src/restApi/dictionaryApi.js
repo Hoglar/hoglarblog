@@ -96,11 +96,9 @@ module.exports = function(app, dbs) {
 
         // Input: Needs a auth token from client
         //        Needs data regarding wich document it shal delete.
-
         // Api will delete said document,
 
         // Returns successMessage on deletion.
-
         let dataFromUser = req.body;
         let token = dataFromUser.auth.token;
 
