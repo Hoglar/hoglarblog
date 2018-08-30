@@ -26,16 +26,11 @@ export default class Register extends React.Component {
             return;
         }
 
-        if(this.refs.alphaKey.value.length < 12 ) {
-            alert("Enter valid alpha key!");
-            return;
-        }
         // api endpoint for user creation.
         const url = "/user/createUser";
         let userData = {
             username: this.refs.username.value,
             password: this.refs.password1.value,
-            alphaKey:this.refs.alphaKey.value
         }
 
         fetch(url, {
@@ -75,7 +70,6 @@ export default class Register extends React.Component {
                     <input type="text" ref="username" placeholder="Username:"/>
                     <input type="password" ref="password1" placeholder="Password:"/>
                     <input type="password" ref="password2" placeholder="Confirm password:"/>
-                    <input type="text" ref="alphaKey" placeholder="Alpha-key:"/>
                     <button type="submit" onClick={this.registerUser.bind(this)}>Create user</button>
                 </form>
             </div>

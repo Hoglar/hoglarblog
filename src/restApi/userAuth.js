@@ -34,10 +34,8 @@ module.exports = function(app, dbs) {
     // createUser Api will save username and save a hashed and salted password on the database.
     app.post('/user/createUser', function(req, res) {
         console.log("Getting user creation request!");
-        // first check alpha key
-        let alphaKey = req.body.alphaKey;
+
         let username = req.body.username.toLowerCase();
-        console.log(alphaKey);
 
         //First we check username so that all have a unique username.
         dbs.users.collection('userAuth').findOne({"username": username})
@@ -46,44 +44,27 @@ module.exports = function(app, dbs) {
                     res.send({"failMessage": "username already taken"});
                 }
                 else {
-                    dbs.users.collection('alphaKeys').findOne({"key": alphaKey})
-                        .then(function(doc) {
-                            if(!doc) {
-                                res.send({"failMessage": "The alphakey is not found!"});
+
+                        console.log("Creating account!");
+                        // The password needs to be salted and hashed before database insertion.
+                        let salt = Math.random().toString();
+                        let password = crypto.createHash('sha256').update(req.body.password + salt).digest('hex');
+
+                        // The database gets username, password and salt. We only interact with this values when login in.
+
+                        dbs.users.collection('userAuth').insertOne({
+                            username: username,
+                            password: password,
+                            salt: salt
+                        }, function(error, response) {
+                            if(error) {
+                                res.send({"failMessage": "Something went wrong inserting database document in user creation"});
                             }
                             else {
-                                console.log("Found alpha key, creating account!");
-                                // The password needs to be salted and hashed before database insertion.
-                                let salt = Math.random().toString();
-                                let password = crypto.createHash('sha256').update(req.body.password + salt).digest('hex');
-
-                                // The database gets username, password and salt. We only interact with this values when login in.
-
-                                dbs.users.collection('userAuth').insertOne({
-                                    username: username,
-                                    password: password,
-                                    salt: salt
-                                }, function(error, response) {
-                                    if(error) {
-                                        res.send({"failMessage": "Something went wrong inserting database document in user creation"});
-                                    }
-                                    else {
-                                        console.log("Account created!");
-                                        dbs.users.collection('alphaKeys').deleteOne({"key": alphaKey}, function(error, r) {
-                                            if (error) {
-                                                console.log("Failed deleting alpha-key");
-                                                res.send({"failMessage": "Account created i think, try!"});
-                                            }
-                                            else {
-                                                console.log(r.deletedCount);
-                                                res.send({"successMessage": "User created!"});
-                                            }
-                                        });
-                                    }
-                                })
-
+                                console.log("Account created!");
+                                res.send({"successMessage": "Account created"});
                             }
-                        });
+                        })
                 }
             });
     });
