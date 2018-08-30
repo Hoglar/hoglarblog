@@ -2,6 +2,7 @@
 // To get to this from within the app i just fetch("api")
 const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
+const mongo = require('mongodb');
 module.exports = function(app, dbs) {
 
     // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
@@ -10,7 +11,7 @@ module.exports = function(app, dbs) {
 
         if (req.query.searchData !== "") {
             let searchData = req.query.searchData.toLowerCase();
-            let searchTopic = req.query.topic
+            let searchTopic = req.query.topic.toLowerCase();
             let regSearch = new RegExp(searchData);
             let query = { topic: searchTopic, title: regSearch }
             // dbs.dictionary.collection
@@ -57,8 +58,8 @@ module.exports = function(app, dbs) {
             if(results) {
                 console.log("Kjør på!")
                 // We save in collections based on topic.
-                dbs.dictionary.collection(dataFromUser.topic).insertOne({
-                    topic: dataFromUser.topic,
+                dbs.dictionary.collection(dataFromUser.topic.toLowerCase()).insertOne({
+                    topic: dataFromUser.topic.toLowerCase(),
                     title: dataFromUser.title.toLowerCase(),
                     explanation: dataFromUser.explanation,
                     example: dataFromUser.example,
@@ -106,11 +107,8 @@ module.exports = function(app, dbs) {
         serverUserAuth(token, dbs, (result) => {
             if(result) {
                 console.log("kjør på");
-                var myQuery = {
-                    title: dataFromUser.titled
-                }
 
-                dbs.dictionary.collection(dataFromUser.topic).deleteOne(myQuery, function(err, results) {
+                dbs.dictionary.collection(dataFromUser.topic).deleteOne({_id: new mongo.ObjectId(dataFromUser.document_id)}, function(err, results) {
                         if (err) {
                             res.json({
                                 "failMessage": "Something wrong in database"
@@ -127,7 +125,6 @@ module.exports = function(app, dbs) {
                                     failMessage: "Could not find document"
                                 })
                             }
-
                         }
                     });
             }

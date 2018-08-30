@@ -15,7 +15,7 @@ export default class EditDocument extends React.Component {
 
         //Data the server needs
         let data = {
-            title: this.props.title,
+            document_id: this.props.document._id,
             topic: this.props.document.topic,
             auth: {
                 "token": localOrSessionToken()
@@ -40,7 +40,7 @@ export default class EditDocument extends React.Component {
         )
         .then(
             function(response) {
-                console.log("succsess deletion", response)
+                console.log("response:", response)
             },
             function(err) {
                 console.error("Error in converting response to json", err);
