@@ -34,6 +34,7 @@ export default class EditDocument extends React.Component {
             function(response) {
                 return response = response.json();
             },
+            // Fetch noes not return reject?
             function( err ) {
                 console.error("Something went wrong on server", err);
             }
