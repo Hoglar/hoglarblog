@@ -57,7 +57,7 @@ export default class Dictionary extends React.Component {
 
     showCreateForm() {
         // Denne funksjonen er litt treg, burde fikse den da det ofte blir nødvendig med 2 klikk.
-        (this.state.displayMain === "main") ?
+        (this.state.displayMain !== "createForm") ?
         this.setState({displayMain: "createForm"}) :
         this.setState({displayMain: "main"})
     }

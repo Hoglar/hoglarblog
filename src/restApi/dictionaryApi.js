@@ -104,32 +104,28 @@ module.exports = function(app, dbs) {
 
         serverUserAuth(token, dbs, (result) => {
             if(result) {
-                dbs.dictionary.collection(dataFromUser.topic).deleteOne({_id: new mongo.ObjectId(dataFromUser.document_id)}, function(err, results) {
-                        if (err) {
-                            res.json({
-                                "failMessage": "Something wrong in database"
-                            })
-                        }
-                        else {
-                            if(results.deletedCount) {
-                                res.json({
-                                    successMessage: "You have deleted document"
-                                })
+                // I use promises here, i have a problem if something crashes here, cant seem to catch the error.
+                dbs.dictionary.collection(dataFromUser.topic).deleteOne({_id: new mongo.ObjectId(dataFromUser.document_id)})
+                    .then(
+                        function(result) {
+                            if(result.deletedCount) {
+                                res.json({"successMessage": "Document Deleted"});
                             }
                             else {
-                                res.json({
-                                    failMessage: "Could not find document"
-                                })
+                                res.json({"failMessage": "Could not find document."});
                             }
                         }
-                    });
+                    )
+                    .catch(function(err) {
+                        console.error(err);
+                        res.json({"failMessage": "Error trying to delete document"});
+                    })
             }
             else {
                 console.error("Something went wrong with user auth trying to delete dictionary collection.");
                 res.json({"failMessage": "Something wrong with userAuth"});
             }
         })
-
     })
 
     return app;
