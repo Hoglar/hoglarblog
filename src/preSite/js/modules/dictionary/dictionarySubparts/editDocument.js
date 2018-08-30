@@ -31,24 +31,25 @@ export default class EditDocument extends React.Component {
             })
         }).then(
             // Fullfilment
-            function(response) {
+            (response) => {
                 return response = response.json();
             },
             // Fetch noes not return reject?
-            function( err ) {
+            ( err ) => {
                 console.error("Something went wrong on server", err);
             }
         )
         .then(
-            function(response) {
+            (response) => {
                 console.log("response:", response)
+                this.props.handleDocumentDeletion(response);
             },
             function(err) {
                 console.error("Error in converting response to json", err);
             }
         )
     }
-
+    
     render() {
         return (
             <div className="dictionaryEditDocument">

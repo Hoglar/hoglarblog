@@ -7,19 +7,6 @@ import React from "react";
 
 export default class DictionaryFooter extends React.Component {
 
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            inCreatorMode: false,
-        }
-    }
-
-    handleShowCreateForm() {
-        (this.state.inCreatorMode) ? this.setState({inCreatorMode: false}) : this.setState({inCreatorMode: true});
-        this.props.showCreateForm();
-    }
-
     render() {
         return (
             <div className="dictionaryFooter">
@@ -27,8 +14,8 @@ export default class DictionaryFooter extends React.Component {
                 {this.props.topic ? (
                     <button
                         className="dictionaryFooterCreateButton"
-                        onClick={this.handleShowCreateForm.bind(this)}>
-                        {(this.state.inCreatorMode) ? "Return to search?" : "Add to " + this.props.topic + " dictionary?"}
+                        onClick={this.props.showCreateForm}>
+                        {(this.props.inCreatorMode === true) ? "Return to search?" : "Add to " + this.props.topic + " dictionary?"}
                     </button>
                 ) : null}
             </div>
