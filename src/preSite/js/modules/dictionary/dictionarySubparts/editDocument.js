@@ -24,7 +24,7 @@ export default class EditDocument extends React.Component {
 
 
         deleteDocument(data)
-        .then( (response) => {
+            .then((response) => {
                 console.log("response:", response)
                 this.props.handleDocumentDeletion(response);
             })
@@ -44,7 +44,8 @@ export default class EditDocument extends React.Component {
 }
 
 const deleteDocument = function(data) {
-    // should return a promise?
+    // the deleteDocument functions gets data from state and sends to server with fetch post call.
+    // it returns a promise with the response object.
     return fetch("/api/dictionary/delete", {
         method: 'POST',
         body: JSON.stringify(data),
