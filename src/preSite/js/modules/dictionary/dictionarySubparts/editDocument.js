@@ -22,34 +22,17 @@ export default class EditDocument extends React.Component {
             }
         }
 
-        //Fetch returns a promise
-        fetch("/api/dictionary/delete", {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-type': 'application/json'
-            })
-        }).then(
-            // Fullfilment
-            (response) => {
-                return response = response.json();
-            },
-            // Fetch noes not return reject?
-            ( err ) => {
-                console.error("Something went wrong on server", err);
-            }
-        )
-        .then(
-            (response) => {
+
+        deleteDocument(data)
+        .then( (response) => {
                 console.log("response:", response)
                 this.props.handleDocumentDeletion(response);
-            },
-            function(err) {
-                console.error("Error in converting response to json", err);
-            }
-        )
+            })
+            .catch((err) => {
+                console.error(err);
+            })
     }
-    
+
     render() {
         return (
             <div className="dictionaryEditDocument">
@@ -58,4 +41,16 @@ export default class EditDocument extends React.Component {
             </div>
         )
     }
+}
+
+const deleteDocument = function(data) {
+    // should return a promise?
+    return fetch("/api/dictionary/delete", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-type': 'application/json'
+        })
+    })
+    .then((response) => { return response = response.json();})
 }
