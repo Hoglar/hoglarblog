@@ -14,17 +14,19 @@ import './modules/register/register.css';
 // Importing modules.
 import Sidebar from './modules/sidebar/sidebar.js';
 import Footer from './modules/footer/footer.js';
+import Notes from './modules/notes/notes.js';
 import Dictionary from './modules/dictionary/dictionary.js';
 import Header from './modules/header/header.js';
 import Register from './modules/register/register.js';
 
-// importing icons from assets to gove to defaultSidebar
+// importing icons from assets to give to defaultSidebar
 
 import defaultSidebar from './data/sidebarData.js';
 
 // importing special functionality
 
 import userAuthentication from './functionality/userAuthentication.js';
+import onSidebarClick from './functionality/onSidebarClick.js';
 
 class Application extends React.Component {
     constructor(props) {
@@ -33,8 +35,9 @@ class Application extends React.Component {
             //Lager en state for guest user
             mode: "app", // mode can now be creative or administation. this controlls what we see on the screen.
 
+
             showHeader: false,
-            showFooter: false,
+            showNotes: false,
             showDictionary: false,
             showRegister: false,
         }
@@ -60,41 +63,23 @@ class Application extends React.Component {
         window.location.reload();
     }
 
-
-
     // This function is taking the name of the button clicked and then updates state to show that api!
     // Its from here i launch the apps
-    onSidebarClick(name) {
 
-        // Her er det noe rart som bør endres
-        if (this.state.mode === "administation") {
-            this.setState({mode: "app"});
-        }
-
-        if (name === "Home") {
-            (this.state.showHeader === true) ? this.setState({showHeader: false}) : this.setState({showHeader: true});
-
-        }
-
-        if (name === "Dictionary") {
-            if (this.state.showDictionary) {
-                this.setState({showDictionary: false});
-            }
-            else {
-                this.setState({showDictionary: true});
-            }
-        }
-    }
 
     render() {
         return (
             <div className="wrapper">
                 <Sidebar
                     sidebarLayout={defaultSidebar}
-                    onSidebarClick={this.onSidebarClick.bind(this)}
+                    onSidebarClick={onSidebarClick.bind(this)}
                 />
 
                 <div className="mainSection">
+
+                    { (this.state.showNotes && (this.state.mode === "app")) ?
+                        <Notes /> :
+                        null}
 
                     { (this.state.showDictionary && (this.state.mode === "app")) ? <Dictionary
                         loggedInUser={this.state.loggedInUser} />
