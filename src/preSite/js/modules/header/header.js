@@ -73,6 +73,7 @@ export default class Header extends React.Component {
             <div className="header">
                 <div className="loggedInAsInfo">Logged in as {capitalizeFirstLetter(this.props.loggedInUser)} </div>
                 {(this.props.loggedInUser === "guest") ?
+                // Loginform must change, make it more responsive.
                 <form className="loginForm">
                     <input type="text" ref="username" placeholder="Username:"/>
                     <input type="password" ref="password" placeholder="Password"/>
@@ -81,19 +82,24 @@ export default class Header extends React.Component {
                 </form> :
                 null}
 
-                {(this.props.loggedInUser === "guest") ?
-                <a className="registerUser" onClick={this.props.registerButtonClicked}>Register user?</a> :
-                null}
+                <div className="headerRightUnderLine">
+                    {(this.props.loggedInUser === "guest") ?
+                    <a className="registerUser" onClick={this.props.registerButtonClicked}>Register user?</a> :
+                    null}
 
-                {(this.props.loggedInUser === "guest") ?
-                <div className="loginRememberMeCheckbox">
-                    <label for="keepLoggedInnCheckbox">Remember me</label>
-                    <input type="checkbox" ref="memberMeBox" id="keepLoggedInnCheckbox"/>
-                </div> :
-                null}
+                    {(this.props.loggedInUser === "guest") ?
+                    <div className="loginRememberMeCheckbox">
+                        <label for="keepLoggedInnCheckbox">Remember me</label>
+                        <input type="checkbox" ref="memberMeBox" id="keepLoggedInnCheckbox"/>
+                    </div> :
+                    null}
 
-                {(this.props.loggedInUser === "guest") ? null :
-                <button type="submit" className="logoutUser" onClick={this.logout.bind(this)}>Logout</button>}
+                    {(this.props.loggedInUser === "guest") ? null :
+                    <button type="submit" className="logoutUser" onClick={this.logout.bind(this)}>Logout</button>}
+
+                </div>
+
+
 
             </div>
         )
