@@ -5,8 +5,10 @@ export default class Notes extends React.Component {
 
     render() {
         return (
-            <div>
-                Hello!
+            <div className="notesSkeleton">
+                <div className="notesHeader"></div>
+                <div className="notesMain"></div>
+                <div className="notesFooter"></div>
             </div>
         )
     }
