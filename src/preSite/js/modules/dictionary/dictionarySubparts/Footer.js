@@ -15,11 +15,9 @@ export default class DictionaryFooter extends React.Component {
                     <button
                         className="dictionaryFooterCreateButton"
                         onClick={this.props.showCreateForm}>
-                        Add to {this.props.topic} dictionary?
+                        {(this.props.inCreatorMode === true) ? "Return to search?" : "Add to " + this.props.topic + " dictionary?"}
                     </button>
                 ) : null}
-
-
             </div>
         )
     }

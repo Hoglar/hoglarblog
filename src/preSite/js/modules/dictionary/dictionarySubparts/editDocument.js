@@ -15,39 +15,23 @@ export default class EditDocument extends React.Component {
 
         //Data the server needs
         let data = {
-            title: this.props.title,
+            document_id: this.props.document._id,
             topic: this.props.document.topic,
             auth: {
                 "token": localOrSessionToken()
             }
         }
 
-        //Fetch returns a promise
-        fetch("/api/dictionary/delete", {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-type': 'application/json'
-            })
-        }).then(
-            // Fullfilment
-            function(response) {
-                return response = response.json();
-            },
-            function( err ) {
-                console.error("Something went wrong on server", err);
-            }
-        )
-        .then(
-            function(response) {
-                console.log("succsess deletion", response)
-            },
-            function(err) {
-                console.error("Error in converting response to json", err);
-            }
-        )
-    }
 
+        deleteDocument(data)
+            .then((response) => {
+                console.log("response:", response)
+                this.props.handleDocumentDeletion(response);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+    }
 
     render() {
         return (
@@ -57,4 +41,17 @@ export default class EditDocument extends React.Component {
             </div>
         )
     }
+}
+
+const deleteDocument = function(data) {
+    // the deleteDocument functions gets data from state and sends to server with fetch post call.
+    // it returns a promise with the response object.
+    return fetch("/api/dictionary/delete", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-type': 'application/json'
+        })
+    })
+    .then((response) => { return response = response.json();})
 }

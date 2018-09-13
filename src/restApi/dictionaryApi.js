@@ -2,6 +2,7 @@
 // To get to this from within the app i just fetch("api")
 const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
+const mongo = require('mongodb');
 module.exports = function(app, dbs) {
 
     // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
@@ -10,7 +11,7 @@ module.exports = function(app, dbs) {
 
         if (req.query.searchData !== "") {
             let searchData = req.query.searchData.toLowerCase();
-            let searchTopic = req.query.topic
+            let searchTopic = req.query.topic.toLowerCase();
             let regSearch = new RegExp(searchData);
             let query = { topic: searchTopic, title: regSearch }
             // dbs.dictionary.collection
@@ -57,8 +58,8 @@ module.exports = function(app, dbs) {
             if(results) {
                 console.log("Kjør på!")
                 // We save in collections based on topic.
-                dbs.dictionary.collection(dataFromUser.topic).insertOne({
-                    topic: dataFromUser.topic,
+                dbs.dictionary.collection(dataFromUser.topic.toLowerCase()).insertOne({
+                    topic: dataFromUser.topic.toLowerCase(),
                     title: dataFromUser.title.toLowerCase(),
                     explanation: dataFromUser.explanation,
                     example: dataFromUser.example,
@@ -95,48 +96,36 @@ module.exports = function(app, dbs) {
 
         // Input: Needs a auth token from client
         //        Needs data regarding wich document it shal delete.
-
         // Api will delete said document,
 
         // Returns successMessage on deletion.
-
         let dataFromUser = req.body;
         let token = dataFromUser.auth.token;
 
         serverUserAuth(token, dbs, (result) => {
             if(result) {
-                console.log("kjør på");
-                var myQuery = {
-                    title: dataFromUser.titled
-                }
-
-                dbs.dictionary.collection(dataFromUser.topic).deleteOne(myQuery, function(err, results) {
-                        if (err) {
-                            res.json({
-                                "failMessage": "Something wrong in database"
-                            })
-                        }
-                        else {
-                            if(results.deletedCount) {
-                                res.json({
-                                    successMessage: "You have deleted document"
-                                })
+                // I use promises here, i have a problem if something crashes here, cant seem to catch the error.
+                dbs.dictionary.collection(dataFromUser.topic).deleteOne({_id: new mongo.ObjectId(dataFromUser.document_id)})
+                    .then(
+                        function(result) {
+                            if(result.deletedCount) {
+                                res.json({"successMessage": "Document Deleted"});
                             }
                             else {
-                                res.json({
-                                    failMessage: "Could not find document"
-                                })
+                                res.json({"failMessage": "Could not find document."});
                             }
-
                         }
-                    });
+                    )
+                    .catch(function(err) {
+                        console.error(err);
+                        res.json({"failMessage": "Error trying to delete document"});
+                    })
             }
             else {
                 console.error("Something went wrong with user auth trying to delete dictionary collection.");
                 res.json({"failMessage": "Something wrong with userAuth"});
             }
         })
-
     })
 
     return app;

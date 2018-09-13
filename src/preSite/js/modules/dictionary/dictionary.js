@@ -30,6 +30,7 @@ export default class Dictionary extends React.Component {
             statusMessage: "",
             displayMain: "main",
             finalResult: false,
+            inCreatorMode: false
         }
     }
 
@@ -57,7 +58,9 @@ export default class Dictionary extends React.Component {
 
     showCreateForm() {
         // Denne funksjonen er litt treg, burde fikse den da det ofte blir nødvendig med 2 klikk.
-        (this.state.displayMain === "main") ?
+        (this.state.inCreatorMode) ? this.setState({inCreatorMode: false}) : this.setState({inCreatorMode: true});
+        
+        (this.state.displayMain !== "createForm") ?
         this.setState({displayMain: "createForm"}) :
         this.setState({displayMain: "main"})
     }
@@ -66,11 +69,21 @@ export default class Dictionary extends React.Component {
     // handleCreateSubmit just takes info from create to update state. Everything with creations happends in create.js
     handleCreateSubmit(success) {
         // need to post data to server.
+        (this.state.inCreatorMode) ? this.setState({inCreatorMode: false}) : this.setState({inCreatorMode: true});
         if(success) {
             this.setState({displayMain: "main", statusMessage: "Succesfully saved to database!"});
         }
         else {
             this.setState({displayMain: "main", statusMessage: "Failed to save to database!"});
+        }
+    }
+
+    handleDocumentDeletion(success) {
+        if(success) {
+            this.setState({displayMain: "main", statusMessage: "Succesfully deleted from database!"});
+        }
+        else {
+            this.setState({displayMain: "main", statusMessage: "Failed to delete from database!"});
         }
     }
 
@@ -104,11 +117,14 @@ export default class Dictionary extends React.Component {
 
                 {(this.state.displayMain === "finalResult") ?
                     <DictionaryFinalResult finalResult={this.state.finalResult}
-                                           loggedInUser={this.props.loggedInUser}/> :
+                                           loggedInUser={this.props.loggedInUser}
+                                           handleDocumentDeletion={this.handleDocumentDeletion.bind(this)} /> :
                     null}
 
                 {(this.props.loggedInUser !== "guest") ?
-                    <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)} topic={this.state.dictionaryTopic}/> :
+                    <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
+                                      topic={this.state.dictionaryTopic}
+                                      inCreatorMode={this.state.inCreatorMode}/> :
                     null }
 
             </div>
