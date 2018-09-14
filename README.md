@@ -7,10 +7,30 @@ The hoglarblog repo is where hoglar.com is getting created. Im a guy that is lea
 
 Hoglar.com is made to be a helpfull learning platform. I want to make a simple page with some functionality. Right now i got 7 different apps i want to implement, some stand alone but in some way i think they all will talk together.
 
-1. Notes When writing in notes, i should have some sort of functionality so i can mark a word, press a button and then it 2 gives me a dictionary explanation.
+1. Notes:
+
+    Notes was the main plan for this site, its a place to make notes about topics your learning about. The notes should easy to write, so i cannot have manny forms.
+    But i need to somehow make it look good for the reader to. Some sort of editing is required.
+
+    What is the parts of the notes app?
+        1. On to we need some info about the document. We need a title. And we need the author.
+        We should also note the creation date.
+        2. We need a topic, like notes about Javascript or Math. Freenotes would likely be good, but that is against the purpose of this site i think. We need ways to navigate and find notes we want. If i was better at this i probably could do machine learning and make i categorize it for me.
+        3. The note itself should be of higher length, and could be about big topics. On creation of topics we need to put in topic somehow, then title and the write the note.
+
+        The creation should be on form, but maybe we can add forms for different stuff? if we want to put in references, examples or even pictures?
+        4. We need the ability to edit and delete our own topics.
+        5. Other need to be able to make comments on the notes.
+        6. We need a neat way to search for notes,
+        7. We need scoring system or something.
+        8. Will put good notes out somehow. 
+
+
+
+    When writing in notes, i should have some sort of functionality so i can mark a word, press a button and then it 2 gives me a dictionary explanation.
 
 2. Dictionary:
-    The dictionary:
+
     The dictionary needs two parts, i need the front end user interface, and i need the backend database with the saved data.
 
     What is the dictionary ment to be?
@@ -69,7 +89,7 @@ I want to explore meritocracy, how do we decide wich posts are good and which de
 5. Questions I want a way to easly ask questions kinda out in the air.
 One idea is to make the question api a part of notes (maybe also some of the others). When writing notes you can easly put down a question. when someone reads you notes they may get a good feeling of what your asking about since the question comes with a context. Then they can in the notes answer the question. This answer will then go to the users question section and the question api will light up.
 
-The question feature should have a way to offer help over voice. 
+The question feature should have a way to offer help over voice.
 
 6. Projects.
    I want to make a system where you can create small projects for yourself. Like 3 days of learning math, i then want to make a way to get points for this achievment. It will also be progressive. if you make a 3 day challange enough times, you can make it 5 days and so on. This will also help my site get returning players(users) :)
