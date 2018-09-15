@@ -5,6 +5,7 @@ import React from 'react';
 // components.
 
 // Lets start by creating some notes, we need a noteCreate.js component.
+import NoteCreate from './noteCreate.js';
 
 export default class Notes extends React.Component {
 
@@ -15,15 +16,13 @@ export default class Notes extends React.Component {
 
     render() {
         return (
+            // Prøver denne runden og putte alle subparts of notes in i skeleton.
             <div className="notesSkeleton">
                 // Header kan jeg ha title og author, date kanskje
-                <div className="notesHeader"></div>
-                // Selve teksten, notatene.
-                <div className="notesMain"></div>
-                // Mulighet for comments, edit, delete,
-                <div className="notesFooter"></div>
 
-                <div className="notesRightSection"></div>
+                <NoteCreate />
+                // Mulighet for comments, edit, delete,
+                
             </div>
         )
     }

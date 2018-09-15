@@ -10,27 +10,26 @@ export default class NoteCreate extends React.Component {
 
     render() {
         return (
-            <div className="noteCreate">
-                <form className="noteCreateForm">
 
-                    <div className="dictionaryCreateFormTop">
-                        <input ref="title" type="text" placeholder="Title:"></input>
+            <form className="noteCreate">
 
-                        <input ref="topic" type="text" placeholder="Topic:"></input>
-                    </div>
+                <div className="noteCreateTop">
+                    <input ref="title" type="text" placeholder="Title:"></input>
 
-                    <div className="noteCreateInputSection">
-                        <textarea id="noteCreateNote"
-                            ref="note"
-                            type="text"
-                            placeholder="Write here!"
-                            maxlength="2000"/>
-                    </div>
-                    <div>
-                        <button className="noteCreateInputButton" type="submit">Save</button>
-                    </div>
-                </form>
-            </div>
+                    <input ref="topic" type="text" placeholder="Topic:"></input>
+                </div>
+
+
+                <div className="noteCreateInputSection"
+                     contenteditable="true">
+                     Is it realy?
+
+                </div>
+
+                <div className="noteCreateFooter">
+                    <button className="noteCreateInputButton" type="submit">Save</button>
+                </div>
+            </form>
         )
     }
 }
