@@ -20,11 +20,11 @@ export default class NoteCreate extends React.Component {
                 </div>
 
 
-                <div className="noteCreateInputSection"
-                     contenteditable="true">
-                     Is it realy?
-
-                </div>
+                <textarea id="noteCreateInputSection"
+                    ref="note"
+                    type="text"
+                    placeholder="Write here!"
+                    maxlength="5000"/>
 
                 <div className="noteCreateFooter">
                     <button className="noteCreateInputButton" type="submit">Save</button>

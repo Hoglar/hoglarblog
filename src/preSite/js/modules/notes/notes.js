@@ -16,13 +16,10 @@ export default class Notes extends React.Component {
 
     render() {
         return (
-            // Prøver denne runden og putte alle subparts of notes in i skeleton.
             <div className="notesSkeleton">
-                // Header kan jeg ha title og author, date kanskje
+                <NoteLandingPage />
 
                 <NoteCreate />
-                // Mulighet for comments, edit, delete,
-                
             </div>
         )
     }

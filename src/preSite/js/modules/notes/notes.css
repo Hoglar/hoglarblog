@@ -19,7 +19,7 @@
 
     display: grid;
     grid-template-rows: 45px auto 45px;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 5% 90% 5%;
 }
 
 .noteCreateTop {
@@ -27,11 +27,22 @@
     grid-column: 2 / 3;
 }
 
-.noteCreateInputSection {
+#noteCreateInputSection {
     grid-row: 2 / 3;
     grid-column: 2 / 3;
 
-    background-color: white;
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: Courier, monospace;
+
+    background-color: #041A37;
+    border: solid 1px #000000;
+    outline: none;
+    resize: none;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+
     width: 100%;
     height: auto;
 }
