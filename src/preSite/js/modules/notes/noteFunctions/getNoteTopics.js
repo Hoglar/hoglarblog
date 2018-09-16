@@ -9,8 +9,7 @@ export default function getNoteTopics() {
 
     console.log("Sending fetch request");
 
+
     fetch(url)
-    .then(function(response) {
-        console.log(response);
-    });
+    
 }

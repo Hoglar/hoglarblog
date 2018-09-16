@@ -28,7 +28,6 @@ export default class Notes extends React.Component {
         }
 
         getNoteTopics()
-
     }
 
 
