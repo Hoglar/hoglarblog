@@ -12,7 +12,6 @@ import NoteSearchResult from './noteSearchResult.js';
 
 
 // We need to get topics we can work width
-import getNoteTopics from './noteFunctions/getNoteTopics.js';
 
 // Gets some props from app.js
     // gets logged in user.
@@ -24,10 +23,19 @@ export default class Notes extends React.Component {
         this.state = {
             showCreate: false,
             showRead: false,
-            showSearchResult: false
+            showSearchResult: false,
+
+            topics: ["waitingForServer"]
         }
 
-        getNoteTopics()
+
+        fetch("/api/notes/topics")
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                this.setState({topics: response.topics})
+            })
     }
 
 
@@ -36,7 +44,7 @@ export default class Notes extends React.Component {
     render() {
         return (
             <div className="notesSkeleton">
-                <NoteLandingPage />
+                <NoteLandingPage topics={this.state.topics}/>
 
                 {(this.state.showCreate) ? <NoteCreate /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}

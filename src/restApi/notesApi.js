@@ -16,7 +16,7 @@ module.exports = function(app, dbs) {
                 collectionNames.push(collection.name);
             })
             console.log(collectionNames);
-            res.json(collectionNames);
+            res.json({"topics": collectionNames});
         });
     });
 
