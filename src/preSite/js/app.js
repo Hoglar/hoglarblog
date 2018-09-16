@@ -79,7 +79,7 @@ class Application extends React.Component {
                 <div className="mainSection">
 
                     { (this.state.showNotes && (this.state.mode === "app")) ?
-                        <Notes /> :
+                        <Notes loggedInUser={this.state.loggedInUser} /> :
                         null}
 
                     { (this.state.showDictionary && (this.state.mode === "app")) ? <Dictionary
