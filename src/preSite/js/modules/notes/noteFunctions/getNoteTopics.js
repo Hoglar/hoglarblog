@@ -4,6 +4,13 @@
 // Smells like bad design.
 
 export default function getNoteTopics() {
-    console.log("Hello");
 
+    const url = "/api/notes/topics";
+
+    console.log("Sending fetch request");
+
+    fetch(url)
+    .then(function(response) {
+        console.log(response);
+    });
 }

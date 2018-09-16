@@ -9,6 +9,7 @@ var initializeDatabases = require("./dbs");
 const crypto = require('crypto');
 const path = require('path');
 //Requiring apiRouter
+const notesApi = require('./restApi/notesApi.js');
 const dictionaryApi = require('./restApi/dictionaryApi.js');
 const userAuthApi = require('./restApi/userAuth.js');
 
@@ -33,7 +34,7 @@ initializeDatabases(function(err, dbs) {
         process.exit(1);
     }
     // Updating app with the routes.
-
+    notesApi(app, dbs);
     dictionaryApi(app, dbs);
     userAuthApi(app, dbs);
 
