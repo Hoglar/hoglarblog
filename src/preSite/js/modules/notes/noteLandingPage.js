@@ -13,9 +13,16 @@ export default class NoteLandingPage extends React.Component {
     }
 
     showTopicChooser() {
-        (this.state.showTopicChooser) ?
-        this.setState({showTopicChooser: false}) :
-        this.setState({showTopicChooser: true});
+
+        if (this.state.showTopicChooser) {
+            this.setState({showTopicChooser: false})
+        }
+        else {
+            this.props.topicSelectorClicked()
+            .then((response) => {
+                this.setState({showTopicChooser: true})
+            })
+        }
     }
 
 

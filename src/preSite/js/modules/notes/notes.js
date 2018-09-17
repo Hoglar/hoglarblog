@@ -25,17 +25,24 @@ export default class Notes extends React.Component {
             showRead: false,
             showSearchResult: false,
 
-            topics: ["waitingForServer"]
+            topics: ["waitingServer"]
         }
 
 
-        fetch("/api/notes/topics")
-            .then((response) => {
-                return response.json();
-            })
-            .then((response) => {
-                this.setState({topics: response.topics})
-            })
+
+    }
+
+    topicSelectorClicked() {
+        return new Promise((resolve, reject) => {
+            fetch("/api/notes/topics")
+                .then((response) => {
+                    return response.json();
+                })
+                .then((response) => {
+                    this.setState({topics: response.topics})
+                    resolve("ok");
+                })
+        })
     }
 
 
@@ -44,7 +51,8 @@ export default class Notes extends React.Component {
     render() {
         return (
             <div className="notesSkeleton">
-                <NoteLandingPage topics={this.state.topics}/>
+                <NoteLandingPage topics={this.state.topics}
+                                 topicSelectorClicked={this.topicSelectorClicked.bind(this)}/>
 
                 {(this.state.showCreate) ? <NoteCreate /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}
