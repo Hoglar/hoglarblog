@@ -25,12 +25,16 @@ export default class Notes extends React.Component {
             showRead: false,
             showSearchResult: false,
 
+            activeTopic: "Select topic",
             topics: ["waitingServer"]
+
         }
 
 
 
     }
+
+
 
     topicSelectorClicked() {
         return new Promise((resolve, reject) => {
@@ -45,6 +49,9 @@ export default class Notes extends React.Component {
         })
     }
 
+    topicSelected(topic) {
+        this.setState({activeTopic: topic})
+    }
 
 
 
@@ -52,7 +59,10 @@ export default class Notes extends React.Component {
         return (
             <div className="notesSkeleton">
                 <NoteLandingPage topics={this.state.topics}
-                                 topicSelectorClicked={this.topicSelectorClicked.bind(this)}/>
+                                 activeTopic={this.state.activeTopic}
+                                 topicSelectorClicked={this.topicSelectorClicked.bind(this)}
+                                 topicSelected={this.topicSelected.bind(this)}
+                             />
 
                 {(this.state.showCreate) ? <NoteCreate /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}

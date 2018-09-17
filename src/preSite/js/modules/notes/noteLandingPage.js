@@ -3,6 +3,8 @@ import React from 'react';
 
 import Topic from './topic.js';
 
+import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
+
 export default class NoteLandingPage extends React.Component {
 
     constructor(props) {
@@ -36,18 +38,21 @@ export default class NoteLandingPage extends React.Component {
                     Notes
                 </div>
                 <div className="noteLandingPageCreate">
-                    <button>Create</button>
+                    <button className="noteLandingPageButton">Create</button>
                 </div>
                 <div className="noteLandingPageTopic">
-                    <button onClick={this.showTopicChooser.bind(this)}>
-                        Topic
+                    <button className="noteLandingPageButton" onClick={this.showTopicChooser.bind(this)}>
+                        {capitalizeFirstLetter(this.props.activeTopic)}
                     </button>
                 </div>
                 {(this.state.showTopicChooser) ?
                     (<div className="noteLandingPageTopicChooser">
                         {this.props.topics.map(function(topic, index) {
                             return (
-                                <Topic topic={topic} />
+                                <Topic topic={topic}
+                                       topicSelected={this.props.topicSelected}
+                                       showTopicChooser={this.showTopicChooser.bind(this)}
+                                />
                             )
                         }.bind(this))}
                     </div>) :
