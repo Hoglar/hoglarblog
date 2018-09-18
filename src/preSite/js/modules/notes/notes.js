@@ -24,14 +24,10 @@ export default class Notes extends React.Component {
             showCreate: false,
             showRead: false,
             showSearchResult: false,
-
             activeTopic: "Select topic",
             topics: ["waitingServer"]
 
         }
-
-
-
     }
 
 
@@ -50,9 +46,18 @@ export default class Notes extends React.Component {
     }
 
     topicSelected(topic) {
+
         this.setState({activeTopic: topic})
     }
 
+    showCreate() {
+        if (this.state.showCreate) {
+            this.setState({showCreate: false});
+        }
+        else {
+            this.setState({showCreate: true, showRead: false})
+        }
+    }
 
 
     render() {
@@ -62,6 +67,8 @@ export default class Notes extends React.Component {
                                  activeTopic={this.state.activeTopic}
                                  topicSelectorClicked={this.topicSelectorClicked.bind(this)}
                                  topicSelected={this.topicSelected.bind(this)}
+                                 loggedInUser={this.props.loggedInUser}
+                                 showCreate={this.showCreate.bind(this)}
                              />
 
                 {(this.state.showCreate) ? <NoteCreate /> : null}

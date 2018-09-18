@@ -11,19 +11,30 @@ export default class NoteLandingPage extends React.Component {
         super(props);
         this.state = {
             showTopicChooser: false,
+            showTopicError: false,
         }
     }
 
     showTopicChooser() {
 
         if (this.state.showTopicChooser) {
-            this.setState({showTopicChooser: false})
+            this.setState({showTopicChooser: false, showTopicError: false})
         }
         else {
             this.props.topicSelectorClicked()
             .then((response) => {
                 this.setState({showTopicChooser: true})
             })
+        }
+    }
+
+    createButtonClicked() {
+        if(this.props.activeTopic === "Select topic") {
+            this.setState({showTopicError: true});
+
+        }
+        else {
+            this.props.showCreate()
         }
     }
 
@@ -37,14 +48,29 @@ export default class NoteLandingPage extends React.Component {
                 <div className="noteLandingPageLogo">
                     Notes
                 </div>
-                <div className="noteLandingPageCreate">
-                    <button className="noteLandingPageButton">Create</button>
-                </div>
+
+                {(this.props.loggedInUser === "guest") ?
+                null :
+                (<div className="noteLandingPageCreate">
+                    <button className="noteLandingPageButton"
+                            onClick={this.createButtonClicked.bind(this)}>
+                        Create
+                    </button>
+                </div>)}
+
+                {(this.state.showTopicError) ?
+                    (<div className="noteLandingPageTopicError">
+                        You must choose a topic!
+                    </div>) :
+                    null}
+
                 <div className="noteLandingPageTopic">
-                    <button className="noteLandingPageButton" onClick={this.showTopicChooser.bind(this)}>
+                    <button className="noteLandingPageButton"
+                            onClick={this.showTopicChooser.bind(this)}>
                         {capitalizeFirstLetter(this.props.activeTopic)}
                     </button>
                 </div>
+
                 {(this.state.showTopicChooser) ?
                     (<div className="noteLandingPageTopicChooser">
                         {this.props.topics.map(function(topic, index) {

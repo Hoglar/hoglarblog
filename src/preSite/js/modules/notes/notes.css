@@ -79,6 +79,15 @@
     grid-column: 3 / 4;
 }
 
+.noteLandingPageTopicError {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+
+    color: #0F78FF;
+}
+
+
+
 
 .noteLandingPageTopicChooser {
     grid-row: 3 / 4;
