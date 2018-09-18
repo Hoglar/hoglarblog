@@ -12,6 +12,8 @@ export default class NoteLandingPage extends React.Component {
         this.state = {
             showTopicChooser: false,
             showTopicError: false,
+
+            searchFormValue: ""
         }
     }
 
@@ -36,6 +38,11 @@ export default class NoteLandingPage extends React.Component {
         else {
             this.props.showCreate()
         }
+    }
+
+    handleSearchFieldChange(event) {
+        this.setState({searchFormValue: event.target.value});
+        // this.props.topicSearch(event.target.value);
     }
 
 
@@ -84,9 +91,14 @@ export default class NoteLandingPage extends React.Component {
                     </div>) :
                 null}
 
-                <div className="noteLandingPageSearch">
-                    Search
-                </div>
+                <form className="noteLandingPageSearch">
+                    <input  className="noteLandingPageSearchField"
+                            type="text"
+                            placeholder="Search for notes:"
+                            autocomplete="off"
+                            onChange={this.handleSearchFieldChange.bind(this)}>
+                    </input>
+                </form>
             </div>
         )
     }

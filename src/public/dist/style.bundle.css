@@ -755,7 +755,7 @@ body {
 
 .noteLandingPageTopicError {
     grid-row: 1 / 2;
-    grid-column: 3 / 4;
+    grid-column: 3 / 5;
 
     color: #0F78FF;
 }
@@ -792,8 +792,22 @@ body {
 .noteLandingPageSearch {
     grid-row: 2 / 3;
     grid-column: 4 / 5;
+
+    display: flex;
+    align-items: center;
+    padding-bottom: 2px;
+    padding-right: 2px;
 }
 
+.noteLandingPageSearchField {
+    background-color: #041A37;
+    border: solid 0px black;
+    box-shadow: inset 0px -1px 1px 0px rgba(1,6,12,1);
+    padding-left: 10px;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+}
 
 
 
