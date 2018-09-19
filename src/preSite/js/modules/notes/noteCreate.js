@@ -11,6 +11,11 @@ import localOrSessionToken from '../../functionality/localOrSession.js';
 
 export default class NoteCreate extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+    }
+
 
 
     saveNote(event) {
@@ -25,7 +30,6 @@ export default class NoteCreate extends React.Component {
                 "token": token
             }
         }
-        console.log(createData);
 
         if(createData.title === "") {
             alert("You must add a title!");
@@ -36,9 +40,25 @@ export default class NoteCreate extends React.Component {
 
         else {
             const url = "/api/notes/create";
-        }
 
-        fetch()
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(createData),
+                headers: new Headers({
+                    'Content-type': 'application/json'
+                })
+            })
+            .then(
+                function(response) {
+                    return response.json();
+                }
+            )
+            .then(
+                function(response) {
+                    console.log(response);
+                }
+            )
+        }
     }
 
     render() {
