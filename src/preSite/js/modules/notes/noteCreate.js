@@ -1,6 +1,9 @@
 'use strict';
 import React from 'react';
 
+
+
+import localOrSessionToken from '../../functionality/localOrSession.js';
 // What does noteCreate do?
     // It needs to take user input into a form, take that input and create a
     // note document on database.
@@ -8,15 +11,43 @@ import React from 'react';
 
 export default class NoteCreate extends React.Component {
 
+
+
+    saveNote(event) {
+        event.preventDefault();
+
+        var token = localOrSessionToken();
+        let createData = {
+            topic: this.props.activeTopic,
+            title: this.refs.title.value,
+            note: this.refs.note.value,
+            auth: {
+                "token": token
+            }
+        }
+        console.log(createData);
+
+        if(createData.title === "") {
+            alert("You must add a title!");
+        }
+        else if (createData.note === "") {
+            alert("Your note is empty!");
+        }
+
+        else {
+            const url = "/api/notes/create";
+        }
+
+        fetch()
+    }
+
     render() {
         return (
 
             <form className="noteCreate">
 
                 <div className="noteCreateTop">
-                    <input ref="title" type="text" placeholder="Title:"></input>
-
-                    <input ref="topic" type="text" placeholder="Topic:"></input>
+                    <input className="noteCreateTitleInput" ref="title" type="text" placeholder="Title:"></input>
                 </div>
 
 
@@ -27,7 +58,11 @@ export default class NoteCreate extends React.Component {
                     maxlength="5000"/>
 
                 <div className="noteCreateFooter">
-                    <button className="noteCreateInputButton" type="submit">Save</button>
+                    <button className="noteCreateInputButton noteLandingPageButton"
+                            type="submit"
+                            onClick={this.saveNote.bind(this)}>
+                        Save
+                    </button>
                 </div>
             </form>
         )

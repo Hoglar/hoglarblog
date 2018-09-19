@@ -71,7 +71,8 @@ export default class Notes extends React.Component {
                                  showCreate={this.showCreate.bind(this)}
                              />
 
-                {(this.state.showCreate) ? <NoteCreate /> : null}
+                {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
+                /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}
                 {(this.state.showSearchResult) ? <NoteSearchResult /> : null}
 
