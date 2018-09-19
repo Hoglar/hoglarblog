@@ -94,7 +94,7 @@ export default class NoteLandingPage extends React.Component {
                         }.bind(this))}
                         <div className="noteLandingPageSingleTopic"
                              onClick={this.noteNewTopic.bind(this)}>
-                            {New}
+                            Add topic
                         </div>
                     </div>) :
                 null}
