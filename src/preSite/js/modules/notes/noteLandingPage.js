@@ -98,6 +98,7 @@ export default class NoteLandingPage extends React.Component {
                         </div>
                     </div>) :
                 null}
+                
 
                 <form className="noteLandingPageSearch">
                     <input  className="noteLandingPageSearchField"
