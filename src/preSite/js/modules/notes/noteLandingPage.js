@@ -45,6 +45,10 @@ export default class NoteLandingPage extends React.Component {
         // this.props.topicSearch(event.target.value);
     }
 
+    noteNewTopic() {
+        console.log("Hei");
+    }
+
 
 
 
@@ -88,13 +92,17 @@ export default class NoteLandingPage extends React.Component {
                                 />
                             )
                         }.bind(this))}
+                        <div className="noteLandingPageSingleTopic"
+                             onClick={this.noteNewTopic.bind(this)}>
+                            {New}
+                        </div>
                     </div>) :
                 null}
 
                 <form className="noteLandingPageSearch">
                     <input  className="noteLandingPageSearchField"
                             type="text"
-                            placeholder="Search for notes:"
+                            placeholder="Search:"
                             autocomplete="off"
                             onChange={this.handleSearchFieldChange.bind(this)}>
                     </input>
