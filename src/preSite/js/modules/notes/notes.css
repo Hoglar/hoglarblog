@@ -135,8 +135,47 @@
     color: white;
     font-size: 20px;
     height: 100%;
+    width: 100%;
 }
 
+.noteLandingPageCreateTopic {
+    grid-row: 2 / 3;
+    grid-column: 3 / 5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 2px;
+    padding-bottom: 2px;
+}
+
+#noteLandingPageCreateTopicInput {
+    background-color: #041A37;
+    border: solid 1px black;
+    box-shadow: inset 0px -1px 1px 0px rgba(1,6,12,1);
+    padding-left: 10px;
+    color: white;
+    font-size: 20px;
+    height: 100%;
+    width: 80%;
+
+}
+
+.noteLandingPageCreateTopic button {
+    background-color: #0F78FF;
+    box-shadow: inset 0px -1px 1px 0px rgba(1,6,12,1);
+    color: black;
+    margin: auto;
+    width: 20%;
+    height: 100%;
+    border: solid 1px black;
+    font-size: 20px;
+}
+
+.noteLandingPageCreateTopic button:hover {
+    cursor: pointer;
+    background-color: #FF9E00;
+}
 
 
 

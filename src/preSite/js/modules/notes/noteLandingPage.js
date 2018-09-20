@@ -12,15 +12,26 @@ export default class NoteLandingPage extends React.Component {
         this.state = {
             showTopicChooser: false,
             showTopicError: false,
-
+            showTopic: true,
+            showSearchField: true,
+            showCreateTopic: false,
             searchFormValue: ""
         }
     }
 
     showTopicChooser() {
 
+        if(this.state.showCreateTopic) {
+            this.setState({
+                showSearchField: true,
+                showCreateTopic: false,
+                showTopic: true,
+            })
+        }
+
         if (this.state.showTopicChooser) {
-            this.setState({showTopicChooser: false, showTopicError: false})
+            this.setState({
+                showTopicChooser: false, showTopicError: false})
         }
         else {
             this.props.topicSelectorClicked()
@@ -47,7 +58,14 @@ export default class NoteLandingPage extends React.Component {
 
     noteNewTopic() {
         console.log("Hei");
+        this.setState({
+            showSearchField: false,
+            showCreateTopic: true,
+            showTopic: false,
+        })
     }
+
+
 
 
 
@@ -69,18 +87,21 @@ export default class NoteLandingPage extends React.Component {
                     </button>
                 </div>)}
 
-                {(this.state.showTopicError) ?
-                    (<div className="noteLandingPageTopicError">
+                {(this.state.showTopicError) ? (
+                    <div className="noteLandingPageTopicError">
                         You must choose a topic!
-                    </div>) :
-                    null}
+                    </div>
+                ) : null}
 
-                <div className="noteLandingPageTopic">
-                    <button className="noteLandingPageButton"
-                            onClick={this.showTopicChooser.bind(this)}>
-                        {capitalizeFirstLetter(this.props.activeTopic)}
-                    </button>
-                </div>
+                {(this.state.showTopic) ? (
+                    <div className="noteLandingPageTopic">
+                        <button className="noteLandingPageButton"
+                                onClick={this.showTopicChooser.bind(this)}>
+                            {capitalizeFirstLetter(this.props.activeTopic)}
+                        </button>
+                    </div>
+                ) : null}
+
 
                 {(this.state.showTopicChooser) ?
                     (<div className="noteLandingPageTopicChooser">
@@ -98,16 +119,32 @@ export default class NoteLandingPage extends React.Component {
                         </div>
                     </div>) :
                 null}
-                
 
-                <form className="noteLandingPageSearch">
-                    <input  className="noteLandingPageSearchField"
-                            type="text"
-                            placeholder="Search:"
-                            autocomplete="off"
-                            onChange={this.handleSearchFieldChange.bind(this)}>
-                    </input>
-                </form>
+                {(this.state.showCreateTopic) ? (
+                    <form className="noteLandingPageCreateTopic">
+                        <input id="noteLandingPageCreateTopicInput"
+                               type="text"
+                               placeholder="Topic name:"
+                               autocomplete="off"
+                               ref="topicCreate">
+                        </input>
+                        <button type="submit">
+                            Save
+                        </button>
+                    </form>
+                ) : null}
+
+                {(this.state.showSearchField) ? (
+                    <form className="noteLandingPageSearch">
+                        <input  className="noteLandingPageSearchField"
+                                type="text"
+                                placeholder="Search:"
+                                autocomplete="off"
+                                onChange={this.handleSearchFieldChange.bind(this)}>
+                        </input>
+                    </form>
+                ) : null}
+
             </div>
         )
     }
