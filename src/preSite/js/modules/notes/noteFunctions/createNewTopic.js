@@ -28,7 +28,13 @@ export default function createNewTopic(topic) {
             return response.json();
         })
         .then((response) => {
-            resolve(topic);
+            console.log(response)
+            if(response.successMessage) {
+                resolve(topic);
+            }
+            else {
+                reject("Something went wrong creating topic");
+            }
         })
     })
 }

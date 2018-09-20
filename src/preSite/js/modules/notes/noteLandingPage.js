@@ -75,6 +75,11 @@ export default class NoteLandingPage extends React.Component {
         .then(
             (response) => {
                 console.log(response);
+                this.props.topicSelected(response);
+                this.showTopicChooser().bind(this);
+            },
+            (error) => {
+                console.log(error);
             }
         )
     }
@@ -127,10 +132,15 @@ export default class NoteLandingPage extends React.Component {
                                 />
                             )
                         }.bind(this))}
-                        <div className="noteLandingPageSingleTopic"
-                             onClick={this.noteNewTopic.bind(this)}>
-                            Add topic
-                        </div>
+
+                        {(this.props.loggedInUser === "guest") ?
+                        null : (
+                            <div className="noteLandingPageSingleTopic"
+                                 onClick={this.noteNewTopic.bind(this)}>
+                                Add topic
+                            </div>
+                        )}
+
                     </div>) :
                 null}
 
