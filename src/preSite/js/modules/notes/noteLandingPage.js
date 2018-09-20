@@ -65,6 +65,11 @@ export default class NoteLandingPage extends React.Component {
         })
     }
 
+    createNewTopic(event) {
+        event.preventDefault();
+
+    }
+
 
 
 
