@@ -4,6 +4,7 @@ import React from 'react';
 import Topic from './topic.js';
 
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
+import createNewTopic from './noteFunctions/createNewTopic.js';
 
 export default class NoteLandingPage extends React.Component {
 
@@ -65,9 +66,17 @@ export default class NoteLandingPage extends React.Component {
         })
     }
 
-    createNewTopic(event) {
+    createTopicSaveClicked(event) {
         event.preventDefault();
+        let topic = this.refs.topicCreate.value;
 
+        console.log(topic);
+        createNewTopic(topic)
+        .then(
+            (response) => {
+                console.log(response);
+            }
+        )
     }
 
 
@@ -133,7 +142,8 @@ export default class NoteLandingPage extends React.Component {
                                autocomplete="off"
                                ref="topicCreate">
                         </input>
-                        <button type="submit">
+                        <button type="submit"
+                                onClick={this.createTopicSaveClicked.bind(this)}>
                             Save
                         </button>
                     </form>
