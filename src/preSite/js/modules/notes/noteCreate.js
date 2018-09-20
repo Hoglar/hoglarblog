@@ -9,14 +9,14 @@ import localOrSessionToken from '../../functionality/localOrSession.js';
     // note document on database.
     // First lets make form.
 
+    // Når filen saves går jeg rett til read!
+
 export default class NoteCreate extends React.Component {
 
     constructor(props) {
         super(props);
 
     }
-
-
 
     saveNote(event) {
         event.preventDefault();

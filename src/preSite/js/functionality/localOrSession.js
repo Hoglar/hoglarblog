@@ -7,14 +7,12 @@ const localOrSessionToken = function() {
 
     if (window.localStorage.getItem('token')) {
         if (window.localStorage.getItem('token') !== "") {
-            console.log("Found localStorage");
             return window.localStorage.getItem('token');
         }
 
     }
     else if(window.sessionStorage.getItem('token')) {
         if (window.sessionStorage.getItem('token') !== "") {
-            console.log("Found sessionstorage");
             return window.sessionStorage.getItem('token');
         }
     }

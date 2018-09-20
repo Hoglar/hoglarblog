@@ -20,6 +20,7 @@ export default class NoteLandingPage extends React.Component {
         }
     }
 
+    // Vi trenger å sortere listen over topics.
     showTopicChooser() {
 
         if(this.state.showCreateTopic) {
@@ -59,10 +60,14 @@ export default class NoteLandingPage extends React.Component {
 
     noteNewTopic() {
         console.log("Hei");
+
+
         this.setState({
             showSearchField: false,
             showCreateTopic: true,
             showTopic: false,
+        }, () => {
+            document.getElementById("noteLandingPageCreateTopicInput").select();
         })
     }
 
@@ -70,23 +75,24 @@ export default class NoteLandingPage extends React.Component {
         event.preventDefault();
         let topic = this.refs.topicCreate.value;
 
-        console.log(topic);
-        createNewTopic(topic)
-        .then(
-            (response) => {
-                console.log(response);
-                this.props.topicSelected(response);
-                this.showTopicChooser().bind(this);
-            },
-            (error) => {
-                console.log(error);
-            }
-        )
+
+        if (this.props.topics.includes(topic.toLowerCase())) {
+            this.props.topicSelected(topic);
+            this.showTopicChooser();
+        }
+        else {
+            createNewTopic(topic)
+            .then(
+                (response) => {
+                    this.props.topicSelected(response);
+                    this.showTopicChooser().bind(this);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            )
+        }
     }
-
-
-
-
 
 
     render() {
