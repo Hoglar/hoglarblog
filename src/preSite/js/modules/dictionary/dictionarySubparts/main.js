@@ -5,8 +5,6 @@ import React from 'react';
 // hold the word Dictionary.
 // Dictionary main is the section under the search function.
 
-
-
 // DictionaryMain takes one propt from Dictionary,
 // it takes the showMain attribute wich is based on the state.showMain
 // if this is empty we will only show dictionaryMainEmpty
