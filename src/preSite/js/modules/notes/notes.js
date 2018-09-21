@@ -39,7 +39,8 @@ export default class Notes extends React.Component {
                     return response.json();
                 })
                 .then((response) => {
-                    this.setState({topics: response.topics})
+
+                    this.setState({topics: response.topics.sort()})
                     resolve("ok");
                 })
         })
