@@ -26,7 +26,6 @@ export default class Notes extends React.Component {
             showSearchResult: false,
             activeTopic: "Select topic",
             topics: ["waitingServer"]
-
         }
     }
 
@@ -60,6 +59,10 @@ export default class Notes extends React.Component {
         }
     }
 
+    showSearchResult() {
+        // Show create has ONE mission, to turn showSearchResults to true.
+        this.setState({showSearchResult: true});
+    }
 
     render() {
         return (
@@ -70,13 +73,13 @@ export default class Notes extends React.Component {
                                  topicSelected={this.topicSelected.bind(this)}
                                  loggedInUser={this.props.loggedInUser}
                                  showCreate={this.showCreate.bind(this)}
+                                 showSearchResult={this.showSearchResult.bind(this)}
                              />
 
                 {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
                 /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}
                 {(this.state.showSearchResult) ? <NoteSearchResult /> : null}
-
 
             </div>
         )

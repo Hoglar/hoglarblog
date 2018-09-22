@@ -236,13 +236,22 @@
     grid-column: 2 / 3;
 }
 
+/********************* NoteSearchResult *************************/
+
+.noteSearchResult {
+    grid-row: 3 / 6;
+    grid-column: 3 / 5;
+
+    display: grid;
+    grid-template-rows: 45px auto;
+    grid-template-columns: repeat(4, 1fr);
+
+    border-left: solid 1px black;
+}
+
+.noteSearchResultTop {
+    grid-row: 1 / 2;
+    grid-column: 1 / 5;
 
 
-
-
-
-
-
-
-
-/********************* NoteCreate *************************/
+}

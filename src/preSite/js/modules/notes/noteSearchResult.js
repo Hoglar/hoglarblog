@@ -1,6 +1,9 @@
 'use strict';
 import React from 'react';
 
+// Gets props
+    // showSearchResult
+
 export default class NoteSearchResult extends React.Component {
 
     constructor(props) {
@@ -10,7 +13,9 @@ export default class NoteSearchResult extends React.Component {
 
     render() {
         return (
-            <div></div>
+            <div className="noteSearchResult">
+                <div className="noteSearchResultTop"></div>
+            </div>
         )
     }
 }
