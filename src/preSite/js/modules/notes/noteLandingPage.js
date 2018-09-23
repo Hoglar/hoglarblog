@@ -5,6 +5,7 @@ import Topic from './topic.js';
 
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 import createNewTopic from './noteFunctions/createNewTopic.js';
+import fetchNotes from './noteFunctions/fetchNotes.js';
 
 export default class NoteLandingPage extends React.Component {
 
@@ -54,8 +55,21 @@ export default class NoteLandingPage extends React.Component {
     }
 
     handleSearchFieldChange(event) {
-        this.setState({searchFormValue: event.target.value});
-        // this.props.topicSearch(event.target.value);
+        if(this.props.activeTopic === "Select topic") {
+            this.setState({showTopicError: true});
+
+        }
+        else {
+            this.setState({searchFormValue: event.target.value});
+            // this.props.topicSearch(event.target.value);
+            // We need to make a search for notes base on topic and search field value.
+            console.log(event.target.value);
+            // Har jeg topic her.
+            console.log(this.props.activeTopic);
+
+            // Do search then do function that shows searchForm
+            fetchNotes(event.target.value, this.props.activeTopic)
+        }
     }
 
     searchFieldIsClicked() {
