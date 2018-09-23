@@ -1,6 +1,6 @@
 'use strict';
 const serverUserAuth = require('../serverUtilities/userAuth.js');
-
+const compareScore = require('../serverUtilities/compareScore.js');
 
 
 module.exports = function(app, dbs) {
@@ -105,6 +105,30 @@ module.exports = function(app, dbs) {
                 res.json({"failMessage": "Something wrong with userAuth"});
             }
         })
+    })
+
+    app.get("/api/notes/notesSearch", function(req, res) {
+        let searchData = req.query.searchData.toLowerCase();
+        let searchTopic = req.query.topic.toLowerCase();
+        let regSearch = new RegExp(searchData);
+        let query = { topic: searchTopic, title: regSearch }
+
+        dbs.notes.collection(searchTopic).find(query).toArray(function(err, result) {
+            if(err) throw err;
+
+            if (result.length > 0) {
+                // We got an array with objects.
+                // We sort it based on score and return the 5 first.
+                let returnArray = result.sort(compareScore);
+                returnArray = returnArray.splice(0,5);
+
+                // We need to iterate over the array to check the documentScore of all items in it.
+                res.json(returnArray);
+            }
+            else {
+                res.json({searchMessage: "Nothing found"});
+            }
+        });
     })
 
     return app;
