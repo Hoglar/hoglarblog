@@ -69,6 +69,14 @@ export default class NoteLandingPage extends React.Component {
 
             // Do search then do function that shows searchForm
             fetchNotes(event.target.value, this.props.activeTopic)
+            .then(
+                (searchResult) => {
+                    console.log(searchResult);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            )
         }
     }
 

@@ -14,7 +14,12 @@ export default function fetchNotes(searchData, topic) {
             return response.json();
         })
         .then((response) => {
-            console.log(response);
+            if(response.searchMessage) {
+                reject("Nothing found");
+            }
+            else {
+                resolve(response);
+            }
         })
     })
 }
