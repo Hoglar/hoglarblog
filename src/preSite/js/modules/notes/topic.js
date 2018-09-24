@@ -19,7 +19,8 @@ export default class Topic extends React.Component {
         return (
 
             <div className="noteLandingPageSingleTopic"
-                 onClick={this.selectTopic.bind(this)}>
+                 onClick={this.selectTopic.bind(this)}
+                 key={this.props.key}>
                 {capitalizeFirstLetter(this.props.topic)}
             </div>
 

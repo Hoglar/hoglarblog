@@ -10,7 +10,7 @@ import './modules/dictionary/dictionary.css';
 import './modules/footer/footer.css';
 import './modules/header/header.css';
 import './modules/register/register.css';
-imports './modules/notes/notes.css';
+import './modules/notes/notes.css';
 
 // Importing modules.
 import Sidebar from './modules/sidebar/sidebar.js';

@@ -59,7 +59,7 @@ export default class Dictionary extends React.Component {
     showCreateForm() {
         // Denne funksjonen er litt treg, burde fikse den da det ofte blir nødvendig med 2 klikk.
         (this.state.inCreatorMode) ? this.setState({inCreatorMode: false}) : this.setState({inCreatorMode: true});
-        
+
         (this.state.displayMain !== "createForm") ?
         this.setState({displayMain: "createForm"}) :
         this.setState({displayMain: "main"})
@@ -91,9 +91,12 @@ export default class Dictionary extends React.Component {
         return (
             <div className="dictionaryWrapper">
                 <div className="dictionaryTopics">
-                    {dictionaryData.map((data) => {
+                    {dictionaryData.map((data, index) => {
                         return (
-                            <DictionaryTopic dictionaryTopicSelected={(this.state.dictionaryTopic === data.topic) ? true : false} topicData={data} topicSelector={this.showSearch.bind(this)}/>
+                            <DictionaryTopic dictionaryTopicSelected={(this.state.dictionaryTopic === data.topic) ? true : false}
+                                             topicData={data}
+                                             topicSelector={this.showSearch.bind(this)}
+                                             key={index}/>
                         )
                     })}
                 </div>

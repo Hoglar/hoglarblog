@@ -161,6 +161,7 @@ export default class NoteLandingPage extends React.Component {
                                 <Topic topic={topic}
                                        topicSelected={this.props.topicSelected}
                                        showTopicChooser={this.showTopicChooser.bind(this)}
+                                       key={index}
                                 />
                             )
                         }.bind(this))}

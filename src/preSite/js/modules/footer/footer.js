@@ -10,9 +10,10 @@ export default class Footer extends React.Component {
 
                 <div className="footerAttribution">
                     <h2 className="attributionHeader">Thank you for the images!</h2>
-                    {this.props.attributionInfo.map(function(api) {
+                    {this.props.attributionInfo.map(function(api, index) {
                         return (
-                            <p className="attribution">
+                            <p className="attribution"
+                               key={index}>
                                 {api.name} icon made by <a href={api.link}>{api.creator} </a> from <a href="www.flaticon.com">www.flaticon.com | </a>
                             </p>
                         )
