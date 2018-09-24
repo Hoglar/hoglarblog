@@ -9,7 +9,7 @@ export default class NoteSearchResult extends React.Component {
     constructor(props) {
         super(props);
     }
-
+// jobb
 
     render() {
         return (
