@@ -35,14 +35,14 @@ export default class DictionarySearch extends React.Component {
     render() {
         return (
             <form className="dictionarySearch">
-                <label for="dictionarySearchField" className="dictionarySearchSelectedTopic">
+                <label htmlFor="dictionarySearchField" className="dictionarySearchSelectedTopic">
                     {this.props.selectedTopic}
                 </label>
                 <input
                     id="dictionarySearchField"
                     className="dictionarySearchField"
                     type="text" name="name"
-                    autocomplete="off"
+                    autoComplete="off"
                     value={this.state.value}
                     onChange={this.handleChange}
                     />

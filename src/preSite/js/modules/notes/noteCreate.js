@@ -75,7 +75,7 @@ export default class NoteCreate extends React.Component {
                     ref="note"
                     type="text"
                     placeholder="Write here!"
-                    maxlength="5000"/>
+                    maxLength="5000"/>
 
                 <div className="noteCreateFooter">
                     <button className="noteCreateInputButton noteLandingPageButton"

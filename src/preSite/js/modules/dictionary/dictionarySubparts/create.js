@@ -74,7 +74,7 @@ export default class DictionaryCreate extends React.Component {
                 <form className="dictionaryCreateForm">
 
                     <div className="dictionaryCreateFormTop">
-                        <input ref="topic" type="text" value={this.props.topic} hidden></input>
+                        <input ref="topic" type="text" value={this.props.topic} readOnly hidden></input>
 
                         <input className="dictionaryCreateTitle" id="dictionaryCreateTitle" ref="title" type="text" placeholder="Title:"></input>
                     </div>
@@ -84,19 +84,19 @@ export default class DictionaryCreate extends React.Component {
                             ref="explanation"
                             type="text"
                             placeholder="Explanation:"
-                            maxlength="500"/>
+                            maxLength="500"/>
 
                         <textarea id="dictionaryCreateExample"
                             ref="example"
                             type="text"
                             placeholder="Example:"
-                            maxlength="200"/>
+                            maxLength="200"/>
 
                         <textarea id="dictionaryCreateReference"
                             ref="reference"
                             type="text"
                             placeholder="Reference:"
-                            maxlength="150"/>
+                            maxLength="150"/>
                         <button className="dictionaryCreateInputButton" type="submit" onClick={this.createDictionaryData.bind(this)}>Save</button>
                     </div>
 
