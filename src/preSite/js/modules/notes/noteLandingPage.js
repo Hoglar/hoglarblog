@@ -161,7 +161,7 @@ export default class NoteLandingPage extends React.Component {
                                 <Topic topic={topic}
                                        topicSelected={this.props.topicSelected}
                                        showTopicChooser={this.showTopicChooser.bind(this)}
-                                       key={index}
+                                       keys={index}
                                 />
                             )
                         }.bind(this))}
@@ -197,7 +197,7 @@ export default class NoteLandingPage extends React.Component {
                         <input  className="noteLandingPageSearchField"
                                 type="text"
                                 placeholder="Search:"
-                                autocomplete="off"
+                                autoComplete="off"
                                 onChange={this.handleSearchFieldChange.bind(this)}
                                 onClick={this.searchFieldIsClicked.bind(this)}>
                         </input>

@@ -12,16 +12,18 @@ import React from "react";
 
 export default class DictionaryTopic extends React.Component {
 
+
     topicSelector() { // Selects the active topic. This will also trigger the search section to show.
         this.props.topicSelector(this.props.topicData.topic);
     }
 
+
+
     render() {
             return (
-                <button
-                    className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"}
-                    onClick={this.topicSelector.bind(this)}
-                    key={this.props.key}>
+                <button key={this.props.hardToPropkey}
+                        className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"}
+                        onClick={this.topicSelector.bind(this)}>
                         {this.props.topicData.topic}
                 </button>
         )

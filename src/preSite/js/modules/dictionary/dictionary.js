@@ -96,7 +96,7 @@ export default class Dictionary extends React.Component {
                             <DictionaryTopic dictionaryTopicSelected={(this.state.dictionaryTopic === data.topic) ? true : false}
                                              topicData={data}
                                              topicSelector={this.showSearch.bind(this)}
-                                             key={index}/>
+                                             hardToPropkey={index}/>
                         )
                     })}
                 </div>
