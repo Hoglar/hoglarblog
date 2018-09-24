@@ -21,8 +21,7 @@ export default class DictionaryTopic extends React.Component {
 
     render() {
             return (
-                <button key={this.props.hardToPropkey}
-                        className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"}
+                <button className={this.props.dictionaryTopicSelected ? "dictionaryTopicSelected" : "dictionaryTopic"}
                         onClick={this.topicSelector.bind(this)}>
                         {this.props.topicData.topic}
                 </button>
