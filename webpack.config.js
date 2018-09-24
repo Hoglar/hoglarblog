@@ -10,6 +10,7 @@ const paths = {
 }
 
 module.exports = {
+    watch: true,
     entry: path.join(paths.JS, 'app.js'),
     output: {
         path: paths.DIST,
