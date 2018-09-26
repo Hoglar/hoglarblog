@@ -25,6 +25,7 @@ export default class Notes extends React.Component {
             showRead: false,
             showSearchResult: false,
             noteSearchResult: [],
+            noteSearchSingleResult: null,
             activeTopic: "Select topic",
             topics: ["waitingServer"]
         }
@@ -65,8 +66,13 @@ export default class Notes extends React.Component {
         this.setState({noteSearchResult: results, showSearchResult: true});
     }
 
-    noteSearchSingleResultClicked() {
-        this.setState({showRead: true, showSearchResult: false});
+    noteSearchSingleResultClicked(note) {
+        this.setState({
+            noteSearchSingleResult: note,
+            showRead: true,
+            showSearchResult: false,
+            showCreate: false,
+        });
     }
 
     hideSearchResult() {
@@ -88,7 +94,9 @@ export default class Notes extends React.Component {
 
                 {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
                 /> : null}
-                {(this.state.showRead) ? <NoteRead /> : null}
+                {(this.state.showRead) ?
+                    <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}/>
+                : null}
                 {(this.state.showSearchResult) ?
                     <NoteSearchResult noteSearchResult={this.state.noteSearchResult}
                                       noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>

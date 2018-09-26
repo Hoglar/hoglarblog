@@ -670,7 +670,6 @@ body {
     grid-template-columns: repeat(6, 1fr);
 
     color: #8e8e8e;
-    font-family: Courier, monospace;
 }
 
 
@@ -905,7 +904,6 @@ body {
     grid-template-rows: 45px auto;
     grid-template-columns: repeat(4, 1fr);
 
-    border-left: solid 1px black;
 }
 
 .noteSearchResultTop {
@@ -947,4 +945,64 @@ body {
 .noteSearchSingleResult:hover {
     cursor: pointer;
     border: solid 1px #FF9E00;
+}
+
+/********************* NoteRead *************************/
+
+.noteRead {
+    grid-row: 3 / 7;
+    grid-column: 1 / 5;
+
+    display: grid;
+    grid-template-rows: 45px auto 45px;
+    grid-template-columns: 5% 90% 5%;
+    border-right: solid 1px black;
+    padding-right: 2px;
+}
+
+.noteReadTop {
+    grid-row: 1 / 2;
+    grid-column: 2 / 4;
+    margin-top: 3px;
+
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    padding-left: 20px;
+
+    display: flex;
+
+
+}
+
+.noteReadTop h1 {
+    font-size: 20px;
+    font-weight: lighter;
+    align-self: center;
+}
+
+.noteReadMain {
+    grid-row: 2 / 3;
+    grid-column: 2 / 4;
+
+    padding: 20px;
+    font-size: 18px;
+
+    background-color: #041A37;
+    border: solid 1px #000000;
+    outline: none;
+    resize: none;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+
+    width: 100%;
+    height: auto;
+    white-space: pre-wrap;
+}
+.noteReadMain p {
+    margin: 0;
+}
+
+.noteReadFooter {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
 }
