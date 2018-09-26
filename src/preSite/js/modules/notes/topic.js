@@ -11,7 +11,7 @@ export default class Topic extends React.Component {
 
     selectTopic() {
         this.props.topicSelected(this.props.topic);
-        this.props.showTopicChooser();
+        this.props.hideTopicChooser();
     }
 
 

@@ -22,28 +22,19 @@ export default class NoteLandingPage extends React.Component {
         }
     }
 
-    // Vi trenger å sortere listen over topics.
     showTopicChooser() {
 
-        if(this.state.showCreateTopic) {
-            this.setState({
-                showSearchField: true,
-                showCreateTopic: false,
-                showTopic: true,
-            })
-        }
+        this.props.topicSelectorClicked()
+        .then((response) => {
+            this.setState({showTopicChooser: true, showTopicError: false})
+        })
 
-        if (this.state.showTopicChooser) {
-            this.setState({
-                showTopicChooser: false, showTopicError: false})
-        }
-        else {
-            this.props.topicSelectorClicked()
-            .then((response) => {
-                this.setState({showTopicChooser: true})
-            })
-        }
     }
+
+    hideTopicChooser() {
+        this.setState({showTopicChooser: false});
+    }
+
 
     createButtonClicked() {
         if(this.props.activeTopic === "Select topic") {
@@ -101,6 +92,7 @@ export default class NoteLandingPage extends React.Component {
             showSearchField: false,
             showCreateTopic: true,
             showTopic: false,
+            showTopicChooser: false
         }, () => {
             document.getElementById("noteLandingPageCreateTopicInput").select();
         })
@@ -113,14 +105,19 @@ export default class NoteLandingPage extends React.Component {
 
         if (this.props.topics.includes(topic.toLowerCase())) {
             this.props.topicSelected(topic);
-            this.showTopicChooser();
+            this.setState({
+                showCreateTopic: false,
+                showTopicChooser: false,
+                showTopic: true,
+                showSearchField: true
+            })
         }
         else {
             createNewTopic(topic)
             .then(
                 (response) => {
                     this.props.topicSelected(response);
-                    this.showTopicChooser().bind(this);
+                    this.hideTopicChooser().bind(this);
                 },
                 (error) => {
                     console.log(error);
@@ -160,7 +157,8 @@ export default class NoteLandingPage extends React.Component {
                 {(this.state.showTopic) ? (
                     <div className="noteLandingPageTopic">
                         <button className="noteLandingPageButton"
-                                onMouseEnter={this.showTopicChooser.bind(this)}>
+                                onMouseOver={this.showTopicChooser.bind(this)}>
+
                             {capitalizeFirstLetter(this.props.activeTopic)}
                         </button>
                     </div>
@@ -169,12 +167,13 @@ export default class NoteLandingPage extends React.Component {
 
                 {(this.state.showTopicChooser) ?
                     (<div className="noteLandingPageTopicChooser"
-                          onMouseLeave={this.showTopicChooser.bind(this)}>
+                          onMouseLeave={this.hideTopicChooser.bind(this)}>
                         {this.props.topics.map(function(topic, index) {
                             return (
                                 <Topic topic={topic}
                                        topicSelected={this.props.topicSelected}
                                        showTopicChooser={this.showTopicChooser.bind(this)}
+                                       hideTopicChooser={this.hideTopicChooser.bind(this)}
                                        key={index}
                                 />
                             )
@@ -196,7 +195,7 @@ export default class NoteLandingPage extends React.Component {
                         <input id="noteLandingPageCreateTopicInput"
                                type="text"
                                placeholder="Topic name:"
-                               autocomplete="off"
+                               autoComplete="off"
                                ref="topicCreate">
                         </input>
                         <button type="submit"
