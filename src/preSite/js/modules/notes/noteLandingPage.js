@@ -56,7 +56,7 @@ export default class NoteLandingPage extends React.Component {
     }
 
     handleSearchFieldChange(event) {
-
+        event.preventDefault();
         if(this.props.activeTopic === "Select topic") {
             this.setState({showTopicError: true});
 
@@ -127,6 +127,10 @@ export default class NoteLandingPage extends React.Component {
                 }
             )
         }
+    }
+
+    doNothing(event) {
+        event.preventDefault();
     }
 
 
@@ -207,8 +211,12 @@ export default class NoteLandingPage extends React.Component {
                                 type="text"
                                 placeholder="Search:"
                                 autoComplete="off"
-                                onChange={this.handleSearchFieldChange.bind(this)}>
+                                onChange={this.handleSearchFieldChange.bind(this)}
+                                onClick={this.handleSearchFieldChange.bind(this)}>
                         </input>
+                        <button type="submit"
+                                onClick={this.doNothing.bind(this)}
+                                hidden></button>
                     </form>
                 ) : null}
 

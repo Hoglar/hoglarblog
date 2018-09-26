@@ -11,6 +11,10 @@ export default class NoteSearchResult extends React.Component {
         super(props);
     }
 
+    noteSearchSingleResultClick() {
+        this.props.noteSearchSingleResultClicked();
+    }
+
     // Vi trenger liste over search results.
 
     render() {
@@ -21,7 +25,9 @@ export default class NoteSearchResult extends React.Component {
                     {this.props.noteSearchResult.map(function(note, index) {
                         return (
                             <div className="noteSearchSingleResult"
-                                 key={index}>
+                                 key={index}
+                                 onClick={this.noteSearchSingleResultClick.bind(this)}>
+
                                 <h1>{capitalizeFirstLetter(note.title)}</h1>
                                 <p>{capitalizeFirstLetter(note.author)}</p>
                             </div>

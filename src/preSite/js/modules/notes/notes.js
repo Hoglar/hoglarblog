@@ -65,7 +65,9 @@ export default class Notes extends React.Component {
         this.setState({noteSearchResult: results, showSearchResult: true});
     }
 
-
+    noteSearchSingleResultClicked() {
+        this.setState({showRead: true, showSearchResult: false});
+    }
 
     hideSearchResult() {
         this.setState({showSearchResult: false});
@@ -88,7 +90,8 @@ export default class Notes extends React.Component {
                 /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}
                 {(this.state.showSearchResult) ?
-                    <NoteSearchResult noteSearchResult={this.state.noteSearchResult}/>
+                    <NoteSearchResult noteSearchResult={this.state.noteSearchResult}
+                                      noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
                     : null}
 
             </div>
