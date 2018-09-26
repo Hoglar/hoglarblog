@@ -160,7 +160,7 @@ export default class NoteLandingPage extends React.Component {
                 {(this.state.showTopic) ? (
                     <div className="noteLandingPageTopic">
                         <button className="noteLandingPageButton"
-                                onClick={this.showTopicChooser.bind(this)}>
+                                onMouseEnter={this.showTopicChooser.bind(this)}>
                             {capitalizeFirstLetter(this.props.activeTopic)}
                         </button>
                     </div>
@@ -168,7 +168,8 @@ export default class NoteLandingPage extends React.Component {
 
 
                 {(this.state.showTopicChooser) ?
-                    (<div className="noteLandingPageTopicChooser">
+                    (<div className="noteLandingPageTopicChooser"
+                          onMouseLeave={this.showTopicChooser.bind(this)}>
                         {this.props.topics.map(function(topic, index) {
                             return (
                                 <Topic topic={topic}
