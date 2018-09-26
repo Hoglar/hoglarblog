@@ -17,7 +17,8 @@ export default class NoteLandingPage extends React.Component {
             showTopic: true,
             showSearchField: true,
             showCreateTopic: false,
-            searchFormValue: ""
+            searchFormValue: "",
+            searchResults: []
         }
     }
 
@@ -55,6 +56,7 @@ export default class NoteLandingPage extends React.Component {
     }
 
     handleSearchFieldChange(event) {
+
         if(this.props.activeTopic === "Select topic") {
             this.setState({showTopicError: true});
 
@@ -67,22 +69,29 @@ export default class NoteLandingPage extends React.Component {
             // Har jeg topic her.
             console.log(this.props.activeTopic);
 
+
             // Do search then do function that shows searchForm
-            fetchNotes(event.target.value, this.props.activeTopic)
-            .then(
-                (searchResult) => {
-                    console.log(searchResult);
-                },
-                (error) => {
-                    console.log(error);
-                }
-            )
+            if(event.target.value !== "") {
+                fetchNotes(event.target.value, this.props.activeTopic)
+                .then(
+                    (searchResult) => {
+                        console.log(searchResult);
+                        // Update notes.js with search results.
+
+                        this.props.noteUpdateSearchResults(searchResult);
+                    },
+                    (error) => {
+                        console.log(error);
+                    }
+                )
+            }
+            else {
+                this.props.hideSearchResult();
+            }
+
         }
     }
 
-    searchFieldIsClicked() {
-        this.props.showSearchResult();
-    }
 
     noteNewTopic() {
         console.log("Hei");
@@ -198,8 +207,7 @@ export default class NoteLandingPage extends React.Component {
                                 type="text"
                                 placeholder="Search:"
                                 autoComplete="off"
-                                onChange={this.handleSearchFieldChange.bind(this)}
-                                onClick={this.searchFieldIsClicked.bind(this)}>
+                                onChange={this.handleSearchFieldChange.bind(this)}>
                         </input>
                     </form>
                 ) : null}

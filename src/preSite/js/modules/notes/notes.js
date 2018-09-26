@@ -24,6 +24,7 @@ export default class Notes extends React.Component {
             showCreate: false,
             showRead: false,
             showSearchResult: false,
+            noteSearchResult: [],
             activeTopic: "Select topic",
             topics: ["waitingServer"]
         }
@@ -59,9 +60,15 @@ export default class Notes extends React.Component {
         }
     }
 
-    showSearchResult() {
-        // Show create has ONE mission, to turn showSearchResults to true.
-        this.setState({showSearchResult: true});
+    noteUpdateSearchResults(results) {
+        // One Mission! update state with the search results from landing page.
+        this.setState({noteSearchResult: results, showSearchResult: true});
+    }
+
+
+
+    hideSearchResult() {
+        this.setState({showSearchResult: false});
     }
 
     render() {
@@ -73,13 +80,16 @@ export default class Notes extends React.Component {
                                  topicSelected={this.topicSelected.bind(this)}
                                  loggedInUser={this.props.loggedInUser}
                                  showCreate={this.showCreate.bind(this)}
-                                 showSearchResult={this.showSearchResult.bind(this)}
+                                 hideSearchResult={this.hideSearchResult.bind(this)}
+                                 noteUpdateSearchResults={this.noteUpdateSearchResults.bind(this)}
                              />
 
                 {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
                 /> : null}
                 {(this.state.showRead) ? <NoteRead /> : null}
-                {(this.state.showSearchResult) ? <NoteSearchResult /> : null}
+                {(this.state.showSearchResult) ?
+                    <NoteSearchResult noteSearchResult={this.state.noteSearchResult}/>
+                    : null}
 
             </div>
         )
