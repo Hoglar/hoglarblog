@@ -32,7 +32,7 @@ export default class Notes extends React.Component {
     }
 
 
-
+    // Can be many fetch requests?
     topicSelectorClicked() {
         return new Promise((resolve, reject) => {
             fetch("/api/notes/topics")

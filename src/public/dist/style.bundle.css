@@ -933,8 +933,9 @@ body {
 }
 
 .noteSearchSingleResult {
+    color: black;
     width: 100%;
-    background-color: #041A37;
+    background-color: #0F78FF;
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     margin: auto;
