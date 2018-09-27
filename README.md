@@ -7,6 +7,8 @@ The hoglarblog repo is where hoglar.com is getting created. Im a guy that is lea
 
 Hoglar.com is made to be a helpfull learning platform. I want to make a simple page with some functionality. Right now i got 7 different apps i want to implement, some stand alone but in some way i think they all will talk together.
 
+
+
 1. Notes:
 
     Notes was the main plan for this site, its a place to make notes about topics your learning about. The notes should easy to write, so i cannot have manny forms.
@@ -23,7 +25,7 @@ Hoglar.com is made to be a helpfull learning platform. I want to make a simple p
         5. Other need to be able to make comments on the notes.
         6. We need a neat way to search for notes,
         7. We need scoring system or something.
-        8. Will put good notes out somehow. 
+        8. Will put good notes out somehow.
 
 
 
@@ -97,3 +99,6 @@ The question feature should have a way to offer help over voice.
 7. Checklist
 
 8. Settings
+
+The site will make money on selling "notebooks" with "pages". Pages is used as currency for making posts.
+creating everything on site will cost pages.

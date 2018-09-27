@@ -25,7 +25,26 @@ export default class NoteRead extends React.Component {
                         {this.props.noteSearchSingleResult.note}
                     </p>
                 </div>
-                <div className="noteReadFooter"></div>
+                <div className="noteReadFooter">
+                    <button id="noteReadFooterEditButton"
+                            className="noteLandingPageButton">
+                            Edit
+                    </button>
+                    <button id="noteReadFooterDeleteButton"
+                            className="noteLandingPageButton">
+
+                            Delete
+                    </button>
+                    <button id="noteReadFooterMarkButton"
+                            className="noteLandingPageButton">
+                            Bookmark
+                    </button>
+                    <button id="noteReadFooterCommentButton"
+                            className="noteLandingPageButton">
+                            
+                            Comments
+                    </button>
+                </div>
             </div>
         )
     }

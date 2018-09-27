@@ -1008,4 +1008,35 @@ body {
 .noteReadFooter {
     grid-row: 3 / 4;
     grid-column: 2 / 3;
+
+    display: grid;
+
+    grid-template-rows: 45px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.noteReadFooter button {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+#noteReadFooterEditButton {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+}
+
+#noteReadFooterDeleteButton {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+}
+
+#noteReadFooterMarkButton {
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+}
+
+#noteReadFooterCommentButton {
+    grid-row: 1 / 2;
+    grid-column: 4 / 5;
 }
