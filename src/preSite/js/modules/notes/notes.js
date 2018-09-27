@@ -9,6 +9,7 @@ import NoteLandingPage from './noteLandingPage.js';
 import NoteCreate from './noteCreate.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
+import NoteComments from './noteComments.js';
 
 
 // We need to get topics we can work width
@@ -24,6 +25,7 @@ export default class Notes extends React.Component {
             showCreate: false,
             showRead: false,
             showSearchResult: false,
+            showComments: true,
             noteSearchResult: [],
             noteSearchSingleResult: null,
             activeTopic: "Select topic",
@@ -100,7 +102,11 @@ export default class Notes extends React.Component {
                 {(this.state.showSearchResult) ?
                     <NoteSearchResult noteSearchResult={this.state.noteSearchResult}
                                       noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
-                    : null}
+                : null}
+
+                {(this.state.showComments) ?
+                    <NoteComments />
+                : null}
 
             </div>
         )

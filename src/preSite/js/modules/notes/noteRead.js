@@ -28,6 +28,7 @@ export default class NoteRead extends React.Component {
                 <div className="noteReadFooter">
                     <button id="noteReadFooterEditButton"
                             className="noteLandingPageButton">
+                            
                             Edit
                     </button>
                     <button id="noteReadFooterDeleteButton"
@@ -37,11 +38,12 @@ export default class NoteRead extends React.Component {
                     </button>
                     <button id="noteReadFooterMarkButton"
                             className="noteLandingPageButton">
+
                             Bookmark
                     </button>
                     <button id="noteReadFooterCommentButton"
                             className="noteLandingPageButton">
-                            
+
                             Comments
                     </button>
                 </div>

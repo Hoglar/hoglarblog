@@ -695,6 +695,7 @@ body {
 
     border-bottom: solid 1px #0F78FF;
     border-right: solid 1px #0F78FF;
+    margin-right: 3px;
 }
 
 .noteLandingPageLogo {
@@ -784,7 +785,7 @@ body {
     display: flex;
     align-items: center;
     padding-bottom: 2px;
-    padding-right: 2px;
+    padding-right: 6px;
 }
 
 .noteLandingPageSearchField {
@@ -1039,4 +1040,51 @@ body {
 #noteReadFooterCommentButton {
     grid-row: 1 / 2;
     grid-column: 4 / 5;
+}
+
+/********************* NoteRead *************************/
+
+.noteComments {
+    grid-row: 1 / 7;
+    grid-column: 5 / 7;
+
+
+    display: grid;
+    grid-template-rows: 70% auto 30%;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+.noteCommentNewComment {
+    grid-row: 3 / 4;
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.noteCommentNewCommentInputField {
+    width: 95%;
+    flex: 1;
+    resize: none;
+    outline: none;
+    margin: 0;
+    align-self: center;
+
+    color: white;
+    font-size: 18px;
+
+    padding: 20px;
+
+    border: solid 1px black;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    background-color: #543400;
+}
+
+.noteCommentFooter {
+    width: 95%;
+    height: 45px;
+    align-self: center;
+    margin: 0;
 }
