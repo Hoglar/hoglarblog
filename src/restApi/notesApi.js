@@ -131,8 +131,29 @@ module.exports = function(app, dbs) {
         });
     })
 
+    app.get("/api/notes/commentSearch?_id", function(req, res) {
+        console.log("Ggetting here?");
+        let _id = req.query._id
+        let searchTopic = req.query.topic.toLowerCase();
+        let query = {_id: new mongo.ObjectId(_id)}
+
+        dbs.notes.collection(searchTopic).findOne(query).toArray(function(err, result) {
+            if(err) throw err;
+
+            if (result) {
+                console.log("Foind something");
+                // We got an array with objects.
+                // We sort it based on score and return the 5 first.
+                // We need to iterate over the array to check the documentScore of all items in it.
+                res.json(result);
+            }
+            else {
+                res.json({searchMessage: "Nothing found"});
+            }
+        });
+    })
+
     app.post("/api/notes/updateComment", function(req, res) {
-        console.log("Getting request");
         let dataFromUser = req.body;
 
         dbs.notes.collection(dataFromUser.topic).updateOne(
@@ -142,7 +163,6 @@ module.exports = function(app, dbs) {
         .then(
             function(result) {
 
-                console.log(result);
                 if(result.modifiedCount) {
                     res.json({"successMessage": "Document Deleted"});
                 }

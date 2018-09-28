@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import fetchComments from './noteFunctions/fetchComments.js';
 
 // Todo:
     // We need to signal app.js that we are showing of comments. This will
@@ -18,7 +19,15 @@ export default class NoteComments extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            comments: this.props.noteSearchSingleResult.comments
+        }
+
     }
+
+    componentDi
+
+
 
     submitComment(event) {
         event.preventDefault();
@@ -48,6 +57,11 @@ export default class NoteComments extends React.Component {
             console.log(response)
             if(response.successMessage) {
                 console.log("Success");
+                fetchComments(data.topic, data.document_id)
+                .then((result) => {
+                    console.log(result);
+                })
+
             }
             else {
                 console.log("Fail");
@@ -60,8 +74,8 @@ export default class NoteComments extends React.Component {
             <div className="noteComments">
 
                 <div className="noteCommentsMain">
-                    {(this.props.noteSearchSingleResult.comments) ?
-                        this.props.noteSearchSingleResult.comments.map(function(comment, index) {
+                    {(this.state.comments) ?
+                        this.state.comments.map(function(comment, index) {
                             return(
                                 <div className="noteCommentsSingleComment"
                                      key={index}>
