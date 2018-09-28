@@ -13,6 +13,10 @@ export default class NoteRead extends React.Component {
     // Note read needs data.
     // Gjøre note search først?
 
+    commentButtonClicked() {
+        this.props.showReadComments();
+    }
+
 
     render() {
         return (
@@ -28,7 +32,7 @@ export default class NoteRead extends React.Component {
                 <div className="noteReadFooter">
                     <button id="noteReadFooterEditButton"
                             className="noteLandingPageButton">
-                            
+
                             Edit
                     </button>
                     <button id="noteReadFooterDeleteButton"
@@ -42,7 +46,8 @@ export default class NoteRead extends React.Component {
                             Bookmark
                     </button>
                     <button id="noteReadFooterCommentButton"
-                            className="noteLandingPageButton">
+                            className="noteLandingPageButton"
+                            onClick={this.commentButtonClicked.bind(this)}>
 
                             Comments
                     </button>

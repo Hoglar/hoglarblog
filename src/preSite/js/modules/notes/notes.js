@@ -25,7 +25,7 @@ export default class Notes extends React.Component {
             showCreate: false,
             showRead: false,
             showSearchResult: false,
-            showComments: true,
+            showComments: false,
             noteSearchResult: [],
             noteSearchSingleResult: null,
             activeTopic: "Select topic",
@@ -81,6 +81,10 @@ export default class Notes extends React.Component {
         this.setState({showSearchResult: false});
     }
 
+    showReadComments() {
+        this.setState({showComments: true})
+    }
+
     render() {
         return (
             <div className="notesSkeleton">
@@ -97,7 +101,8 @@ export default class Notes extends React.Component {
                 {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
                 /> : null}
                 {(this.state.showRead) ?
-                    <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}/>
+                    <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
+                              showReadComments={this.showReadComments.bind(this)}/>
                 : null}
                 {(this.state.showSearchResult) ?
                     <NoteSearchResult noteSearchResult={this.state.noteSearchResult}

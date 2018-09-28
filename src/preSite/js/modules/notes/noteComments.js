@@ -59,6 +59,21 @@ export default class NoteComments extends React.Component {
         return (
             <div className="noteComments">
 
+                <div className="noteCommentsMain">
+                    {(this.props.noteSearchSingleResult.comments) ?
+                        this.props.noteSearchSingleResult.comments.map(function(comment, index) {
+                            return(
+                                <div className="noteCommentsSingleComment"
+                                     key={index}>
+                                     <p>
+                                         {comment}
+                                     </p>
+                                </div>
+                            )
+                        })
+                    : null}
+                </div>
+
 
                 <form className="noteCommentNewComment">
                     <textarea className="noteCommentNewCommentInputField"
