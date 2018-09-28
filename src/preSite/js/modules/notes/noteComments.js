@@ -59,7 +59,7 @@ export default class NoteComments extends React.Component {
                 console.log("Success");
                 fetchComments(data.topic, data.document_id)
                 .then((result) => {
-                    console.log(result);
+                    console.log(result.comments);
                 })
 
             }

@@ -5,8 +5,19 @@ export default function fetchComments(topic, _id) {
 
         let url = "/api/notes/commentSearch";
 
-        console.log("Doing fetch");
-        fetch(url + _id + "&topic=" + topic)
+        let data = {
+            topic: topic,
+            _id: _id
+        }
+
+        console.log("Doing fetch for" + data._id);
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
+        })
         .then((response) => {
             return response.json();
         })
@@ -15,8 +26,7 @@ export default function fetchComments(topic, _id) {
                 reject("Nothing found");
             }
             else {
-
-                resolve(response.comments);
+                resolve(response);
             }
         })
     })

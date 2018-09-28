@@ -131,21 +131,21 @@ module.exports = function(app, dbs) {
         });
     })
 
-    app.get("/api/notes/commentSearch?_id", function(req, res) {
+    app.post("/api/notes/commentSearch", function(req, res) {
         console.log("Ggetting here?");
-        let _id = req.query._id
-        let searchTopic = req.query.topic.toLowerCase();
+        let _id = req.body._id
+        let searchTopic = req.body.topic.toLowerCase();
         let query = {_id: new mongo.ObjectId(_id)}
 
-        dbs.notes.collection(searchTopic).findOne(query).toArray(function(err, result) {
+        dbs.notes.collection(searchTopic).find(query).toArray(function(err, result) {
             if(err) throw err;
 
             if (result) {
-                console.log("Foind something");
+                console.log(result);
                 // We got an array with objects.
                 // We sort it based on score and return the 5 first.
                 // We need to iterate over the array to check the documentScore of all items in it.
-                res.json(result);
+                res.json(result[0]);
             }
             else {
                 res.json({searchMessage: "Nothing found"});
