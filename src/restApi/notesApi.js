@@ -1,7 +1,7 @@
 'use strict';
 const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
-
+const mongo = require('mongodb');
 
 module.exports = function(app, dbs) {
 
@@ -129,6 +129,33 @@ module.exports = function(app, dbs) {
                 res.json({searchMessage: "Nothing found"});
             }
         });
+    })
+
+    app.post("/api/notes/updateComment", function(req, res) {
+        console.log("Getting request");
+        let dataFromUser = req.body;
+
+        dbs.notes.collection(dataFromUser.topic).updateOne(
+            {_id: new mongo.ObjectId(dataFromUser.document_id)},
+            {$push: {comments: dataFromUser.comment}}
+        )
+        .then(
+            function(result) {
+
+                console.log(result);
+                if(result.modifiedCount) {
+                    res.json({"successMessage": "Document Deleted"});
+                }
+                else {
+                    res.json({"failMessage": "Could not find document."});
+                }
+            }
+        )
+        .catch(function(err) {
+            console.error(err);
+            res.json({"failMessage": "Error trying to update document"});
+        })
+
     })
 
     return app;

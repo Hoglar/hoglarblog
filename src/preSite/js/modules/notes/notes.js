@@ -105,7 +105,7 @@ export default class Notes extends React.Component {
                 : null}
 
                 {(this.state.showComments) ?
-                    <NoteComments />
+                    <NoteComments noteSearchSingleResult={this.state.noteSearchSingleResult}/>
                 : null}
 
             </div>
