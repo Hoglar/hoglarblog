@@ -43,6 +43,8 @@ export default class NoteComments extends React.Component {
 
         const url = "/api/notes/updateComment";
 
+        // We post in the query, and we get back new list of comments.
+        // We are then updating state so we get instant post of comments.
         fetch(url, {
             method: "POST",
             body: JSON.stringify(data),
@@ -56,7 +58,6 @@ export default class NoteComments extends React.Component {
         .then((response) => {
             console.log(response)
             if(response.successMessage) {
-                console.log("Success");
                 fetchComments(data.topic, data.document_id)
                 .then((result) => {
                     this.setState({comments: result});
