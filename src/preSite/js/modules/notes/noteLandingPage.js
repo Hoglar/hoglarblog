@@ -56,9 +56,8 @@ export default class NoteLandingPage extends React.Component {
             this.setState({searchFormValue: event.target.value});
             // this.props.topicSearch(event.target.value);
             // We need to make a search for notes base on topic and search field value.
-            console.log(event.target.value);
+
             // Har jeg topic her.
-            console.log(this.props.activeTopic);
 
 
             // Do search then do function that shows searchForm
@@ -66,7 +65,6 @@ export default class NoteLandingPage extends React.Component {
                 fetchNotes(event.target.value, this.props.activeTopic)
                 .then(
                     (searchResult) => {
-                        console.log(searchResult);
                         // Update notes.js with search results.
 
                         this.props.noteUpdateSearchResults(searchResult);
@@ -85,7 +83,6 @@ export default class NoteLandingPage extends React.Component {
 
 
     noteNewTopic() {
-        console.log("Hei");
 
 
         this.setState({

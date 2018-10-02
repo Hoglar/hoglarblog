@@ -28,7 +28,6 @@ export default function createNewTopic(topic) {
             return response.json();
         })
         .then((response) => {
-            console.log(response)
             if(response.successMessage) {
                 resolve(topic);
             }
