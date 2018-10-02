@@ -20,14 +20,20 @@ export default class NoteComments extends React.Component {
         super(props);
 
         this.state = {
-            comments: this.props.noteSearchSingleResult.comments
+            comments: this.props.noteSearchSingleResult.comments || []
         }
 
     }
 
-    componentDi
-
-
+    static getDerivedStateFromProps(nextProps, prevState){
+        if(nextProps.noteSearchSingleResult.comments) {
+            if(nextProps.noteSearchSingleResult.comments.length > prevState.comments.length){
+                return { comments: nextProps.noteSearchSingleResult.comments};
+            }
+            else return null;
+        }
+            else return null;
+    }
 
     submitComment(event) {
         event.preventDefault();

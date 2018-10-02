@@ -241,7 +241,7 @@
 /********************* NoteSearchResult *************************/
 
 .noteSearchResult {
-    grid-row: 3 / 6;
+    grid-row: 3 / 4;
     grid-column: 3 / 5;
 
     display: grid;
@@ -295,19 +295,20 @@
 /********************* NoteRead *************************/
 
 .noteRead {
-    grid-row: 3 / 7;
-    grid-column: 1 / 5;
+    grid-row: 3 / 4;
+    grid-column: 1 / 7;
+    margin-left: 3px;
 
     display: grid;
     grid-template-rows: 45px auto 45px;
-    grid-template-columns: 5% 90% 5%;
+    grid-template-columns: repeat(6, 1fr);
     border-right: solid 1px black;
-    padding-right: 2px;
 }
 
 .noteReadTop {
     grid-row: 1 / 2;
-    grid-column: 2 / 4;
+    grid-column: 1 / 5;
+    margin-right: 3px;
     margin-top: 3px;
 
     background-color: #041A37;
@@ -315,22 +316,24 @@
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     padding-left: 20px;
 
+    width: 100%;
+
     display: flex;
-
-
+    align-items: center;
 }
 
 .noteReadTop h1 {
     font-size: 20px;
     font-weight: lighter;
-    align-self: center;
+    align-self: left;
 }
 
 .noteReadMain {
     grid-row: 2 / 3;
-    grid-column: 2 / 4;
+    grid-column: 1 / 5;
 
     padding: 20px;
+    margin-right: 3px;
     font-size: 18px;
 
     background-color: #041A37;
@@ -349,7 +352,7 @@
 
 .noteReadFooter {
     grid-row: 3 / 4;
-    grid-column: 2 / 3;
+    grid-column: 1 / 5;
 
     display: grid;
 
@@ -361,6 +364,7 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    padding-left: 20px;
 }
 
 #noteReadFooterEditButton {
@@ -391,16 +395,14 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
 }
 
 .noteCommentNewComment {
-    grid-row: 3 / 4;
-    grid-column: 1 / 5;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
 }
 
 .noteCommentNewCommentInputField {
@@ -431,10 +433,9 @@
     grid-row: 1 / 3;
     grid-column: 1 / 5;
 
-    padding-top: 93px;
-
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
 }
 
 .noteCommentsSingleComment {
@@ -444,10 +445,8 @@
 
     color: white;
     font-size: 18px;
-
+    color: #8e8e8e;
     padding-left: 20px;
 
     border: solid 1px black;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    background-color: #543400;
 }

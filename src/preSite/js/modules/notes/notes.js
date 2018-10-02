@@ -9,7 +9,7 @@ import NoteLandingPage from './noteLandingPage.js';
 import NoteCreate from './noteCreate.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
-import NoteComments from './noteComments.js';
+
 
 
 // We need to get topics we can work width
@@ -25,13 +25,13 @@ export default class Notes extends React.Component {
             showCreate: false,
             showRead: false,
             showSearchResult: false,
-            showComments: false,
             noteSearchResult: [],
             noteSearchSingleResult: null,
             activeTopic: "Select topic",
             topics: ["waitingServer"]
         }
     }
+
 
 
     // Can be many fetch requests?
@@ -81,9 +81,6 @@ export default class Notes extends React.Component {
         this.setState({showSearchResult: false});
     }
 
-    showReadComments() {
-        this.setState({showComments: true})
-    }
 
     render() {
         return (
@@ -101,17 +98,13 @@ export default class Notes extends React.Component {
                 {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
                 /> : null}
                 {(this.state.showRead) ?
-                    <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
-                              showReadComments={this.showReadComments.bind(this)}/>
+                    <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}/>
                 : null}
                 {(this.state.showSearchResult) ?
                     <NoteSearchResult noteSearchResult={this.state.noteSearchResult}
                                       noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
                 : null}
 
-                {(this.state.showComments) ?
-                    <NoteComments noteSearchSingleResult={this.state.noteSearchSingleResult}/>
-                : null}
 
             </div>
         )

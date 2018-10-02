@@ -2,20 +2,33 @@
 import React from 'react';
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 
+import NoteComments from './noteComments.js';
+
 // Dett er neste nå !
 
 export default class NoteRead extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            showComments: false,
+        }
     }
 
     // Note read needs data.
     // Gjøre note search først?
+    componentDidUp
 
     commentButtonClicked() {
-        this.props.showReadComments();
+        if (this.state.showComments === false) {
+            this.setState({showComments: true});
+        }
+        else {
+            this.setState({showComments: false});
+        }
     }
+
 
 
     render() {
@@ -52,6 +65,10 @@ export default class NoteRead extends React.Component {
                             Comments
                     </button>
                 </div>
+
+                {(this.state.showComments) ?
+                    <NoteComments noteSearchSingleResult={this.props.noteSearchSingleResult}/>
+                : null}
             </div>
         )
     }
