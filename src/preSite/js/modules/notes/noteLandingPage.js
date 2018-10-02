@@ -114,7 +114,12 @@ export default class NoteLandingPage extends React.Component {
             .then(
                 (response) => {
                     this.props.topicSelected(response);
-                    this.hideTopicChooser().bind(this);
+                    this.setState({
+                        showCreateTopic: false,
+                        showTopicChooser: false,
+                        showTopic: true,
+                        showSearchField: true
+                    })
                 },
                 (error) => {
                     console.log(error);
