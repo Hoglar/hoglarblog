@@ -109,6 +109,7 @@ export default class NoteLandingPage extends React.Component {
                 showSearchField: true
             })
         }
+        
         else {
             createNewTopic(topic)
             .then(
