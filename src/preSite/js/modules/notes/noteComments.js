@@ -3,6 +3,8 @@
 import React from 'react';
 
 import fetchComments from './noteFunctions/fetchComments.js';
+import localOrSessionToken from '../../functionality/localOrSession.js';
+import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 
 // Todo:
     // We need to signal app.js that we are showing of comments. This will
@@ -40,11 +42,18 @@ export default class NoteComments extends React.Component {
         console.log(this.refs.noteComment.value);
 
         // we need to update this note with document id.
-
+        var token = localOrSessionToken();
         let data = {
             topic: this.props.noteSearchSingleResult.topic,
             document_id: this.props.noteSearchSingleResult._id,
-            comment: this.refs.noteComment.value
+            comment: {
+                "text": this.refs.noteComment.value,
+                "author": "",
+                "date": new Date(),
+            },
+            auth: {
+                "token": token
+            }
         }
 
         const url = "/api/notes/updateComment";
@@ -86,9 +95,9 @@ export default class NoteComments extends React.Component {
                             return(
                                 <div className="noteCommentsSingleComment"
                                      key={index}>
-                                     <p>
-                                         {comment}
-                                     </p>
+                                        <p className="noteCommentSingleCommentAuthor">{capitalizeFirstLetter(comment.author)+": "}</p>
+                                        <p className="noteCommentSingleCommentText">{capitalizeFirstLetter(comment.text)}</p>
+                                        <p className="noteCommentSingleCommentDate">{comment.date.substring(0, 10)}</p>
                                 </div>
                             )
                         })

@@ -155,27 +155,35 @@ module.exports = function(app, dbs) {
 
     app.post("/api/notes/updateComment", function(req, res) {
         let dataFromUser = req.body;
+        let token = dataFromUser.auth.token;
 
-        dbs.notes.collection(dataFromUser.topic).updateOne(
-            {_id: new mongo.ObjectId(dataFromUser.document_id)},
-            {$push: {comments: dataFromUser.comment}}
-        )
-        .then(
-            function(result) {
+        serverUserAuth(token, dbs, (results) => {
+            if(results) {
+                dataFromUser.comment.author = results;
+                dbs.notes.collection(dataFromUser.topic).updateOne(
+                    {_id: new mongo.ObjectId(dataFromUser.document_id)},
+                    {$push: {comments: dataFromUser.comment}}
+                )
+                .then(
+                    function(result) {
 
-                if(result.modifiedCount) {
-                    res.json({"successMessage": "Document Deleted"});
-                }
-                else {
-                    res.json({"failMessage": "Could not find document."});
-                }
+                        if(result.modifiedCount) {
+                            res.json({"successMessage": "Document Deleted"});
+                        }
+                        else {
+                            res.json({"failMessage": "Could not find document."});
+                        }
+                    }
+                )
+                .catch(function(err) {
+                    console.error(err);
+                    res.json({"failMessage": "Error trying to update document"});
+                })
             }
-        )
-        .catch(function(err) {
-            console.error(err);
-            res.json({"failMessage": "Error trying to update document"});
-        })
-
+            else {
+                res.json({"failMessage": "Error trying to update document"});
+            }
+        });
     })
 
     return app;

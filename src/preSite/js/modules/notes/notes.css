@@ -443,10 +443,27 @@
     width: 95%;
     align-self: center;
 
+    flex-direction: row;
+
     color: white;
     font-size: 18px;
     color: #8e8e8e;
-    padding-left: 20px;
+    padding: 10px;
 
     border: solid 1px black;
+}
+
+.noteCommentSingleCommentAuthor {
+    display: inline;
+    font-size: 20px;
+    color: white;
+}
+
+.noteCommentSingleCommentDate {
+    font-size: 12px;
+    text-align: right;
+}
+
+.noteCommentSingleCommentText {
+    display: inline;
 }
