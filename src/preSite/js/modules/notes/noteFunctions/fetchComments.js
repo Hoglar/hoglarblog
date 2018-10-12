@@ -26,7 +26,7 @@ export default function fetchComments(topic, _id) {
                 reject("Nothing found");
             }
             else {
-                resolve(response.comments);
+                resolve(response);
             }
         })
     })

@@ -75,7 +75,7 @@ export default class NoteComments extends React.Component {
             if(response.successMessage) {
                 fetchComments(data.topic, data.document_id)
                 .then((result) => {
-                    this.setState({comments: result});
+                    this.props.updateSearchSingleResult(result);
                 })
 
             }

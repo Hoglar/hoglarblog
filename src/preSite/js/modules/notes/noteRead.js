@@ -67,7 +67,8 @@ export default class NoteRead extends React.Component {
                 </div>
 
                 {(this.state.showComments) ?
-                    <NoteComments noteSearchSingleResult={this.props.noteSearchSingleResult}/>
+                    <NoteComments noteSearchSingleResult={this.props.noteSearchSingleResult}
+                                  updateSearchSingleResult={this.props.updateSearchSingleResult}/>
                 : null}
             </div>
         )
