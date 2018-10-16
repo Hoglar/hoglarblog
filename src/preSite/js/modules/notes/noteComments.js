@@ -76,6 +76,7 @@ export default class NoteComments extends React.Component {
                 fetchComments(data.topic, data.document_id)
                 .then((result) => {
                     this.props.updateSearchSingleResult(result);
+                    document.getElementById('noteCommentNewCommentInputField').value = "";
                 })
 
             }
@@ -107,6 +108,7 @@ export default class NoteComments extends React.Component {
 
                 <form className="noteCommentNewComment">
                     <textarea className="noteCommentNewCommentInputField"
+                              id="noteCommentNewCommentInputField"
                               placeholder="Write your comment here:"
                               ref="noteComment">
 
