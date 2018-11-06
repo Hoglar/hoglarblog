@@ -18,7 +18,6 @@ export default class NoteRead extends React.Component {
 
     // Note read needs data.
     // Gjøre note search først?
-    componentDidUp
 
     commentButtonClicked() {
         if (this.state.showComments === false) {
