@@ -194,18 +194,23 @@ module.exports = function(app, dbs) {
         serverUserAuth(token, dbs, (results) => {
             if(results) {
 
-                dbs.notes.collection(dataFromUser.topic).updateOne(
+                dbs.notes.collection(dataFromUser.topic).findOneAndUpdate(
                     {_id: new mongo.ObjectId(dataFromUser.document_id)},
                     {$set: {
                         note: dataFromUser.newNote
                         }
+                    },
+                    {
+                        returnOriginal : false,
                     }
                 )
                 .then(
                     function(result) {
+                        console.log(result);
 
-                        if(result.modifiedCount) {
-                            res.json({"successMessage": "Document Updated"});
+                        if(result.lastErrorObject.updatedExisting) {
+                            res.json({"successMessage": "Document Updated",
+                                      "updatedDocument": result.value});
                         }
                         else {
                             res.json({"failMessage": "Could not find document."});

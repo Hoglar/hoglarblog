@@ -28,7 +28,8 @@ export default function updateNote(topic, _id, newNote) {
         .then((res) => res.json())
         .then((response) => {
             if(response.successMessage) {
-                resolve("Success");
+                console.log("Success")
+                resolve(response.updatedDocument);
             }
             else {
                 reject("Failure updating document");
