@@ -42,11 +42,11 @@ export default class NoteRead extends React.Component {
                        this.props.noteSearchSingleResult._id,
                        newNote)
             .then(
-                function(response) {
+                (response) => {
                     console.log(response)
-
+                    this.props.reloadNote(this.props.noteSearchSingleResult);
                 },
-                function(err) {
+                (err) => {
                     console.error(err);
                 }
             )

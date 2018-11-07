@@ -68,6 +68,8 @@ export default class Notes extends React.Component {
         this.setState({noteSearchResult: results, showSearchResult: true});
     }
 
+
+
     noteSearchSingleResultClicked(note) {
         this.setState({
             noteSearchSingleResult: note,
@@ -75,6 +77,13 @@ export default class Notes extends React.Component {
             showSearchResult: false,
             showCreate: false,
         });
+    }
+
+    reloadNote(note) {
+        console.log("Nothitting?");
+        this.setState({showRead: false}, () => {
+            this.noteSearchSingleResultClicked(note);
+        })
     }
     // When we update comments in noteComments we need to update the document we use as base.
     updateSearchSingleResult(note) {
@@ -105,6 +114,7 @@ export default class Notes extends React.Component {
                 {(this.state.showRead) ?
                     <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}
+                              reloadNote={this.reloadNote.bind(this)}
                     />
                 : null}
                 {(this.state.showSearchResult) ?
