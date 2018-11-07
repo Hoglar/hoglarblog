@@ -320,7 +320,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    outline: none;
 }
 
 
@@ -331,23 +330,22 @@
 
     padding: 20px;
     margin-right: 3px;
-    font-size: 18px;
+    font-size: 20px;
 
     background-color: #041A37;
     border: solid 1px #000000;
-    outline: none;
     resize: none;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
 
     width: 100%;
     height: auto;
-    white-space: pre;
     outline: none;
-}
-.noteReadMain p {
-    margin: 0;
+
     white-space: pre;
+    word-wrap: normal;
+    overflow-x: scroll;
 }
+
 
 .noteReadFooter {
     grid-row: 3 / 4;

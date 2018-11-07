@@ -34,9 +34,7 @@ export default class NoteRead extends React.Component {
         }
 
         if(this.state.editButton === "Save") {
-
-            let newNote = noteReadMain.innerHTML;
-            newNote = newNote.replace(/(<([^>]+)>)/ig,"");
+            let newNote = noteReadMain.textContent;
             // UpdateNote takes 4 arguments: topic, id, new title and new content
             updateNote(this.props.noteSearchSingleResult.topic,
                        this.props.noteSearchSingleResult._id,
@@ -73,9 +71,7 @@ export default class NoteRead extends React.Component {
                     {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
                 </div>
                 <div className="noteReadMain">
-                    <p>
                         {this.props.noteSearchSingleResult.note}
-                    </p>
                 </div>
                 <div className="noteReadFooter">
                     <button id="noteReadFooterEditButton"
