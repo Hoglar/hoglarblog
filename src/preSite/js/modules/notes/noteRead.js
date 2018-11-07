@@ -18,6 +18,14 @@ export default class NoteRead extends React.Component {
 
     // Note read needs data.
     // Gjøre note search først?
+    editButtonClicked() {
+        // We need to set the noteReadTop to editable
+        // We need to set the noteReadMain to editable
+        console.log("Trying to set top to editable!");
+        document.getElementsByClassName("noteReadTop")[0].contentEditable = "true";
+        document.getElementsByClassName("noteReadMain")[0].contentEditable = "true";
+
+    }
 
     commentButtonClicked() {
         if (this.state.showComments === false) {
@@ -34,7 +42,7 @@ export default class NoteRead extends React.Component {
         return (
             <div className="noteRead">
                 <div className="noteReadTop">
-                    <h1>{capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}</h1>
+                    {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
                 </div>
                 <div className="noteReadMain">
                     <p>
@@ -43,7 +51,8 @@ export default class NoteRead extends React.Component {
                 </div>
                 <div className="noteReadFooter">
                     <button id="noteReadFooterEditButton"
-                            className="noteLandingPageButton">
+                            className="noteLandingPageButton"
+                            onClick={this.editButtonClicked.bind(this)}>
 
                             Edit
                     </button>

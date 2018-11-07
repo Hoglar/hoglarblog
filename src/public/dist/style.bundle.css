@@ -974,18 +974,15 @@ body {
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     padding-left: 20px;
-
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-}
-
-.noteReadTop h1 {
     font-size: 20px;
     font-weight: lighter;
-    align-self: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    outline: none;
 }
+
+
 
 .noteReadMain {
     grid-row: 2 / 3;
@@ -1004,6 +1001,7 @@ body {
     width: 100%;
     height: auto;
     white-space: pre-wrap;
+    outline: none;
 }
 .noteReadMain p {
     margin: 0;
