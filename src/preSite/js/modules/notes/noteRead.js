@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
+import updateNote from './noteFunctions/updateNote.js';
 
 import NoteComments from './noteComments.js';
 
@@ -13,6 +14,7 @@ export default class NoteRead extends React.Component {
 
         this.state = {
             showComments: false,
+            editButton: "Edit"
         }
     }
 
@@ -21,10 +23,36 @@ export default class NoteRead extends React.Component {
     editButtonClicked() {
         // We need to set the noteReadTop to editable
         // We need to set the noteReadMain to editable
-        console.log("Trying to set top to editable!");
-        document.getElementsByClassName("noteReadTop")[0].contentEditable = "true";
-        document.getElementsByClassName("noteReadMain")[0].contentEditable = "true";
 
+        let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
+
+        if(this.state.editButton === "Edit") {
+            console.log("Trying to set top to editable!");
+            this.setState({editButton: "Save"});
+
+            noteReadMain.contentEditable ="true";
+        }
+
+        if(this.state.editButton === "Save") {
+
+            let newNote = noteReadMain.innerHTML;
+            newNote = newNote.replace(/(<([^>]+)>)/ig,"");
+            // UpdateNote takes 4 arguments: topic, id, new title and new content
+            updateNote(this.props.noteSearchSingleResult.topic,
+                       this.props.noteSearchSingleResult._id,
+                       newNote)
+            .then(
+                function(response) {
+                    console.log(response)
+
+                },
+                function(err) {
+                    console.error(err);
+                }
+            )
+            // Update mongo with new data.
+            // Need to do post request. with auth
+        }
     }
 
     commentButtonClicked() {
@@ -54,7 +82,7 @@ export default class NoteRead extends React.Component {
                             className="noteLandingPageButton"
                             onClick={this.editButtonClicked.bind(this)}>
 
-                            Edit
+                            {this.state.editButton}
                     </button>
                     <button id="noteReadFooterDeleteButton"
                             className="noteLandingPageButton">

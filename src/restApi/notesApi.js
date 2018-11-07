@@ -186,5 +186,42 @@ module.exports = function(app, dbs) {
         });
     })
 
+    app.post("/api/notes/updateNote", function(req, res) {
+        console.log("Getting update request");
+        let dataFromUser = req.body;
+        let token = dataFromUser.auth.token;
+
+        serverUserAuth(token, dbs, (results) => {
+            if(results) {
+
+                dbs.notes.collection(dataFromUser.topic).updateOne(
+                    {_id: new mongo.ObjectId(dataFromUser.document_id)},
+                    {$set: {
+                        note: dataFromUser.newNote
+                        }
+                    }
+                )
+                .then(
+                    function(result) {
+
+                        if(result.modifiedCount) {
+                            res.json({"successMessage": "Document Updated"});
+                        }
+                        else {
+                            res.json({"failMessage": "Could not find document."});
+                        }
+                    }
+                )
+                .catch(function(err) {
+                    console.error(err);
+                    res.json({"failMessage": "Error trying to update document"});
+                })
+            }
+            else {
+                res.json({"failMessage": "Error trying to update document"});
+            }
+        });
+    })
+
     return app;
 };

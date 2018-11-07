@@ -22,7 +22,7 @@ export default function fetchComments(topic, _id) {
             return response.json();
         })
         .then((response) => {
-            if(response.searchMessage) {
+            if(response.failMessage) {
                 reject("Nothing found");
             }
             else {
