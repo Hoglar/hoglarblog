@@ -34,7 +34,7 @@ export default class NoteRead extends React.Component {
         }
 
         if(this.state.editButton === "Save") {
-            let newNote = noteReadMain.textContent;
+            let newNote = noteReadMain.innerText;
             // UpdateNote takes 4 arguments: topic, id, new title and new content
             updateNote(this.props.noteSearchSingleResult.topic,
                        this.props.noteSearchSingleResult._id,
