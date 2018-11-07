@@ -1000,11 +1000,12 @@ body {
 
     width: 100%;
     height: auto;
-    white-space: pre-wrap;
+    white-space: pre;
     outline: none;
 }
 .noteReadMain p {
     margin: 0;
+    white-space: pre;
 }
 
 .noteReadFooter {
