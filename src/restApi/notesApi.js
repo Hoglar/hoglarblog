@@ -181,7 +181,7 @@ module.exports = function(app, dbs) {
                 })
             }
             else {
-                res.json({"failMessage": "Error trying to update document"});
+                res.json({"failMessage": "Error autherize user!"});
             }
         });
     })
