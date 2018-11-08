@@ -74,12 +74,16 @@ export default class NoteRead extends React.Component {
                         {this.props.noteSearchSingleResult.note}
                 </div>
                 <div className="noteReadFooter">
-                    <button id="noteReadFooterEditButton"
-                            className="noteLandingPageButton"
-                            onClick={this.editButtonClicked.bind(this)}>
 
-                            {this.state.editButton}
-                    </button>
+                    {((this.props.loggedInUser === "guest") ? null :
+                        <button id="noteReadFooterEditButton"
+                                className="noteLandingPageButton"
+                                onClick={this.editButtonClicked.bind(this)}>
+
+                                {this.state.editButton}
+                        </button>
+                    )}
+
                     <button id="noteReadFooterDeleteButton"
                             className="noteLandingPageButton">
 

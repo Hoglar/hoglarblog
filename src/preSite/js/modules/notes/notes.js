@@ -115,6 +115,7 @@ export default class Notes extends React.Component {
                     <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}
                               reloadNote={this.reloadNote.bind(this)}
+                              loggedInUser={this.props.loggedInUser}
                     />
                 : null}
                 {(this.state.showSearchResult) ?

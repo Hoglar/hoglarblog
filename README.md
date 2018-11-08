@@ -98,6 +98,9 @@ The question feature should have a way to offer help over voice.
 
 7. Checklist
 
+8. Class.
+    I want to be able to join a class of people at yor place of learning.
+
 8. Settings
 
 The site will make money on selling "notebooks" with "pages". Pages is used as currency for making posts.
