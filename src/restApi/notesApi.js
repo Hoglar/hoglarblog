@@ -206,7 +206,6 @@ module.exports = function(app, dbs) {
                 )
                 .then(
                     function(result) {
-                        console.log(result);
 
                         if(result.lastErrorObject.updatedExisting) {
                             res.json({"successMessage": "Document Updated",
@@ -220,6 +219,39 @@ module.exports = function(app, dbs) {
                 .catch(function(err) {
                     console.error(err);
                     res.json({"failMessage": "Error trying to update document"});
+                })
+            }
+            else {
+                res.json({"failMessage": "Error trying to update document"});
+            }
+        });
+    })
+
+    app.post("/api/notes/deleteNote", function(req, res) {
+        console.log("Getting delete request");
+        let dataFromUser = req.body;
+        let token = dataFromUser.auth.token;
+
+        serverUserAuth(token, dbs, (results) => {
+            if(results) {
+
+                dbs.notes.collection(dataFromUser.topic).deleteOne(
+                    {_id: new mongo.ObjectId(dataFromUser.document_id)}
+                )
+                .then(
+                    function(result) {
+
+                        if(result.deletedCount) {
+                            res.json({"successMessage": "Document Deleted"});
+                        }
+                        else {
+                            res.json({"failMessage": "Could not delete document."});
+                        }
+                    }
+                )
+                .catch(function(err) {
+                    console.error(err);
+                    res.json({"failMessage": "Error trying to delete document"});
                 })
             }
             else {

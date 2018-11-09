@@ -80,9 +80,10 @@ export default class Notes extends React.Component {
     }
 
     reloadNote(note) {
-        console.log("Nothitting?");
         this.setState({showRead: false}, () => {
-            this.noteSearchSingleResultClicked(note);
+            if(note) {
+                this.noteSearchSingleResultClicked(note);
+            }
         })
     }
     // When we update comments in noteComments we need to update the document we use as base.

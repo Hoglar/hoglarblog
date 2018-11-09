@@ -2,6 +2,7 @@
 import React from 'react';
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 import updateNote from './noteFunctions/updateNote.js';
+import deleteNote from './noteFunctions/deleteNote.js';
 
 import NoteComments from './noteComments.js';
 
@@ -53,6 +54,21 @@ export default class NoteRead extends React.Component {
         }
     }
 
+    deleteButtonClicked() {
+        // When delete button gets clicked
+        // We pass in the active document for readability!
+        deleteNote(this.props.noteSearchSingleResult)
+        .then(
+            (response) => {
+                console.log(response);
+                this.props.reloadNote(null);
+            },
+            (error) => {
+                console.error(error);
+            }
+        )
+    }
+
     commentButtonClicked() {
         if (this.state.showComments === false) {
             this.setState({showComments: true});
@@ -84,11 +100,16 @@ export default class NoteRead extends React.Component {
                         </button>
                     )}
 
-                    <button id="noteReadFooterDeleteButton"
-                            className="noteLandingPageButton">
+                    {((this.props.loggedInUser === "guest") ? null :
+                        <button id="noteReadFooterDeleteButton"
+                                className="noteLandingPageButton"
+                                onClick={this.deleteButtonClicked.bind(this)}>
 
-                            Delete
-                    </button>
+                                Delete
+                        </button>
+                    )}
+
+
                     <button id="noteReadFooterMarkButton"
                             className="noteLandingPageButton">
 
