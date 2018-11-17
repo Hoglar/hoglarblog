@@ -109,7 +109,7 @@ export default class NoteLandingPage extends React.Component {
                 showSearchField: true
             })
         }
-        
+
         else {
             createNewTopic(topic)
             .then(
@@ -160,38 +160,41 @@ export default class NoteLandingPage extends React.Component {
                 {(this.state.showTopic) ? (
                     <div className="noteLandingPageTopic">
                         <button className="noteLandingPageButton"
-                                onMouseOver={this.showTopicChooser.bind(this)}>
+                                onMouseOver={this.showTopicChooser.bind(this)}
+                                onMouseLeave={this.hideTopicChooser.bind(this)}>
 
                             {capitalizeFirstLetter(this.props.activeTopic)}
                         </button>
+
+                        {(this.state.showTopicChooser) ?
+                            (<div className="noteLandingPageTopicChooser"
+                                  onMouseLeave={this.hideTopicChooser.bind(this)}>
+                                {this.props.topics.map(function(topic, index) {
+                                    return (
+                                        <Topic topic={topic}
+                                               topicSelected={this.props.topicSelected}
+                                               showTopicChooser={this.showTopicChooser.bind(this)}
+                                               hideTopicChooser={this.hideTopicChooser.bind(this)}
+                                               key={index}
+                                        />
+                                    )
+                                }.bind(this))}
+
+                                {(this.props.loggedInUser === "guest") ?
+                                null : (
+                                    <div className="noteLandingPageSingleTopic"
+                                         onClick={this.noteNewTopic.bind(this)}>
+                                        Add topic
+                                    </div>
+                                )}
+
+                            </div>) :
+                        null}
                     </div>
                 ) : null}
 
 
-                {(this.state.showTopicChooser) ?
-                    (<div className="noteLandingPageTopicChooser"
-                          onMouseLeave={this.hideTopicChooser.bind(this)}>
-                        {this.props.topics.map(function(topic, index) {
-                            return (
-                                <Topic topic={topic}
-                                       topicSelected={this.props.topicSelected}
-                                       showTopicChooser={this.showTopicChooser.bind(this)}
-                                       hideTopicChooser={this.hideTopicChooser.bind(this)}
-                                       key={index}
-                                />
-                            )
-                        }.bind(this))}
 
-                        {(this.props.loggedInUser === "guest") ?
-                        null : (
-                            <div className="noteLandingPageSingleTopic"
-                                 onClick={this.noteNewTopic.bind(this)}>
-                                Add topic
-                            </div>
-                        )}
-
-                    </div>) :
-                null}
 
                 {(this.state.showCreateTopic) ? (
                     <form className="noteLandingPageCreateTopic">
