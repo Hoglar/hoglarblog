@@ -715,12 +715,28 @@ body {
     grid-column: 2 / 3;
 }
 
+
+
+
+.noteLandingPageTopic {
+    grid-row: 2 / 4;
+    grid-column: 3 / 4;
+
+    display: grid;
+    grid-template-rows: 45px auto;
+}
+
+
 .noteLandingPageButton {
+
+    grid-row: 1 / 2;
+
     height: 100%;
     font-size: 18px;
     border: none;
     background: none;
     padding: 0;
+    text-align: left;
 }
 
 .noteLandingPageButton:hover {
@@ -731,12 +747,6 @@ body {
 .noteLandingPageButton:focus {
     color: #FF9E00;
     outline: none;
-}
-
-
-.noteLandingPageTopic {
-    grid-row: 2 / 3;
-    grid-column: 3 / 4;
 }
 
 .noteLandingPageTopicError {
@@ -750,8 +760,7 @@ body {
 
 
 .noteLandingPageTopicChooser {
-    grid-row: 3 / 4;
-    grid-column: 3 / 4;
+    grid-row: 2 / 3;
 
     z-index: 1;
 

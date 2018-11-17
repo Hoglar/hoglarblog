@@ -24,10 +24,14 @@ export default class NoteLandingPage extends React.Component {
 
     showTopicChooser() {
 
-        this.props.topicSelectorClicked()
-        .then((response) => {
-            this.setState({showTopicChooser: true, showTopicError: false})
-        })
+        if(this.state.showTopicChooser === false) {
+            this.props.topicSelectorClicked()
+            .then((response) => {
+                this.setState({showTopicChooser: true, showTopicError: false})
+            })
+        }
+        // topicSelectorClicked is asking database for topics,
+
 
     }
 
@@ -158,10 +162,10 @@ export default class NoteLandingPage extends React.Component {
                 ) : null}
 
                 {(this.state.showTopic) ? (
-                    <div className="noteLandingPageTopic">
+                    <div className="noteLandingPageTopic"
+                         onMouseLeave={this.hideTopicChooser.bind(this)}>
                         <button className="noteLandingPageButton"
-                                onMouseOver={this.showTopicChooser.bind(this)}
-                                onMouseLeave={this.hideTopicChooser.bind(this)}>
+                                onMouseOver={this.showTopicChooser.bind(this)}>
 
                             {capitalizeFirstLetter(this.props.activeTopic)}
                         </button>
@@ -173,7 +177,6 @@ export default class NoteLandingPage extends React.Component {
                                     return (
                                         <Topic topic={topic}
                                                topicSelected={this.props.topicSelected}
-                                               showTopicChooser={this.showTopicChooser.bind(this)}
                                                hideTopicChooser={this.hideTopicChooser.bind(this)}
                                                key={index}
                                         />
