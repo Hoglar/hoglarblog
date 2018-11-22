@@ -696,6 +696,7 @@ body {
     border-bottom: solid 1px #0F78FF;
     border-right: solid 1px #0F78FF;
     margin-right: 3px;
+
 }
 
 .noteLandingPageLogo {
@@ -724,6 +725,7 @@ body {
 
     display: grid;
     grid-template-rows: 45px auto;
+
 }
 
 
@@ -737,6 +739,7 @@ body {
     background: none;
     padding: 0;
     text-align: left;
+    color: #8e8e8e;
 }
 
 .noteLandingPageButton:hover {
@@ -1011,7 +1014,6 @@ body {
 
     white-space: pre;
     word-wrap: normal;
-    overflow-x: scroll;
 }
 
 
