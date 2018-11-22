@@ -183,7 +183,7 @@ export default class NoteLandingPage extends React.Component {
                                     )
                                 }.bind(this))}
 
-                                {(this.props.loggedInUser === "guest") ?
+                                {(this.props.loggedInUser !== "hoglar") ?
                                 null : (
                                     <div className="noteLandingPageSingleTopic"
                                          onClick={this.noteNewTopic.bind(this)}>
