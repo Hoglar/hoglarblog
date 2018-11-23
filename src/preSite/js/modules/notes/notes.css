@@ -43,6 +43,7 @@
     letter-spacing: .5em;
 
     border-bottom: solid 3px #FF9E00;
+
 }
 
 .noteLandingPageLogo:hover {
@@ -68,6 +69,7 @@
 
     letter-spacing: .15em;
     padding-left: 20px;
+    font-weight: lighter;
 }
 
 
