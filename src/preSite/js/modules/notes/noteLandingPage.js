@@ -141,7 +141,7 @@ export default class NoteLandingPage extends React.Component {
     render() {
         return (
             <div className="noteLandingPage">
-                <div className="noteLandingHeaderStyle"></div>
+                <header className="noteLandingHeader"></header>
                 <div className="noteLandingPageLogo">
                     Notes
                 </div>
