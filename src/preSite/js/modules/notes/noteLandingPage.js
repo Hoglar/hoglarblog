@@ -13,7 +13,6 @@ export default class NoteLandingPage extends React.Component {
         super(props);
         this.state = {
             showTopicChooser: false,
-            showTopicError: false,
             showTopic: true,
             showSearchField: true,
             showCreateTopic: false,
@@ -27,7 +26,7 @@ export default class NoteLandingPage extends React.Component {
         if(this.state.showTopicChooser === false) {
             this.props.topicSelectorClicked()
             .then((response) => {
-                this.setState({showTopicChooser: true, showTopicError: false})
+                this.setState({showTopicChooser: true})
             })
         }
         // topicSelectorClicked is asking database for topics,
@@ -41,53 +40,43 @@ export default class NoteLandingPage extends React.Component {
 
 
     createButtonClicked() {
-        if(this.props.activeTopic === "Select topic") {
-            this.setState({showTopicError: true});
 
-        }
-        else {
-            this.props.showCreate()
-        }
+        this.props.showCreate()
     }
 
     handleSearchFieldChange(event) {
         event.preventDefault();
-        if(this.props.activeTopic === "Select topic") {
-            this.setState({showTopicError: true});
 
+        this.setState({searchFormValue: event.target.value});
+        // this.props.topicSearch(event.target.value);
+        // We need to make a search for notes base on topic and search field value.
+
+        // Har jeg topic her.
+
+
+        // Do search then do function that shows searchForm
+        if(event.target.value !== "") {
+            fetchNotes(event.target.value, this.props.activeTopic)
+            .then(
+                (searchResult) => {
+                    // Update notes.js with search results.
+
+                    this.props.noteUpdateSearchResults(searchResult);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            )
         }
         else {
-            this.setState({searchFormValue: event.target.value});
-            // this.props.topicSearch(event.target.value);
-            // We need to make a search for notes base on topic and search field value.
-
-            // Har jeg topic her.
-
-
-            // Do search then do function that shows searchForm
-            if(event.target.value !== "") {
-                fetchNotes(event.target.value, this.props.activeTopic)
-                .then(
-                    (searchResult) => {
-                        // Update notes.js with search results.
-
-                        this.props.noteUpdateSearchResults(searchResult);
-                    },
-                    (error) => {
-                        console.log(error);
-                    }
-                )
-            }
-            else {
-                this.props.hideSearchResult();
-            }
-
+            this.props.hideSearchResult();
         }
+
+
     }
 
 
     noteNewTopic() {
-
 
         this.setState({
             showSearchField: false,
@@ -145,7 +134,7 @@ export default class NoteLandingPage extends React.Component {
                     Notes
                 </div>
 
-                {(this.props.loggedInUser === "guest") ?
+                {(this.props.loggedInUser === "guest" || this.props.activeTopic === "Select topic") ?
                 null :
                 (<div className="noteLandingPageCreate">
                     <button className="noteLandingPageButton"
@@ -153,12 +142,6 @@ export default class NoteLandingPage extends React.Component {
                         Create
                     </button>
                 </div>)}
-
-                {(this.state.showTopicError) ? (
-                    <div className="noteLandingPageTopicError">
-                        You must choose a topic!
-                    </div>
-                ) : null}
 
                 {(this.state.showTopic) ? (
                     <div className="noteLandingPageTopic"
@@ -213,7 +196,7 @@ export default class NoteLandingPage extends React.Component {
                     </form>
                 ) : null}
 
-                {(this.state.showSearchField) ? (
+                {(this.state.showSearchField && this.props.activeTopic !== "Select topic") ? (
                     <form className="noteLandingPageSearch">
                         <input  className="noteLandingPageSearchField"
                                 type="text"
