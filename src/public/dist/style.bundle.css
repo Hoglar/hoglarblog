@@ -718,12 +718,13 @@ body {
     cursor: pointer;
 }
 
-.noteLandingPageCreate {
+.noteLandingPageInputChanger {
     grid-row: 3 / 4;
     grid-column: 2 / 3;
     text-align: right;
     padding-right: 20px;
     letter-spacing: .15em;
+
 }
 
 .noteLandingPageTopic {
@@ -816,9 +817,6 @@ body {
     width: 80%;
 }
 
-.noteLandingPageInputField:focus::placeholder {
-    color: transparent;
-}
 
 #noteLandingPageCreateTitleButton {
     width: 20%;
@@ -826,6 +824,15 @@ body {
     font-size: 18px;
     font-variant: small-caps;
     letter-spacing: .15em;
+    border: solid 0px black;
+    border-bottom: solid 2px #FF9E00;
+    background-color: #01060C;
+    color: #8e8e8e;
+}
+
+#noteLandingPageCreateTitleButton:hover {
+    color: #FF9E00;
+    cursor: pointer;
 }
 
 .noteLandingPageCreateTopic {

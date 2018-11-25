@@ -12,13 +12,15 @@ export default class NoteLandingPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            inputButton: "Create",
             showTopicChooser: false,
             showTopic: true,
             showSearchField: true,
             showCreateTopic: false,
             showCreateNoteTitle: false,
             searchFormValue: "",
-            searchResults: []
+            searchResults: [],
+            titleInput: null
         }
     }
 
@@ -41,16 +43,21 @@ export default class NoteLandingPage extends React.Component {
 
     createButtonClicked() {
 
-        // This we must remove,
+        if (this.state.showSearchField) {
+            this.setState({showSearchField: false,
+                           showCreateNoteTitle: true,
+                           inputButton: "Search"}, () => {
+                               document.getElementById("noteLandingPageInputTitle").select();
+                           });
+        }
+        else {
+            this.setState({showCreateNoteTitle: false,
+                           showSearchField: true,
+                           inputButton: "Create"}, () => {
+                               document.getElementById("noteLandingPageInputSearch").select();
+                           });
+        }
 
-        // When create button is pressed we need to make the search bar title creation bar.
-
-        // First set show search to false
-
-        this.setState({showSearchField: false, showCreateNoteTitle: true});
-
-            // then show createNoteTitle to true
-        //this.props.showCreate()
     }
 
     handleSearchFieldChange(event) {
@@ -80,10 +87,15 @@ export default class NoteLandingPage extends React.Component {
         else {
             this.props.hideSearchResult();
         }
-
-
     }
 
+    handleTitleInputFieldChange(event) {
+        event.preventDefault();
+        this.setState({titleInput: event.target.value}, () => {
+            console.log(this.state.titleInput);
+        });
+
+    }
 
     noteNewTopic() {
 
@@ -145,10 +157,10 @@ export default class NoteLandingPage extends React.Component {
 
                 {(this.props.loggedInUser === "guest" || this.props.activeTopic === "Select topic") ?
                 null :
-                (<div className="noteLandingPageCreate">
+                (<div className="noteLandingPageInputChanger">
                     <button className="noteLandingPageButton"
                             onClick={this.createButtonClicked.bind(this)}>
-                        Create
+                        {this.state.inputButton}
                     </button>
                 </div>)}
 
@@ -205,6 +217,7 @@ export default class NoteLandingPage extends React.Component {
                 {(this.state.showSearchField && this.props.activeTopic !== "Select topic") ? (
                     <form className="noteLandingPageInputForm">
                         <input  className="noteLandingPageInputField"
+                                id="noteLandingPageInputSearch"
                                 type="text"
                                 placeholder="Search:"
                                 autoComplete="off"
@@ -220,20 +233,21 @@ export default class NoteLandingPage extends React.Component {
                 {(this.state.showCreateNoteTitle) ? (
                     <form className="noteLandingPageInputForm">
                         <input className="noteLandingPageInputField"
-                               ref="title"
+                               id="noteLandingPageInputTitle"
                                type="text"
-                               placeholder="Write note title here:">
+                               placeholder="Write note title here:"
+                               onChange={this.handleTitleInputFieldChange.bind(this)}>
                         </input>
-                        <button id="noteLandingPageCreateTitleButton"
-                                type="submit">
-                            Save
 
-                        </button>
+                        {(!this.state.titleInput) ? null : (
+                            <button id="noteLandingPageCreateTitleButton"
+                                    type="submit">
+                                Save
+                            </button>
+                        )}
 
                     </form>
                 ): null}
-
-
 
             </div>
         )
