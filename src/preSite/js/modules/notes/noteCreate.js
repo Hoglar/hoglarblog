@@ -66,9 +66,9 @@ export default class NoteCreate extends React.Component {
 
             <form className="noteCreate">
 
-                <div className="noteCreateTop">
+                <header className="noteCreateTop">
                     <input className="noteCreateTitleInput" ref="title" type="text" placeholder="Title:"></input>
-                </div>
+                </header>
 
 
                 <textarea id="noteCreateInputSection"
@@ -77,13 +77,13 @@ export default class NoteCreate extends React.Component {
                     placeholder="Write here!"
                     maxLength="5000"/>
 
-                <div className="noteCreateFooter">
+                <footer className="noteCreateFooter">
                     <button className="noteCreateInputButton noteLandingPageButton"
                             type="submit"
                             onClick={this.saveNote.bind(this)}>
                         Save
                     </button>
-                </div>
+                </footer>
             </form>
         )
     }

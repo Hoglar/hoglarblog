@@ -110,8 +110,11 @@ export default class Notes extends React.Component {
                                  noteUpdateSearchResults={this.noteUpdateSearchResults.bind(this)}
                              />
 
-                {(this.state.showCreate) ? <NoteCreate activeTopic={this.state.activeTopic}
-                /> : null}
+                {(this.state.showCreate) ?
+                    <NoteCreate activeTopic={this.state.activeTopic}
+                />
+                : null}
+
                 {(this.state.showRead) ?
                     <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}

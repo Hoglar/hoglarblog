@@ -16,6 +16,7 @@ export default class NoteLandingPage extends React.Component {
             showTopic: true,
             showSearchField: true,
             showCreateTopic: false,
+            showCreateNoteTitle: false,
             searchFormValue: "",
             searchResults: []
         }
@@ -31,7 +32,6 @@ export default class NoteLandingPage extends React.Component {
         }
         // topicSelectorClicked is asking database for topics,
 
-
     }
 
     hideTopicChooser() {
@@ -41,7 +41,16 @@ export default class NoteLandingPage extends React.Component {
 
     createButtonClicked() {
 
-        this.props.showCreate()
+        // This we must remove,
+
+        // When create button is pressed we need to make the search bar title creation bar.
+
+        // First set show search to false
+
+        this.setState({showSearchField: false, showCreateNoteTitle: true});
+
+            // then show createNoteTitle to true
+        //this.props.showCreate()
     }
 
     handleSearchFieldChange(event) {
@@ -178,8 +187,6 @@ export default class NoteLandingPage extends React.Component {
                 ) : null}
 
 
-
-
                 {(this.state.showCreateTopic) ? (
                     <form className="noteLandingPageCreateTopic">
                         <input id="noteLandingPageCreateTopicInput"
@@ -196,8 +203,8 @@ export default class NoteLandingPage extends React.Component {
                 ) : null}
 
                 {(this.state.showSearchField && this.props.activeTopic !== "Select topic") ? (
-                    <form className="noteLandingPageSearch">
-                        <input  className="noteLandingPageSearchField"
+                    <form className="noteLandingPageInputForm">
+                        <input  className="noteLandingPageInputField"
                                 type="text"
                                 placeholder="Search:"
                                 autoComplete="off"
@@ -209,6 +216,24 @@ export default class NoteLandingPage extends React.Component {
                                 hidden></button>
                     </form>
                 ) : null}
+
+                {(this.state.showCreateNoteTitle) ? (
+                    <form className="noteLandingPageInputForm">
+                        <input className="noteLandingPageInputField"
+                               ref="title"
+                               type="text"
+                               placeholder="Write note title here:">
+                        </input>
+                        <button id="noteLandingPageCreateTitleButton"
+                                type="submit">
+                            Save
+
+                        </button>
+
+                    </form>
+                ): null}
+
+
 
             </div>
         )
