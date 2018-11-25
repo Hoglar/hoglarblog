@@ -172,7 +172,6 @@ export default class NoteLandingPage extends React.Component {
                                         Add topic
                                     </div>
                                 )}
-
                             </div>) :
                         null}
                     </div>

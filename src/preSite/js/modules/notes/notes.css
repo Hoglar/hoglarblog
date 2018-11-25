@@ -120,16 +120,14 @@
     z-index: 1;
     height: 22px;
     font-size: 16px;
-    margin-top: 2px;
-    background-color: #0F78FF;
-    color: black;
     padding-left: 10px;
-
-    box-shadow: inset 0px -1px 1px 0px rgba(1,6,12,1);
+    border-left: solid 2px  #FF9E00;
 }
 
 .noteLandingPageSingleTopic:hover {
-    background-color: #FF9E00;
+    border-left: solid 2px #0F78FF;
+    color: #bebebe;
+    padding-left: 12px;
     cursor: pointer;
 }
 
