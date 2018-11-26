@@ -71,7 +71,6 @@ export default class Notes extends React.Component {
             noteSearchSingleResult: note,
             showRead: true,
             showSearchResult: false,
-            showCreate: false,
         });
     }
 
@@ -104,6 +103,7 @@ export default class Notes extends React.Component {
                                  showCreate={this.showCreate.bind(this)}
                                  hideSearchResult={this.hideSearchResult.bind(this)}
                                  noteUpdateSearchResults={this.noteUpdateSearchResults.bind(this)}
+                                 loadNote={this.noteSearchSingleResultClicked.bind(this)}
                              />
 
                 {(this.state.showRead) ?

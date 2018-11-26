@@ -23,7 +23,21 @@ export default class NoteLandingPage extends React.Component {
             searchResults: [],
             titleInput: null
         }
+        // SearchState is state where we can search for notes
+        this.searchState = {
+            showCreateNoteTitle: false,
+            showSearchField: true,
+            titleInput: null,
+            inputButton: "Create"
+            }
+        // createState is state where i can type in titleinput.
+        this.createState = {
+            showSearchField: false,
+            showCreateNoteTitle: true,
+            inputButton: "Search"
+        }
     }
+
 
     showTopicChooser() {
 
@@ -45,21 +59,15 @@ export default class NoteLandingPage extends React.Component {
     changeInputButtonClicked() {
 
         if (this.state.showSearchField) {
-            this.setState({showSearchField: false,
-                           showCreateNoteTitle: true,
-                           inputButton: "Search"}, () => {
+            this.setState(this.createState, () => {
                                document.getElementById("noteLandingPageInputTitle").select();
                            });
         }
         else {
-            this.setState({showCreateNoteTitle: false,
-                           showSearchField: true,
-                           titleInput: null,
-                           inputButton: "Create"}, () => {
+            this.setState(this.searchState, () => {
                                document.getElementById("noteLandingPageInputSearch").select();
                            });
         }
-
     }
 
     handleSearchFieldChange(event) {
@@ -78,8 +86,8 @@ export default class NoteLandingPage extends React.Component {
             .then(
                 (searchResult) => {
                     // Update notes.js with search results.
-
                     this.props.noteUpdateSearchResults(searchResult);
+
                 },
                 (error) => {
                     console.log(error);
@@ -105,10 +113,11 @@ export default class NoteLandingPage extends React.Component {
 
         createNote(this.props.activeTopic, this.state.titleInput)
         .then(
-            (result) => {
+            (insertedDocument) => {
                 // Vi får her tilbake ett nytt dokument, dette kan vi mate inn i read page.
                 // Det blir neste, nå hente jentungen!
-                console.log("We got it working", result);
+                this.props.loadNote(insertedDocument);
+                this.setState(this.searchState);
             }
         )
             // Function needs some data: this.state.titleInput and this.props.activeTopic
@@ -256,6 +265,7 @@ export default class NoteLandingPage extends React.Component {
                                id="noteLandingPageInputTitle"
                                type="text"
                                placeholder="Write note title here:"
+                               autocomplete="off"
                                onChange={this.handleTitleInputFieldChange.bind(this)}>
                         </input>
 
