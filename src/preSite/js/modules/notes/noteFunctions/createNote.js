@@ -17,6 +17,7 @@ export default function createNote(topic, title) {
     const url = "/api/notes/create";
 
     return new Promise(function(resolve, reject) {
+        console.log("Doning create");
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(createData),
@@ -31,7 +32,13 @@ export default function createNote(topic, title) {
         )
         .then(
             function(response) {
-                console.log(response);
+                if (response.successMessage) {
+                    resolve(response.insertedDocument);
+                }
+                else {
+                    console.log(response);
+                    reject("Something went wrong in creation");
+                }
             }
         )
     })

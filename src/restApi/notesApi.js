@@ -34,16 +34,15 @@ module.exports = function(app, dbs) {
 
         serverUserAuth(token, dbs, (results) => {
             if(results) {
-                console.log("Kjør på!")
                 // We save in collections based on topic.
                 dbs.notes.collection(dataFromUser.topic.toLowerCase()).insertOne({
                     topic: dataFromUser.topic.toLowerCase(),
                     title: dataFromUser.title.toLowerCase(),
-                    note: dataFromUser.note,
+                    note: "",
                     author: results,
                     documentScore: 0,
                     date: new Date()
-                }, function(err, r) {
+                }, function(err, result) {
                     if (err) {
                         console.log("Something went wrong with db connection");
                         console.log(err);
@@ -52,9 +51,11 @@ module.exports = function(app, dbs) {
                         })
                     }
                     else {
-                        console.log("Succesfully inserted " + r.insertedCount + " Documents!");
+                        console.log(result.ops[0]);
+                        console.log("Succesfully inserted " + result.insertedCount + " Documents!");
                         res.json({
-                            successMessage: "You have saved to the database"
+                            successMessage: "You have saved to the database",
+                            insertedDocument: result.ops[0]
                         })
                     }
                 });

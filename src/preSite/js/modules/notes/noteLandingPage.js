@@ -6,6 +6,7 @@ import Topic from './topic.js';
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 import createNewTopic from './noteFunctions/createNewTopic.js';
 import fetchNotes from './noteFunctions/fetchNotes.js';
+import createNote from './noteFunctions/createNote.js';
 
 export default class NoteLandingPage extends React.Component {
 
@@ -101,6 +102,15 @@ export default class NoteLandingPage extends React.Component {
     handleSaveTitle(event) {
         event.preventDefault();
         // cast funcion to create note structure. Then load create page.
+
+        createNote(this.props.activeTopic, this.state.titleInput)
+        .then(
+            (result) => {
+                // Vi får her tilbake ett nytt dokument, dette kan vi mate inn i read page.
+                // Det blir neste, nå hente jentungen!
+                console.log("We got it working", result);
+            }
+        )
             // Function needs some data: this.state.titleInput and this.props.activeTopic
 
         // then!

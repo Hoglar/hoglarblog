@@ -6,11 +6,8 @@ import React from 'react';
 
 // Lets start by creating some notes, we need a noteCreate.js component.
 import NoteLandingPage from './noteLandingPage.js';
-import NoteCreate from './noteCreate.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
-
-
 
 // We need to get topics we can work width
 
@@ -22,7 +19,6 @@ export default class Notes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showCreate: false,
             showRead: false,
             showSearchResult: false,
             noteSearchResult: [],
@@ -109,11 +105,6 @@ export default class Notes extends React.Component {
                                  hideSearchResult={this.hideSearchResult.bind(this)}
                                  noteUpdateSearchResults={this.noteUpdateSearchResults.bind(this)}
                              />
-
-                {(this.state.showCreate) ?
-                    <NoteCreate activeTopic={this.state.activeTopic}
-                />
-                : null}
 
                 {(this.state.showRead) ?
                     <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
