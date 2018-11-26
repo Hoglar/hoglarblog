@@ -98,6 +98,15 @@ export default class NoteLandingPage extends React.Component {
 
     }
 
+    handleSaveTitle(event) {
+        event.preventDefault();
+        // cast funcion to create note structure. Then load create page.
+            // Function needs some data: this.state.titleInput and this.props.activeTopic
+
+        // then!
+        // Load just read with this note as base.
+    }
+
     noteNewTopic() {
 
         this.setState({
@@ -242,7 +251,8 @@ export default class NoteLandingPage extends React.Component {
 
                         {(!this.state.titleInput) ? null : (
                             <button id="noteLandingPageCreateTitleButton"
-                                    type="submit">
+                                    type="submit"
+                                    onClick={this.handleSaveTitle.bind(this)}>
                                 Save
                             </button>
                         )}
