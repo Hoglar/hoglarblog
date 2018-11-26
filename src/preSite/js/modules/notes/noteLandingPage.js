@@ -41,7 +41,7 @@ export default class NoteLandingPage extends React.Component {
     }
 
 
-    createButtonClicked() {
+    changeInputButtonClicked() {
 
         if (this.state.showSearchField) {
             this.setState({showSearchField: false,
@@ -53,6 +53,7 @@ export default class NoteLandingPage extends React.Component {
         else {
             this.setState({showCreateNoteTitle: false,
                            showSearchField: true,
+                           titleInput: null,
                            inputButton: "Create"}, () => {
                                document.getElementById("noteLandingPageInputSearch").select();
                            });
@@ -159,7 +160,7 @@ export default class NoteLandingPage extends React.Component {
                 null :
                 (<div className="noteLandingPageInputChanger">
                     <button className="noteLandingPageButton"
-                            onClick={this.createButtonClicked.bind(this)}>
+                            onClick={this.changeInputButtonClicked.bind(this)}>
                         {this.state.inputButton}
                     </button>
                 </div>)}
