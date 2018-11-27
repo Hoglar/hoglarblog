@@ -25,8 +25,14 @@ export default class NoteSearchResult extends React.Component {
                                  key={index}
                                  onClick={() => this.props.noteSearchSingleResultClicked(note)}>
 
-                                <h1>{capitalizeFirstLetter(note.title)}</h1>
-                                <p>{capitalizeFirstLetter(note.author)}</p>
+                                 <header>
+                                    <h1>{capitalizeFirstLetter(note.title)}</h1>
+                                 </header>
+
+                                 <footer>
+                                     <p>Score: {note.documentScore}</p>
+                                     <p>{capitalizeFirstLetter(note.author)} {note.date.substring(0, 10)}</p>
+                                 </footer>
                             </div>
                         )
                     }.bind(this))}

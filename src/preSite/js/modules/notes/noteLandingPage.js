@@ -38,7 +38,6 @@ export default class NoteLandingPage extends React.Component {
         }
     }
 
-
     showTopicChooser() {
 
         if(this.state.showTopicChooser === false) {

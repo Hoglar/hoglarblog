@@ -219,6 +219,7 @@
 .noteSearchResult {
     grid-row: 3 / 4;
     grid-column: 3 / 5;
+    margin-top: 45px;
 
     display: grid;
     grid-template-rows: 45px auto;
@@ -239,22 +240,8 @@
     flex-direction: column;
 }
 
-.noteSearchSingleResult h1 {
-    font-size: 18px;
-    font-weight: lighter;
-}
-
-.noteSearchSingleResult p {
-    font-size: 16px;
-    font-weight: lighter;
-    text-align: right;
-}
-
 .noteSearchSingleResult {
-    color: black;
     width: 100%;
-    background-color: #0F78FF;
-    border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     margin: auto;
     margin-top: 1px;
@@ -267,6 +254,37 @@
     cursor: pointer;
     border: solid 1px #FF9E00;
 }
+
+.noteSearchSingleResult header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+.noteSearchSingleResult header h1 {
+    color: #bebebe;
+    font-size: 20px;
+    margin: 0;
+    padding-top: 10px;
+    font-variant:small-caps;
+    letter-spacing: .15em;
+    font-weight: lighter;
+    border-top: solid 3px #041A37;
+}
+
+.noteSearchSingleResult footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-style: italic;
+}
+
+.noteSearchSingleResult footer p {
+    font-size: 16px;
+    font-weight: lighter;
+}
+
 
 /********************* NoteRead *************************/
 
