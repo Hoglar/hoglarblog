@@ -22,6 +22,9 @@ export default class NoteRead extends React.Component {
 
     componentDidMount() {
         document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
+        if (this.state.editMode) {
+            document.getElementsByClassName("noteReadMain")[0].focus();
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -32,6 +35,9 @@ export default class NoteRead extends React.Component {
             editMode: this.props.editMode
         }, () => {
             document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
+            if (this.state.editMode) {
+                document.getElementsByClassName("noteReadMain")[0].focus();
+            }
         })
     }
 }
