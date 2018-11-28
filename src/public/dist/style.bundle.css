@@ -901,6 +901,7 @@ body {
 }
 
 .noteSearchSingleResult {
+
     width: 100%;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     margin: auto;
