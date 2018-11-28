@@ -46,14 +46,6 @@ export default class Notes extends React.Component {
         })
     }
 
-    setReadToEdit() {
-        if(this.state.editMode) {
-            this.setState({editMode: false})
-        }
-        else {
-            this.setState({editMode: true});
-        }
-    }
 
     topicSelected(topic) {
 
@@ -76,18 +68,20 @@ export default class Notes extends React.Component {
 
 
 
-    noteSearchSingleResultClicked(note) {
+    noteSearchSingleResultClicked(note, changeMode) {
+        console.log("Changing State to", changeMode)
         this.setState({
             noteSearchSingleResult: note,
             showRead: true,
             showSearchResult: false,
+            editMode: changeMode
         });
     }
 
     reloadNote(note) {
         this.setState({showRead: false}, () => {
             if(note) {
-                this.noteSearchSingleResultClicked(note);
+                this.noteSearchSingleResultClicked(note, false);
             }
         })
     }
@@ -121,6 +115,7 @@ export default class Notes extends React.Component {
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}
                               reloadNote={this.reloadNote.bind(this)}
                               loggedInUser={this.props.loggedInUser}
+                              editMode={this.state.editMode}
                     />
                 : null}
                 {(this.state.showSearchResult) ?

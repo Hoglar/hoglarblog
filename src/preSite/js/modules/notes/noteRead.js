@@ -20,14 +20,27 @@ export default class NoteRead extends React.Component {
         }
     }
 
+    componentDidMount() {
+        document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
+    }
 
+    componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+    if (this.props.editMode !== prevProps.editMode) {
+        this.setState({
+            editButton: (this.props.editMode) ? "Save" : "Edit",
+            editMode: this.props.editMode
+        }, () => {
+            document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
+        })
+    }
+}
 
     // Note read needs data.
     // Gjøre note search først?
     editButtonClicked() {
         // We need to set the noteReadTop to editable
         // We need to set the noteReadMain to editable
-
         let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
 
         if(this.state.editButton === "Edit") {
