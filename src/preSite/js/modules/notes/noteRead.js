@@ -15,7 +15,16 @@ export default class NoteRead extends React.Component {
 
         this.state = {
             showComments: false,
-            editButton: "Edit"
+            editButton: (this.props.editMode) ? "Save" : "Edit",
+            editMode: this.props.editMode
+        }
+    }
+
+    componentDidMount() {
+        if (this.state.editMode) {
+            let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
+            noteReadMain.contentEditable = "true";
+            noteReadMain.focus()
         }
     }
 
