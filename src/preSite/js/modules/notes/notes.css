@@ -243,47 +243,46 @@
 .noteSearchSingleResult {
 
     width: 100%;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     margin: auto;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    height: 100px;
-    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-left: solid 2px #FF9E00;
+    padding: 10px 10px 5px 20px;
 }
 
 .noteSearchSingleResult:hover {
     cursor: pointer;
-    border: solid 1px #FF9E00;
+    border-left: solid 2px #0F78FF;
+    color: #bebebe;
 }
 
 .noteSearchSingleResult header {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 
 .noteSearchSingleResult header h1 {
-    color: #bebebe;
+
     font-size: 20px;
     margin: 0;
-    padding-top: 10px;
     font-variant:small-caps;
     letter-spacing: .15em;
     font-weight: lighter;
-    border-top: solid 3px #041A37;
 }
 
 .noteSearchSingleResult footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     font-style: italic;
 }
 
-.noteSearchSingleResult footer p {
+.noteSearchSingleResult p {
     font-size: 16px;
     font-weight: lighter;
+    margin: 0;
 }
 
 

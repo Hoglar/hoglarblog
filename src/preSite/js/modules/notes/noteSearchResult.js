@@ -27,10 +27,10 @@ export default class NoteSearchResult extends React.Component {
 
                                  <header>
                                     <h1>{capitalizeFirstLetter(note.title)}</h1>
+                                    <p>Score: {note.documentScore}</p>
                                  </header>
 
                                  <footer>
-                                     <p>Score: {note.documentScore}</p>
                                      <p>{capitalizeFirstLetter(note.author)} {note.date.substring(0, 10)}</p>
                                  </footer>
                             </div>
