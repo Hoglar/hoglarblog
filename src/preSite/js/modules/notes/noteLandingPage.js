@@ -115,7 +115,6 @@ export default class NoteLandingPage extends React.Component {
             (insertedDocument) => {
                 // Vi får her tilbake ett nytt dokument, dette kan vi mate inn i read page.
                 // Det blir neste, nå hente jentungen!
-                this.props.setReadToEdit();
                 this.props.loadNote(insertedDocument);
                 this.setState(this.searchState);
             }

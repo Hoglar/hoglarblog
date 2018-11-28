@@ -47,7 +47,12 @@ export default class Notes extends React.Component {
     }
 
     setReadToEdit() {
-        this.setState({editMode: true});
+        if(this.state.editMode) {
+            this.setState({editMode: false})
+        }
+        else {
+            this.setState({editMode: true});
+        }
     }
 
     topicSelected(topic) {
@@ -109,7 +114,6 @@ export default class Notes extends React.Component {
                                  hideSearchResult={this.hideSearchResult.bind(this)}
                                  noteUpdateSearchResults={this.noteUpdateSearchResults.bind(this)}
                                  loadNote={this.noteSearchSingleResultClicked.bind(this)}
-                                 setReadToEdit={this.setReadToEdit.bind(this)}
                              />
 
                 {(this.state.showRead) ?
@@ -117,7 +121,6 @@ export default class Notes extends React.Component {
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}
                               reloadNote={this.reloadNote.bind(this)}
                               loggedInUser={this.props.loggedInUser}
-                              editMode={this.state.editMode}
                     />
                 : null}
                 {(this.state.showSearchResult) ?

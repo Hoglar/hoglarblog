@@ -20,13 +20,7 @@ export default class NoteRead extends React.Component {
         }
     }
 
-    componentDidMount() {
-        if (this.state.editMode) {
-            let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
-            noteReadMain.contentEditable = "true";
-            noteReadMain.focus()
-        }
-    }
+
 
     // Note read needs data.
     // Gjøre note search først?
