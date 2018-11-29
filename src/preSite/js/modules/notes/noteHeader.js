@@ -8,7 +8,7 @@ import createNewTopic from './noteFunctions/createNewTopic.js';
 import fetchNotes from './noteFunctions/fetchNotes.js';
 import createNote from './noteFunctions/createNote.js';
 
-export default class NoteLandingPage extends React.Component {
+export default class NoteHeader extends React.Component {
 
     constructor(props) {
         super(props);
@@ -35,6 +35,13 @@ export default class NoteLandingPage extends React.Component {
             showSearchField: false,
             showCreateNoteTitle: true,
             inputButton: "Search"
+        }
+
+        this.topicState = {
+            showSearchField: false,
+            showCreateNoteTitle: false,
+            showCreateTopic: true,
+            showTopicChooser: false,
         }
     }
 
@@ -126,13 +133,7 @@ export default class NoteLandingPage extends React.Component {
     }
 
     noteNewTopic() {
-
-        this.setState({
-            showSearchField: false,
-            showCreateTopic: true,
-            showTopic: false,
-            showTopicChooser: false
-        }, () => {
+        this.setState(this.topicState, () => {
             document.getElementById("noteLandingPageCreateTopicInput").select();
         })
     }
@@ -178,9 +179,9 @@ export default class NoteLandingPage extends React.Component {
 
     render() {
         return (
-            <div className="noteLandingPage">
-                <div className="noteLandingPageLogo">
-                    Notes
+            <header className="noteHeader">
+                <div className="noteHeaderLogo">
+                    <h1>Notes</h1>
                 </div>
 
                 {(this.props.loggedInUser === "guest" || this.props.activeTopic === "Select topic") ?
@@ -193,49 +194,51 @@ export default class NoteLandingPage extends React.Component {
                 </div>)}
 
                 {(this.state.showTopic) ? (
-                    <div className="noteLandingPageTopic"
-                         onMouseLeave={this.hideTopicChooser.bind(this)}>
-                        <button className="noteLandingPageButton"
-                                onMouseOver={this.showTopicChooser.bind(this)}>
+                <div className="noteLandingPageTopic"
+                     onMouseLeave={this.hideTopicChooser.bind(this)}>
+                    <button className="noteLandingPageButton"
+                            onMouseOver={this.showTopicChooser.bind(this)}>
 
-                            {capitalizeFirstLetter(this.props.activeTopic)}
-                        </button>
+                        {capitalizeFirstLetter(this.props.activeTopic)}
+                    </button>
 
-                        {(this.state.showTopicChooser) ?
-                            (<div className="noteLandingPageTopicChooser"
-                                  onMouseLeave={this.hideTopicChooser.bind(this)}>
-                                {this.props.topics.map(function(topic, index) {
-                                    return (
-                                        <Topic topic={topic}
-                                               topicSelected={this.props.topicSelected}
-                                               hideTopicChooser={this.hideTopicChooser.bind(this)}
-                                               key={index}
-                                        />
-                                    )
-                                }.bind(this))}
+                    {(this.state.showTopicChooser) ?
+                        (<div className="noteLandingPageTopicChooser"
+                              onMouseLeave={this.hideTopicChooser.bind(this)}>
+                            {this.props.topics.map(function(topic, index) {
+                                return (
+                                    <Topic topic={topic}
+                                           topicSelected={this.props.topicSelected}
+                                           hideTopicChooser={this.hideTopicChooser.bind(this)}
+                                           key={index}
+                                    />
+                                )
+                            }.bind(this))}
 
-                                {(this.props.loggedInUser !== "hoglar") ?
-                                null : (
-                                    <div className="noteLandingPageSingleTopic"
-                                         onClick={this.noteNewTopic.bind(this)}>
-                                        Add topic
-                                    </div>
-                                )}
-                            </div>) :
-                        null}
-                    </div>
+                            {(this.props.loggedInUser !== "hoglar") ?
+                            null : (
+                                <div className="noteLandingPageSingleTopic"
+                                     onClick={this.noteNewTopic.bind(this)}>
+                                    Add topic
+                                </div>
+                            )}
+                        </div>) :
+                    null}
+                </div>
                 ) : null}
 
 
                 {(this.state.showCreateTopic) ? (
-                    <form className="noteLandingPageCreateTopic">
+                    <form className="noteLandingPageInputForm">
                         <input id="noteLandingPageCreateTopicInput"
+                               className="noteLandingPageInputField"
                                type="text"
                                placeholder="Topic name:"
                                autoComplete="off"
                                ref="topicCreate">
                         </input>
-                        <button type="submit"
+                        <button className="noteHeaderInputButton"
+                                type="submit"
                                 onClick={this.createTopicSaveClicked.bind(this)}>
                             Save
                         </button>
@@ -254,7 +257,8 @@ export default class NoteLandingPage extends React.Component {
                         </input>
                         <button type="submit"
                                 onClick={this.doNothing.bind(this)}
-                                hidden></button>
+                                hidden>
+                        </button>
                     </form>
                 ) : null}
 
@@ -269,7 +273,7 @@ export default class NoteLandingPage extends React.Component {
                         </input>
 
                         {(!this.state.titleInput) ? null : (
-                            <button id="noteLandingPageCreateTitleButton"
+                            <button className="noteHeaderInputButton"
                                     type="submit"
                                     onClick={this.handleSaveTitle.bind(this)}>
                                 Save
@@ -279,7 +283,7 @@ export default class NoteLandingPage extends React.Component {
                     </form>
                 ): null}
 
-            </div>
+            </header>
         )
     }
 }

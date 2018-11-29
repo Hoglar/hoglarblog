@@ -76,7 +76,7 @@ class Application extends React.Component {
                     onSidebarClick={onSidebarClick.bind(this)}
                 />
 
-                <div className="mainSection">
+                <main className="mainSection">
 
                     { (this.state.showNotes && (this.state.mode === "app")) ?
                         <Notes loggedInUser={this.state.loggedInUser} /> :
@@ -92,7 +92,7 @@ class Application extends React.Component {
 
 
                     { ((this.state.mode === "administation") && this.state.showRegister) ? <Register userCreationIsDone={this.userCreationIsDone.bind(this)}/> : null}
-                </div>
+                </main>
 
                 <Footer attributionInfo={defaultSidebar}/>
             </div>

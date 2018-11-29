@@ -5,7 +5,7 @@ import React from 'react';
 // components.
 
 // Lets start by creating some notes, we need a noteCreate.js component.
-import NoteLandingPage from './noteLandingPage.js';
+import NoteHeader from './noteHeader.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
 
@@ -98,8 +98,8 @@ export default class Notes extends React.Component {
 
     render() {
         return (
-            <div className="notesSkeleton">
-                <NoteLandingPage topics={this.state.topics}
+            <section className="notesSkeleton">
+                <NoteHeader topics={this.state.topics}
                                  activeTopic={this.state.activeTopic}
                                  topicSelectorClicked={this.topicSelectorClicked.bind(this)}
                                  topicSelected={this.topicSelected.bind(this)}
@@ -123,8 +123,7 @@ export default class Notes extends React.Component {
                                       noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
                 : null}
 
-
-            </div>
+            </section>
         )
     }
 }
