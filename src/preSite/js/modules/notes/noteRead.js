@@ -105,10 +105,11 @@ export default class NoteRead extends React.Component {
 
     render() {
         return (
-            <div className="noteRead">
+            <article className="noteRead">
                 <div className="noteReadTop">
                     {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
                 </div>
+                
                 <div className="noteReadMain">
                         {this.props.noteSearchSingleResult.note}
                 </div>
@@ -150,7 +151,7 @@ export default class NoteRead extends React.Component {
                     <NoteComments noteSearchSingleResult={this.props.noteSearchSingleResult}
                                   updateSearchSingleResult={this.props.updateSearchSingleResult}/>
                 : null}
-            </div>
+            </article>
         )
     }
 }
