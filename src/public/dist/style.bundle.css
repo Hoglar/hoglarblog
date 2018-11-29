@@ -977,8 +977,7 @@ body {
     height: auto;
     outline: none;
 
-    white-space: pre;
-    overflow: scroll;
+    white-space: pre-wrap;
 }
 
 
