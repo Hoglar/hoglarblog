@@ -978,7 +978,7 @@ body {
     outline: none;
 
     white-space: pre;
-    word-wrap: normal;
+    overflow: scroll;
 }
 
 
