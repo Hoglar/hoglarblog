@@ -26,10 +26,6 @@
 
 }
 
-/*************************
-    Note Header:
-*/
-
 .noteHeaderLogo {
 
     padding-top: 23px;
@@ -83,14 +79,13 @@
 }
 
 
-.noteLandingPageButton {
+.noteHeaderControllerButton {
 
     grid-row: 1 / 2;
     height: 100%;
     font-size: 18px;
     border: none;
     background: none;
-    padding: 0;
     text-align: left;
     color: #8e8e8e;
     font-variant: small-caps;
@@ -98,38 +93,44 @@
     padding-left: 20px;
 }
 
-.noteLandingPageButton:hover {
+.noteHeaderControllerButton:hover {
     color: #FF9E00;
     cursor: pointer;
 }
 
-.noteLandingPageButton:focus {
+.noteHeaderControllerButton:focus {
     color: #FF9E00;
     outline: none;
 }
 
+/************************
+    Topic Dropdown
+    topic.js
+************************/
 
-
-.noteLandingPageTopicChooser {
+.noteHeaderTopicDropdown {
     grid-row: 2 / 3;
 
     z-index: 1;
 
     display: flex;
     flex-direction: column;
+    padding-left: 20px;
 }
 
-.noteLandingPageSingleTopic {
+.noteHeaderSingleTopic {
     z-index: 1;
     height: 22px;
     font-size: 16px;
     padding-left: 10px;
-    margin-left: 20px;
     border-left: solid 2px  #FF9E00;
     background-color: #01060C;
+    list-style-type: none;
+    letter-spacing: .15em;
+
 }
 
-.noteLandingPageSingleTopic:hover {
+.noteHeaderSingleTopic:hover {
     border-left: solid 2px #0F78FF;
     color: #bebebe;
     padding-left: 12px;
@@ -149,12 +150,12 @@
     padding-right: 6px;
 }
 
-.noteLandingPageInputField::placeholder {
+.noteHeaderInputField::placeholder {
     font-variant: small-caps;
     letter-spacing: .15em;
 }
 
-.noteLandingPageInputField {
+.noteHeaderInputField {
     background-color: #01060C;
     border: solid 1px #01060C;
     border-left: solid 2px #FF9E00;
@@ -172,7 +173,7 @@
     font-size: 18px;
     font-variant: small-caps;
     letter-spacing: .15em;
-    border: solid 0px black;
+    border: solid 0 black;
     border-bottom: solid 2px #FF9E00;
     background-color: #01060C;
     color: #8e8e8e;
@@ -183,7 +184,7 @@
     cursor: pointer;
 }
 
-.noteLandingPageCreateTopic {
+.noteHeaderCreateTopic {
     grid-row: 2 / 3;
     grid-column: 3 / 5;
     display: flex;

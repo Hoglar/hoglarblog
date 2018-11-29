@@ -6,6 +6,7 @@ import Topic from './topic.js';
 import createNewTopic from './noteFunctions/createNewTopic.js';
 import fetchNotes from './noteFunctions/fetchNotes.js';
 import createNote from './noteFunctions/createNote.js';
+import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 
 export default class NoteHeader extends React.Component {
 
@@ -14,7 +15,6 @@ export default class NoteHeader extends React.Component {
         this.state = {
             inputButton: "Create",
             showTopicChooser: false,
-            showTopic: true,
             showSearchField: true,
             showCreateTopic: false,
             showCreateNoteTitle: false,
@@ -186,24 +186,24 @@ export default class NoteHeader extends React.Component {
                 {(this.props.loggedInUser === "guest" || this.props.activeTopic === "Select topic") ?
                 null :
                 (<div className="noteHeaderInputChanger">
-                    <button className="noteLandingPageButton"
+                    <button className="noteHeaderControllerButton"
                             onClick={this.changeInputButtonClicked.bind(this)}>
                         {this.state.inputButton}
                     </button>
                 </div>)}
 
 
-                {(this.state.showTopic) ? (
-                <div className="noteHeaderTopic"
+
+                <nav className="noteHeaderTopic"
                      onMouseLeave={this.hideTopicChooser.bind(this)}>
-                    <button className="noteLandingPageButton"
+                    <button className="noteHeaderControllerButton"
                             onMouseOver={this.showTopicChooser.bind(this)}>
 
-                        {this.props.activeTopic}
+                        {capitalizeFirstLetter(this.props.activeTopic)}
                     </button>
 
                     {(this.state.showTopicChooser) ?
-                        (<div className="noteLandingPageTopicChooser"
+                        (<ul className="noteHeaderTopicDropdown"
                               onMouseLeave={this.hideTopicChooser.bind(this)}>
                             {this.props.topics.map(function(topic, index) {
                                 return (
@@ -217,15 +217,14 @@ export default class NoteHeader extends React.Component {
 
                             {(this.props.loggedInUser !== "hoglar") ?
                             null : (
-                                <div className="noteLandingPageSingleTopic"
+                                <li className="noteHeaderSingleTopic"
                                      onClick={this.noteNewTopic.bind(this)}>
                                     Add topic
-                                </div>
+                                </li>
                             )}
-                        </div>) :
+                        </ul>) :
                     null}
-                </div>
-                ) : null}
+                </nav>
 
 
                 {/* create topic form */}
@@ -233,7 +232,7 @@ export default class NoteHeader extends React.Component {
                 {(this.state.showCreateTopic) ? (
                     <form className="noteHeaderInputForm">
                         <input id="noteLandingPageCreateTopicInput"
-                               className="noteLandingPageInputField"
+                               className="noteHeaderInputField"
                                type="text"
                                placeholder="Topic name:"
                                autoComplete="off"
@@ -251,7 +250,7 @@ export default class NoteHeader extends React.Component {
 
                 {(this.state.showSearchField && this.props.activeTopic !== "Select topic") ? (
                     <form className="noteHeaderInputForm">
-                        <input  className="noteLandingPageInputField"
+                        <input  className="noteHeaderInputField"
                                 id="noteLandingPageInputSearch"
                                 type="text"
                                 placeholder="Search:"
@@ -270,7 +269,7 @@ export default class NoteHeader extends React.Component {
 
                 {(this.state.showCreateNoteTitle) ? (
                     <form className="noteHeaderInputForm">
-                        <input className="noteLandingPageInputField"
+                        <input className="noteHeaderInputField"
                                id="noteLandingPageInputTitle"
                                type="text"
                                placeholder="Write note title here:"

@@ -17,10 +17,10 @@ export default class Topic extends React.Component {
 
     render() {
         return (
-            <div className="noteLandingPageSingleTopic"
+            <li className="noteHeaderSingleTopic"
                  onClick={this.selectTopic.bind(this)}>
                 {capitalizeFirstLetter(this.props.topic)}
-            </div>
+            </li>
 
         )
     }
