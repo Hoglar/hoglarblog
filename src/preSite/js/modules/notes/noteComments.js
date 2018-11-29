@@ -114,7 +114,7 @@ export default class NoteComments extends React.Component {
 
                     </textarea>
                     <div className="noteCommentFooter">
-                        <button className="noteLandingPageButton"
+                        <button className="noteButton"
                                 onClick={this.submitComment.bind(this)}>Post comment</button>
                     </div>
                 </form>

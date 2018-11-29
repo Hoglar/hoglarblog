@@ -186,7 +186,7 @@ export default class NoteHeader extends React.Component {
                 {(this.props.loggedInUser === "guest" || this.props.activeTopic === "Select topic") ?
                 null :
                 (<div className="noteHeaderInputChanger">
-                    <button className="noteHeaderControllerButton"
+                    <button className="noteButton"
                             onClick={this.changeInputButtonClicked.bind(this)}>
                         {this.state.inputButton}
                     </button>
@@ -196,7 +196,7 @@ export default class NoteHeader extends React.Component {
 
                 <nav className="noteHeaderTopic"
                      onMouseLeave={this.hideTopicChooser.bind(this)}>
-                    <button className="noteHeaderControllerButton"
+                    <button className="noteButton"
                             onMouseOver={this.showTopicChooser.bind(this)}>
 
                         {capitalizeFirstLetter(this.props.activeTopic)}

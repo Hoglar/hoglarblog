@@ -116,7 +116,7 @@ export default class NoteRead extends React.Component {
 
                     {((this.props.loggedInUser === "guest") ? null :
                         <button id="noteReadFooterEditButton"
-                                className="noteLandingPageButton"
+                                className="noteButton"
                                 onClick={this.editButtonClicked.bind(this)}>
 
                                 {this.state.editButton}
@@ -125,7 +125,7 @@ export default class NoteRead extends React.Component {
 
                     {((this.props.loggedInUser === "guest") ? null :
                         <button id="noteReadFooterDeleteButton"
-                                className="noteLandingPageButton"
+                                className="noteButton"
                                 onClick={this.deleteButtonClicked.bind(this)}>
 
                                 Delete
@@ -134,12 +134,12 @@ export default class NoteRead extends React.Component {
 
 
                     <button id="noteReadFooterMarkButton"
-                            className="noteLandingPageButton">
+                            className="noteButton">
 
                             Bookmark
                     </button>
                     <button id="noteReadFooterCommentButton"
-                            className="noteLandingPageButton"
+                            className="noteButton"
                             onClick={this.commentButtonClicked.bind(this)}>
 
                             Comments

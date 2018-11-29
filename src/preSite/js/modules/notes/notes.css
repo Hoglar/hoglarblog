@@ -79,7 +79,7 @@
 }
 
 
-.noteHeaderControllerButton {
+.noteButton {
 
     grid-row: 1 / 2;
     height: 100%;
@@ -93,12 +93,12 @@
     padding-left: 20px;
 }
 
-.noteHeaderControllerButton:hover {
+.noteButton:hover {
     color: #FF9E00;
     cursor: pointer;
 }
 
-.noteHeaderControllerButton:focus {
+.noteButton:focus {
     color: #FF9E00;
     outline: none;
 }
