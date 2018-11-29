@@ -59,7 +59,11 @@
     cursor: pointer;
 }
 
-.noteLandingPageInputChanger {
+/********************************
+        noteHeader controller
+********************************/
+
+.noteHeaderInputChanger {
     grid-row: 3 / 4;
     grid-column: 2 / 3;
     text-align: right;
@@ -68,7 +72,7 @@
 
 }
 
-.noteLandingPageTopic {
+.noteHeaderTopic {
     grid-row: 3 / 5;
     grid-column: 1 / 2;
 
@@ -76,17 +80,12 @@
 
     display: grid;
     grid-template-rows: 45px auto;
-
-    letter-spacing: .15em;
-    padding-left: 20px;
-    font-weight: lighter;
 }
 
 
 .noteLandingPageButton {
 
     grid-row: 1 / 2;
-
     height: 100%;
     font-size: 18px;
     border: none;
@@ -95,6 +94,8 @@
     text-align: left;
     color: #8e8e8e;
     font-variant: small-caps;
+    letter-spacing: .15em;
+    padding-left: 20px;
 }
 
 .noteLandingPageButton:hover {
@@ -123,6 +124,7 @@
     height: 22px;
     font-size: 16px;
     padding-left: 10px;
+    margin-left: 20px;
     border-left: solid 2px  #FF9E00;
     background-color: #01060C;
 }
@@ -134,7 +136,12 @@
     cursor: pointer;
 }
 
-.noteLandingPageInputForm {
+/**********************************
+            NoteHeader
+            Input section
+**********************************/
+
+.noteHeaderInputForm {
     grid-row: 3 / 4;
     grid-column: 3 / 5;
     display: flex;
