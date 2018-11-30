@@ -770,16 +770,14 @@ body {
 
 .noteHeaderTopicDropdown {
     grid-row: 2 / 3;
-
-    z-index: 1;
-
+    z-index: 2;
     display: flex;
     flex-direction: column;
     padding-left: 20px;
 }
 
 .noteHeaderSingleTopic {
-    z-index: 1;
+    z-index: 2;
     height: 22px;
     font-size: 16px;
     padding-left: 10px;
@@ -867,6 +865,7 @@ body {
     grid-template-rows: 45px auto;
     grid-template-columns: repeat(4, 1fr);
 
+
 }
 
 .noteSearchResultTop {
@@ -877,7 +876,7 @@ body {
 .noteSearchResultMain {
     grid-row: 2 / 3;
     grid-column: 1 / 5;
-    background-color: #01060C;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
 }
@@ -890,6 +889,7 @@ body {
     margin-bottom: 5px;
     border-left: solid 2px #FF9E00;
     padding: 10px 10px 5px 20px;
+    background-color: #01060C;
 }
 
 .noteSearchSingleResult:hover {
