@@ -88,18 +88,18 @@ export default class NoteComments extends React.Component {
 
     render() {
         return (
-            <div className="noteComments">
+            <aside className="noteComments">
 
                 <div className="noteCommentsMain">
                     {(this.state.comments) ?
                         this.state.comments.map(function(comment, index) {
                             return(
-                                <div className="noteCommentsSingleComment"
+                                <article className="noteCommentsSingleComment"
                                      key={index}>
                                         <p className="noteCommentSingleCommentAuthor">{capitalizeFirstLetter(comment.author)+": "}</p>
                                         <p className="noteCommentSingleCommentText">{capitalizeFirstLetter(comment.text)}</p>
                                         <p className="noteCommentSingleCommentDate">{comment.date.substring(0, 10)}</p>
-                                </div>
+                                </article>
                             )
                         })
                     : null}
@@ -113,12 +113,12 @@ export default class NoteComments extends React.Component {
                               ref="noteComment">
 
                     </textarea>
-                    <div className="noteCommentFooter">
+                    <footer className="noteCommentFooter">
                         <button className="noteButton"
                                 onClick={this.submitComment.bind(this)}>Post comment</button>
-                    </div>
+                    </footer>
                 </form>
-            </div>
+            </aside>
         )
     }
 }

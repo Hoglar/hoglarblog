@@ -106,18 +106,20 @@ export default class NoteRead extends React.Component {
     render() {
         return (
             <article className="noteRead">
-                <div className="noteReadTop">
-                    {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
-                </div>
-                
-                <div className="noteReadMain">
-                        {this.props.noteSearchSingleResult.note}
-                </div>
-                <div className="noteReadFooter">
+                <header className="noteReadHeader">
+                    <h2>
+                        {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
+                    </h2>
+                </header>
+
+                <article className="noteReadMain">
+                    {this.props.noteSearchSingleResult.note}
+                </article>
+
+                <footer className="noteReadFooter">
 
                     {((this.props.loggedInUser === "guest") ? null :
-                        <button id="noteReadFooterEditButton"
-                                className="noteButton"
+                        <button className="noteButton"
                                 onClick={this.editButtonClicked.bind(this)}>
 
                                 {this.state.editButton}
@@ -125,8 +127,7 @@ export default class NoteRead extends React.Component {
                     )}
 
                     {((this.props.loggedInUser === "guest") ? null :
-                        <button id="noteReadFooterDeleteButton"
-                                className="noteButton"
+                        <button className="noteButton"
                                 onClick={this.deleteButtonClicked.bind(this)}>
 
                                 Delete
@@ -134,18 +135,16 @@ export default class NoteRead extends React.Component {
                     )}
 
 
-                    <button id="noteReadFooterMarkButton"
-                            className="noteButton">
+                    <button className="noteButton">
 
                             Bookmark
                     </button>
-                    <button id="noteReadFooterCommentButton"
-                            className="noteButton"
+                    <button className="noteButton"
                             onClick={this.commentButtonClicked.bind(this)}>
 
                             Comments
                     </button>
-                </div>
+                </footer>
 
                 {(this.state.showComments) ?
                     <NoteComments noteSearchSingleResult={this.props.noteSearchSingleResult}
