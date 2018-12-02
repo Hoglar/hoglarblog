@@ -1,6 +1,28 @@
 /* Notes */
 /* Gets included in app.js */
 
+
+/*************************
+        Base rules
+*************************/
+
+section {
+    color: #8e8e8e;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    font-variant: small-caps;
+    letter-spacing: .15em;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 20px;
+    letter-spacing: .5em;
+}
+
+
 .notesSkeleton {
     z-index: 1;
     grid-row: 1 / 4;
@@ -9,8 +31,6 @@
     display: grid;
     grid-template-rows: 45px 45px auto;
     grid-template-columns: repeat(6, 1fr);
-
-    color: #8e8e8e;
 }
 
 
@@ -41,13 +61,6 @@
     text-indent: 20px;
 
     border-bottom: solid 3px #FF9E00;
-}
-
-.noteHeaderLogo h1 {
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: .5em;
-
 }
 
 .noteHeaderLogo:hover {
@@ -246,20 +259,15 @@
 }
 
 
-.noteSearchSingleResult header h1 {
-
-    font-size: 20px;
-    margin: 0;
-    font-variant:small-caps;
-    letter-spacing: .15em;
-    font-weight: lighter;
-}
-
 .noteSearchSingleResult footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     font-style: italic;
+}
+
+.noteSearchSingleResult h2 {
+    margin: 0;
 }
 
 .noteSearchSingleResult p {
@@ -296,14 +304,6 @@
     display: flex;
     align-items: center;
 }
-
-.noteReadHeader h2 {
-    font-size: 20px;
-    font-weight: lighter;
-    letter-spacing: .15em;
-}
-
-
 
 .noteReadMain {
     grid-row: 2 / 3;

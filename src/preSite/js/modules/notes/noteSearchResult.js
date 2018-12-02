@@ -26,7 +26,7 @@ export default class NoteSearchResult extends React.Component {
                                  onClick={() => this.props.noteSearchSingleResultClicked(note, false)}>
 
                                  <header>
-                                    <h1>{capitalizeFirstLetter(note.title)}</h1>
+                                    <h2>{capitalizeFirstLetter(note.title)}</h2>
                                     <p>Score: {note.documentScore}</p>
                                  </header>
 
