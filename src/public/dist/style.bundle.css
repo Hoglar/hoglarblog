@@ -15,6 +15,28 @@ body {
     font-family: sans-serif;
 }
 
+/*************************
+        Base rules
+*************************/
+
+section {
+    color: #8e8e8e;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+    font-variant: small-caps;
+    letter-spacing: .15em;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 20px;
+    letter-spacing: .5em;
+}
+
+/**   Layout   **/
+
 .wrapper {
 	display: grid;
 	grid-template-columns: 45px repeat(6, 1fr);
@@ -662,29 +684,9 @@ body {
 /* Gets included in app.js */
 
 
-/*************************
-        Base rules
-*************************/
-
-section {
-    color: #8e8e8e;
-}
-
-h1, h2, h3 {
-    font-weight: 400;
-    font-variant: small-caps;
-    letter-spacing: .15em;
-    font-size: 18px;
-}
-
-h1 {
-    font-size: 20px;
-    letter-spacing: .5em;
-}
-
+/*    Layout   */
 
 .notesSkeleton {
-    z-index: 1;
     grid-row: 1 / 4;
     grid-column: 1 / 7;
 
@@ -990,6 +992,7 @@ h1 {
     font-size: 18px;
     font-family: courier, monospace;
     line-height: 1.5em;
+    font-weight: lighter;
 }
 
 
