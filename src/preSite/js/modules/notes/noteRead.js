@@ -107,9 +107,9 @@ export default class NoteRead extends React.Component {
         return (
             <article className="noteRead">
                 <header className="noteReadHeader">
-                    <h2>
+                    <h4>
                         {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
-                    </h2>
+                    </h4>
                 </header>
 
                 <article className="noteReadMain">

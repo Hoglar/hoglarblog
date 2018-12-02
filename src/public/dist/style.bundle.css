@@ -23,11 +23,15 @@ section, button {
     color: #8e8e8e;
 }
 
-h1, h2, h3, button {
+h1, h2, h3, h4, button {
     font-weight: 400;
     font-variant: small-caps;
     letter-spacing: .15em;
     font-size: 18px;
+}
+
+h4 {
+    font-variant: normal;
 }
 
 h1 {
@@ -41,8 +45,10 @@ li {
     font-size: 16px;
 }
 
-button {
-
+article {
+    line-height: 1.5em;
+    font-weight: lighter;
+    font-size: 18px;
 }
 
 /**   Layout   **/
@@ -797,8 +803,6 @@ button {
     padding-left: 10px;
     border-left: solid 2px  #FF9E00;
     background-color: #01060C;
-
-
 }
 
 .noteHeaderSingleTopic:hover {
@@ -843,7 +847,6 @@ button {
     height: 75%;
     border: solid 0 black;
     border-bottom: solid 2px #FF9E00;
-    background-color: #01060C;
 }
 
 .noteHeaderInputButton:hover {
@@ -943,46 +946,37 @@ button {
     border-right: solid 1px black;
 }
 
-.noteReadHeader {
-    grid-row: 1 / 2;
+.noteReadHeader, .noteReadMain {
+
     grid-column: 1 / 5;
-    margin-right: 3px;
 
     background-color: #041A37;
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    padding-left: 20px;
     width: 100%;
+    margin-right: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    font-family: courier, monospace;
+}
+
+.noteReadHeader {
+    grid-row: 1 / 2;
     display: flex;
     align-items: center;
 }
 
 .noteReadMain {
     grid-row: 2 / 3;
-    grid-column: 1 / 5;
-
-    margin-right: 3px;
     padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
 
-    background-color: #041A37;
-    border: solid 1px #000000;
     resize: none;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-
-    width: 100%;
     height: auto;
     outline: none;
-
     white-space: pre-wrap;
     word-break: normal;
     overflow-wrap: break-word;
-
-    font-size: 18px;
-    font-family: courier, monospace;
-    line-height: 1.5em;
-    font-weight: lighter;
 }
 
 
@@ -1012,45 +1006,16 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-}
-
-.noteCommentNewComment {
-
-    display: flex;
-    flex-direction: column;
-}
-
-.noteCommentNewCommentInputField {
-    width: 95%;
-    resize: none;
-    outline: none;
-    margin: 0;
-    align-self: center;
-
-    color: white;
-    font-size: 18px;
-
-    padding: 20px;
-
-    border: solid 1px black;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    background-color: #543400;
-}
-
-.noteCommentFooter {
-    width: 95%;
-    height: 45px;
-    align-self: center;
-    margin: 0;
 }
 
 .noteCommentsMain {
-    grid-row: 1 / 3;
-    grid-column: 1 / 5;
-
     display: flex;
     justify-content: flex-start;
+    flex-direction: column;
+}
+
+.noteCommentNewComment {
+    display: flex;
     flex-direction: column;
 }
 
@@ -1058,14 +1023,8 @@ button {
     height: auto;
     width: 95%;
     align-self: center;
-
-    flex-direction: row;
-
-    color: white;
-    font-size: 18px;
     color: #8e8e8e;
     padding: 10px;
-
     border: solid 1px black;
 }
 
@@ -1082,4 +1041,26 @@ button {
 
 .noteCommentSingleCommentText {
     display: inline;
+}
+
+.noteCommentNewCommentInputField, .noteCommentFooter {
+    width: 95%;
+    margin: 0;
+    align-self: center;
+}
+
+.noteCommentNewCommentInputField {
+    resize: none;
+    outline: none;
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+
+    border: solid 1px black;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    background-color: #543400;
+}
+
+.noteCommentFooter {
+    height: 45px;
 }

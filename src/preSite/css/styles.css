@@ -23,11 +23,15 @@ section, button {
     color: #8e8e8e;
 }
 
-h1, h2, h3, button {
+h1, h2, h3, h4, button {
     font-weight: 400;
     font-variant: small-caps;
     letter-spacing: .15em;
     font-size: 18px;
+}
+
+h4 {
+    font-variant: normal;
 }
 
 h1 {
@@ -41,8 +45,10 @@ li {
     font-size: 16px;
 }
 
-button {
-
+article {
+    line-height: 1.5em;
+    font-weight: lighter;
+    font-size: 18px;
 }
 
 /**   Layout   **/
