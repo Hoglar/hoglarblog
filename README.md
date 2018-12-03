@@ -96,7 +96,8 @@ The question feature should have a way to offer help over voice.
 6. Projects.
    I want to make a system where you can create small projects for yourself. Like 3 days of learning math, i then want to make a way to get points for this achievment. It will also be progressive. if you make a 3 day challange enough times, you can make it 5 days and so on. This will also help my site get returning players(users) :)
 
-7. Checklist
+7. Checklist.
+    .
 
 8. Class.
     I want to be able to join a class of people at your place of learning.
@@ -106,4 +107,4 @@ The question feature should have a way to offer help over voice.
 The site will make money on selling "notebooks" with "pages". Pages is used as currency for making posts.
 creating everything on site will cost pages.
 
-Make two dimentions of score, then draw it out with a diagram. 
+Make two dimentions of score, then draw it out with a diagram.
