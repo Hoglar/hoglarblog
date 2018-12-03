@@ -99,9 +99,11 @@ The question feature should have a way to offer help over voice.
 7. Checklist
 
 8. Class.
-    I want to be able to join a class of people at yor place of learning.
+    I want to be able to join a class of people at your place of learning.
 
-8. Settings
+8. Settings/Profile?
 
 The site will make money on selling "notebooks" with "pages". Pages is used as currency for making posts.
 creating everything on site will cost pages.
+
+Make two dimentions of score, then draw it out with a diagram. 
