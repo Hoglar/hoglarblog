@@ -40,7 +40,11 @@ module.exports = function(app, dbs) {
                     title: dataFromUser.title.toLowerCase(),
                     note: "",
                     author: results,
-                    documentScore: 0,
+                    score: {
+                        likes: [],
+                        timesRead: 0,
+                        popularity: 0
+                    },
                     date: new Date()
                 }, function(err, result) {
                     if (err) {
