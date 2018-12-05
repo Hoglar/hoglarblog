@@ -1,6 +1,7 @@
 'use strict';
 const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
+const updateNoteScoreRead = require('../serverUtilities/updateNoteScoreRead.js');
 const mongo = require('mongodb');
 
 module.exports = function(app, dbs) {
@@ -263,6 +264,18 @@ module.exports = function(app, dbs) {
                 res.json({"failMessage": "Error trying to update document"});
             }
         });
+    })
+
+    app.post("/api/note/updateScore", function(req, res) {
+
+        let data = req.body;
+
+        updateNoteScoreRead(dbs, data.topic.toLowerCase(), data.document_id)
+        .then(
+            (response) => {
+                res.send("updated document read score");
+            }
+        )
     })
 
     return app;

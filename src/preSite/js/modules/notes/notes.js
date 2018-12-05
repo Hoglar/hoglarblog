@@ -8,6 +8,7 @@ import React from 'react';
 import NoteHeader from './noteHeader.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
+import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
 
 // We need to get topics we can work width
 
@@ -69,7 +70,8 @@ export default class Notes extends React.Component {
 
 
     noteSearchSingleResultClicked(note, changeMode) {
-        console.log("Changing State to", changeMode)
+        console.log("Changing State to", changeMode);
+        updateNoteScoreRead(note);
         this.setState({
             noteSearchSingleResult: note,
             showRead: true,
