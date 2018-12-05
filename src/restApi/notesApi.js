@@ -266,10 +266,9 @@ module.exports = function(app, dbs) {
         });
     })
 
-    app.post("/api/note/updateScore", function(req, res) {
+    app.post("/api/note/updateTimesRead", function(req, res) {
 
         let data = req.body;
-
         updateNoteScoreRead(dbs, data.topic.toLowerCase(), data.document_id)
         .then(
             (response) => {

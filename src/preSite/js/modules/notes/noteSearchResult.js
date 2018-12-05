@@ -27,6 +27,7 @@ export default class NoteSearchResult extends React.Component {
 
                                  <header>
                                     <h2>{capitalizeFirstLetter(note.title)}</h2>
+                                    <p>{note.score.timesRead}</p>
                                  </header>
 
                                  <footer>
