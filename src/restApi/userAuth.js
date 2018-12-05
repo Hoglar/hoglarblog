@@ -15,7 +15,6 @@ module.exports = function(app, dbs) {
         let token = req.body.token;
 
         serverUserAuth(token, dbs, (result) => {
-
             if(!result) {
                 res.send({"failMessage": "token not found on server"});
             }
