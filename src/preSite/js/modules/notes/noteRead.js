@@ -119,21 +119,27 @@ export default class NoteRead extends React.Component {
                 <footer className="noteReadFooter">
 
                     {((this.props.loggedInUser === "guest") ? null :
-                        <button className="noteButton"
-                                onClick={this.editButtonClicked.bind(this)}>
+                     (this.props.loggedInUser === this.props.noteSearchSingleResult.author) ?
+                         <button className="noteButton"
+                                 onClick={this.editButtonClicked.bind(this)}>
 
-                                {this.state.editButton}
-                        </button>
+                                 {this.state.editButton}
+                         </button> :
+                         <button className="noteButton">
+                                 Like
+                         </button>
                     )}
 
                     {((this.props.loggedInUser === "guest") ? null :
-                        <button className="noteButton"
-                                onClick={this.deleteButtonClicked.bind(this)}>
-
-                                Delete
-                        </button>
+                     (this.props.loggedInUser === this.props.noteSearchSingleResult.author) ?
+                         <button className="noteButton"
+                                 onClick={this.deleteButtonClicked.bind(this)}>
+                                 Delete
+                         </button> :
+                         <button className="noteButton">
+                                 Dislike
+                         </button>
                     )}
-
 
                     <button className="noteButton">
 

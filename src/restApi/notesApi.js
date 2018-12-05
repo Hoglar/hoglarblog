@@ -43,6 +43,7 @@ module.exports = function(app, dbs) {
                     author: results,
                     score: {
                         likes: [],
+                        dislikes: [],
                         timesRead: 0,
                         popularity: 0
                     },
@@ -269,7 +270,7 @@ module.exports = function(app, dbs) {
     app.post("/api/note/updateTimesRead", function(req, res) {
 
         let data = req.body;
-        updateNoteScoreRead(dbs, data.topic.toLowerCase(), data.document_id)
+        updateNoteScoreRead(dbs, data.topic, data.document_id)
         .then(
             (response) => {
                 res.send("updated document read score");

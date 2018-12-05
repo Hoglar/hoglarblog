@@ -20,7 +20,8 @@ function updateNoteScoreRead(dbs, topic, noteID) {
         dbs.notes.collection(topic).updateOne(
             {_id: new mongo.ObjectId(noteID)},
             {$inc: {
-                "score.timesRead": 1
+                "score.timesRead": 1,
+                "score.popularity" : 1
                 }
             }
         ).then(
