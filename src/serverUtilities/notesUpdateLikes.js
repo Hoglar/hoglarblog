@@ -15,6 +15,9 @@ function notesUpdateLikes(dbs, topic, _id, user, update) {
                         },
                     $pull: {
                         "score.dislikes" : user
+                    },
+                    $inc: {
+                        "score.popularity": 2
                     }
                 }
             )
