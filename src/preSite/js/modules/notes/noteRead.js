@@ -119,9 +119,10 @@ export default class NoteRead extends React.Component {
             notesUpdateLikes(this.props.noteSearchSingleResult.topic,
                              this.props.noteSearchSingleResult._id,
                              this.props.loggedInUser,
-                             "like");
-            this.setState({likeButton: " noteLikedByUser hiddenLikeButton",
-                           dislikeButton: "hiddenLikeButton"});
+                             "like")
+            .then(()=> {
+                 this.props.reloadNote(this.props.noteSearchSingleResult);
+            })
         }
     }
 
@@ -131,13 +132,13 @@ export default class NoteRead extends React.Component {
 
         // Check if user is in likeArr
         if(!dislikeArr.includes(user)) {
-            console.log("Did not find user")
             notesUpdateLikes(this.props.noteSearchSingleResult.topic,
                              this.props.noteSearchSingleResult._id,
                              this.props.loggedInUser,
-                             "dislike");
-            this.setState({dislikeButton: "noteDislikedByUser hiddenLikeButton",
-                           likeButton: "hiddenLikeButton"});
+                             "dislike")
+            .then(()=> {
+                this.props.reloadNote(this.props.noteSearchSingleResult);
+            })
         }
     }
 

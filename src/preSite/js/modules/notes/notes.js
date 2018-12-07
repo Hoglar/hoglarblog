@@ -8,6 +8,7 @@ import React from 'react';
 import NoteHeader from './noteHeader.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
+import fetchUpdatedNote from './noteFunctions/fetchComments.js'
 import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
 
 // We need to get topics we can work width
@@ -83,7 +84,11 @@ export default class Notes extends React.Component {
     reloadNote(note) {
         this.setState({showRead: false}, () => {
             if(note) {
-                this.noteSearchSingleResultClicked(note, false);
+                fetchUpdatedNote(note.topic, note._id)
+                .then((updatedNote) => {
+                    console.log(updatedNote);
+                    this.noteSearchSingleResultClicked(updatedNote, false);
+                })
             }
         })
     }

@@ -16,11 +16,19 @@ export default function notesUpdateLikes(topic, _id, loggedInUser, update) {
         topic: topic
     }
 
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new Headers({
-            'Content-type': 'application/json'
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-type': 'application/json'
+            })
         })
+        .then(
+            function(response) {
+                resolve("Updated likes");
+            }
+        )
     })
+
 }
