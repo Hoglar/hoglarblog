@@ -125,7 +125,7 @@ export default class NoteRead extends React.Component {
 
                                  {this.state.editButton}
                          </button> :
-                         <button className="noteButton">
+                         <button className="noteButton likeButton">
                                  Like
                          </button>
                     )}

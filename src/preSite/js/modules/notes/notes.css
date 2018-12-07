@@ -85,6 +85,10 @@
     outline: none;
 }
 
+.likeButton:hover {
+    color: #0F78FF;
+}
+
 /************************
     Topic Dropdown
     topic.js
