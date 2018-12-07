@@ -126,9 +126,9 @@ module.exports = function(app, dbs) {
 
             if (result.length > 0) {
                 // We got an array with objects.
-                // We sort it based on score and return the 5 first.
+                // We sort it based on popularity and return the 7 first.
                 let returnArray = result.sort(compareScore);
-                returnArray = returnArray.splice(0,5);
+                returnArray = returnArray.splice(0,7);
 
                 // We need to iterate over the array to check the documentScore of all items in it.
                 res.json(returnArray);

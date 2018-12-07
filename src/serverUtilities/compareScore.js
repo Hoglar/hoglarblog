@@ -7,10 +7,10 @@
 // If username = this.user return -1
 
 const compareScore = function(a,b) {
-    if (a.documentScore < b.documentScore) {
+    if (a.score.popularity < b.score.popularity) {
         return 1;
     }
-    if (a.documentScore > b.documentScore) {
+    if (a.score.popularity > b.score.popularity) {
         return -1;
     }
     return 0;
