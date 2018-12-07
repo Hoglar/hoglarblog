@@ -11,8 +11,6 @@ const compareScore = function(a,b) {
     let aLikes = a.score.likes.length - a.score.dislikes.length;
     let bLikes = b.score.likes.length - b.score.dislikes.length;
 
-    console.log(aLikes,bLikes)
-
     if (aLikes < bLikes) {
         return 1;
     }

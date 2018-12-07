@@ -139,7 +139,7 @@ module.exports = function(app, dbs) {
         });
     })
 
-    app.post("/api/notes/commentSearch", function(req, res) {
+    app.post("/api/notes/fetchUpdatedNote", function(req, res) {
         console.log("Ggetting here?");
         let _id = req.body._id
         let searchTopic = req.body.topic.toLowerCase();

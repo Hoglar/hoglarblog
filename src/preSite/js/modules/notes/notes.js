@@ -71,14 +71,15 @@ export default class Notes extends React.Component {
 
 
     noteSearchSingleResultClicked(note, changeMode) {
-        console.log("Changing State to", changeMode);
-        updateNoteScoreRead(note);
-        this.setState({
-            noteSearchSingleResult: note,
-            showRead: true,
-            showSearchResult: false,
-            editMode: changeMode
-        });
+        this.setState({showRead: false}, ()=> {
+            updateNoteScoreRead(note);
+            this.setState({
+                noteSearchSingleResult: note,
+                showRead: true,
+                showSearchResult: false,
+                editMode: changeMode
+            });
+        })
     }
 
     reloadNote(note) {
