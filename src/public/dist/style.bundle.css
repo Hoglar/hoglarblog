@@ -851,6 +851,7 @@ article {
     height: 75%;
     border: solid 0 black;
     border-bottom: solid 2px #FF9E00;
+    background-color: #01060C;
 }
 
 .noteHeaderInputButton:hover {
