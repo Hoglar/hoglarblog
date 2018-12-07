@@ -9,8 +9,12 @@ function notesUpdateLikes(dbs, topic, _id, user, update) {
         return new Promise((resolve, reject) => {
             dbs.notes.collection(topic).updateOne(
                 {_id: new mongo.ObjectId(_id)},
-                {$addToSet: {
-                    "score.likes": user
+                {
+                    $addToSet: {
+                        "score.likes": user
+                        },
+                    $pull: {
+                        "score.dislikes" : user
                     }
                 }
             )
@@ -30,10 +34,14 @@ function notesUpdateLikes(dbs, topic, _id, user, update) {
         return new Promise((resolve, reject) => {
             dbs.notes.collection(topic).updateOne(
                 {_id: new mongo.ObjectId(_id)},
-                {$addToSet: {
-                    "score.dislikes": user
+                {
+                    $addToSet: {
+                        "score.dislikes": user
+                    },
+                    $pull: {
+                        "score.likes": user
                     }
-                }
+                    }
             )
             .then(
                 function(result) {
