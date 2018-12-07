@@ -26,8 +26,25 @@ function notesUpdateLikes(dbs, topic, _id, user, update) {
         })
     }
 
-    if(user === "dislike") {
-
+    if(update === "dislike") {
+        return new Promise((resolve, reject) => {
+            dbs.notes.collection(topic).updateOne(
+                {_id: new mongo.ObjectId(_id)},
+                {$addToSet: {
+                    "score.dislikes": user
+                    }
+                }
+            )
+            .then(
+                function(result) {
+                    resolve("Success");
+                }
+            )
+            .catch(
+                function(err) {
+                    reject(err);
+            })
+        })
     }
 
 }

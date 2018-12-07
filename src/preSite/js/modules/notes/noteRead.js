@@ -17,7 +17,12 @@ export default class NoteRead extends React.Component {
         this.state = {
             showComments: false,
             editButton: (this.props.editMode) ? "Save" : "Edit",
-            editMode: this.props.editMode
+            editMode: this.props.editMode,
+            likeButton: (this.props.noteSearchSingleResult.score.likes.includes(this.props.loggedInUser) ?
+                        "noteLikedByUser" : ""),
+            dislikeButton: (this.props.noteSearchSingleResult.score.dislikes.includes(this.props.loggedInUser) ?
+                        "noteDislikedByUser" : "")
+
         }
     }
 
@@ -114,6 +119,24 @@ export default class NoteRead extends React.Component {
                              this.props.noteSearchSingleResult._id,
                              this.props.loggedInUser,
                              "like");
+            this.setState({likeButton: " noteLikedByUser hiddenLikeButton",
+                           dislikeButton: "hiddenLikeButton"});
+        }
+    }
+
+    noteDislikeButtonClicked() {
+        let user = this.props.loggedInUser;
+        let dislikeArr = this.props.noteSearchSingleResult.score.dislikes;
+
+        // Check if user is in likeArr
+        if(!dislikeArr.includes(user)) {
+            console.log("Did not find user")
+            notesUpdateLikes(this.props.noteSearchSingleResult.topic,
+                             this.props.noteSearchSingleResult._id,
+                             this.props.loggedInUser,
+                             "dislike");
+            this.setState({dislikeButton: "noteDislikedByUser hiddenLikeButton",
+                           likeButton: "hiddenLikeButton"});
         }
     }
 
@@ -142,7 +165,7 @@ export default class NoteRead extends React.Component {
 
                                  {this.state.editButton}
                          </button> :
-                         <button className="noteButton likeButton"
+                         <button className={"noteButton " + this.state.likeButton}
                                  onClick={this.noteLikeButtonClicked.bind(this)}>
                                  Like
                          </button>
@@ -154,7 +177,8 @@ export default class NoteRead extends React.Component {
                                  onClick={this.deleteButtonClicked.bind(this)}>
                                  Delete
                          </button> :
-                         <button className="noteButton">
+                         <button className={"noteButton " + this.state.dislikeButton}
+                                 onClick={this.noteDislikeButtonClicked.bind(this)}>
                                  Dislike
                          </button>
                     )}

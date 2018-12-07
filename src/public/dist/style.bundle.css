@@ -783,8 +783,16 @@ article {
     outline: none;
 }
 
-.likeButton:hover {
-    color: #0F78FF;
+.noteLikedByUser {
+    color: #FF9E00;
+}
+
+.noteDislikedByUser {
+    color: #FF9E00;
+}
+
+.hiddenLikeButton {
+    pointer-events: none;
 }
 
 /************************
