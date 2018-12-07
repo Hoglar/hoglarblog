@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import fetchComments from './noteFunctions/fetchComments.js';
+import fetchUpdatedNote from './noteFunctions/fetchUpdatedNote.js';
 import localOrSessionToken from '../../functionality/localOrSession.js';
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 
@@ -73,7 +73,7 @@ export default class NoteComments extends React.Component {
         .then((response) => {
             console.log(response)
             if(response.successMessage) {
-                fetchComments(data.topic, data.document_id)
+                fetchUpdatedNote(data.topic, data.document_id)
                 .then((result) => {
                     this.props.updateSearchSingleResult(result);
                     document.getElementById('noteCommentNewCommentInputField').value = "";

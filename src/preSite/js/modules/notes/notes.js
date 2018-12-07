@@ -8,7 +8,7 @@ import React from 'react';
 import NoteHeader from './noteHeader.js';
 import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
-import fetchUpdatedNote from './noteFunctions/fetchComments.js'
+import fetchUpdatedNote from './noteFunctions/fetchUpdatedNote.js'
 import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
 
 // We need to get topics we can work width
