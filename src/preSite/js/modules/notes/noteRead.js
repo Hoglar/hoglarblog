@@ -83,9 +83,10 @@ export default class NoteRead extends React.Component {
     }
 
 
-    deleteButtonClicked() {
+    deleteButtonClicked(e) {
         // When delete button gets clicked
         // We pass in the active document for readability!
+
         deleteNote(this.props.noteSearchSingleResult)
         .then(
             (response) => {
@@ -173,7 +174,7 @@ export default class NoteRead extends React.Component {
 
                     {((this.props.loggedInUser === "guest") ? null :
                      (this.props.loggedInUser === this.props.noteSearchSingleResult.author) ?
-                         <button className="noteButton"
+                         <button className="noteButton noteReadDeleteButton"
                                  onClick={this.deleteButtonClicked.bind(this)}>
                                  Delete
                          </button> :

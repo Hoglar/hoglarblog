@@ -311,6 +311,19 @@
     align-items: center;
 }
 
+.noteReadDeleteButton {
+    transition-property: background, color;
+    transition-duration: 1.5s;
+    transition-timing-function: linear;
+    pointer-events: stroke;
+}
+
+.noteReadDeleteButton:hover {
+    background-color: red;
+    color: black;
+}
+
+
 
 /********************* NoteComments *************************/
 
