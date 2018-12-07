@@ -26,7 +26,6 @@ function updateNoteScoreRead(dbs, topic, noteID) {
             }
         ).then(
             function(result) {
-                console.log(result);
                 resolve("Succesfully updated");
             },
             function(err) {

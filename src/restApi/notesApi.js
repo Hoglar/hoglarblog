@@ -2,6 +2,7 @@
 const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
 const updateNoteScoreRead = require('../serverUtilities/updateNoteScoreRead.js');
+const notesUpdateLikes = require('../serverUtilities/notesUpdateLikes.js');
 const mongo = require('mongodb');
 
 module.exports = function(app, dbs) {
@@ -274,6 +275,23 @@ module.exports = function(app, dbs) {
         .then(
             (response) => {
                 res.send("updated document read score");
+            }
+        )
+    })
+
+    app.post("/api/note/updateLikes", function(req, res) {
+        console.log("Connection established");
+        let data = req.body;
+
+        notesUpdateLikes(dbs, data.topic, data.document_id, data.user, data.update)
+        .then(
+            function(response) {
+                console.log(response);
+                res.send("Success");
+            },
+            function(err) {
+                console.log(err);
+                res.send("Error");
             }
         )
     })

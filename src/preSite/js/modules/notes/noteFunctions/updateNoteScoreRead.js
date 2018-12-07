@@ -8,7 +8,7 @@ export default function updageNoteScoreRead(note) {
         topic: note.topic,
         document_id: note._id
     }
-    
+
     fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),

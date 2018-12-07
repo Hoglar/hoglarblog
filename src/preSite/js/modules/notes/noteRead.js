@@ -3,6 +3,7 @@ import React from 'react';
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 import updateNote from './noteFunctions/updateNote.js';
 import deleteNote from './noteFunctions/deleteNote.js';
+import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
 
 import NoteComments from './noteComments.js';
 
@@ -101,6 +102,22 @@ export default class NoteRead extends React.Component {
         }
     }
 
+    noteLikeButtonClicked() {
+
+        let user = this.props.loggedInUser;
+        let likeArr = this.props.noteSearchSingleResult.score.likes;
+
+        // Check if user is in likeArr
+        if(!likeArr.includes(user)) {
+            console.log("Did not find user")
+            notesUpdateLikes(this.props.noteSearchSingleResult.topic,
+                             this.props.noteSearchSingleResult._id,
+                             this.props.loggedInUser,
+                             "like");
+        }
+    }
+
+
 
 
     render() {
@@ -125,7 +142,8 @@ export default class NoteRead extends React.Component {
 
                                  {this.state.editButton}
                          </button> :
-                         <button className="noteButton likeButton">
+                         <button className="noteButton likeButton"
+                                 onClick={this.noteLikeButtonClicked.bind(this)}>
                                  Like
                          </button>
                     )}
