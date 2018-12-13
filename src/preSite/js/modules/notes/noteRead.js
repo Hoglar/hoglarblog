@@ -142,6 +142,11 @@ export default class NoteRead extends React.Component {
         }
     }
 
+
+//
+    // Editor Code!!!!!!!
+    
+        //
     onTabInput(e) {
         // Thanks to Michael Sabin for this snippet, taken from stackOverflow
         //https://stackoverflow.com/questions/2237497/how-to-make-the-tab-key-insert-a-tab-character-in-a-contenteditable-div
