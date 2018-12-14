@@ -10,7 +10,6 @@ import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
 import DictionaryFinalResult from "./dictionarySubparts/finalResult.js";
 
 
-import dictionaryData from "./dictionarySubparts/div.js";
 //Dictionary contains user created explanations of different terms within specific topics.
 //The topics must be kinda static but some choice can be made.
 // Topics is like HTML, CSS, Javascript
@@ -89,18 +88,18 @@ export default class Dictionary extends React.Component {
 
     render() {
         return (
-            <div className="dictionaryWrapper">
-                <div className="dictionaryTopics">
-                    {dictionaryData.map((data, index) => {
-                        return (
-                            <DictionaryTopic dictionaryTopicSelected={(this.state.dictionaryTopic === data.topic) ? true : false}
-                                             topicData={data}
-                                             topicSelector={this.showSearch.bind(this)}
-                                             key={index}/>
-                        )
-                    })}
-                </div>
+            <section className="dictionaryWrapper">
+                <header className="dictionaryHeader">
+                    <div className="dictionaryHeaderStyleBox">
+                        <h1>Dictionary</h1>
+                    </div>
+                </header>
+                <nav>
 
+                </nav>
+                <footer>
+
+                </footer>
                 {(this.state.dictionaryTopic && (this.state.displayMain !== "createForm")) ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
 
                 {(this.state.displayMain === "main") ?
@@ -130,7 +129,7 @@ export default class Dictionary extends React.Component {
                                       inCreatorMode={this.state.inCreatorMode}/> :
                     null }
 
-            </div>
+            </section>
         )
     }
 }
