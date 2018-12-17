@@ -42,6 +42,7 @@ class Application extends React.Component {
             showRegister: false,
 
             // Topic need to be a main app state.
+            // Change topic in options! default topic
             topic: null,
         }
 
@@ -92,9 +93,10 @@ class Application extends React.Component {
                                activeTopic={this.state.topic}/> :
                         null}
 
-                    { (this.state.showDictionary && (this.state.mode === "app")) ? <Dictionary
-                        loggedInUser={this.state.loggedInUser} />
-                        : null }
+                    { (this.state.showDictionary && (this.state.mode === "app")) ?
+                        <Dictionary loggedInUser={this.state.loggedInUser}
+                                    activeTopic={this.state.topic}/> :
+                        null }
 
                     { this.state.showHeader ? <Header
                         loggedInUser={this.state.loggedInUser}
