@@ -24,7 +24,8 @@ export default class Dictionary extends React.Component {
         this.state = {
 
             searchData: "", // Sendt to dictionaryMain
-            dictionaryTopic: false,
+            activeTopic: this.props.activeTopic || "Select Topic",
+            showTopicChooser: false,
             createData: false,
             statusMessage: "",
             displayMain: "main",
@@ -94,10 +95,9 @@ export default class Dictionary extends React.Component {
                         <h1>Dictionary</h1>
                     </div>
                 </header>
+
                 <nav className="dictionaryNav">
-
-
-
+                    <TopicChooser />
                 </nav>
                 <footer>
 
@@ -109,13 +109,13 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "createForm") ?
-                    <DictionaryCreate topic={this.state.dictionaryTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
+                    <DictionaryCreate topic={this.state.activeTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
                     :
                     null}
 
                 {(this.state.displayMain === "searchResults") ?
                     <DictionarySearchResults    searchData={this.state.searchData}
-                                                topic={this.state.dictionaryTopic}
+                                                topic={this.state.activeTopic}
                                                 handleFinalResult={this.handleFinalResult.bind(this)}/> :
                     null}
 
@@ -127,7 +127,7 @@ export default class Dictionary extends React.Component {
 
                 {(this.props.loggedInUser !== "guest") ?
                     <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
-                                      topic={this.state.dictionaryTopic}
+                                      topic={this.state.activeTopic}
                                       inCreatorMode={this.state.inCreatorMode}/> :
                     null }
 
