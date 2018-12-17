@@ -19,7 +19,6 @@ export default class DictionaryMain extends React.Component {
         return (
             <div className="dictionaryMain">
                     <div className="dictionaryMainEmpty">
-                        <p>Dictionary</p>
                         <p>{this.props.statusMessage}</p>
                     </div>
             </div>

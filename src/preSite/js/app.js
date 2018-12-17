@@ -35,12 +35,14 @@ class Application extends React.Component {
         this.state = {
             //Lager en state for guest user
             mode: "app", // mode can now be creative or administation. this controlls what we see on the screen.
-
-
+            // Should maybe drop this state option. i just make admin as high z-index?
             showHeader: false,
             showNotes: false,
             showDictionary: false,
             showRegister: false,
+
+            // Topic need to be a main app state.
+            topic: null,
         }
 
         // userAuthentication is defined in functionality/userAuthentication.js
@@ -68,6 +70,12 @@ class Application extends React.Component {
     // Its from here i launch the apps
 
 
+    // Needs to grab selected topics here.
+
+    giveTopicToMainApp(topic) {
+        this.setState({topic: topic});
+    }
+
     render() {
         return (
             <div className="wrapper">
@@ -79,7 +87,9 @@ class Application extends React.Component {
                 <main className="mainSection">
 
                     { (this.state.showNotes && (this.state.mode === "app")) ?
-                        <Notes loggedInUser={this.state.loggedInUser} /> :
+                        <Notes loggedInUser={this.state.loggedInUser}
+                               giveTopicToMainApp={this.giveTopicToMainApp.bind(this)}
+                               activeTopic={this.state.topic}/> :
                         null}
 
                     { (this.state.showDictionary && (this.state.mode === "app")) ? <Dictionary

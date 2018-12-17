@@ -94,7 +94,9 @@ export default class Dictionary extends React.Component {
                         <h1>Dictionary</h1>
                     </div>
                 </header>
-                <nav>
+                <nav className="dictionaryNav">
+
+
 
                 </nav>
                 <footer>

@@ -26,8 +26,8 @@ export default class Notes extends React.Component {
             showSearchResult: false,
             noteSearchResult: [],
             noteSearchSingleResult: null,
-            activeTopic: "Select topic",
-            topics: ["waitingServer"]
+            activeTopic: this.props.activeTopic || "Select topic",
+            topics:  ["waitingServer"]
         }
     }
 
@@ -51,6 +51,7 @@ export default class Notes extends React.Component {
 
     topicSelected(topic) {
 
+        this.props.giveTopicToMainApp(topic);
         this.setState({activeTopic: topic})
     }
 
