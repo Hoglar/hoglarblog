@@ -44,7 +44,7 @@ class Application extends React.Component {
 
             // Topic need to be a main app state.
             // Change topic in options! default topic
-            topic: null,
+            topic: "Select Topic",
         }
 
         // userAuthentication is defined in functionality/userAuthentication.js

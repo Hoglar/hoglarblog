@@ -26,32 +26,12 @@ export default class Notes extends React.Component {
             showSearchResult: false,
             noteSearchResult: [],
             noteSearchSingleResult: null,
-            activeTopic: this.props.activeTopic || "Select topic",
-            topics:  ["waitingServer"]
         }
-    }
-
-
-
-    // Can be many fetch requests?
-    topicSelectorClicked() {
-        return new Promise((resolve, reject) => {
-            fetch("/api/notes/topics")
-                .then((response) => {
-                    return response.json();
-                })
-                .then((response) => {
-
-                    this.setState({topics: response.topics.sort()})
-                    resolve("ok");
-                })
-        })
     }
 
 
     topicSelected(topic) {
         this.props.giveTopicToMainApp(topic);
-        this.setState({activeTopic: topic})
     }
 
     showCreate() {
@@ -108,8 +88,7 @@ export default class Notes extends React.Component {
         return (
             <section className="notesSkeleton">
                 <NoteHeader topics={this.state.topics}
-                                 activeTopic={this.state.activeTopic}
-                                 topicSelectorClicked={this.topicSelectorClicked.bind(this)}
+                                 activeTopic={this.props.activeTopic}
                                  topicSelected={this.topicSelected.bind(this)}
                                  loggedInUser={this.props.loggedInUser}
                                  showCreate={this.showCreate.bind(this)}

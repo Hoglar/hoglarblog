@@ -25,7 +25,6 @@ export default class Dictionary extends React.Component {
         this.state = {
 
             searchData: "", // Sendt to dictionaryMain
-            activeTopic: this.props.activeTopic || "Select Topic",
             showTopicChooser: false,
             createData: false,
             statusMessage: "",
@@ -90,7 +89,6 @@ export default class Dictionary extends React.Component {
 
     topicSelected(topic) {
         this.props.giveTopicToMainApp(topic);
-        this.setState({activeTopic: topic});
     }
 
     render() {
@@ -104,7 +102,7 @@ export default class Dictionary extends React.Component {
 
                 <nav className="dictionaryNav">
                     {this.props.isNotesActive ? null : (
-                        <TopicChooser activeTopic={this.state.activeTopic}
+                        <TopicChooser activeTopic={this.props.activeTopic}
                                       loggedInUser={this.props.loggedInUser}
                                       topicSelected={this.topicSelected.bind(this)}
                                       inNotes={false}/>
@@ -121,7 +119,7 @@ export default class Dictionary extends React.Component {
                     null}
 
                 {(this.state.displayMain === "createForm") ?
-                    <DictionaryCreate topic={this.state.activeTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
+                    <DictionaryCreate topic={this.props.activeTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
                     :
                     null}
 
@@ -139,7 +137,7 @@ export default class Dictionary extends React.Component {
 
                 {(this.props.loggedInUser !== "guest") ?
                     <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
-                                      topic={this.state.activeTopic}
+                                      topic={this.props.activeTopic}
                                       inCreatorMode={this.state.inCreatorMode}/> :
                     null }
 
