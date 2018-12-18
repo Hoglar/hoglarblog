@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
 
-import Topic from './topic.js';
+import TopicChooser from '../allround/TopicChooser.js';
 
 import createNewTopic from './noteFunctions/createNewTopic.js';
 import fetchNotes from './noteFunctions/fetchNotes.js';
@@ -14,7 +14,6 @@ export default class NoteHeader extends React.Component {
         super(props);
         this.state = {
             inputButton: "Create",
-            showTopicChooser: false,
             showSearchField: true,
             showCreateTopic: false,
             showCreateNoteTitle: false,
@@ -40,25 +39,9 @@ export default class NoteHeader extends React.Component {
             showSearchField: false,
             showCreateNoteTitle: false,
             showCreateTopic: true,
-            showTopicChooser: false,
         }
     }
 
-    showTopicChooser() {
-
-        if(this.state.showTopicChooser === false) {
-            this.props.topicSelectorClicked()
-            .then((response) => {
-                this.setState({showTopicChooser: true})
-            })
-        }
-        // topicSelectorClicked is asking database for topics,
-
-    }
-
-    hideTopicChooser() {
-        this.setState({showTopicChooser: false});
-    }
 
 
     changeInputButtonClicked() {
@@ -194,36 +177,11 @@ export default class NoteHeader extends React.Component {
 
 
 
-                <nav className="noteHeaderTopic"
-                     onMouseLeave={this.hideTopicChooser.bind(this)}>
-                    <button className="noteButton"
-                            onMouseOver={this.showTopicChooser.bind(this)}>
+                <nav className="noteHeaderNav">
+                    <TopicChooser topicSelected={this.props.topicSelected}
+                                  activeTopic={this.props.activeTopic}
+                                  loggedInUser={this.props.loggedInUser}/>
 
-                        {capitalizeFirstLetter(this.props.activeTopic)}
-                    </button>
-
-                    {(this.state.showTopicChooser) ?
-                        (<ul className="noteHeaderTopicDropdown"
-                              onMouseLeave={this.hideTopicChooser.bind(this)}>
-                            {this.props.topics.map(function(topic, index) {
-                                return (
-                                    <Topic topic={topic}
-                                           topicSelected={this.props.topicSelected}
-                                           hideTopicChooser={this.hideTopicChooser.bind(this)}
-                                           key={index}
-                                    />
-                                )
-                            }.bind(this))}
-
-                            {(this.props.loggedInUser !== "hoglar") ?
-                            null : (
-                                <li className="noteHeaderSingleTopic"
-                                     onClick={this.noteNewTopic.bind(this)}>
-                                    Add topic
-                                </li>
-                            )}
-                        </ul>) :
-                    null}
                 </nav>
 
 

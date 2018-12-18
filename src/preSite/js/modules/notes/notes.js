@@ -50,7 +50,6 @@ export default class Notes extends React.Component {
 
 
     topicSelected(topic) {
-
         this.props.giveTopicToMainApp(topic);
         this.setState({activeTopic: topic})
     }
