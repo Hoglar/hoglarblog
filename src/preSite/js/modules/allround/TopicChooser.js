@@ -52,6 +52,7 @@ export default class hideTopicChooser extends React.Component {
     }
 
     selectTopic(topic) {
+        // this is where we return a selected topic!
         this.props.topicSelected(topic);
     }
 

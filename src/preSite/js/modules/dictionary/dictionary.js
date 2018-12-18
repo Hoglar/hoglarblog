@@ -89,6 +89,7 @@ export default class Dictionary extends React.Component {
     }
 
     topicSelected(topic) {
+        this.props.giveTopicToMainApp(topic);
         this.setState({activeTopic: topic});
     }
 
