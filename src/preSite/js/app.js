@@ -97,7 +97,8 @@ class Application extends React.Component {
                     { (this.state.showDictionary && (this.state.mode === "app")) ?
                         <Dictionary loggedInUser={this.state.loggedInUser}
                                     activeTopic={this.state.topic}
-                                    giveTopicToMainApp={this.giveTopicToMainApp.bind(this)}/> :
+                                    giveTopicToMainApp={this.giveTopicToMainApp.bind(this)}
+                                    isNotesActive={this.state.showNotes}/> :
                         null }
 
                     { this.state.showHeader ? <Header
