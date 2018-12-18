@@ -158,7 +158,8 @@ article {
 /*      NaV                         */
 
 .dictionaryNav {
-
+    grid-row: 3 / 5;
+    grid-column: 1 / 3;
 }
 
 
@@ -1121,4 +1122,10 @@ article {
 
 .noteCommentFooter {
     height: 45px;
+}
+
+.topicChooser {
+    display: grid;
+    grid-template-rows: 45px auto;
+    grid-template-columns: repeat(2, 1fr);
 }

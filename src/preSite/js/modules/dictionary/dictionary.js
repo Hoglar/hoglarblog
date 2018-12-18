@@ -8,6 +8,7 @@ import DictionarySearch from "./dictionarySubparts/Search.js";
 import DictionaryCreate from "./dictionarySubparts/create.js";
 import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
 import DictionaryFinalResult from "./dictionarySubparts/finalResult.js";
+import TopicChooser from '../allround/TopicChooser.js';
 
 
 //Dictionary contains user created explanations of different terms within specific topics.
@@ -97,7 +98,7 @@ export default class Dictionary extends React.Component {
                 </header>
 
                 <nav className="dictionaryNav">
-                    <TopicChooser />
+                    <TopicChooser activeTopic={this.state.activeTopic}/>
                 </nav>
                 <footer>
 

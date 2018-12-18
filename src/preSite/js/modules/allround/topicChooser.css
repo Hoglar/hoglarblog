@@ -1,0 +1,6 @@
+
+.topicChooser {
+    display: grid;
+    grid-template-rows: 45px auto;
+    grid-template-columns: repeat(2, 1fr);
+}

@@ -11,6 +11,7 @@ import './modules/footer/footer.css';
 import './modules/header/header.css';
 import './modules/register/register.css';
 import './modules/notes/notes.css';
+import './modules/allround/topicChooser.css';
 
 // Importing modules.
 import Sidebar from './modules/sidebar/sidebar.js';
