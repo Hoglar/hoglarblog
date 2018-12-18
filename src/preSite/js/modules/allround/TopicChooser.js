@@ -1,11 +1,15 @@
 'use strict';
 import React from 'react';
+
+import Topic from './Topic.js';
+
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 // Proper design!
 // this component does some things.
 
 // Inputs:
     // It needs active topic.
+    // loggedInUser
     // Maybe some kind of callback function
 
 // do:
@@ -47,9 +51,8 @@ export default class hideTopicChooser extends React.Component {
         }
     }
 
-    selectTopic() {
-        //this.props.topicSelected(this.props.topic);
-        this.hideTopicChooser();
+    selectTopic(topic) {
+        this.props.topicSelected(topic);
     }
 
 
@@ -58,28 +61,27 @@ export default class hideTopicChooser extends React.Component {
         return(
             <div className="topicChooser"
                  onMouseLeave={this.hideTopicChooser.bind(this)}>
-                <button className="noteButton"
+                <button className="topicButton"
                         onMouseOver={this.showTopicChooser.bind(this)}>
 
                     {capitalizeFirstLetter(this.props.activeTopic)}
                 </button>
 
                 {(this.state.showTopicChooser) ?
-                    (<ul className="noteHeaderTopicDropdown"
+                    (<ul className="topicChooserDropdown"
                           onMouseLeave={this.hideTopicChooser.bind(this)}>
                         {this.state.topics.map(function(topic, index) {
                             return (
-                                <li className="noteHeaderSingleTopic"
-                                     onClick={this.selectTopic.bind(this)}
-                                     key={index}>
-                                    {capitalizeFirstLetter(topic)}
-                                </li>
+                                <Topic topic={topic}
+                                       topicSelected={this.selectTopic.bind(this)}
+                                       hideTopicChooser={this.hideTopicChooser.bind(this)}
+                                       key={index}/>
                             )
                         }.bind(this))}
 
                         {(this.props.loggedInUser !== "hoglar") ?
                         null : (
-                            <li className="noteHeaderSingleTopic"
+                            <li className="topicChooserSingleTopic"
                                  onClick={this.noteNewTopic.bind(this)}>
                                 Add topic
                             </li>

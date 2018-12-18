@@ -80,10 +80,6 @@
     cursor: pointer;
 }
 
-.noteButton:focus {
-    color: #FF9E00;
-    outline: none;
-}
 
 .noteLikedByUser {
     color: #FF9E00;

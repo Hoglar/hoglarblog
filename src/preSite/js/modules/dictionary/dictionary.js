@@ -88,6 +88,10 @@ export default class Dictionary extends React.Component {
         }
     }
 
+    topicSelected(topic) {
+        this.setState({activeTopic: topic});
+    }
+
     render() {
         return (
             <section className="dictionaryWrapper">
@@ -98,7 +102,9 @@ export default class Dictionary extends React.Component {
                 </header>
 
                 <nav className="dictionaryNav">
-                    <TopicChooser activeTopic={this.state.activeTopic}/>
+                    <TopicChooser activeTopic={this.state.activeTopic}
+                                  loggedInUser={this.props.loggedInUser}
+                                  topicSelected={this.topicSelected.bind(this)}/>
                 </nav>
                 <footer>
 

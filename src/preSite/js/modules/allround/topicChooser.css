@@ -4,3 +4,41 @@
     grid-template-rows: 45px auto;
     grid-template-columns: repeat(2, 1fr);
 }
+
+.topicButton {
+    grid-row: 1 / 2;
+    height: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.topicButton:hover {
+    color: #FF9E00;
+    cursor: pointer;
+}
+
+.topicChooserDropdown {
+    grid-row: 2 / 3;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 0;
+}
+
+.topicChooserSingleTopic {
+    z-index: 2;
+    height: 22px;
+    padding-left: 10px;
+    border-left: solid 2px  #FF9E00;
+    background-color: #01060C;
+}
+
+.topicChooserSingleTopic:hover {
+    border-left: solid 2px #0F78FF;
+    color: #bebebe;
+    padding-left: 12px;
+    cursor: pointer;
+}
