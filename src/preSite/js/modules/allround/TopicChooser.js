@@ -80,13 +80,14 @@ export default class hideTopicChooser extends React.Component {
                             )
                         }.bind(this))}
 
-                        {(this.props.loggedInUser !== "hoglar") ?
-                        null : (
+                        {(this.props.loggedInUser === "hoglar" && this.props.inNotes === true) ?
+                        (
                             <li className="topicChooserSingleTopic"
-                                 onClick={this.noteNewTopic.bind(this)}>
+                                 onClick={this.props.newTopic.bind(this)}>
                                 Add topic
                             </li>
-                        )}
+                        ) :
+                        null}
                     </ul>) :
                 null}
             </div>

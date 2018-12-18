@@ -180,8 +180,9 @@ export default class NoteHeader extends React.Component {
                 <nav className="noteHeaderNav">
                     <TopicChooser topicSelected={this.props.topicSelected}
                                   activeTopic={this.props.activeTopic}
-                                  loggedInUser={this.props.loggedInUser}/>
-
+                                  loggedInUser={this.props.loggedInUser}
+                                  newTopic={this.noteNewTopic.bind(this)}
+                                  inNotes={true}/>
                 </nav>
 
 

@@ -105,7 +105,8 @@ export default class Dictionary extends React.Component {
                 <nav className="dictionaryNav">
                     <TopicChooser activeTopic={this.state.activeTopic}
                                   loggedInUser={this.props.loggedInUser}
-                                  topicSelected={this.topicSelected.bind(this)}/>
+                                  topicSelected={this.topicSelected.bind(this)}
+                                  inNotes={false}/>
                 </nav>
                 <footer>
 
