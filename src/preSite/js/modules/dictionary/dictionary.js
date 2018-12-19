@@ -104,7 +104,8 @@ export default class Dictionary extends React.Component {
                     ) : null}
                 </nav>
                 <article className="dictionaryMainSection">
-
+                    // We end here
+                    <DictionarySearchResults />
                 </article>
                 <footer>
 
