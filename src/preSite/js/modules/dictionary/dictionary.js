@@ -12,9 +12,6 @@ import TopicChooser from '../allround/TopicChooser.js';
 
 
 //Dictionary contains user created explanations of different terms within specific topics.
-//The topics must be kinda static but some choice can be made.
-// Topics is like HTML, CSS, Javascript
-// Maybe i should have under topics.
 
 // Props
 // loggedInUser, state in application. should reflect the user.
@@ -23,7 +20,9 @@ export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            //Given to us by Search
             searchResults: [],
+
             showTopicChooser: false,
             createData: false,
             statusMessage: "",
@@ -40,10 +39,8 @@ export default class Dictionary extends React.Component {
         this.setState({searchResults: searchResults});
     }
 
-    // Here i can maybe connect to a database?
-    handleTopicSearch(searchData) {
-        // Must get data from database based on search
-        this.setState({searchData: searchData, displayMain: "searchResults"});
+    topicSelected(topic) {
+        this.props.giveTopicToMainApp(topic);
     }
 
     handleFinalResult(finalResult) {
@@ -83,9 +80,7 @@ export default class Dictionary extends React.Component {
         }
     }
 
-    topicSelected(topic) {
-        this.props.giveTopicToMainApp(topic);
-    }
+
 
     render() {
         return (
