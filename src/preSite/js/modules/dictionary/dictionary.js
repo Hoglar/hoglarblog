@@ -23,7 +23,7 @@ export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchData: "", // Sendt to dictionaryMain
+            searchResults: [],
             showTopicChooser: false,
             createData: false,
             statusMessage: "",
@@ -36,9 +36,8 @@ export default class Dictionary extends React.Component {
     //showSearch needs to take the name of the pressed topic as a parameter.
     //When showSearch state is changed, it will be trusly,and we show search form.
 
-    showSearch(topic) {
-        // Maybe i should clear search field to?
-        this.setState({dictionaryTopic: topic});
+    giveSearchResultsToDictionary(searchResults) {
+        this.setState({searchResults: searchResults});
     }
 
     // Here i can maybe connect to a database?
@@ -105,16 +104,16 @@ export default class Dictionary extends React.Component {
                                       inNotes={false}/>
                     )}
                     {this.props.activeTopic !== "Select topic" ? (
-                        <DictionarySearch activeTopic={this.props.activeTopic} />
+                        <DictionarySearch activeTopic={this.props.activeTopic}
+                                          giveSearchResultsToDictionary={this.giveSearchResultsToDictionary.bind(this)}/>
                     ) : null}
-
                 </nav>
+                <article className="dictionaryMainSection">
+
+                </article>
                 <footer>
 
                 </footer>
-                {(this.state.dictionaryTopic && (this.state.displayMain !== "createForm")) ?
-                    <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)}
-                                      selectedTopic={this.state.dictionaryTopic}/> : null}
 
                 {(this.state.displayMain === "main") ?
                     <DictionaryMain statusMessage={this.state.statusMessage}/> :

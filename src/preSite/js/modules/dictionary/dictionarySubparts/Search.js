@@ -2,7 +2,9 @@
 import React from "react";
 
 
-// Passing on topicSearch(searchData)
+// This component search database for documents in dictionary and returns array of results.
+
+
 
 export default class DictionarySearch extends React.Component {
 
@@ -35,11 +37,12 @@ export default class DictionarySearch extends React.Component {
                     // I do this to check if i have a kinda valid array.
                     if(searchResult.searchMessage === "Nothing found") {
 
-                        this.setState({searchResults: [] });
+                        this.giveSearchResultsToDictionary([])
                     }
                     else {
                         console.log("success");
-                        this.setState({searchResults: searchResult});
+                        // We may not need this state, we can just put result into an callback
+                        this.giveSearchResultsToDictionary(searchResult);
                     }
                 });
         }
@@ -48,7 +51,6 @@ export default class DictionarySearch extends React.Component {
     handleChange(event) {
 
         this.setState({searchFormValue: event.target.value}, () => {
-            console.log("Changing", this.state.searchFormValue)
             this.searchDictionary();
         });
 
