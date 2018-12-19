@@ -8,7 +8,6 @@ module.exports = function(app, dbs) {
     // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
     // Maybe base it on some scoring system. and maybe author.
     app.get('/api/dictionary/search', function(req, res) {
-
         if (req.query.searchData !== "") {
             let searchData = req.query.searchData.toLowerCase();
             let searchTopic = req.query.topic.toLowerCase();

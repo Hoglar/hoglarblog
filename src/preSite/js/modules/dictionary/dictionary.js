@@ -23,7 +23,6 @@ export default class Dictionary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
             searchData: "", // Sendt to dictionaryMain
             showTopicChooser: false,
             createData: false,
@@ -45,9 +44,7 @@ export default class Dictionary extends React.Component {
     // Here i can maybe connect to a database?
     handleTopicSearch(searchData) {
         // Must get data from database based on search
-
         this.setState({searchData: searchData, displayMain: "searchResults"});
-
     }
 
     handleFinalResult(finalResult) {
@@ -107,12 +104,17 @@ export default class Dictionary extends React.Component {
                                       topicSelected={this.topicSelected.bind(this)}
                                       inNotes={false}/>
                     )}
+                    {this.props.activeTopic !== "Select topic" ? (
+                        <DictionarySearch activeTopic={this.props.activeTopic} />
+                    ) : null}
 
                 </nav>
                 <footer>
 
                 </footer>
-                {(this.state.dictionaryTopic && (this.state.displayMain !== "createForm")) ? <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)} selectedTopic={this.state.dictionaryTopic}/> : null}
+                {(this.state.dictionaryTopic && (this.state.displayMain !== "createForm")) ?
+                    <DictionarySearch topicSearch={this.handleTopicSearch.bind(this)}
+                                      selectedTopic={this.state.dictionaryTopic}/> : null}
 
                 {(this.state.displayMain === "main") ?
                     <DictionaryMain statusMessage={this.state.statusMessage}/> :
