@@ -308,23 +308,18 @@
 
 /*                     FOOTER                              */
 .dictionaryFooter {
-    display: flex;
-    align-self: flex-end;
-    width: 100%;
-    height:100px;
+    grid-row: 6 / 7;
+    grid-column: 1 / 3;
 }
 
 .dictionaryFooterCreateButton {
-    width: 95%;
-    height: 80%;
+    width: 100%;
+    height: 45px;
     margin: auto;
+    background-color: #01060C;
     border: solid 1px #000000;
-    background-color: #041A37;
-    color: white;
-    font-size: 20px;
-    font-weight: lighter;
 }
 .dictionaryFooterCreateButton:hover {
-    border: solid 1px #FF9E00;
+    color: #FF9E00;
     cursor: pointer;
 }

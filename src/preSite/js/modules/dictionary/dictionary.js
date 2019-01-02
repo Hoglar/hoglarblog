@@ -1,7 +1,6 @@
 'use strict';
 import React from 'react';
 
-import DictionaryMain from "./dictionarySubparts/main.js";
 import DictionaryFooter from "./dictionarySubparts/Footer.js";
 import DictionaryTopic from "./dictionarySubparts/Topic.js";
 import DictionarySearch from "./dictionarySubparts/Search.js";
@@ -119,13 +118,14 @@ export default class Dictionary extends React.Component {
                         null}
 
                 </article>
-                <footer>
-
+                <footer className="dictionaryFooter">
+                    {(this.props.loggedInUser !== "guest") ?
+                        <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
+                                          topic={this.props.activeTopic}
+                                          inCreatorMode={this.state.inCreatorMode}/> :
+                        null }
                 </footer>
 
-                {(this.state.displayMain === "main") ?
-                    <DictionaryMain statusMessage={this.state.statusMessage}/> :
-                    null}
 
                 {(this.state.displayMain === "createForm") ?
                     <DictionaryCreate topic={this.props.activeTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
@@ -134,12 +134,6 @@ export default class Dictionary extends React.Component {
 
 
 
-
-                {(this.props.loggedInUser !== "guest") ?
-                    <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
-                                      topic={this.props.activeTopic}
-                                      inCreatorMode={this.state.inCreatorMode}/> :
-                    null }
 
             </section>
         )
