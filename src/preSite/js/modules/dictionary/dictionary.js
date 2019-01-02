@@ -103,6 +103,7 @@ export default class Dictionary extends React.Component {
                                           giveSearchResultsToDictionary={this.giveSearchResultsToDictionary.bind(this)}/>
                     ) : null}
                 </nav>
+
                 <article className="dictionaryMainSection">
                     <DictionarySearchResults  searchResults={this.state.searchResults}
                                               handleFinalResult={this.handleFinalResult.bind(this)}/>

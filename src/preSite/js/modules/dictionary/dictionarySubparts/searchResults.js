@@ -6,7 +6,7 @@ export default class DictionarySearchResults extends React.Component {
 
     constructor(props) {
         super(props);
-        
+
     }
     // This component needs the temorarly seatch results that gets updated every key stroke.
     // props will get searchData
@@ -25,17 +25,13 @@ export default class DictionarySearchResults extends React.Component {
                     {this.props.searchResults.map((searchResult) => {
                         return (
                             <div className="dictionarySearchSingleResult" onClick={(event) => {this.handleResultClick(event, searchResult)}}>
-                                <div className="dictionarySearchSingleResultTop">
-                                    <h1>{searchResult.title}</h1>
+                                <header className="dictionarySearchSingleResultTop">
+                                    <h2>{capitalizeFirstLetter(searchResult.title)}</h2>
+                                </header>
 
-                                </div>
-                                <div className="dictionarySearchSingleResultMain">
-                                    <p>{searchResult.explanation.substring(0, 80)}...</p>
-                                </div>
-                                <div className="dictionarySearchSingleResultFooter">
+                                <footer className="dictionarySearchSingleResultFooter">
                                     <p>{"By: " + (searchResult.author ? capitalizeFirstLetter(searchResult.author) : "anon")}</p>
-                                    <p>{"-" + searchResult.date.substring(0, 10)}</p>
-                                </div>
+                                </footer>
                             </div>
                         )
                     })}

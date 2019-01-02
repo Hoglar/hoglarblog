@@ -201,23 +201,44 @@ article {
 
 
 
-
 .dictionaryMainSection {
     grid-row: 4 / 5;
     grid-column: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
+
+
+/*                                SearchResults                   */
+
 
 .dictionarySearchResults {
-
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px 0 20px;
 }
 
 
-.dictionaryMain {
+.dictionarySearchSingleResult {
     display: flex;
-    width: 100%;
-    color: white;
-    margin-top: 20px;
-    flex: 1;
+    flex-direction: row;
+    width: 95%;
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+    margin-top: 1px;
+    margin-bottom: 1px;
+
+    padding: 0 10px 0 10px;
+    justify-content: space-between;
+    align-content: top;
+}
+
+.dictionarySearchSingleResult:hover {
+    cursor: pointer;
+    border: solid 1px #FF9E00;
 }
 
 .dictionaryMainEmpty {
@@ -328,54 +349,6 @@ article {
 }
 
 
-/*                                SearchResults                   */
-
-
-.dictionarySearchSingleResult {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-    background-color: #041A37;
-    border: solid 1px #000000;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    margin: auto;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    height: 100px;
-    font-family: Courier, monospace;
-    justify-content: center;
-}
-
-.dictionarySearchSingleResult:hover {
-    cursor: pointer;
-    border: solid 1px #FF9E00;
-}
-
-.dictionarySearchSingleResultTop {
-    display: flex;
-    margin-left: 10px;
-
-}
-
-.dictionarySearchSingleResultTop h1 {
-    font-size: 20px;
-    font-weight: lighter;
-}
-
-.dictionarySearchSingleResultTop h1::first-letter {
-    text-transform: capitalize;
-}
-
-.dictionarySearchSingleResultMain {
-    display: flex;
-    margin-left: 10px;
-}
-.dictionarySearchSingleResultFooter {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    margin-bottom: 5px;
-}
 
     /*                     FinalResult                         */
 
@@ -925,8 +898,7 @@ article {
     background-color: #041A37;
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    width: 100%;
-    margin-right: 3px;
+    margin-right: 10px;
     padding-left: 20px;
     padding-right: 20px;
 
