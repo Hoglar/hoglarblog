@@ -26,12 +26,33 @@ export default class NoteRead extends React.Component {
         }
     }
 
+
+
+
+
     componentDidMount() {
         document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
         if (this.state.editMode) {
             document.getElementsByClassName("noteReadMain")[0].focus();
         }
+        window.addEventListener('keydown', this.handleKeyDown);
     }
+
+    // We got here some eventhandlers to create some fancy shitt!
+
+    componentWillUnmount() {
+      window.removeEventListener('keydown', this.handleKeyDown);
+    }
+
+    handleKeyDown(e) {
+        if(e.ctrlKey === true && e.keyCode === 68) {
+            e.preventDefault();
+            console.log("We got that working");
+            let copyedText = window.getSelection().toString();
+            console.log("asdasd " + copyedText);
+        }
+    }
+
 
     componentDidUpdate(prevProps) {
   // Typical usage (don't forget to compare props):
@@ -145,7 +166,7 @@ export default class NoteRead extends React.Component {
 
 //
     // Editor Code!!!!!!!
-    
+
         //
     onTabInput(e) {
         // Thanks to Michael Sabin for this snippet, taken from stackOverflow
@@ -167,8 +188,6 @@ export default class NoteRead extends React.Component {
             sel.addRange(range);
         }
     }
-
-
 
 
     render() {

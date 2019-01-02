@@ -132,9 +132,6 @@ export default class Dictionary extends React.Component {
                     :
                     null}
 
-
-
-
             </section>
         )
     }

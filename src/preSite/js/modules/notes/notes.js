@@ -84,6 +84,8 @@ export default class Notes extends React.Component {
         this.setState({showSearchResult: false});
     }
 
+
+
     render() {
         return (
             <section className="notesSkeleton">
