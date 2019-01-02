@@ -57,6 +57,7 @@
 
 .dictionarySearchField {
     width: 95%;
+    margin-left: 10px;
     background-color: #01060C;
     border: solid 1px #01060C;
     padding-left: 10px;
@@ -230,19 +231,14 @@
 .dictionaryFinalResult {
     display: flex;
     flex-direction: column;
-    width: 100%;
-
-    color: #a9a9a9;
-    margin-top: 20px;
     flex: 1;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .dictionaryBox {
-    width: 95%;
+    width: 100%;
     margin: auto;
-    background-color: #041A37;
-    border: solid 1px #000000;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     font-size: 18px;
     font-weight: lighter;
     padding-left: 20px;
@@ -254,23 +250,20 @@
 .dictionaryFinalResultTop {
     display: flex;
     flex-direction: column;
-
-
-    flex: 2;
 }
 
-.dictionaryFinalResultExample {
-    display: flex;
-    flex-direction: column;
-
-    flex: 1;
+.dictionaryFinalResultTop h1 {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
+.dictionaryFinalResultExample,
 .dictionaryFinalResultReference {
     display: flex;
     flex-direction: column;
+    font-style: italic;
+    margin-left: 10px;
 }
-
 
 .dictionaryFinalResultFooter {
     flex: 0.2;
@@ -305,6 +298,10 @@
     margin-left: 10px;
     font-size: 14px;
     font-family: Courier, monospace;
+}
+
+.dictionaryGreyText {
+    opacity: 0.4;
 }
 
 

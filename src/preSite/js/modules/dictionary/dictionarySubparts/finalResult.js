@@ -13,15 +13,15 @@
          return (
              <div className="dictionaryFinalResult">
                  <div className="dictionaryFinalResultTop dictionaryBox">
-                     <h3>{capitalizeFirstLetter(this.props.finalResult.title) + ":"}</h3>
+                     <h1>{capitalizeFirstLetter(this.props.finalResult.title)}</h1>
                      <p>{this.props.finalResult.explanation}</p>
                  </div>
                  <div class="dictionaryFinalResultExample dictionaryBox">
-                     <p>Example:</p>
+                     <p className="dictionaryGreyText">Example:</p>
                      <p>{this.props.finalResult.example}</p>
                  </div>
                  <div className="dictionaryFinalResultReference dictionaryBox">
-                     <p>Reference:</p>
+                     <p className="dictionaryGreyText">Reference:</p>
                      <p>{this.props.finalResult.reference}</p>
                  </div>
 
