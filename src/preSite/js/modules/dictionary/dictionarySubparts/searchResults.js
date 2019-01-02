@@ -20,22 +20,21 @@ export default class DictionarySearchResults extends React.Component {
 
     render() {
         return(
-                (this.props.searchResults.length > 0) ?
-                <div className="dictionarySearchResults">
-                    {this.props.searchResults.map((searchResult) => {
-                        return (
-                            <div className="dictionarySearchSingleResult" onClick={(event) => {this.handleResultClick(event, searchResult)}}>
-                                <header className="dictionarySearchSingleResultTop">
-                                    <h2>{capitalizeFirstLetter(searchResult.title)}</h2>
-                                </header>
+            <div className="dictionarySearchResults">
+                {this.props.searchResults.map((searchResult) => {
+                    return (
+                        <div className="dictionarySearchSingleResult" onClick={(event) => {this.handleResultClick(event, searchResult)}}>
+                            <header className="dictionarySearchSingleResultTop">
+                                <h2>{capitalizeFirstLetter(searchResult.title)}</h2>
+                            </header>
 
-                                <footer className="dictionarySearchSingleResultFooter">
-                                    <p>{"By: " + (searchResult.author ? capitalizeFirstLetter(searchResult.author) : "anon")}</p>
-                                </footer>
-                            </div>
-                        )
-                    })}
-                </div> : null
+                            <footer className="dictionarySearchSingleResultFooter">
+                                <p>{"By: " + (searchResult.author ? capitalizeFirstLetter(searchResult.author) : "anon")}</p>
+                            </footer>
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 }

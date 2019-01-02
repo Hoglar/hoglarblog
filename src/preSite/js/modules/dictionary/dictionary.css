@@ -71,14 +71,9 @@
 }
 
 
-
-
 /**********************************
         Main Section
 */
-
-
-
 
 .dictionaryMainSection {
     grid-row: 4 / 5;
@@ -96,7 +91,8 @@
 .dictionarySearchResults {
     display: flex;
     flex-direction: column;
-    margin: 20px 20px 0 20px;
+    margin: 0 20px 0 20px;
+    z-index: 1;
 }
 
 

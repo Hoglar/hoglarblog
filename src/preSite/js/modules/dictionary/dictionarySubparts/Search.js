@@ -36,7 +36,7 @@ export default class DictionarySearch extends React.Component {
                 .then((searchResult) => {
                     // I do this to check if i have a kinda valid array.
                     if(searchResult.searchMessage === "Nothing found") {
-
+                        console.log("Nothing!")
                         this.props.giveSearchResultsToDictionary([])
                     }
                     else {
@@ -45,7 +45,10 @@ export default class DictionarySearch extends React.Component {
                         this.props.giveSearchResultsToDictionary(searchResult);
                     }
                 });
+        } else {
+            this.props.giveSearchResultsToDictionary([]);
         }
+
     }
 
     handleChange(event) {

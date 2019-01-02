@@ -45,7 +45,9 @@ export default class Dictionary extends React.Component {
 
     handleFinalResult(finalResult) {
 
-        this.setState({finalResult: finalResult, displayMain: "finalResult"});
+        this.setState({finalResult: finalResult,
+                       displayMain: "finalResult",
+                       searchResults: []});
         console.log(finalResult);
     }
 
@@ -105,8 +107,17 @@ export default class Dictionary extends React.Component {
                 </nav>
 
                 <article className="dictionaryMainSection">
-                    <DictionarySearchResults  searchResults={this.state.searchResults}
-                                              handleFinalResult={this.handleFinalResult.bind(this)}/>
+                    {(this.state.searchResults.length > 0) ?
+                        <DictionarySearchResults  searchResults={this.state.searchResults}
+                                                  handleFinalResult={this.handleFinalResult.bind(this)}/>
+                    : null}
+
+                    {(this.state.displayMain === "finalResult") ?
+                        <DictionaryFinalResult finalResult={this.state.finalResult}
+                                               loggedInUser={this.props.loggedInUser}
+                                               handleDocumentDeletion={this.handleDocumentDeletion.bind(this)} /> :
+                        null}
+
                 </article>
                 <footer>
 
@@ -122,11 +133,7 @@ export default class Dictionary extends React.Component {
                     null}
 
 
-                {(this.state.displayMain === "finalResult") ?
-                    <DictionaryFinalResult finalResult={this.state.finalResult}
-                                           loggedInUser={this.props.loggedInUser}
-                                           handleDocumentDeletion={this.handleDocumentDeletion.bind(this)} /> :
-                    null}
+
 
                 {(this.props.loggedInUser !== "guest") ?
                     <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
