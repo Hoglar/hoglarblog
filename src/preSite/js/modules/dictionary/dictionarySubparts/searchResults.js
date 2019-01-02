@@ -6,10 +6,7 @@ export default class DictionarySearchResults extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            searchResults: [],
-        }
-
+        
     }
     // This component needs the temorarly seatch results that gets updated every key stroke.
     // props will get searchData
@@ -21,41 +18,11 @@ export default class DictionarySearchResults extends React.Component {
     }
 
 
-    componentDidUpdate(prevProps) {
-        if(prevProps.searchData === this.props.searchData) {
-            return;
-        }
-        // her kan vi gjøre api call.
-        const url = "/api/dictionary/search?searchData=";
-        let searchData = this.props.searchData;
-        let topic = this.props.topic;
-        let result = [];
-
-        if (searchData.length > 0) {
-
-            fetch(url + searchData + "&topic=" + topic)
-                .then((response) => {
-                    return response.json();
-                })
-                .then((searchResult) => {
-                    // I do this to check if i have a kinda valid array.
-
-                    if(searchResult.searchMessage) {
-
-                        this.setState({searchResults: [] });
-                    }
-                    else {
-                        this.setState({searchResults: searchResult});
-                    }
-                });
-        }
-    }
-
     render() {
         return(
-                (this.state.searchResults.length > 0) ?
+                (this.props.searchResults.length > 0) ?
                 <div className="dictionarySearchResults">
-                    {this.state.searchResults.map((searchResult) => {
+                    {this.props.searchResults.map((searchResult) => {
                         return (
                             <div className="dictionarySearchSingleResult" onClick={(event) => {this.handleResultClick(event, searchResult)}}>
                                 <div className="dictionarySearchSingleResultTop">
@@ -72,10 +39,7 @@ export default class DictionarySearchResults extends React.Component {
                             </div>
                         )
                     })}
-                </div> :
-                <div className="dictionarySearchResults">
-
-                </div>
+                </div> : null
         )
     }
 }

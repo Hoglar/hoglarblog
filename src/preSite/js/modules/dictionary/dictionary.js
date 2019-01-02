@@ -104,8 +104,8 @@ export default class Dictionary extends React.Component {
                     ) : null}
                 </nav>
                 <article className="dictionaryMainSection">
-                    // We end here
-                    <DictionarySearchResults />
+                    <DictionarySearchResults  searchResults={this.state.searchResults}
+                                              handleFinalResult={this.handleFinalResult.bind(this)}/>
                 </article>
                 <footer>
 
@@ -120,11 +120,6 @@ export default class Dictionary extends React.Component {
                     :
                     null}
 
-                {(this.state.displayMain === "searchResults") ?
-                    <DictionarySearchResults    searchData={this.state.searchData}
-                                                topic={this.state.activeTopic}
-                                                handleFinalResult={this.handleFinalResult.bind(this)}/> :
-                    null}
 
                 {(this.state.displayMain === "finalResult") ?
                     <DictionaryFinalResult finalResult={this.state.finalResult}

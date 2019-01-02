@@ -37,12 +37,12 @@ export default class DictionarySearch extends React.Component {
                     // I do this to check if i have a kinda valid array.
                     if(searchResult.searchMessage === "Nothing found") {
 
-                        this.giveSearchResultsToDictionary([])
+                        this.props.giveSearchResultsToDictionary([])
                     }
                     else {
                         console.log("success");
                         // We may not need this state, we can just put result into an callback
-                        this.giveSearchResultsToDictionary(searchResult);
+                        this.props.giveSearchResultsToDictionary(searchResult);
                     }
                 });
         }
