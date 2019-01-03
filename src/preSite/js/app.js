@@ -45,6 +45,8 @@ class Application extends React.Component {
             // Topic need to be a main app state.
             // Change topic in options! default topic
             topic: "Select topic",
+
+            dictionaryWordSearch: false
         }
 
         // userAuthentication is defined in functionality/userAuthentication.js
@@ -58,8 +60,24 @@ class Application extends React.Component {
 
     }
 
+    componentDidMount() {
+        window.addEventListener('keydown', this.handleKeyDown.bind(this));
+    }
+
+    handleKeyDown(e) {
+        if(e.ctrlKey === true && e.keyCode === 68) {
+            e.preventDefault();
+            let copyedText = window.getSelection().toString();
+
+            this.setState({showDictionary: true,
+                           dictionaryWordSearch: copyedText});
+        }
+    }
+
     registerButtonClicked() {
-        this.setState({ mode: "administation", showRegister: true, showHeader: false})
+        this.setState({ mode: "administation",
+                        showRegister: true,
+                        showHeader: false})
     }
 
     // This function is triggered by pressing the create user button in <Register />
@@ -98,7 +116,8 @@ class Application extends React.Component {
                         <Dictionary loggedInUser={this.state.loggedInUser}
                                     activeTopic={this.state.topic}
                                     giveTopicToMainApp={this.giveTopicToMainApp.bind(this)}
-                                    isNotesActive={this.state.showNotes}/> :
+                                    isNotesActive={this.state.showNotes}
+                                    dictionaryWordSearch={this.state.dictionaryWordSearch}/> :
                         null }
 
                     { this.state.showHeader ? <Header

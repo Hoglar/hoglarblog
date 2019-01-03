@@ -21,9 +21,11 @@ export default class DictionarySearchResults extends React.Component {
     render() {
         return(
             <div className="dictionarySearchResults">
-                {this.props.searchResults.map((searchResult) => {
+                {this.props.searchResults.map((searchResult, index) => {
                     return (
-                        <div className="dictionarySearchSingleResult" onClick={(event) => {this.handleResultClick(event, searchResult)}}>
+                        <div className="dictionarySearchSingleResult"
+                             onClick={(event) => {this.handleResultClick(event, searchResult)}}
+                             key={index}>
                             <header className="dictionarySearchSingleResultTop">
                                 <h2>{capitalizeFirstLetter(searchResult.title)}</h2>
                             </header>

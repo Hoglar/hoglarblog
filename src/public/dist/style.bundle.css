@@ -357,6 +357,11 @@ article {
     margin-right: 20px;
 }
 
+.dictionaryFinalResult p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .dictionaryBox {
     width: 100%;
     margin: auto;
@@ -365,7 +370,6 @@ article {
     padding-left: 20px;
     padding-right: 20px;
     white-space: pre-wrap;
-
 }
 
 .dictionaryFinalResultTop {

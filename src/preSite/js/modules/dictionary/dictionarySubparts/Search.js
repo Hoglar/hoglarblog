@@ -18,6 +18,8 @@ export default class DictionarySearch extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+
+
     // Just for selection.
 
     // Searches dictionary and returns documents.
@@ -57,6 +59,18 @@ export default class DictionarySearch extends React.Component {
             this.searchDictionary();
         });
 
+    }
+
+    componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+        if (this.props.dictionaryWordSearch !== prevProps.dictionaryWordSearch) {
+            if(this.props.dictionaryWordSearch && this.props.activeTopic !== "Select topic") {
+                this.setState({searchFormValue: this.props.dictionaryWordSearch}, () => {
+                    console.log("Trying!" + this.props.dictionaryWordSearch);
+                    this.searchDictionary();
+                });
+            }
+        }
     }
 
 

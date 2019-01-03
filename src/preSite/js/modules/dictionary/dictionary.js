@@ -34,6 +34,7 @@ export default class Dictionary extends React.Component {
     //showSearch needs to take the name of the pressed topic as a parameter.
     //When showSearch state is changed, it will be trusly,and we show search form.
 
+
     giveSearchResultsToDictionary(searchResults) {
         this.setState({searchResults: searchResults});
     }
@@ -47,7 +48,6 @@ export default class Dictionary extends React.Component {
         this.setState({finalResult: finalResult,
                        displayMain: "finalResult",
                        searchResults: []});
-        console.log(finalResult);
     }
 
     showCreateForm() {
@@ -101,7 +101,8 @@ export default class Dictionary extends React.Component {
                     )}
                     {this.props.activeTopic !== "Select topic" ? (
                         <DictionarySearch activeTopic={this.props.activeTopic}
-                                          giveSearchResultsToDictionary={this.giveSearchResultsToDictionary.bind(this)}/>
+                                          giveSearchResultsToDictionary={this.giveSearchResultsToDictionary.bind(this)}
+                                          dictionaryWordSearch={this.props.dictionaryWordSearch}/>
                     ) : null}
                 </nav>
 

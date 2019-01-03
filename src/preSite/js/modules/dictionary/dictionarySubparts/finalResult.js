@@ -16,7 +16,7 @@
                      <h1>{capitalizeFirstLetter(this.props.finalResult.title)}</h1>
                      <p>{this.props.finalResult.explanation}</p>
                  </div>
-                 <div class="dictionaryFinalResultExample dictionaryBox">
+                 <div className="dictionaryFinalResultExample dictionaryBox">
                      <p className="dictionaryGreyText">Example:</p>
                      <p>{this.props.finalResult.example}</p>
                  </div>
