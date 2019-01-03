@@ -70,38 +70,37 @@ export default class DictionaryCreate extends React.Component {
 
     render() {
         return (
-            <div className="dictionaryCreate">
-                <form className="dictionaryCreateForm">
 
-                    <div className="dictionaryCreateFormTop">
-                        <input ref="topic" type="text" value={this.props.topic} readOnly hidden></input>
+            <form className="dictionaryCreate">
 
-                        <input className="dictionaryCreateTitle" id="dictionaryCreateTitle" ref="title" type="text" placeholder="Title:"></input>
-                    </div>
+                <div className="dictionaryCreateFormTop">
+                    <input ref="topic" type="text" value={this.props.topic} readOnly hidden></input>
 
-                    <div className="dictionaryCreateInputSection">
-                        <textarea id="dictionaryCreateExplanation"
-                            ref="explanation"
-                            type="text"
-                            placeholder="Explanation:"
-                            maxLength="500"/>
+                    <input className="dictionaryCreateTitle" id="dictionaryCreateTitle" ref="title" type="text" placeholder="Title:"></input>
+                </div>
 
-                        <textarea id="dictionaryCreateExample"
-                            ref="example"
-                            type="text"
-                            placeholder="Example:"
-                            maxLength="200"/>
+                <textarea className="dictionaryCreateExplanation"
+                    ref="explanation"
+                    type="text"
+                    placeholder="Explanation:"
+                    maxLength="500"/>
 
-                        <textarea id="dictionaryCreateReference"
-                            ref="reference"
-                            type="text"
-                            placeholder="Reference:"
-                            maxLength="150"/>
-                        <button className="dictionaryCreateInputButton" type="submit" onClick={this.createDictionaryData.bind(this)}>Save</button>
-                    </div>
+                <textarea className="dictionaryCreateExample"
+                    ref="example"
+                    type="text"
+                    placeholder="Example:"
+                    maxLength="200"/>
 
-                </form>
-            </div>
+                <textarea className="dictionaryCreateReference"
+                    ref="reference"
+                    type="text"
+                    placeholder="Reference:"
+                    maxLength="150"/>
+                <button className="dictionaryFooterCreateButton" type="submit" onClick={this.createDictionaryData.bind(this)}>Save</button>
+
+
+            </form>
+
         )
     }
 }

@@ -112,15 +112,20 @@ export default class Dictionary extends React.Component {
                                                   handleFinalResult={this.handleFinalResult.bind(this)}/>
                     : null}
 
-                    {(this.state.displayMain === "finalResult") ?
+                    {(this.state.displayMain === "finalResult" && this.state.searchResults.length == 0) ?
                         <DictionaryFinalResult finalResult={this.state.finalResult}
                                                loggedInUser={this.props.loggedInUser}
                                                handleDocumentDeletion={this.handleDocumentDeletion.bind(this)} /> :
                         null}
 
+                    {(this.state.displayMain === "createForm" && this.state.searchResults.length == 0) ?
+                        <DictionaryCreate topic={this.props.activeTopic}
+                                          handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
+                        : null}
+
                 </article>
                 <footer className="dictionaryFooter">
-                    {(this.props.loggedInUser !== "guest") ?
+                    {(this.props.loggedInUser !== "guest" && this.props.activeTopic !== "Select topic") ?
                         <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
                                           topic={this.props.activeTopic}
                                           inCreatorMode={this.state.inCreatorMode}/> :
@@ -128,10 +133,7 @@ export default class Dictionary extends React.Component {
                 </footer>
 
 
-                {(this.state.displayMain === "createForm") ?
-                    <DictionaryCreate topic={this.props.activeTopic} handleCreateSubmit={this.handleCreateSubmit.bind(this)}/>
-                    :
-                    null}
+
 
             </section>
         )

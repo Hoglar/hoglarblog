@@ -207,15 +207,18 @@ article {
 }
 
 
-/*                                SearchResults                   */
-
-
-.dictionarySearchResults {
+.dictionarySearchResults,
+.dictionaryCreate {
     display: flex;
     flex-direction: column;
     margin: 0 20px 0 20px;
     z-index: 1;
+    flex-grow: 1;
 }
+
+
+
+/*                                SearchResults                   */
 
 
 .dictionarySearchSingleResult {
@@ -238,70 +241,44 @@ article {
     border: solid 1px #FF9E00;
 }
 
-.dictionaryMainEmpty {
-    font-style: oblique;
-    font-size: 22px;
-    font-weight: lighter;
-    margin: auto;
-}
-
-.dictionaryMainContent {
-    display:flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-}
-
-.dictionaryMainContent h2 {
-    font-weight: lighter;
-}
 
 /*              DictionaryCreate              */
 
-.dictionaryCreate {
-    display: flex;
-    width: 100%;
-    color: white;
-    margin-top: 20px;
-    flex: 1;
-}
 
-.dictionaryCreateForm {
-    display: flex;
-    width:100%;
-    flex-direction: column;
+.dictionaryCreateFormTop,
+.dictionaryCreateTitle,
+.dictionaryCreateInputSection {
+    width: 100%;
 }
 
 .dictionaryCreateFormTop {
     display: flex;
     height: 45px;
-    width: 95%;
     align-self: center;
 
 }
 
 .dictionaryCreateTitle {
-    width: 100%;
     background-color: #041A37;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     font-family: Courier, monospace;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     border: solid 1px #000000;
     outline: none;
-
     padding-left: 20px;
 
 }
 
 .dictionaryCreateInputSection {
     display: flex;
-    width: 95%;
     flex-direction: column;
     align-self: center;
 }
 
-.dictionaryCreateInputSection textarea {
+.dictionaryCreateExplanation,
+.dictionaryCreateExample,
+.dictionaryCreateReference {
     margin-top: 1px;
     margin-bottom: 1px;
     white-space: pre-wrap;
@@ -317,19 +294,20 @@ article {
     outline: none;
     resize: none;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
+
 }
 
-#dictionaryCreateExplanation {
-    height: 300px;
+.dictionaryCreateExplanation {
+    flex-grow: 3;
 }
 
 
-#dictionaryCreateExample {
-    height: 100px;
+.dictionaryCreateExample {
+    flex-grow: 0;
 }
 
-#dictionaryCreateReference {
-    height: 100px;
+.dictionaryCreateReference {
+    flex-grow: 0;
 }
 
 .dictionaryCreateInputButton {
@@ -442,7 +420,7 @@ article {
     height: 45px;
     margin: auto;
     background-color: #01060C;
-    border: solid 1px #000000;
+    border: solid 0px #000000;
 }
 .dictionaryFooterCreateButton:hover {
     color: #FF9E00;
