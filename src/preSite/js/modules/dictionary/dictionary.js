@@ -124,6 +124,8 @@ export default class Dictionary extends React.Component {
                         : null}
 
                 </article>
+
+
                 <footer className="dictionaryFooter">
                     {(this.props.loggedInUser !== "guest" && this.props.activeTopic !== "Select topic") ?
                         <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}

@@ -247,25 +247,6 @@
     margin-left: 10px;
 }
 
-.dictionaryFinalResultFooter {
-    flex: 0.2;
-    display: grid;
-	grid-template-columns: repeat(6, 1fr);
-}
-
-.dictionaryEditDocument {
-    grid-column: 1 / 4;
-    display: flex;
-    align-items: center;
-}
-
-.dictionaryDocumentDeleteButton {
-    background-color: #FF9E00;
-    cursor: pointer;
-    border: solid 1px #000000;
-
-}
-
 .dictionaryFinalResultCredentials {
     grid-column: 4 / 7;
 

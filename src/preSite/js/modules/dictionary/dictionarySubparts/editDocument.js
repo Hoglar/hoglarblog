@@ -36,7 +36,7 @@ export default class EditDocument extends React.Component {
     render() {
         return (
             <div className="dictionaryEditDocument">
-                <button className="dictionaryDocumentDeleteButton"
+                <button className="dictionaryFooterCreateButton"
                         onClick={this.handleDeleteButton.bind(this)}>Delete</button>
             </div>
         )

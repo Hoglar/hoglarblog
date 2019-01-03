@@ -64,7 +64,12 @@ module.exports = function(app, dbs) {
                     example: dataFromUser.example,
                     reference: dataFromUser.reference,
                     author: results,
-                    documentScore: 0,
+                    score: {
+                        likes: [],
+                        dislikes: [],
+                        timesRead: 0,
+                        popularity: 0
+                    },
                     date: new Date()
                 }, function(err, r) {
                     if (err) {
