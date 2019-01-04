@@ -124,34 +124,21 @@ export default class NoteHeader extends React.Component {
         event.preventDefault();
         let topic = this.refs.topicCreate.value;
 
-
-        if (this.props.topics.includes(topic.toLowerCase())) {
-            this.props.topicSelected(topic);
-            this.setState({
-                showCreateTopic: false,
-                showTopicChooser: false,
-                showTopic: true,
-                showSearchField: true
-            })
-        }
-
-        else {
-            createNewTopic(topic)
-            .then(
-                (response) => {
-                    this.props.topicSelected(response);
-                    this.setState({
-                        showCreateTopic: false,
-                        showTopicChooser: false,
-                        showTopic: true,
-                        showSearchField: true
-                    })
-                },
-                (error) => {
-                    console.log(error);
-                }
-            )
-        }
+        createNewTopic(topic)
+        .then(
+            (response) => {
+                this.props.topicSelected(response);
+                this.setState({
+                    showCreateTopic: false,
+                    showTopicChooser: false,
+                    showTopic: true,
+                    showSearchField: true
+                })
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
     }
 
     doNothing(event) {
@@ -174,8 +161,6 @@ export default class NoteHeader extends React.Component {
                         {this.state.inputButton}
                     </button>
                 </div>)}
-
-
 
                 <nav className="noteHeaderNav">
                     <TopicChooser topicSelected={this.props.topicSelected}
