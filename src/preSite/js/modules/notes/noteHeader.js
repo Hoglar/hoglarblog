@@ -108,10 +108,6 @@ export default class NoteHeader extends React.Component {
                 this.setState(this.searchState);
             }
         )
-            // Function needs some data: this.state.titleInput and this.props.activeTopic
-
-        // then!
-        // Load just read with this note as base.
     }
 
     noteNewTopic() {
