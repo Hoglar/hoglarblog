@@ -63,7 +63,7 @@ export default class hideTopicChooser extends React.Component {
             <div className="topicChooser"
                  onMouseLeave={this.hideTopicChooser.bind(this)}>
                 <button className="topicButton"
-                        onMouseOver={this.showTopicChooser.bind(this)}>
+                        onClick={this.showTopicChooser.bind(this)}>
 
                     {capitalizeFirstLetter(this.props.activeTopic)}
                 </button>
