@@ -7,6 +7,7 @@ import DictionarySearch from "./dictionarySubparts/Search.js";
 import DictionaryCreate from "./dictionarySubparts/create.js";
 import DictionarySearchResults from "./dictionarySubparts/searchResults.js";
 import DictionaryFinalResult from "./dictionarySubparts/finalResult.js";
+import EditDocument from "./dictionarySubparts/editDocument.js";
 import TopicChooser from '../allround/TopicChooser.js';
 
 
@@ -124,6 +125,13 @@ export default class Dictionary extends React.Component {
                         : null}
 
                 </article>
+
+                <footer className="dictionaryTopFooter">
+                    {(this.props.loggedInUser === this.state.finalResult.author) ?
+                        <EditDocument document={this.state.finalResult}
+                                      handleDocumentDeletion={this.handleDocumentDeletion.bind(this)}/> :
+                        null}
+                </footer>
 
 
                 <footer className="dictionaryFooter">

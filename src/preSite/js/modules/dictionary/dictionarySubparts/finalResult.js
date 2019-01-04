@@ -32,11 +32,6 @@
                          <p id="dictionaryDocumentDate">{this.props.finalResult.date.substring(0, 10)}</p>
                      </div>
 
-                     {(this.props.loggedInUser === this.props.finalResult.author) ?
-                         <EditDocument document={this.props.finalResult}
-                                       handleDocumentDeletion={this.props.handleDocumentDeletion}/> :
-                         null}
-
                  </div>
 
 

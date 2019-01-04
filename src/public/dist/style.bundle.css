@@ -390,7 +390,19 @@ article {
 
 
 
+
 /*                     FOOTER                              */
+
+.dictionaryTopFooter {
+    grid-row: 5 / 6;
+    grid-column: 1 / 3;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
 .dictionaryFooter {
     grid-row: 6 / 7;
     grid-column: 1 / 3;
@@ -406,6 +418,12 @@ article {
 .dictionaryFooterCreateButton:hover {
     color: #FF9E00;
     cursor: pointer;
+}
+
+
+.dictionaryEditDocument {
+    width: 50%;
+    align-content: center;
 }
 /* FOOTER */
 
