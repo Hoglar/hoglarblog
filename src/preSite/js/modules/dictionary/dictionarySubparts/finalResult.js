@@ -18,7 +18,7 @@
                  </div>
                  <div className="dictionaryFinalResultExample dictionaryBox">
                      <p className="dictionaryGreyText">Example:</p>
-                     <p>{this.props.finalResult.example}</p>
+                     <pre><code>{this.props.finalResult.example}</code></pre>
                  </div>
                  <div className="dictionaryFinalResultReference dictionaryBox">
                      <p className="dictionaryGreyText">Reference:</p>
