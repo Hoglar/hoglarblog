@@ -105,6 +105,8 @@ export default class Notes extends React.Component {
                               reloadNote={this.reloadNote.bind(this)}
                               loggedInUser={this.props.loggedInUser}
                               editMode={this.state.editMode}
+                              hideDictionary={this.props.hideDictionary}
+                              showDictionary={this.props.showDictionary}
                     />
                 : null}
                 {(this.state.showSearchResult) ?

@@ -86,6 +86,11 @@ class Application extends React.Component {
         window.location.reload();
     }
 
+    hideDictionary() {
+        this.setState({showDictionary: false});
+    }
+
+
     // This function is taking the name of the button clicked and then updates state to show that api!
     // Its from here i launch the apps
 
@@ -109,7 +114,9 @@ class Application extends React.Component {
                     { (this.state.showNotes && (this.state.mode === "app")) ?
                         <Notes loggedInUser={this.state.loggedInUser}
                                giveTopicToMainApp={this.giveTopicToMainApp.bind(this)}
-                               activeTopic={this.state.topic}/> :
+                               activeTopic={this.state.topic}
+                               hideDictionary={this.hideDictionary.bind(this)}
+                               showDictionary={this.state.showDictionary}/> :
                         null}
 
                     { (this.state.showDictionary && (this.state.mode === "app")) ?

@@ -45,13 +45,13 @@ export default class NoteRead extends React.Component {
             editButton: (this.props.editMode) ? "Save" : "Edit",
             editMode: this.props.editMode
         }, () => {
-            document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
-            if (this.state.editMode) {
-                document.getElementsByClassName("noteReadMain")[0].focus();
-            }
-        })
+                document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
+                if (this.state.editMode) {
+                    document.getElementsByClassName("noteReadMain")[0].focus();
+                }
+            })
+        }
     }
-}
 
     // Note read needs data.
     // Gjøre note search først?
@@ -107,6 +107,8 @@ export default class NoteRead extends React.Component {
     commentButtonClicked() {
         if (this.state.showComments === false) {
             this.setState({showComments: true});
+            // When we press comment, we must remove dictionary!
+            this.props.hideDictionary();
         }
         else {
             this.setState({showComments: false});
@@ -226,7 +228,7 @@ export default class NoteRead extends React.Component {
                     </button>
                 </footer>
 
-                {(this.state.showComments) ?
+                {(this.state.showComments && this.props.showDictionary === false) ?
                     <NoteComments noteSearchSingleResult={this.props.noteSearchSingleResult}
                                   updateSearchSingleResult={this.props.updateSearchSingleResult}/>
                 : null}
