@@ -66,9 +66,7 @@ module.exports = function(app, dbs) {
                     author: results,
                     score: {
                         likes: [],
-                        dislikes: [],
-                        timesRead: 0,
-                        popularity: 0
+                        dislikes: []
                     },
                     date: new Date()
                 }, function(err, r) {
