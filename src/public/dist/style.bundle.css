@@ -368,21 +368,35 @@ article {
     margin-left: 10px;
 }
 
-.dictionaryFinalResultCredentials {
-    grid-column: 4 / 7;
+/*          Final result footer      */
 
+.dictionaryFinalResultFooter {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    border-top: solid 2px #FF9E00;
+}
+.dictionaryFinalResultFooterLikeSection {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
+}
 
+.dictionaryFinalResultCredentials {
+    display: flex;
     justify-content: flex-end;
     align-items: center;
 }
+
 
 #dictionaryDocumentDate {
     margin-left: 10px;
     font-size: 14px;
     font-family: Courier, monospace;
 }
+
+
+
 
 .dictionaryGreyText {
     opacity: 0.4;
@@ -415,10 +429,19 @@ article {
     background-color: #01060C;
     border: solid 0px #000000;
 }
-.dictionaryFooterCreateButton:hover {
+.dictionaryFooterCreateButton:hover,
+.dictionaryFooterLikeButton:hover {
     color: #FF9E00;
     cursor: pointer;
 }
+
+.dictionaryFooterLikeButton {
+    background-color: #01060C;
+    border: solid 0px #000000;
+    color: white;
+}
+
+
 
 
 .dictionaryEditDocument {

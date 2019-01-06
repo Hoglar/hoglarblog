@@ -28,9 +28,26 @@
                  <div className="dictionaryFinalResultFooter dictionaryBox">
 
                      <div className="dictionaryFinalResultCredentials">
-                         <p>{capitalizeFirstLetter(this.props.finalResult.author)}</p>
+                         <p><i>{capitalizeFirstLetter(this.props.finalResult.author)}</i></p>
                          <p id="dictionaryDocumentDate">{this.props.finalResult.date.substring(0, 10)}</p>
                      </div>
+
+                     <div className="dictionaryFinalResultFooterLikeSection">
+
+                         {(this.props.loggedInUser !== this.props.finalResult.author) ?
+                             <button className="dictionaryFooterLikeButton">
+                                 Like
+                             </button>
+                         : null}
+
+                         {(this.props.loggedInUser !== this.props.finalResult.author) ?
+                             <button className="dictionaryFooterLikeButton">
+                                 Dislike
+                             </button>
+                         : null}
+                     </div>
+
+
 
                  </div>
 

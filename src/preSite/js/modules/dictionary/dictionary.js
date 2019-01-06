@@ -131,6 +131,7 @@ export default class Dictionary extends React.Component {
                         <EditDocument document={this.state.finalResult}
                                       handleDocumentDeletion={this.handleDocumentDeletion.bind(this)}/> :
                         null}
+
                 </footer>
 
 
@@ -138,8 +139,8 @@ export default class Dictionary extends React.Component {
                     {(this.props.loggedInUser !== "guest" && this.props.activeTopic !== "Select topic") ?
                         <DictionaryFooter showCreateForm={this.showCreateForm.bind(this)}
                                           topic={this.props.activeTopic}
-                                          inCreatorMode={this.state.inCreatorMode}/> :
-                        null }
+                                          inCreatorMode={this.state.inCreatorMode}/>
+                    : null }
                 </footer>
 
 
