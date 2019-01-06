@@ -32,16 +32,21 @@
                          <p id="dictionaryDocumentDate">{this.props.finalResult.date.substring(0, 10)}</p>
                      </div>
 
-                     <div className="dictionaryFinalResultFooterLikeSection">
+                     <div className="dictionaryFinalResultEditSection">
+
+                         {(this.props.loggedInUser === this.props.finalResult.author) ?
+                             <EditDocument document={this.props.finalResult}
+                                           handleDocumentDeletion={this.props.handleDocumentDeletion.bind(this)}/> :
+                             null}
 
                          {(this.props.loggedInUser !== this.props.finalResult.author) ?
-                             <button className="dictionaryFooterLikeButton">
+                             <button className="dictionaryFooterCreateButton">
                                  Like
                              </button>
                          : null}
 
                          {(this.props.loggedInUser !== this.props.finalResult.author) ?
-                             <button className="dictionaryFooterLikeButton">
+                             <button className="dictionaryFooterCreateButton">
                                  Dislike
                              </button>
                          : null}
