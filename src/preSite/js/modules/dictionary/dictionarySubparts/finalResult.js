@@ -9,6 +9,16 @@
  import capitalizeFirstLetter from '../../../functionality/capitalizeFirstLetter.js';
 
  export default class FinalResult extends React.Component {
+
+
+     likeButtonClicked() {
+         console.log("Hello");
+     }
+
+     dislikeButtonClicked() {
+         console.log("World")
+     }
+
      render() {
          return (
              <div className="dictionaryFinalResult">
@@ -32,6 +42,7 @@
                          <p id="dictionaryDocumentDate">{this.props.finalResult.date.substring(0, 10)}</p>
                      </div>
 
+
                      <div className="dictionaryFinalResultEditSection">
 
                          {(this.props.loggedInUser === this.props.finalResult.author) ?
@@ -40,23 +51,21 @@
                              null}
 
                          {(this.props.loggedInUser !== this.props.finalResult.author) ?
-                             <button className="dictionaryFooterCreateButton">
+                             <button className="dictionaryFooterCreateButton"
+                                     onClick={this.likeButtonClicked.bind(this)}>
                                  Like
                              </button>
                          : null}
 
                          {(this.props.loggedInUser !== this.props.finalResult.author) ?
-                             <button className="dictionaryFooterCreateButton">
+                             <button className="dictionaryFooterCreateButton"
+                                     onClick={this.dislikeButtonClicked.bind(this)}>
                                  Dislike
                              </button>
                          : null}
                      </div>
 
-
-
                  </div>
-
-
              </div>
          )
      }
