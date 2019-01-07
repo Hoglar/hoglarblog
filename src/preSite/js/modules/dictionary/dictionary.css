@@ -234,9 +234,11 @@
     flex-direction: column;
 }
 
-.dictionaryFinalResultTop h1 {
+.dictionaryFinalResultTop h2 {
     margin-top: 8px;
     margin-bottom: 8px;
+    color: white;
+    font-size: 19px;
 }
 
 .dictionaryFinalResultExample,

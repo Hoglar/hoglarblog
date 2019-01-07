@@ -61,7 +61,7 @@
          return (
              <div className="dictionaryFinalResult">
                  <div className="dictionaryFinalResultTop dictionaryBox">
-                     <h1>{capitalizeFirstLetter(this.props.finalResult.title)}</h1>
+                     <h2>{capitalizeFirstLetter(this.props.finalResult.title)}</h2>
                      <p>{this.props.finalResult.explanation}</p>
                  </div>
                  <div className="dictionaryFinalResultExample dictionaryBox">
