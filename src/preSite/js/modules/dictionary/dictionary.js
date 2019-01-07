@@ -81,10 +81,6 @@ export default class Dictionary extends React.Component {
         }
     }
 
-    reloadDictionary() {
-        
-    }
-
 
     render() {
         return (

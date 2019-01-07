@@ -305,3 +305,11 @@
     width: 100%;
     align-content: center;
 }
+
+.dictionaryLikedByUser {
+    color:#FF9E00;
+}
+
+.dictionaryDislikedByUser {
+    color:#FF9E00;
+}

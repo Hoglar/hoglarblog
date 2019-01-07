@@ -11,11 +11,21 @@
 
  export default class FinalResult extends React.Component {
 
+     constructor(props) {
+         super(props);
+         this.state = {
+             doneLiking: false,
+             likeButton: (this.props.finalResult.score.likes.includes(this.props.loggedInUser) ?
+                         "dictionaryLikedByUser" : ""),
+             dislikeButton: (this.props.finalResult.score.dislikes.includes(this.props.loggedInUser) ?
+                         "dictionaryDislikedByUser" : "")
+         }
+     }
+
 
      likeButtonClicked() {
          let user = this.props.loggedInUser;
          let likeArr = this.props.finalResult.score.likes;
-         console.log(likeArr);
 
          // Check if user is in likeArr
          if(!likeArr.includes(user)) {
@@ -25,7 +35,7 @@
                               this.props.loggedInUser,
                               "like")
              .then(()=> {
-                  console.log("updated, lets reload?");
+                  this.setState({doneLiking: true});
              })
          }
      }
@@ -33,7 +43,6 @@
      dislikeButtonClicked() {
          let user = this.props.loggedInUser;
          let dislikeArr = this.props.finalResult.score.dislikes;
-         console.log(dislikeArr);
 
          // Check if user is in likeArr
          if(!dislikeArr.includes(user)) {
@@ -43,7 +52,7 @@
                               this.props.loggedInUser,
                               "dislike")
              .then(()=> {
-                  console.log("updated, lets reload?");
+                  this.setState({doneLiking: true});
              })
          }
      }
@@ -71,8 +80,9 @@
                          <p id="dictionaryDocumentDate">{this.props.finalResult.date.substring(0, 10)}</p>
                      </div>
 
+                {this.state.doneLiking ? null :
 
-                     <div className="dictionaryFinalResultEditSection">
+                    <div className="dictionaryFinalResultEditSection">
 
                          {(this.props.loggedInUser === this.props.finalResult.author) ?
                              <EditDocument document={this.props.finalResult}
@@ -81,7 +91,7 @@
 
                          {(this.props.loggedInUser !== this.props.finalResult.author &&
                            this.props.loggedInUser !== "guest") ?
-                             <button className="dictionaryFooterCreateButton"
+                             <button className={"dictionaryFooterCreateButton " + this.state.likeButton}
                                      onClick={this.likeButtonClicked.bind(this)}>
                                  Like
                              </button>
@@ -89,12 +99,13 @@
 
                          {(this.props.loggedInUser !== this.props.finalResult.author &&
                            this.props.loggedInUser !== "guest") ?
-                             <button className="dictionaryFooterCreateButton"
+                             <button className={"dictionaryFooterCreateButton " + this.state.dislikeButton}
                                      onClick={this.dislikeButtonClicked.bind(this)}>
                                  Dislike
                              </button>
                          : null}
-                     </div>
+                     </div> }
+
 
                  </div>
              </div>
