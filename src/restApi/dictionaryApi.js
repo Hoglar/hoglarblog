@@ -3,6 +3,7 @@
 const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
 const mongo = require('mongodb');
+const dictionaryUpdateLikes = require('../serverUtilities/dictionaryUpdateLikes.js');
 module.exports = function(app, dbs) {
 
     // The search algorithm needs to be better. Just limited results to 5 now, but need to filter which 5 i get back!
@@ -128,6 +129,23 @@ module.exports = function(app, dbs) {
                 res.json({"failMessage": "Something wrong with userAuth"});
             }
         })
+    })
+
+    app.post("/api/dictionary/updateLikes", function(req, res) {
+        console.log("Connection established");
+        let data = req.body;
+
+        dictionaryUpdateLikes(dbs, data.topic, data.document_id, data.user, data.update)
+        .then(
+            function(response) {
+                console.log(response);
+                res.send("Success");
+            },
+            function(err) {
+                console.log(err);
+                res.send("Error");
+            }
+        )
     })
 
     return app;

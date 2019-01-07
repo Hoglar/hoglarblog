@@ -1019,6 +1019,7 @@ article {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
+    padding-right: 50px;
     margin-top: 0;
 }
 

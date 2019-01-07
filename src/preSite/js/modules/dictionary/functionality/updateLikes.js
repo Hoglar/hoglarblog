@@ -7,7 +7,7 @@ export default function notesUpdateLikes(topic, _id, loggedInUser, update) {
     // this function needs to fetch over data with like or dislike?
     console.log("Connection established", loggedInUser);
 
-    const url = "/api/note/updateLikes";
+    const url = "/api/dictionary/updateLikes";
 
     let data = {
         update: update,
