@@ -27,18 +27,26 @@ export default class Notes extends React.Component {
             showSearchResult: false,
             noteSearchResult: [],
             noteSearchSingleResult: null,
+            noteSuggestions: null,
         }
     }
 
     componentWillMount() {
         // Get array of suggestions?
-        getSuggestions(this.props.activeTopic);
+        getSuggestions(this.props.activeTopic)
+        .then((suggestion) => {
+            this.setState({noteSuggestions: suggestion})
+        })
+
     }
 
     componentDidUpdate(prevProps) {
   // Typical usage (don't forget to compare props):
     if (this.props.activeTopic !== prevProps.activeTopic) {
-            getSuggestions(this.props.activeTopic);
+            getSuggestions(this.props.activeTopic)
+            .then((suggestion) => {
+                this.setState({noteSuggestions: suggestion})
+            })
         }
     }
 
