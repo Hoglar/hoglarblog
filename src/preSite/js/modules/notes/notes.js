@@ -29,9 +29,15 @@ export default class Notes extends React.Component {
         }
     }
 
+    componentWillMount() {
+        // Get array of suggestions?
+        
+    }
+
 
     topicSelected(topic) {
         this.props.giveTopicToMainApp(topic);
+        // get new array of suggestions.
     }
 
     showCreate() {
@@ -47,7 +53,6 @@ export default class Notes extends React.Component {
         // One Mission! update state with the search results from landing page.
         this.setState({noteSearchResult: results, showSearchResult: true});
     }
-
 
 
     noteSearchSingleResultClicked(note, changeMode) {
