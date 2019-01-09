@@ -302,10 +302,10 @@ module.exports = function(app, dbs) {
         console.log("DO YOU WANT SUGGESTIONS!");
         let data = req.body;
         if(data.topic) {
-            getSuggestionsBasedOnTopic(data.topic, res);
+            getSuggestionsBasedOnTopic(dbs, data.topic, res);
         }
         else {
-            getSuggestionsNoTopic(res);
+            getSuggestionsNoTopic(dbs, res);
         }
     })
 
