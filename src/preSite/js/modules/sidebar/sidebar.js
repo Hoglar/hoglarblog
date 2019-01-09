@@ -11,7 +11,7 @@ export default class Sidebar extends React.Component {
 
     render() {
         return (
-            <div className="sidebar">
+            <aside className="sidebar">
                 {this.props.sidebarLayout.map(function(api, index) {
                     return (
                         <SidebarBox
@@ -23,7 +23,7 @@ export default class Sidebar extends React.Component {
                 }.bind(this))}
 
                 <div className="sidebarFiller"/>
-            </div>
+            </aside>
         )
     }
 }

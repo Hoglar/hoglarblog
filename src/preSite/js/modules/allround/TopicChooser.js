@@ -2,23 +2,7 @@
 import React from 'react';
 
 import Topic from './Topic.js';
-
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
-// Proper design!
-// this component does some things.
-
-// Inputs:
-    // It needs active topic.
-    // loggedInUser
-    // Maybe some kind of callback function
-
-// do:
-    // Show topic button,
-    // show list of topics to choose from on mouseover
-
-// Return:
-    //It needs to send back topics when its updated.
-
 
 export default class hideTopicChooser extends React.Component {
 
@@ -52,9 +36,6 @@ export default class hideTopicChooser extends React.Component {
             } else {
                 this.setState({showTopicChooser: true})
             }
-
-
-
         }
         else {
             this.hideTopicChooser();
