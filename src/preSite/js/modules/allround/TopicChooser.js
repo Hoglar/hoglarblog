@@ -38,16 +38,23 @@ export default class hideTopicChooser extends React.Component {
     showTopicChooser() {
 
         if(this.state.showTopicChooser === false) {
-            fetch("/api/notes/topics")
-                .then((response) => {
-                    return response.json();
-                })
-                .then((response) => {
-                    this.setState({topics: response.topics.sort()})
-                })
-                .then(() => {
+            if(this.state.topics[0] === "waitingServer") {
+                fetch("/api/notes/topics")
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((response) => {
+                        this.setState({topics: response.topics.sort()})
+                    })
+                    .then(() => {
+                    this.setState({showTopicChooser: true})
+                    })
+            } else {
                 this.setState({showTopicChooser: true})
-                })
+            }
+
+
+
         }
         else {
             this.hideTopicChooser();
