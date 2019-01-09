@@ -22,8 +22,7 @@ async function getSuggestionsNoTopic(dbs, res) {
             let mergedValues = [].concat.apply([], values);
 
             let sortedDocumentArr = mergedValues.sort(comparePopularity);
-            let returnDocs = sortedDocumentArr.slice(0,6);
-            res.json({"documents": returnDocs});
+            res.json({"documents": sortedDocumentArr});
         }
     )
     .catch(

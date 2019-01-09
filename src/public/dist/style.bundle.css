@@ -931,7 +931,7 @@ article {
     color: black;
 }
 
-/********************* NoteSuggestion  **************************/
+/********************* noteSuggestion  **************************/
 
 .noteSuggestions {
     grid-row: 3 / 4;
@@ -950,22 +950,71 @@ article {
     margin: 1.66%;
     background-color: #0F78FF;
     border: solid 1px #000000;
-
-    opacity: 0.1;
+    color: black;
+    opacity: 0.2;
     transition-property: opacity;
-    transition-duration: 2s;
+    transition-duration: 1s;
     transition-timing-function: linear;
 
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr) 1.2em;
-
+    grid-template-rows: repeat(4, 1fr) 2em;
 }
 
 .noteSuggestionWrapper:hover {
     opacity: 1;
     cursor: pointer;
 }
+
+.noteSuggestionHeader {
+    grid-row: 1 / 2;
+
+    background-color: #01060C;
+    border-bottom: solid 1px black;
+
+    text-align: center;
+    color: white;
+}
+
+.noteSuggestionArticle {
+    grid-row: 2 / 4;
+
+    font-size: 16;
+    margin: auto;
+    text-align: center;
+    width: 66%;
+    overflow: hidden;
+    
+}
+
+
+
+.noteSuggestionFooter {
+    grid-row: 4 / 5;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-bottom: solid 2px black;
+}
+
+.noteSuggestionScore {
+    grid-row: 5 / 6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 1em 0 1em;
+
+}
+
+.noteSuggestionScore p {
+    margin: 0;
+    margin-left: 1em;
+
+}
+
 
 /********************* NoteComments *************************/
 

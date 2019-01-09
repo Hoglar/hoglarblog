@@ -5,10 +5,10 @@ async function getSuggestionsBasedOnTopic(dbs, topic, res) {
     let documents = await dbs.notes.collection(topic).find({"score.popularity": {$gt: 5}}).toArray();
 
     let sortedDocs = documents.sort(comparePopularity);
-    let returnDocs = sortedDocs.slice(0,6);
-    res.json({"documents": returnDocs});
+
+    res.json({"documents": sortedDocs});
 }
 
 module.exports = getSuggestionsBasedOnTopic;
 
-// Denne ble bra. 
+// Denne ble bra.

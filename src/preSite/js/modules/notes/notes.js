@@ -78,6 +78,7 @@ export default class Notes extends React.Component {
                 noteSearchSingleResult: note,
                 showRead: true,
                 showSearchResult: false,
+                noteSuggestions: false,
                 editMode: changeMode
             });
         })
