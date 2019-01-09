@@ -299,7 +299,6 @@ module.exports = function(app, dbs) {
     })
 
     app.post("/api/note/getSuggestions", function(req, res) {
-        console.log("DO YOU WANT SUGGESTIONS!");
         let data = req.body;
         if(data.topic) {
             getSuggestionsBasedOnTopic(dbs, data.topic, res);
