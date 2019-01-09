@@ -948,7 +948,23 @@ article {
     width: 30%;
     height: 45%;
     margin: 1.66%;
-    background-color: white;
+    background-color: #0F78FF;
+    border: solid 1px #000000;
+
+    opacity: 0.1;
+    transition-property: opacity;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr) 1.2em;
+
+}
+
+.noteSuggestionWrapper:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 /********************* NoteComments *************************/
