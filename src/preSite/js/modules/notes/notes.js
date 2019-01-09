@@ -11,6 +11,7 @@ import NoteSearchResult from './noteSearchResult.js';
 import fetchUpdatedNote from './noteFunctions/fetchUpdatedNote.js'
 import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
 import getSuggestions from './noteFunctions/getSuggestions.js';
+import NoteSuggestions from './noteSuggestions.js';
 
 // We need to get topics we can work width
 
@@ -27,7 +28,7 @@ export default class Notes extends React.Component {
             showSearchResult: false,
             noteSearchResult: [],
             noteSearchSingleResult: null,
-            noteSuggestions: null,
+            noteSuggestions: false,
         }
     }
 
@@ -133,6 +134,12 @@ export default class Notes extends React.Component {
                     <NoteSearchResult noteSearchResult={this.state.noteSearchResult}
                                       noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
                 : null}
+
+                {(!this.state.showRead && this.state.noteSuggestions) ?
+                    <NoteSuggestions noteSuggestions={this.state.noteSuggestions}/>
+
+                : null}
+
 
             </section>
         )

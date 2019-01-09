@@ -225,17 +225,10 @@
 }
 
 .noteReadHeader, .noteReadMain {
-
     grid-column: 1 / 5;
-
-    background-color: #041A37;
-    border: solid 1px #000000;
-    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     margin-right: 10px;
     padding-left: 20px;
     padding-right: 20px;
-
-    font-family: courier, monospace;
 }
 
 .noteReadHeader {
@@ -247,7 +240,9 @@
 .noteReadMain {
     grid-row: 2 / 3;
     padding-top: 10px;
-
+    background-color: #041A37;
+    border: solid 1px #000000;
+    box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     resize: none;
     height: auto;
     outline: none;
@@ -285,7 +280,25 @@
     color: black;
 }
 
+/********************* NoteSuggestion  **************************/
 
+.noteSuggestions {
+    grid-row: 3 / 4;
+    grid-column: 1 / 5;
+    margin-top: 90px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.noteSuggestionWrapper {
+    width: 30%;
+    height: 45%;
+    margin: 1.66%;
+    background-color: white;
+}
 
 /********************* NoteComments *************************/
 

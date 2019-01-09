@@ -82,8 +82,6 @@ export default class NoteRead extends React.Component {
                     console.error(err);
                 }
             )
-            // Update mongo with new data.
-            // Need to do post request. with auth
         }
     }
 
@@ -180,9 +178,9 @@ export default class NoteRead extends React.Component {
         return (
             <article className="noteRead">
                 <header className="noteReadHeader">
-                    <h4>
+                    <h3>
                         {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
-                    </h4>
+                    </h3>
                 </header>
 
                 <article className="noteReadMain"

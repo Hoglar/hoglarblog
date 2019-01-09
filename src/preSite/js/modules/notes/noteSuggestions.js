@@ -1,4 +1,6 @@
 'use strict';
+import React from 'react';
+import Suggestion from './suggestion.js';
 // What is this.
 
 // We must have some suggestion, first only based on popularity. Then based on topic and popularity.
@@ -22,4 +24,24 @@
 
     // we should just search/ compare documents with some popularity, so we dont go through all crap that will pile up.
 
-    
+
+    export default class NoteSuggestions extends React.Component {
+
+        constructor(props) {
+            super(props);
+        }
+
+        // Vi trenger liste over search results.
+        render() {
+            return (
+                <div className="noteSuggestions">
+                    {this.props.noteSuggestions.map(function(suggestion, index) {
+                        return (
+                            <Suggestion suggestion={suggestion}
+                                        key={index}/>
+                        )
+                    }.bind(this))}
+                </div>
+            )
+        }
+    }

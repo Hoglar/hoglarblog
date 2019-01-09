@@ -25,7 +25,8 @@ export default function getSuggestions(topic) {
         })
         .then((res) => res.json())
         .then((response) => {
-            resolve(response.documents)
+            console.log(response.documents);
+            resolve(response.documents);
         })
     })
 }
