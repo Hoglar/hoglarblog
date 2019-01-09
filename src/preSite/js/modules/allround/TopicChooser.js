@@ -49,6 +49,9 @@ export default class hideTopicChooser extends React.Component {
                 this.setState({showTopicChooser: true})
                 })
         }
+        else {
+            this.hideTopicChooser();
+        }
     }
 
     selectTopic(topic) {
@@ -69,8 +72,7 @@ export default class hideTopicChooser extends React.Component {
                 </button>
 
                 {(this.state.showTopicChooser) ?
-                    (<ul className="topicChooserDropdown"
-                          onMouseLeave={this.hideTopicChooser.bind(this)}>
+                    (<ul className="topicChooserDropdown">
                         {this.state.topics.map(function(topic, index) {
                             return (
                                 <Topic topic={topic}

@@ -19,6 +19,10 @@ body {
         Base rules
 *************************/
 
+*:focus {
+    outline: none;
+}
+
 section, button {
     color: #8e8e8e;
 }
