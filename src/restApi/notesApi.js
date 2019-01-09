@@ -3,6 +3,8 @@ const serverUserAuth = require('../serverUtilities/userAuth.js');
 const compareScore = require('../serverUtilities/compareScore.js');
 const updateNoteScoreRead = require('../serverUtilities/updateNoteScoreRead.js');
 const notesUpdateLikes = require('../serverUtilities/notesUpdateLikes.js');
+const getSuggestionsBasedOnTopic = require('../serverUtilities/getSuggestionsBasedOnTopic.js');
+const getSuggestionsNoTopic = require('../serverUtilities/getSuggestionsNoTopic.js');
 const mongo = require('mongodb');
 
 module.exports = function(app, dbs) {
@@ -294,6 +296,17 @@ module.exports = function(app, dbs) {
                 res.send("Error");
             }
         )
+    })
+
+    app.post("/api/note/getSuggestions", function(req, res) {
+        console.log("DO YOU WANT SUGGESTIONS!");
+        let data = req.body;
+        if(data.topic) {
+            getSuggestionsBasedOnTopic(data.topic, res);
+        }
+        else {
+            getSuggestionsNoTopic(res);
+        }
     })
 
     return app;

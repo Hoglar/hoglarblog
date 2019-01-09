@@ -10,6 +10,7 @@ import NoteRead from './noteRead.js';
 import NoteSearchResult from './noteSearchResult.js';
 import fetchUpdatedNote from './noteFunctions/fetchUpdatedNote.js'
 import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
+import getSuggestions from './noteFunctions/getSuggestions.js';
 
 // We need to get topics we can work width
 
@@ -31,7 +32,7 @@ export default class Notes extends React.Component {
 
     componentWillMount() {
         // Get array of suggestions?
-        
+        getSuggestions(this.props.activeTopic);
     }
 
 
