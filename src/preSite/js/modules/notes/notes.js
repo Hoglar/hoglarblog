@@ -35,6 +35,12 @@ export default class Notes extends React.Component {
         getSuggestions(this.props.activeTopic);
     }
 
+    componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+    if (this.props.activeTopic !== prevProps.activeTopic) {
+            getSuggestions(this.props.activeTopic);
+        }
+    }
 
     topicSelected(topic) {
         this.props.giveTopicToMainApp(topic);
