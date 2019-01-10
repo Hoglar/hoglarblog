@@ -10,10 +10,17 @@ export default class Suggestion extends React.Component {
         super(props);
     }
 
+    noteSuggestionClicked() {
+        console.log("Hello");
+        // we give this document id to clicked function.
+        this.props.noteSearchSingleResultClicked(this.props.suggestion, false);
+    }
+
     // Vi trenger liste over search results.
     render() {
         return (
-            <article className="noteSuggestionWrapper">
+            <article className="noteSuggestionWrapper"
+                     onClick={this.noteSuggestionClicked.bind(this)}>
                 <header className="noteSuggestionHeader">
                     <h3>
                         {capitalizeFirstLetter(this.props.suggestion.title)}

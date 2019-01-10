@@ -30,7 +30,6 @@ import Suggestion from './suggestion.js';
         constructor(props) {
             super(props);
         }
-
         // Vi trenger liste over search results.
         render() {
             return (
@@ -38,6 +37,7 @@ import Suggestion from './suggestion.js';
                     {this.props.noteSuggestions.map(function(suggestion, index) {
                         return (
                             <Suggestion suggestion={suggestion}
+                                        noteSearchSingleResultClicked={this.props.noteSearchSingleResultClicked}
                                         key={index}/>
                         )
                     }.bind(this))}

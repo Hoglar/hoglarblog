@@ -54,6 +54,7 @@ export default class Notes extends React.Component {
     topicSelected(topic) {
         this.props.giveTopicToMainApp(topic);
         // get new array of suggestions.
+        this.setState({showRead: false});
     }
 
     showCreate() {
@@ -78,10 +79,10 @@ export default class Notes extends React.Component {
                 noteSearchSingleResult: note,
                 showRead: true,
                 showSearchResult: false,
-                noteSuggestions: false,
                 editMode: changeMode
             });
         })
+        document.documentElement.scrollTop = 0;
     }
 
     reloadNote(note) {
@@ -137,7 +138,8 @@ export default class Notes extends React.Component {
                 : null}
 
                 {(!this.state.showRead && this.state.noteSuggestions) ?
-                    <NoteSuggestions noteSuggestions={this.state.noteSuggestions}/>
+                    <NoteSuggestions noteSuggestions={this.state.noteSuggestions}
+                                     noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
 
                 : null}
 
