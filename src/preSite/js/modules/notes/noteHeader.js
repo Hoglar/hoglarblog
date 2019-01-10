@@ -119,7 +119,6 @@ export default class NoteHeader extends React.Component {
     createTopicSaveClicked(event) {
         event.preventDefault();
         let topic = this.refs.topicCreate.value;
-        document.getElementById("noteLandingPageInputSearch").value = "";
         createNewTopic(topic)
         .then(
             (response) => {
