@@ -7,7 +7,6 @@ import React from 'react';
 // Lets start by creating some notes, we need a noteCreate.js component.
 import NoteHeader from './noteHeader.js';
 import NoteRead from './noteRead.js';
-import NoteSearchResult from './noteSearchResult.js';
 import fetchUpdatedNote from './noteFunctions/fetchUpdatedNote.js'
 import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
 import getSuggestions from './noteFunctions/getSuggestions.js';
@@ -25,7 +24,8 @@ export default class Notes extends React.Component {
         this.state = {
             showRead: false,
             editMode: false,
-            showSearchResult: false,
+            searchMode: false,
+            noteSearchValue: "",
             noteSearchResult: [],
             noteSearchSingleResult: null,
             noteSuggestions: false,
@@ -68,9 +68,8 @@ export default class Notes extends React.Component {
 
     noteUpdateSearchResults(results) {
         // One Mission! update state with the search results from landing page.
-        this.setState({noteSearchResult: results, showSearchResult: true});
+        this.setState({noteSuggestions: results});
     }
-
 
     noteSearchSingleResultClicked(note, changeMode) {
         this.setState({showRead: false}, ()=> {
@@ -78,11 +77,15 @@ export default class Notes extends React.Component {
             this.setState({
                 noteSearchSingleResult: note,
                 showRead: true,
-                showSearchResult: false,
                 editMode: changeMode
             });
         })
         document.documentElement.scrollTop = 0;
+        if(this.state.searchMode === true) {
+            document.getElementById("noteLandingPageInputSearch").value = "";
+            this.setState({searchMode: false});
+        }
+
     }
 
     reloadNote(note) {
@@ -103,11 +106,22 @@ export default class Notes extends React.Component {
         })
     }
 
-    hideSearchResult() {
-        this.setState({showSearchResult: false});
+    getSearchValue(searchValue) {
+        console.log("updateing search value");
+        if(searchValue === "") {
+            this.setState({searchMode: false});
+        }
+        else {
+            this.setState({searchMode: true});
+        }
     }
 
-
+    listSuggestions() {
+        getSuggestions(this.props.activeTopic)
+        .then((suggestion) => {
+            this.setState({noteSuggestions: suggestion})
+        })
+    }
 
     render() {
         return (
@@ -117,12 +131,13 @@ export default class Notes extends React.Component {
                                  topicSelected={this.topicSelected.bind(this)}
                                  loggedInUser={this.props.loggedInUser}
                                  showCreate={this.showCreate.bind(this)}
-                                 hideSearchResult={this.hideSearchResult.bind(this)}
                                  noteUpdateSearchResults={this.noteUpdateSearchResults.bind(this)}
                                  loadNote={this.noteSearchSingleResultClicked.bind(this)}
+                                 getSearchValue={this.getSearchValue.bind(this)}
+                                 listSuggestions={this.listSuggestions.bind(this)}
                              />
 
-                {(this.state.showRead) ?
+                {(this.state.showRead && !this.state.searchMode) ?
                     <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}
                               reloadNote={this.reloadNote.bind(this)}
@@ -132,12 +147,8 @@ export default class Notes extends React.Component {
                               showDictionary={this.props.showDictionary}
                     />
                 : null}
-                {(this.state.showSearchResult) ?
-                    <NoteSearchResult noteSearchResult={this.state.noteSearchResult}
-                                      noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
-                : null}
 
-                {(!this.state.showRead && this.state.noteSuggestions) ?
+                {((!this.state.showRead && this.state.noteSuggestions) || (this.state.searchMode && this.state.noteSuggestions)) ?
                     <NoteSuggestions noteSuggestions={this.state.noteSuggestions}
                                      noteSearchSingleResultClicked={this.noteSearchSingleResultClicked.bind(this)}/>
 

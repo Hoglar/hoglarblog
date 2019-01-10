@@ -62,6 +62,7 @@ export default class NoteHeader extends React.Component {
         event.preventDefault();
 
         this.setState({searchFormValue: event.target.value});
+        this.props.getSearchValue(event.target.value);
         // this.props.topicSearch(event.target.value);
         // We need to make a search for notes base on topic and search field value.
 
@@ -75,7 +76,6 @@ export default class NoteHeader extends React.Component {
                 (searchResult) => {
                     // Update notes.js with search results.
                     this.props.noteUpdateSearchResults(searchResult);
-
                 },
                 (error) => {
                     console.log(error);
@@ -83,7 +83,7 @@ export default class NoteHeader extends React.Component {
             )
         }
         else {
-            this.props.hideSearchResult();
+            this.props.listSuggestions();
         }
     }
 
@@ -119,7 +119,7 @@ export default class NoteHeader extends React.Component {
     createTopicSaveClicked(event) {
         event.preventDefault();
         let topic = this.refs.topicCreate.value;
-
+        document.getElementById("noteLandingPageInputSearch").value = "";
         createNewTopic(topic)
         .then(
             (response) => {
