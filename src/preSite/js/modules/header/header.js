@@ -71,7 +71,7 @@ export default class Header extends React.Component {
     render() {
         return(
             <div className="header">
-                <div className="loggedInAsInfo">Logged in as {capitalizeFirstLetter(this.props.loggedInUser)} </div>
+                <h3 className="loggedInAsInfo">Logged in as: {capitalizeFirstLetter(this.props.loggedInUser)}</h3>
                 {(this.props.loggedInUser === "guest") ?
                 // Loginform must change, make it more responsive.
                 <form className="loginForm">

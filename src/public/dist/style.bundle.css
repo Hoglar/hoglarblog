@@ -517,7 +517,6 @@ article {
     height: 35px;
     background-color: #041A37;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-    font-family: Courier, monospace;
     font-size: 18px;
     color: white;
     border: solid 1px #000000;
@@ -557,7 +556,6 @@ article {
 }
 
 .registerUser {
-    font-family: Courier, monospace;
     font-size: 18px;
 }
 
@@ -574,7 +572,6 @@ article {
     border: none;
     margin-left: auto;
 
-    font-family: Courier, monospace;
     font-size: 18px;
     margin-top: 10px;
     margin-right: 20px;
@@ -591,8 +588,6 @@ article {
 
     color: #8e8e8e;
     font-weight: lighter;
-
-    font-family: Courier, monospace;
     font-size: 18px;
     margin-top: 10px;
     margin-left: 20px;
@@ -606,7 +601,6 @@ article {
     font-weight: lighter;
     text-align: center;
 
-    font-family: Courier, monospace;
     font-size: 18px;
     margin-top: 10px;
     margin-left: 20px;
