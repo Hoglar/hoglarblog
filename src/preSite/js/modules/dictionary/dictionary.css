@@ -5,6 +5,9 @@
     grid-column: 5 / 7;
     z-index: 2;
     border-left: solid 1px #000000;
+    height: 100vh;
+    border-bottom: solid 2px black;
+
 
     display: grid;
     grid-template-rows: 45px 45px 45px auto 45px 45px;
