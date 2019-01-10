@@ -13,8 +13,6 @@
     grid-template-rows: 45px 45px 45px auto 45px 45px;
     grid-template-columns: repeat(2, 1fr);
 }
-
-
 /*      Dictionary Header       */
 
 .dictionaryHeader {
