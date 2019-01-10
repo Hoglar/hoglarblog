@@ -5,8 +5,8 @@ async function getSuggestionsBasedOnTopic(dbs, topic, res) {
     let documents = await dbs.notes.collection(topic).find({"score.popularity": {$gt: 5}}).toArray();
 
     let sortedDocs = documents.sort(comparePopularity);
-
-    res.json({"documents": sortedDocs});
+    let returnDocs = sortedDocs.splice(0, 20);
+    res.json({"documents": returnDocs});
 }
 
 module.exports = getSuggestionsBasedOnTopic;
