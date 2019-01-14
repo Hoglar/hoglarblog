@@ -22,7 +22,6 @@
     grid-column: 4 / 7;
 
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding-right: 10px;
@@ -37,12 +36,12 @@
     border: solid 1px #000000;
     padding-left: 10px;
     outline: none;
+    width: 40%;
 }
 
 .loginForm button {
     color: white;
     height: 35px;
-    width: 100px;
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 2px 0px rgba(1,6,12,1);
     font-size: 20px;
