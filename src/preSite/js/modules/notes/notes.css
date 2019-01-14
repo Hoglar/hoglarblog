@@ -365,8 +365,20 @@
 
 }
 
-@media all and (max-width: 1024px) {
+@media all and (max-width: 1300px) {
+    .noteSuggestionWrapper {
+        height: auto;
+    }
 
+    .noteSuggestionArticle {
+        width: 80%;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .noteSuggestionWrapper {
+        width: 42%;
+    }
 }
 
 
