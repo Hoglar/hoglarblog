@@ -136,6 +136,12 @@ export default class NoteHeader extends React.Component {
         )
     }
 
+    noteLogoClicked() {
+        // We make a function to function kinda like a back button.
+        this.props.noteLogoClicked();
+
+    }
+
     doNothing(event) {
         event.preventDefault();
     }
@@ -144,7 +150,8 @@ export default class NoteHeader extends React.Component {
     render() {
         return (
             <header className="noteHeader">
-                <div className="noteHeaderLogo">
+                <div className="noteHeaderLogo"
+                     onClick={this.noteLogoClicked.bind(this)}>
                     <h1>Notes</h1>
                 </div>
 

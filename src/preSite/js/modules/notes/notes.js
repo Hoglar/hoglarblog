@@ -123,6 +123,19 @@ export default class Notes extends React.Component {
         })
     }
 
+    noteLogoClicked() {
+        if(this.state.showRead) {
+            this.setState({
+                showRead: false,
+            })
+        }
+
+        else if(this.state.noteSearchSingleResult) {
+            this.setState({showRead: true})
+        }
+
+    }
+
     render() {
         return (
             <section className="notesSkeleton">
@@ -135,6 +148,7 @@ export default class Notes extends React.Component {
                                  loadNote={this.noteSearchSingleResultClicked.bind(this)}
                                  getSearchValue={this.getSearchValue.bind(this)}
                                  listSuggestions={this.listSuggestions.bind(this)}
+                                 noteLogoClicked={this.noteLogoClicked.bind(this)}
                              />
 
                 {(this.state.showRead && !this.state.searchMode) ?
