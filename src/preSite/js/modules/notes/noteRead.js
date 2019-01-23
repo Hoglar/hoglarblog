@@ -23,11 +23,13 @@ export default class NoteRead extends React.Component {
             dislikeButton: (this.props.noteSearchSingleResult.score.dislikes.includes(this.props.loggedInUser) ?
                         "noteDislikedByUser" : "")
 
+
         }
-        this.boundHandleKeyDown = this.handleKeyDown.bind(this)
+        this.boundHandleKeyDown = this.handleKeyDown.bind(this);
     }
 
     componentDidMount() {
+        this._mounted = true;
         document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
         if (this.state.editMode) {
             document.getElementsByClassName("noteReadMain")[0].focus();
@@ -37,11 +39,29 @@ export default class NoteRead extends React.Component {
         if (this.state.editMode) {
             window.addEventListener('keydown', this.boundHandleKeyDown);
         }
-
     }
 
     componentWillUnmount() {
         window.removeEventListener('keydown', this.boundHandleKeyDown);
+
+
+        // We autosave when we leave if we are in editor
+        let newNote = document.getElementsByClassName("noteReadMain")[0].innerText;
+        // UpdateNote takes 4 arguments: topic, id, new title and new content
+
+        if(document.getElementsByClassName("noteReadMain")[0].contentEditable === "true") {
+            updateNote(this.props.noteSearchSingleResult.topic,
+                       this.props.noteSearchSingleResult._id,
+                       newNote)
+            .then(
+                (response) => {
+                    console.log("Autosaved");
+                },
+                (err) => {
+                    console.error(err);
+                }
+            )
+        }
     }
 
     // We got here some eventhandlers to create some fancy shitt!
@@ -118,9 +138,14 @@ export default class NoteRead extends React.Component {
                     console.error(err);
                 }
             )
-
         }
     }
+
+    // we make a timer function that starts a timer of 5 some minutes,
+    // We then check if we are still in editmode, and in this component at all. and then updates server,
+    // When update is done, we check if we still are in edit and start timer over again.
+
+
 
 
 

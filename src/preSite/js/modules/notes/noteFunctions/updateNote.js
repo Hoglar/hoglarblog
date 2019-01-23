@@ -17,7 +17,6 @@ export default function updateNote(topic, _id, newNote) {
     const url = "/api/notes/updateNote";
 
     return new Promise(function(resolve, reject) {
-        console.log("Doing");
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(updateData),
@@ -28,7 +27,6 @@ export default function updateNote(topic, _id, newNote) {
         .then((res) => res.json())
         .then((response) => {
             if(response.successMessage) {
-                console.log("Success")
                 resolve(response.updatedDocument);
             }
             else {
