@@ -44,24 +44,6 @@ export default class NoteRead extends React.Component {
     componentWillUnmount() {
         window.removeEventListener('keydown', this.boundHandleKeyDown);
 
-
-        // We autosave when we leave if we are in editor
-        let newNote = document.getElementsByClassName("noteReadMain")[0].innerText;
-        // UpdateNote takes 4 arguments: topic, id, new title and new content
-
-        if(document.getElementsByClassName("noteReadMain")[0].contentEditable === "true") {
-            updateNote(this.props.noteSearchSingleResult.topic,
-                       this.props.noteSearchSingleResult._id,
-                       newNote)
-            .then(
-                (response) => {
-                    console.log("Autosaved");
-                },
-                (err) => {
-                    console.error(err);
-                }
-            )
-        }
     }
 
     // We got here some eventhandlers to create some fancy shitt!
