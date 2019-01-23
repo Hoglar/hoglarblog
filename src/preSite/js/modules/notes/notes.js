@@ -93,7 +93,6 @@ export default class Notes extends React.Component {
             if(note) {
                 fetchUpdatedNote(note.topic, note._id)
                 .then((updatedNote) => {
-                    console.log(updatedNote);
                     this.noteSearchSingleResultClicked(updatedNote, false);
                 })
             }

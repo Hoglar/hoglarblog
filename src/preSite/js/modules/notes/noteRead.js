@@ -24,19 +24,27 @@ export default class NoteRead extends React.Component {
                         "noteDislikedByUser" : "")
 
         }
+        this.boundHandleKeyDown = this.handleKeyDown.bind(this)
     }
-
 
     componentDidMount() {
         document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
         if (this.state.editMode) {
             document.getElementsByClassName("noteReadMain")[0].focus();
         }
+
+        // Mounting keydown functionality
+        if (this.state.editMode) {
+            window.addEventListener('keydown', this.boundHandleKeyDown);
+        }
+
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.boundHandleKeyDown);
     }
 
     // We got here some eventhandlers to create some fancy shitt!
-
-
 
     componentDidUpdate(prevProps) {
   // Typical usage (don't forget to compare props):
@@ -65,6 +73,9 @@ export default class NoteRead extends React.Component {
             this.setState({editButton: "Save"});
 
             noteReadMain.contentEditable ="true";
+
+            // Add ctrl-s functionality
+            window.addEventListener('keydown', this.boundHandleKeyDown);
         }
 
         if(this.state.editButton === "Save") {
@@ -84,6 +95,33 @@ export default class NoteRead extends React.Component {
             )
         }
     }
+
+    // We need two functions here, one for the ctrl s save method. and one for the autosave.
+
+    // ctrl save should be easy.
+
+    handleKeyDown(e) {
+        if(e.ctrlKey === true && e.keyCode === 83) {
+            e.preventDefault();
+            let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
+            let newNote = noteReadMain.innerText;
+
+            updateNote(this.props.noteSearchSingleResult.topic,
+                       this.props.noteSearchSingleResult._id,
+                       newNote)
+            .then(
+                (response) => {
+                    console.log(response);
+                    this.props.reloadNote(response);
+                },
+                (err) => {
+                    console.error(err);
+                }
+            )
+
+        }
+    }
+
 
 
     deleteButtonClicked(e) {
