@@ -136,7 +136,9 @@ export default class NoteRead extends React.Component {
         .then(
             (response) => {
                 console.log(response);
+                this.props.listSuggestions();
                 this.props.reloadNote(null);
+
             },
             (error) => {
                 console.error(error);

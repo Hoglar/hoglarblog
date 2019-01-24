@@ -158,6 +158,7 @@ export default class Notes extends React.Component {
                               editMode={this.state.editMode}
                               hideDictionary={this.props.hideDictionary}
                               showDictionary={this.props.showDictionary}
+                              listSuggestions={this.listSuggestions.bind(this)}
                     />
                 : null}
 
