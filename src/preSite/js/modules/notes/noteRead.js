@@ -131,7 +131,6 @@ export default class NoteRead extends React.Component {
     deleteButtonClicked(e) {
         // When delete button gets clicked
         // We pass in the active document for readability!
-
         deleteNote(this.props.noteSearchSingleResult)
         .then(
             (response) => {
