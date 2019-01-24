@@ -953,6 +953,8 @@ article {
 
     display: grid;
     grid-template-rows: repeat(4, 1fr) 2em;
+
+    word-break: break-all;
 }
 
 .noteSuggestionWrapper:hover {
