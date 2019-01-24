@@ -27,7 +27,7 @@ export default class NoteRead extends React.Component {
     }
 
     componentDidMount() {
-        this._mounted = true;
+
         document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
         if (this.state.editMode) {
             document.getElementsByClassName("noteReadMain")[0].focus();
@@ -189,8 +189,6 @@ export default class NoteRead extends React.Component {
         }
     }
 
-
-//
     // Editor Code!!!!!!!
 
         //
