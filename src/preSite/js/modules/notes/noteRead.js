@@ -22,8 +22,6 @@ export default class NoteRead extends React.Component {
                         "noteLikedByUser" : ""),
             dislikeButton: (this.props.noteSearchSingleResult.score.dislikes.includes(this.props.loggedInUser) ?
                         "noteDislikedByUser" : "")
-
-
         }
         this.boundHandleKeyDown = this.handleKeyDown.bind(this);
     }
@@ -43,7 +41,6 @@ export default class NoteRead extends React.Component {
 
     componentWillUnmount() {
         window.removeEventListener('keydown', this.boundHandleKeyDown);
-
     }
 
     // We got here some eventhandlers to create some fancy shitt!
