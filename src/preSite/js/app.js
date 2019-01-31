@@ -12,6 +12,7 @@ import './modules/header/header.css';
 import './modules/register/register.css';
 import './modules/notes/notes.css';
 import './modules/allround/topicChooser.css';
+import 'draft-js/dist/draft.css';
 
 // Importing modules.
 import Sidebar from './modules/sidebar/sidebar.js';
