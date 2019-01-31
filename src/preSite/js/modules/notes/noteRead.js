@@ -4,6 +4,7 @@ import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js'
 import updateNote from './noteFunctions/updateNote.js';
 import deleteNote from './noteFunctions/deleteNote.js';
 import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
+import NoteEditor from './NoteEditor/noteEditor.js';
 
 import NoteComments from './noteComments.js';
 
@@ -227,6 +228,7 @@ export default class NoteRead extends React.Component {
                 <article className="noteReadMain"
                          onKeyDown={this.onTabInput.bind(this)}>
                     {this.props.noteSearchSingleResult.note}
+                    <NoteEditor />
                 </article>
 
                 <footer className="noteReadFooter">
