@@ -227,8 +227,8 @@ export default class NoteRead extends React.Component {
 
                 <article className="noteReadMain"
                          onKeyDown={this.onTabInput.bind(this)}>
-                    {this.props.noteSearchSingleResult.note}
-                    <NoteEditor />
+                    <NoteEditor noteSearchSingleResult={this.props.noteSearchSingleResult}
+                                reloadNote={this.props.reloadNote}/>
                 </article>
 
                 <footer className="noteReadFooter">

@@ -28,7 +28,7 @@ export default class Suggestion extends React.Component {
                     <h3>{capitalizeFirstLetter(this.props.suggestion.topic)}</h3>
                 </header>
                 <article className="noteSuggestionArticle">
-                    <p>{this.props.suggestion.note.substring(0,93) +"..."}</p>
+
                 </article>
                 <footer className="noteSuggestionFooter">
                     <p><i>{capitalizeFirstLetter(this.props.suggestion.author)+"."}</i></p>
