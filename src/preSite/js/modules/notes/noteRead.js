@@ -4,10 +4,9 @@ import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js'
 import updateNote from './noteFunctions/updateNote.js';
 import deleteNote from './noteFunctions/deleteNote.js';
 import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
-import NoteEditor from './NoteEditor/noteEditor.js';
 
 import NoteComments from './noteComments.js';
-import {Editor, EditorState, convertToRaw, convertFromRaw} from 'draft-js';
+import {Editor, EditorState, convertToRaw, convertFromRaw, RichUtils} from 'draft-js';
 
 // Dett er neste nå !
 
@@ -22,10 +21,21 @@ export default class NoteRead extends React.Component {
                         "noteLikedByUser" : ""),
             dislikeButton: (this.props.noteSearchSingleResult.score.dislikes.includes(this.props.loggedInUser) ?
                         "noteDislikedByUser" : ""),
+
             editorState: EditorState.createEmpty()
 
         }
         this.onChange = (editorState) => this.setState({editorState});
+        this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    }
+
+    handleKeyCommand(command, editorState) {
+        const newState = RichUtils.handleKeyCommand(editorState, command);
+        if (newState) {
+            this.onChange(newState);
+            return 'handled';
+        }
+        return 'not handled';
     }
 
     componentDidMount() {
@@ -55,8 +65,6 @@ export default class NoteRead extends React.Component {
             )
         });
     }
-
-
 
     deleteButtonClicked(e) {
         // When delete button gets clicked
@@ -131,9 +139,11 @@ export default class NoteRead extends React.Component {
                     </h3>
                 </header>
 
-                <article className="noteReadMain">
-                    <NoteEditor onChange={this.onChange}
-                                editorState={this.state.editorState}/>
+                <article    className="noteReadMain">
+
+                    <Editor     onChange={this.onChange}
+                                editorState={this.state.editorState}
+                                handleKeyCommand={this.handleKeyCommand}/>
                 </article>
 
                 <footer className="noteReadFooter">
