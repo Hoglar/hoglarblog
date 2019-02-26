@@ -29,7 +29,6 @@ export default class NoteRead extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.noteSearchSingleResult)
         if(this.props.noteSearchSingleResult.note !== "") {
             this.setState({editorState: EditorState.createWithContent(
                 convertFromRaw(JSON.parse(this.props.noteSearchSingleResult.note))

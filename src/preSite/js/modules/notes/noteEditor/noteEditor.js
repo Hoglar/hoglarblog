@@ -27,7 +27,7 @@ export default class NoteEditor extends React.Component {
         return (
             <div>
                 <Editor
-                    className={}
+                    className="noteEditor"
                     placeholder="This is the editor"
                     editorState={this.props.editorState}
                     onChange={this.props.onChange}
