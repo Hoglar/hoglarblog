@@ -7,6 +7,7 @@ import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
 import NoteEditor from './NoteEditor/noteEditor.js';
 
 import NoteComments from './noteComments.js';
+import {Editor, EditorState, convertToRaw, convertFromRaw} from 'draft-js';
 
 // Dett er neste nå !
 
@@ -17,69 +18,29 @@ export default class NoteRead extends React.Component {
 
         this.state = {
             showComments: false,
-            editButton: (this.props.editMode) ? "Save" : "Edit",
-            editMode: this.props.editMode,
             likeButton: (this.props.noteSearchSingleResult.score.likes.includes(this.props.loggedInUser) ?
                         "noteLikedByUser" : ""),
             dislikeButton: (this.props.noteSearchSingleResult.score.dislikes.includes(this.props.loggedInUser) ?
-                        "noteDislikedByUser" : "")
+                        "noteDislikedByUser" : ""),
+            editorState: EditorState.createEmpty()
+
         }
-        this.boundHandleKeyDown = this.handleKeyDown.bind(this);
+        this.onChange = (editorState) => this.setState({editorState});
     }
 
     componentDidMount() {
-
-        document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
-        if (this.state.editMode) {
-            document.getElementsByClassName("noteReadMain")[0].focus();
-        }
-
-        // Mounting keydown functionality
-        if (this.state.editMode) {
-            window.addEventListener('keydown', this.boundHandleKeyDown);
+        console.log(this.props.noteSearchSingleResult)
+        if(this.props.noteSearchSingleResult.note !== "") {
+            this.setState({editorState: EditorState.createWithContent(
+                convertFromRaw(JSON.parse(this.props.noteSearchSingleResult.note))
+            )})
         }
     }
 
-    componentWillUnmount() {
-        window.removeEventListener('keydown', this.boundHandleKeyDown);
-    }
-
-    // We got here some eventhandlers to create some fancy shitt!
-
-    componentDidUpdate(prevProps) {
-  // Typical usage (don't forget to compare props):
-    if (this.props.editMode !== prevProps.editMode) {
-        this.setState({
-            editButton: (this.props.editMode) ? "Save" : "Edit",
-            editMode: this.props.editMode
-        }, () => {
-                document.getElementsByClassName("noteReadMain")[0].contentEditable = this.state.editMode;
-                if (this.state.editMode) {
-                    document.getElementsByClassName("noteReadMain")[0].focus();
-                }
-            })
-        }
-    }
-
-    // Note read needs data.
-    // Gjøre note search først?
-    editButtonClicked() {
-        // We need to set the noteReadTop to editable
-        // We need to set the noteReadMain to editable
-        let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
-
-        if(this.state.editButton === "Edit") {
-            console.log("Trying to set top to editable!");
-            this.setState({editButton: "Save"});
-
-            noteReadMain.contentEditable ="true";
-
-            // Add ctrl-s functionality
-            window.addEventListener('keydown', this.boundHandleKeyDown);
-        }
-
-        if(this.state.editButton === "Save") {
-            let newNote = noteReadMain.innerText;
+    saveContent() {
+        this.setState({ convertedContent: convertToRaw(this.state.editorState.getCurrentContent())}, () => {
+            console.log(this.state.convertedContent);
+            let newNote = JSON.stringify(this.state.convertedContent);
             // UpdateNote takes 4 arguments: topic, id, new title and new content
             updateNote(this.props.noteSearchSingleResult.topic,
                        this.props.noteSearchSingleResult._id,
@@ -93,39 +54,8 @@ export default class NoteRead extends React.Component {
                     console.error(err);
                 }
             )
-        }
+        });
     }
-
-    // We need two functions here, one for the ctrl s save method. and one for the autosave.
-
-    // ctrl save should be easy.
-
-    handleKeyDown(e) {
-        if(e.ctrlKey === true && e.keyCode === 83) {
-            e.preventDefault();
-            let noteReadMain = document.getElementsByClassName("noteReadMain")[0];
-            let newNote = noteReadMain.innerText;
-
-            updateNote(this.props.noteSearchSingleResult.topic,
-                       this.props.noteSearchSingleResult._id,
-                       newNote)
-            .then(
-                (response) => {
-                    console.log(response);
-                    this.props.reloadNote(response);
-                },
-                (err) => {
-                    console.error(err);
-                }
-            )
-        }
-    }
-
-    // we make a timer function that starts a timer of 5 some minutes,
-    // We then check if we are still in editmode, and in this component at all. and then updates server,
-    // When update is done, we check if we still are in edit and start timer over again.
-
-
 
 
 
@@ -192,6 +122,7 @@ export default class NoteRead extends React.Component {
     }
 
 
+
     render() {
         return (
             <article className="noteRead">
@@ -202,8 +133,8 @@ export default class NoteRead extends React.Component {
                 </header>
 
                 <article className="noteReadMain">
-                    <NoteEditor noteSearchSingleResult={this.props.noteSearchSingleResult}
-                                reloadNote={this.props.reloadNote}/>
+                    <NoteEditor onChange={this.onChange}
+                                editorState={this.state.editorState}/>
                 </article>
 
                 <footer className="noteReadFooter">
@@ -211,9 +142,8 @@ export default class NoteRead extends React.Component {
                     {((this.props.loggedInUser === "guest") ? null :
                      (this.props.loggedInUser === this.props.noteSearchSingleResult.author) ?
                          <button className="noteButton"
-                                 onClick={this.editButtonClicked.bind(this)}>
-
-                                 {this.state.editButton}
+                                 onClick={this.saveContent.bind(this)}>
+                                 Save
                          </button> :
                          <button className={"noteButton " + this.state.likeButton}
                                  onClick={this.noteLikeButtonClicked.bind(this)}>

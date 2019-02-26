@@ -21,50 +21,17 @@ import updateNote from '../noteFunctions/updateNote.js';
 export default class NoteEditor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {editorState: EditorState.createEmpty()};
-        this.onChange = (editorState) => this.setState({editorState});
     }
-
-    componentDidMount() {
-        console.log(this.props.noteSearchSingleResult)
-        if(this.props.noteSearchSingleResult.note !== "") {
-            this.setState({editorState: EditorState.createWithContent(
-                convertFromRaw(JSON.parse(this.props.noteSearchSingleResult.note))
-            )})
-        }
-    }
-
-    saveContent() {
-        this.setState({ convertedContent: convertToRaw(this.state.editorState.getCurrentContent())}, () => {
-            console.log(this.state.convertedContent);
-            let newNote = JSON.stringify(this.state.convertedContent);
-            // UpdateNote takes 4 arguments: topic, id, new title and new content
-            updateNote(this.props.noteSearchSingleResult.topic,
-                       this.props.noteSearchSingleResult._id,
-                       newNote)
-            .then(
-                (response) => {
-                    console.log(response)
-                    this.props.reloadNote(response);
-                },
-                (err) => {
-                    console.error(err);
-                }
-            )
-        });
-    }
-
 
     render() {
         return (
             <div>
                 <Editor
+                    className={}
                     placeholder="This is the editor"
-                    editorState={this.state.editorState}
-                    onChange={this.onChange}
+                    editorState={this.props.editorState}
+                    onChange={this.props.onChange}
                 />
-
-                <button onClick={this.saveContent.bind(this)}>Save</button>
             </div>
 
 
