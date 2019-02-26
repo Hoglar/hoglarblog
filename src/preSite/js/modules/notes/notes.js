@@ -6,7 +6,7 @@ import React from 'react';
 
 // Lets start by creating some notes, we need a noteCreate.js component.
 import NoteHeader from './noteHeader.js';
-import NoteRead from './noteRead.js';
+import NoteEditor from './noteEditor.js';
 import fetchUpdatedNote from './noteFunctions/fetchUpdatedNote.js'
 import updateNoteScoreRead from './noteFunctions/updateNoteScoreRead.js';
 import getSuggestions from './noteFunctions/getSuggestions.js';
@@ -150,7 +150,7 @@ export default class Notes extends React.Component {
                              />
 
                 {(this.state.showRead && !this.state.searchMode) ?
-                    <NoteRead noteSearchSingleResult={this.state.noteSearchSingleResult}
+                    <NoteEditor noteSearchSingleResult={this.state.noteSearchSingleResult}
                               updateSearchSingleResult={this.updateSearchSingleResult.bind(this)}
                               reloadNote={this.reloadNote.bind(this)}
                               loggedInUser={this.props.loggedInUser}

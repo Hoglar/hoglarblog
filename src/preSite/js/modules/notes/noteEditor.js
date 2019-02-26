@@ -10,7 +10,7 @@ import {Editor, EditorState, convertToRaw, convertFromRaw, RichUtils} from 'draf
 
 // Dett er neste nå !
 
-export default class NoteRead extends React.Component {
+export default class noteEditor extends React.Component {
 
     constructor(props) {
         super(props);
