@@ -191,30 +191,6 @@ export default class NoteRead extends React.Component {
         }
     }
 
-    // Editor Code!!!!!!!
-
-        //
-    onTabInput(e) {
-        // Thanks to Michael Sabin for this snippet, taken from stackOverflow
-        //https://stackoverflow.com/questions/2237497/how-to-make-the-tab-key-insert-a-tab-character-in-a-contenteditable-div
-        if(e.keyCode === 9) {
-            e.preventDefault();
-
-            let editor = document.getElementsByClassName("noteReadMain")[0];
-            var doc = editor.ownerDocument.defaultView;
-            var sel = doc.getSelection();
-            var range = sel.getRangeAt(0);
-
-            var tabNode = document.createTextNode("\u00a0\u00a0\u00a0\u00a0");
-            range.insertNode(tabNode);
-
-            range.setStartAfter(tabNode);
-            range.setEndAfter(tabNode);
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
-    }
-
 
     render() {
         return (
@@ -225,8 +201,7 @@ export default class NoteRead extends React.Component {
                     </h3>
                 </header>
 
-                <article className="noteReadMain"
-                         onKeyDown={this.onTabInput.bind(this)}>
+                <article className="noteReadMain">
                     <NoteEditor noteSearchSingleResult={this.props.noteSearchSingleResult}
                                 reloadNote={this.props.reloadNote}/>
                 </article>
