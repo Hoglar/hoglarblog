@@ -891,10 +891,6 @@ article {
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     height: auto;
-    outline: none;
-    white-space: pre-wrap;
-    word-break: normal;
-    overflow-wrap: break-word;
 }
 
 
@@ -925,6 +921,9 @@ article {
     background-color: red;
     color: black;
 }
+
+/********************* noteEditor  **************************/
+
 
 /********************* noteSuggestion  **************************/
 

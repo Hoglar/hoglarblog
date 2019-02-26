@@ -11,7 +11,6 @@ export default class Suggestion extends React.Component {
     }
 
     noteSuggestionClicked() {
-        console.log("Hello");
         // we give this document id to clicked function.
         this.props.noteSearchSingleResultClicked(this.props.suggestion, false);
     }

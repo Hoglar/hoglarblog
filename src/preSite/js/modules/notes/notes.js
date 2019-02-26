@@ -106,7 +106,6 @@ export default class Notes extends React.Component {
     }
 
     getSearchValue(searchValue) {
-        console.log("updateing search value");
         if(searchValue === "") {
             this.setState({searchMode: false});
         }
