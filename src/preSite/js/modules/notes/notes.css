@@ -251,9 +251,14 @@
 
 }
 
+.public-DraftEditor-content {
+    min-height: 200px;
+}
+
 .editorUtilities {
     display: flex;
     margin: auto;
+    margin-left: 45px;
     margin-bottom: 20px;
     justify-content: flex-end;
     flex-wrap: wrap;
