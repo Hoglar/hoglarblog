@@ -26,18 +26,11 @@ export default class noteEditor extends React.Component {
 
         }
         this.onChange = (editorState) => this.setState({editorState});
-        this.handleKeyCommand = this.handleKeyCommand.bind(this);
         this.focus = () => this.refs.editor.focus();
     }
 
-    handleKeyCommand(command, editorState) {
-        const newState = RichUtils.handleKeyCommand(editorState, command);
-        if (newState) {
-            this.onChange(newState);
-            return 'handled';
-        }
-        return 'not handled';
-    }
+
+
 
     componentDidMount() {
         if(this.props.noteSearchSingleResult.note !== "") {
@@ -130,6 +123,22 @@ export default class noteEditor extends React.Component {
     }
 
 
+    // Function for custom css styling
+    // https://draftjs.org/docs/advanced-topics-block-styling
+
+    myBlockStyleFn(contentBlock) {
+        const type = contentBlock.getType();
+        if(type === 'code-block') {
+            return 'editorCodeBlock';
+        }
+    }
+
+
+    // Editor edit text
+
+    toggleCodeBlock() {
+        this.onChange(RichUtils.toggleCode(this.state.editorState));
+    }
 
     render() {
         return (
@@ -141,7 +150,7 @@ export default class noteEditor extends React.Component {
                 </header>
 
                 <article    className="noteEditorMain"
-                            onClick={this.focus}>
+                            >
 
                     <div className="editorUtilities">
                         <button className="editorUtilitiesButton">H1</button>
@@ -153,7 +162,9 @@ export default class noteEditor extends React.Component {
                         <button className="editorUtilitiesButton">Codequote</button>
                         <button className="editorUtilitiesButton">UL</button>
                         <button className="editorUtilitiesButton">OL</button>
-                        <button className="editorUtilitiesButton">Code Block</button>
+                        <button className="editorUtilitiesButton"
+                                onClick={this.toggleCodeBlock.bind(this)}
+                            >Code Block</button>
                         <button className="editorUtilitiesButton">Bold</button>
                         <button className="editorUtilitiesButton">Italic</button>
                         <button className="editorUtilitiesButton">Underline</button>
@@ -163,8 +174,8 @@ export default class noteEditor extends React.Component {
                     <Editor     placeholder="Insert text here:"
                                 onChange={this.onChange}
                                 editorState={this.state.editorState}
-                                handleKeyCommand={this.handleKeyCommand}
                                 ref="editor"
+                                blockStyleFn={this.myBlockStyleFn.bind(this)}
                                 spellCheck={true}
                             />
                 </article>

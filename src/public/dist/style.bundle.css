@@ -886,7 +886,7 @@ article {
 .noteEditorMain {
     grid-row: 2 / 3;
     padding-top: 45px;
-    padding-left: 45px;
+    text-indent: 45px;
     padding-right: 45px;
     background-color: #041A37;
     border: solid 1px #000000;
@@ -952,6 +952,16 @@ article {
 
 /********************* noteEditor  **************************/
 
+.editorCodeBlock {
+    padding: 20px;
+    color: black;
+    background-color: #0F78FF;
+    background-color: solid 1px black;
+    margin: 0;
+    margin-left: 90px;
+    width: 40%;
+
+}
 
 /********************* noteSuggestion  **************************/
 
