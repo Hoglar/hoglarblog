@@ -856,11 +856,12 @@ article {
 
 /********************* NoteRead *************************/
 
-.noteRead {
+.noteEditor {
     grid-row: 3 / 4;
     grid-column: 1 / 7;
     margin-left: 20px;
     margin-top: 45px;
+    margin-right: 20px;
 
     display: grid;
     grid-template-rows: 45px auto 45px;
@@ -868,7 +869,7 @@ article {
     border-right: solid 1px black;
 }
 
-.noteReadHeader, .noteReadMain {
+.noteReadHeader, .noteEditorMain {
     grid-column: 1 / 5;
     margin-right: 10px;
 
@@ -882,17 +883,44 @@ article {
     padding-right: 20px;
 }
 
-.noteReadMain {
+.noteEditorMain {
     grid-row: 2 / 3;
-    padding-top: 10%;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-top: 45px;
+    padding-left: 45px;
+    padding-right: 45px;
     background-color: #041A37;
     border: solid 1px #000000;
     box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
     height: auto;
+    letter-spacing: .15em;
+
 }
 
+.editorUtilities {
+    display: flex;
+    margin: auto;
+    margin-bottom: 20px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+
+    border-bottom: solid 2px #0F78FF;
+}
+
+.editorUtilities:hover {
+    border-bottom: solid 2px #FF9E00;
+}
+
+.editorUtilitiesButton {
+    background-color: #0F78FF;
+    color: black;
+    border: solid 1px black;
+}
+
+.editorUtilitiesButton:hover {
+    background-color:  #FF9E00;
+    cursor: pointer;
+}
 
 .noteReadFooter {
     grid-row: 3 / 4;

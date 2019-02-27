@@ -27,6 +27,7 @@ export default class noteEditor extends React.Component {
         }
         this.onChange = (editorState) => this.setState({editorState});
         this.handleKeyCommand = this.handleKeyCommand.bind(this);
+        this.focus = () => this.refs.editor.focus();
     }
 
     handleKeyCommand(command, editorState) {
@@ -132,18 +133,40 @@ export default class noteEditor extends React.Component {
 
     render() {
         return (
-            <article className="noteRead">
+            <article className="noteEditor">
                 <header className="noteReadHeader">
                     <h3>
                         {capitalizeFirstLetter(this.props.noteSearchSingleResult.title)}
                     </h3>
                 </header>
 
-                <article    className="noteReadMain">
+                <article    className="noteEditorMain"
+                            onClick={this.focus}>
 
-                    <Editor     onChange={this.onChange}
+                    <div className="editorUtilities">
+                        <button className="editorUtilitiesButton">H1</button>
+                        <button className="editorUtilitiesButton">H2</button>
+                        <button className="editorUtilitiesButton">H3</button>
+                        <button className="editorUtilitiesButton">H4</button>
+                        <button className="editorUtilitiesButton">H5</button>
+                        <button className="editorUtilitiesButton">H6</button>
+                        <button className="editorUtilitiesButton">Codequote</button>
+                        <button className="editorUtilitiesButton">UL</button>
+                        <button className="editorUtilitiesButton">OL</button>
+                        <button className="editorUtilitiesButton">Code Block</button>
+                        <button className="editorUtilitiesButton">Bold</button>
+                        <button className="editorUtilitiesButton">Italic</button>
+                        <button className="editorUtilitiesButton">Underline</button>
+
+                    </div>
+
+                    <Editor     placeholder="Insert text here:"
+                                onChange={this.onChange}
                                 editorState={this.state.editorState}
-                                handleKeyCommand={this.handleKeyCommand}/>
+                                handleKeyCommand={this.handleKeyCommand}
+                                ref="editor"
+                                spellCheck={true}
+                            />
                 </article>
 
                 <footer className="noteReadFooter">
