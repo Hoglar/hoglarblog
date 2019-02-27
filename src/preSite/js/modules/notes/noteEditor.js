@@ -4,7 +4,7 @@ import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js'
 import updateNote from './noteFunctions/updateNote.js';
 import deleteNote from './noteFunctions/deleteNote.js';
 import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
-
+import EditorLineNumber from './noteEditor/editorLineNumber.js';
 import NoteComments from './noteComments.js';
 import {Editor, EditorState, convertToRaw, convertFromRaw, RichUtils} from 'draft-js';
 
@@ -133,7 +133,13 @@ export default class noteEditor extends React.Component {
         }
     }
 
+    // blockRendererFn is run every time a block is rendered
 
+    blockRendererFn() {
+        return {
+            component: EditorLineNumber
+        }
+    }
     // Editor edit text
 
     toggleCodeBlock() {
@@ -168,14 +174,14 @@ export default class noteEditor extends React.Component {
                         <button className="editorUtilitiesButton">Bold</button>
                         <button className="editorUtilitiesButton">Italic</button>
                         <button className="editorUtilitiesButton">Underline</button>
-
                     </div>
 
-                    <Editor     placeholder="Insert text here:"
+                    <Editor
                                 onChange={this.onChange}
                                 editorState={this.state.editorState}
                                 ref="editor"
                                 blockStyleFn={this.myBlockStyleFn.bind(this)}
+                                blockRendererFn={this.blockRendererFn}
                                 spellCheck={true}
                             />
                 </article>

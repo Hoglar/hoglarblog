@@ -251,9 +251,11 @@
 
 }
 
+
 .public-DraftEditor-content {
     min-height: 200px;
 }
+
 
 .editorUtilities {
     display: flex;
@@ -312,16 +314,42 @@
 
 /********************* noteEditor  **************************/
 
-.editorCodeBlock {
-    padding: 20px;
+.public-DraftStyleDefault-pre {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 45px;
     color: black;
     background-color: #0F78FF;
-    background-color: solid 1px black;
-    margin: 0;
+    border: solid 1px black;
+    width: 45%;
     margin-left: 90px;
-    width: 40%;
-
 }
+
+.editorLineNumber {
+  position: relative;
+}
+
+.editorLineNumber::before {
+  content: attr(data-line-number);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
+}
+
+.line-text {
+  margin-left: 2em;
+}
+
+pre .editorLineNumber::before {
+    left: -90px;
+    color: #8e8e8e;
+}
+
+pre .line-text {
+    margin-left: 0;
+}
+
 
 /********************* noteSuggestion  **************************/
 
