@@ -929,6 +929,10 @@ article {
     cursor: pointer;
 }
 
+.editorUtilitiesActiveButton {
+    background-color:  #FF9E00;
+}
+
 .noteReadFooter {
     grid-row: 3 / 4;
     grid-column: 1 / 5;

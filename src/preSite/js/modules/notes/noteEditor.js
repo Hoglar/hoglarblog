@@ -6,6 +6,7 @@ import deleteNote from './noteFunctions/deleteNote.js';
 import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
 import EditorLineNumber from './noteEditor/editorLineNumber.js';
 import NoteComments from './noteComments.js';
+import EditorBlockUtilities from './noteEditor/EditorBlockUtilities.js'
 import {Editor, EditorState, convertToRaw, convertFromRaw, RichUtils} from 'draft-js';
 
 // Dett er neste nå !
@@ -26,10 +27,7 @@ export default class noteEditor extends React.Component {
 
         }
         this.onChange = (editorState) => this.setState({editorState});
-        this.focus = () => this.refs.editor.focus();
     }
-
-
 
 
     componentDidMount() {
@@ -142,9 +140,10 @@ export default class noteEditor extends React.Component {
     }
     // Editor edit text
 
-    toggleCodeBlock() {
-        this.onChange(RichUtils.toggleCode(this.state.editorState));
+    toggleBlockType(blockType) {
+        this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
     }
+
 
     render() {
         return (
@@ -158,23 +157,9 @@ export default class noteEditor extends React.Component {
                 <article    className="noteEditorMain"
                             >
 
-                    <div className="editorUtilities">
-                        <button className="editorUtilitiesButton">H1</button>
-                        <button className="editorUtilitiesButton">H2</button>
-                        <button className="editorUtilitiesButton">H3</button>
-                        <button className="editorUtilitiesButton">H4</button>
-                        <button className="editorUtilitiesButton">H5</button>
-                        <button className="editorUtilitiesButton">H6</button>
-                        <button className="editorUtilitiesButton">Codequote</button>
-                        <button className="editorUtilitiesButton">UL</button>
-                        <button className="editorUtilitiesButton">OL</button>
-                        <button className="editorUtilitiesButton"
-                                onClick={this.toggleCodeBlock.bind(this)}
-                            >Code Block</button>
-                        <button className="editorUtilitiesButton">Bold</button>
-                        <button className="editorUtilitiesButton">Italic</button>
-                        <button className="editorUtilitiesButton">Underline</button>
-                    </div>
+                    <EditorBlockUtilities
+                                editorState={this.state.editorState}
+                                onToggle={this.toggleBlockType.bind(this)}/>
 
                     <Editor
                                 onChange={this.onChange}
