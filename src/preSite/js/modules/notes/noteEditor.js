@@ -6,7 +6,9 @@ import deleteNote from './noteFunctions/deleteNote.js';
 import notesUpdateLikes from './noteFunctions/notesUpdateLikes.js';
 import EditorLineNumber from './noteEditor/editorLineNumber.js';
 import NoteComments from './noteComments.js';
-import EditorBlockUtilities from './noteEditor/EditorBlockUtilities.js'
+
+import EditorBlockUtilities from './noteEditor/editorBlockUtilities.js';
+import EditorStyleUtilities from './noteEditor/editorStyleUtilities.js';
 import {Editor, EditorState, convertToRaw, convertFromRaw, RichUtils} from 'draft-js';
 
 // Dett er neste nå !
@@ -144,6 +146,10 @@ export default class noteEditor extends React.Component {
         this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
     }
 
+    toggleStyleType(inlineStyle) {
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
+    }
+
 
     render() {
         return (
@@ -157,10 +163,15 @@ export default class noteEditor extends React.Component {
                 <article    className="noteEditorMain"
                             >
 
-                    <EditorBlockUtilities
-                                editorState={this.state.editorState}
-                                onToggle={this.toggleBlockType.bind(this)}/>
+                    <div className="editorUtilities">
+                        <EditorBlockUtilities
+                                    editorState={this.state.editorState}
+                                    onToggle={this.toggleBlockType.bind(this)}/>
 
+                        <EditorStyleUtilities
+                                    editorState={this.state.editorState}
+                                    onToggle={this.toggleStyleType.bind(this)}/>
+                    </div>
                     <Editor
                                 onChange={this.onChange}
                                 editorState={this.state.editorState}

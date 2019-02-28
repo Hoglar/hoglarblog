@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {Editor, EditorState} from 'draft-js';
+import UtilitiesButton from './utilitiesButton.js'
 
 export default class EditorBlockUtilities extends React.Component {
     constructor(props) {
@@ -13,9 +14,9 @@ export default class EditorBlockUtilities extends React.Component {
         const selection = editorState.getSelection();
         const blockType = editorState.getCurrentContent().getBlockForKey(selection.getStartKey()).getType();
         return (
-            <div className="editorUtilities">
+            <div>
                 {BLOCK_TYPES.map((type, index) =>
-                    <BlockUtilitiesButton
+                    <UtilitiesButton
                         key={index}
                         active={type.style === blockType}
                         label={type.label}
@@ -30,26 +31,7 @@ export default class EditorBlockUtilities extends React.Component {
 
 
 
-class BlockUtilitiesButton extends React.Component {
-        constructor(props) {
-            super(props);
-          this.onToggle = (e) => {
-            e.preventDefault();
-            this.props.onToggle(this.props.style);
-          };
-        }
-        render() {
-          let className = 'editorUtilitiesButton';
-          if (this.props.active) {
-            className += ' editorUtilitiesActiveButton';
-          }
-          return (
-            <button className={className} onMouseDown={this.onToggle}>
-              {this.props.label}
-            </button>
-          );
-        }
-      }
+
 
 const BLOCK_TYPES = [
     {label: 'H1', style: 'header-one'},
