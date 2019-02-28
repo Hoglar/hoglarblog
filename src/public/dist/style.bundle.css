@@ -904,13 +904,13 @@ article {
 
 .editorUtilities {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     margin: auto;
     margin-left: 45px;
     margin-bottom: 20px;
-    justify-content: flex-end;
     flex-wrap: wrap;
     padding-bottom: 10px;
-
     border-bottom: solid 2px #0F78FF;
 }
 
