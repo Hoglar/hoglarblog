@@ -421,12 +421,12 @@ pre .line-text {
 
 .noteSuggestionArticle {
     grid-row: 2 / 4;
-
     font-size: 16;
     margin: auto;
     text-align: center;
     width: 66%;
     overflow: hidden;
+    word-break: normal;
 
 }
 

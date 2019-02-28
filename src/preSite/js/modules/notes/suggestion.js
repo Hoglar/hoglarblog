@@ -2,6 +2,8 @@
 import React from 'react';
 
 import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
+import {Editor, convertFromRaw} from 'draft-js';
+
 
 
 export default class Suggestion extends React.Component {
@@ -17,6 +19,9 @@ export default class Suggestion extends React.Component {
 
     // Vi trenger liste over search results.
     render() {
+        // Here we could do the stuff we need?
+        const note = convertFromRaw(JSON.parse(this.props.suggestion.note))
+        const noteText = note.getPlainText();
         return (
             <article className="noteSuggestionWrapper"
                      onClick={this.noteSuggestionClicked.bind(this)}>
@@ -27,7 +32,7 @@ export default class Suggestion extends React.Component {
                     <h3>{capitalizeFirstLetter(this.props.suggestion.topic)}</h3>
                 </header>
                 <article className="noteSuggestionArticle">
-
+                     <p>{noteText.substring(0,93) +"..."}</p>
                 </article>
                 <footer className="noteSuggestionFooter">
                     <p><i>{capitalizeFirstLetter(this.props.suggestion.author)+"."}</i></p>
