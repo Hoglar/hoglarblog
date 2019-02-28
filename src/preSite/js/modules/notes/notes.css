@@ -318,6 +318,8 @@
 
 /********************* noteEditor  **************************/
 
+
+
 .public-DraftStyleDefault-pre {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -327,6 +329,16 @@
     border: solid 1px black;
     width: 45%;
     margin-left: 90px;
+}
+
+
+.editorBlockquote .public-DraftStyleDefault-block {
+    border-left: solid 5px #FF9E00;
+    padding: 0.5em;
+    text-indent: 10px;
+    margin-left: 45px;
+    font-size: 28px;
+    font-family: helvetica;
 }
 
 .editorLineNumber {
@@ -347,6 +359,11 @@
 
 pre .editorLineNumber::before {
     left: -90px;
+    color: #8e8e8e;
+}
+
+.editorBlockquote .editorLineNumber::before {
+    left: -40px;
     color: #8e8e8e;
 }
 

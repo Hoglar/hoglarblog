@@ -131,6 +131,9 @@ export default class noteEditor extends React.Component {
         if(type === 'code-block') {
             return 'editorCodeBlock';
         }
+        if(type === 'blockquote') {
+            return 'editorBlockquote';
+        }
     }
 
     // blockRendererFn is run every time a block is rendered
