@@ -19,15 +19,11 @@ export default class Suggestion extends React.Component {
 
     // Vi trenger liste over search results.
     render() {
-        // Here we could do the stuff we need?
+        let noteText = "Empty";
         if(this.props.suggestion.note !== "") {
             const note = convertFromRaw(JSON.parse(this.props.suggestion.note))
-            const noteText = note.getPlainText();
+            noteText = note.getPlainText();
         }
-        else {
-            const noteText = "Empty";
-        }
-
         return (
             <article className="noteSuggestionWrapper"
                      onClick={this.noteSuggestionClicked.bind(this)}>
