@@ -45,7 +45,6 @@
 .activeBox {
 	border-right: 1px solid #FF9E00;
 	border-bottom: 1px solid #000000;
-	background-color: #041A37;
 	box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
 }
 
@@ -54,6 +53,4 @@
 	cursor: pointer;
 	border-right: 1px solid #FF9E00;
 	border-bottom: 1px solid #000000;
-	background-color: #041A37;
-	box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
 }
