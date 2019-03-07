@@ -19,24 +19,3 @@
 .supportSection {
     align-self: center;
 }
-
-.attributionHeader {
-	font-weight: lighter;
-	margin-bottom: 0px;
-}
-
-.footerAttribution {
-	align-self: center;
-	width: 80%;
-	text-align: center;
-}
-
-.attribution {
-	display: inline;
-	font-size: 12px;
-	align-self: flex-end;
-}
-.attribution a{
-	text-decoration: none;
-	color: #01060C;
-}

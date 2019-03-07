@@ -12,12 +12,12 @@ export default class Sidebar extends React.Component {
     render() {
         return (
             <aside className="sidebar">
-                {this.props.sidebarLayout.map(function(api, index) {
+                {sidebarBoxes.map(function(box, index) {
                     return (
                         <SidebarBox
-                            img={api.img}
-                            key={api.id}
-                            name={api.name}
+                            key={index}
+                            name={box.name}
+                            className={box.className}
                             onSidebarClick={this.props.onSidebarClick} />
                     )
                 }.bind(this))}
@@ -27,3 +27,9 @@ export default class Sidebar extends React.Component {
         )
     }
 }
+
+const sidebarBoxes = [
+    {name: "user", className: "sidebarBoxSmall"},
+    {name: "notes", className: "sidebarBoxBig"},
+    {name: "dictionary", className: "sidebarBoxBig"}
+]

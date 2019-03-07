@@ -22,12 +22,9 @@ import Dictionary from './modules/dictionary/dictionary.js';
 import Header from './modules/header/header.js';
 import Register from './modules/register/register.js';
 
-// importing icons from assets to give to defaultSidebar
-
-import defaultSidebar from './data/sidebarData.js';
 
 // importing special functionality
-
+import boxColorChange from "./modules/sidebar/sidebarFunc.js";
 import userAuthentication from './functionality/userAuthentication.js';
 import onSidebarClick from './functionality/onSidebarClick.js';
 
@@ -70,6 +67,7 @@ class Application extends React.Component {
             e.preventDefault();
             let copyedText = window.getSelection().toString();
 
+            boxColorChange("dictionary")
             this.setState({showDictionary: true,
                            dictionaryWordSearch: copyedText});
         }
@@ -91,7 +89,6 @@ class Application extends React.Component {
         this.setState({showDictionary: false});
     }
 
-
     // This function is taking the name of the button clicked and then updates state to show that api!
     // Its from here i launch the apps
 
@@ -106,7 +103,6 @@ class Application extends React.Component {
         return (
             <div className="wrapper">
                 <Sidebar
-                    sidebarLayout={defaultSidebar}
                     onSidebarClick={onSidebarClick.bind(this)}
                 />
 
@@ -136,7 +132,7 @@ class Application extends React.Component {
                     { ((this.state.mode === "administation") && this.state.showRegister) ? <Register userCreationIsDone={this.userCreationIsDone.bind(this)}/> : null}
                 </main>
 
-                <Footer attributionInfo={defaultSidebar}/>
+                <Footer />
             </div>
         )
     }

@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+import capitalizeFirstLetter from '../../functionality/capitalizeFirstLetter.js';
 import boxColorChange from "./sidebarFunc.js";
 
 // Gets onclick and showBoxInfo
@@ -16,18 +17,13 @@ export default class SidebarBox extends React.Component {
 
     }
 
-
     // on hover i want to show info about the box.
     render() {
         return(
-            <div className="sidebarBox">
-                <div className="sidebarBoxImg"
-                     id={"sideBarBox" + this.props.name}
-                     onClick={this.giveNameData.bind(this)}>
-
-                    <img src={this.props.img}
-                         className="center" />
-                </div>
+            <div className={this.props.className}
+                 id={"sideBarBox" + this.props.name}
+                 onClick={this.giveNameData.bind(this)}>
+                 {capitalizeFirstLetter(this.props.name)}
             </div>
         )
     }

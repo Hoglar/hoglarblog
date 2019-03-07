@@ -10,12 +10,12 @@ export default function onSidebarClick(name) {
         this.setState({mode: "app"});
     }
 
-    if (name === "Home") {
+    if (name === "user") {
         (this.state.showHeader === true) ? this.setState({showHeader: false}) : this.setState({showHeader: true});
 
     }
 
-    if (name === "Dictionary") {
+    if (name === "dictionary") {
         if (this.state.showDictionary) {
             this.setState({showDictionary: false});
         }
@@ -23,7 +23,7 @@ export default function onSidebarClick(name) {
             this.setState({showDictionary: true});
         }
     }
-    if (name === "Notes") {
+    if (name === "notes") {
         if (this.state.showNotes) {
             this.setState({showNotes: false});
         }
