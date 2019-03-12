@@ -89,7 +89,7 @@ export default class Header extends React.Component {
 
                     {(this.props.loggedInUser === "guest") ?
                     <div className="loginRememberMeCheckbox">
-                        <label for="keepLoggedInnCheckbox">Remember me</label>
+                        <label htmlFor="keepLoggedInnCheckbox">Remember me</label>
                         <input type="checkbox" ref="memberMeBox" id="keepLoggedInnCheckbox"/>
                     </div> :
                     null}

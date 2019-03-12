@@ -60,6 +60,11 @@ class Application extends React.Component {
 
     componentDidMount() {
         window.addEventListener('keydown', this.handleKeyDown.bind(this));
+        if(this.state.loggedInUser === "guest") {
+            console.log("we have a guest");
+            boxColorChange("user");
+            this.setState({showHeader: true})
+        }
     }
 
     handleKeyDown(e) {
