@@ -455,11 +455,27 @@ article {
 	color: #01060C;
 	border-top: 1px solid #000000;
 	padding-bottom: 8px;
-    padding-top: 45px;
+    padding-top: 90px;
 }
 
-.supportSection {
+.footerDefault {
     align-self: center;
+	display: flex;
+
+	flex-direction: row;
+	justify-content: space-between;
+	vertical-align: middle;
+}
+
+.footerDefault h3 {
+	margin: 15px;
+	padding-top: 10px;
+	border-top: solid 2px #01060C;
+}
+
+.footerDefault h3:hover {
+	cursor: pointer;
+	border-top: solid 2px #FF9E00;
 }
 /* Header */
 /* Gets included in app.js */
