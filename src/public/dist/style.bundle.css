@@ -454,7 +454,6 @@ article {
 	background-color: #0F78FF;
 	color: #01060C;
 	border-top: 1px solid #000000;
-	font-weight: lighter;
 	padding-bottom: 8px;
     padding-top: 45px;
 }
@@ -937,6 +936,11 @@ article {
 .noteReadDeleteButton:hover {
     background-color: red;
     color: black;
+}
+
+.noteEditorMain h1 {
+    letter-spacing: 0.15em;
+    font-size: 28px;
 }
 
 /********************* noteEditor  **************************/

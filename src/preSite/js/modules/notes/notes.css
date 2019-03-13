@@ -315,6 +315,11 @@
     color: black;
 }
 
+.noteEditorMain h1 {
+    letter-spacing: 0.15em;
+    font-size: 28px;
+}
+
 /********************* noteEditor  **************************/
 
 
