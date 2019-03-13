@@ -42,15 +42,11 @@
     border-right: 1px solid #0F78FF;
 }
 
-.activeBox {
-	border-right: 1px solid #FF9E00;
-	border-bottom: 1px solid #000000;
-	box-shadow: inset 0px -1px 5px 0px rgba(1,6,12,1);
-}
-
+.activeBox,
 .sidebarBoxSmall:hover,
 .sidebarBoxBig:hover {
 	cursor: pointer;
 	border-right: 1px solid #FF9E00;
-	border-bottom: 1px solid #000000;
+	border-bottom: 1px solid #FF9E00;
+	border-top: 1px solid #FF9E00;
 }
