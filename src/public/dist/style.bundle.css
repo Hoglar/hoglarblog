@@ -475,7 +475,7 @@ article {
 
 .footerDefault h3:hover {
 	cursor: pointer;
-	border-top: solid 2px #FF9E00;
+	padding-top: 5px;
 }
 /* Header */
 /* Gets included in app.js */
