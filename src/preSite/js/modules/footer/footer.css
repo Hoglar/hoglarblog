@@ -6,22 +6,23 @@
 	grid-column: 2 / 8;
 
 	flex-direction: column;
-	justify-content: space-between;
 
 	background-color: #0F78FF;
 	color: #01060C;
 	border-top: 1px solid #000000;
 	padding-bottom: 8px;
-    padding-top: 90px;
+    padding-top: 40px;
 }
 
 .footerDefault {
     align-self: center;
 	display: flex;
-
 	flex-direction: row;
 	justify-content: space-between;
-	vertical-align: middle;
+}
+.footerDefault a {
+	color: black;
+
 }
 
 .footerDefault h3 {
@@ -33,4 +34,9 @@
 .footerDefault h3:hover {
 	cursor: pointer;
 	padding-top: 5px;
+}
+
+.footerAbout {
+	width: 60%;
+	letter-spacing: 0.15em;
 }
