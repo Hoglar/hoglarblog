@@ -39,7 +39,6 @@ export default class NoteComments extends React.Component {
 
     submitComment(event) {
         event.preventDefault();
-        console.log(this.refs.noteComment.value);
 
         // we need to update this note with document id.
         var token = localOrSessionToken();

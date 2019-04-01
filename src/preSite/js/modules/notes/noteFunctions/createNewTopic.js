@@ -16,7 +16,6 @@ export default function createNewTopic(topic) {
 
 
     return new Promise((resolve, reject) => {
-        console.log("we got heres");
         fetch(url, {
             method: 'POST',
             body: JSON.stringify(createData),

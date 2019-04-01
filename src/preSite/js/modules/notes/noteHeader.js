@@ -15,7 +15,6 @@ export default class NoteHeader extends React.Component {
         this.state = {
             inputButton: "Create",
             showSearchField: true,
-            showCreateTopic: false,
             showCreateNoteTitle: false,
             searchFormValue: "",
             searchResults: [],
@@ -33,12 +32,6 @@ export default class NoteHeader extends React.Component {
             showSearchField: false,
             showCreateNoteTitle: true,
             inputButton: "Search"
-        }
-
-        this.topicState = {
-            showSearchField: false,
-            showCreateNoteTitle: false,
-            showCreateTopic: true,
         }
     }
 
@@ -110,25 +103,16 @@ export default class NoteHeader extends React.Component {
         )
     }
 
-    noteNewTopic() {
-        this.setState(this.topicState, () => {
-            document.getElementById("noteLandingPageCreateTopicInput").select();
-        })
-    }
 
-    createTopicSaveClicked(event) {
+
+    createTopic(newTopic) {
         event.preventDefault();
-        let topic = this.refs.topicCreate.value;
+        console.log(newTopic);
+        let topic = newTopic;
         createNewTopic(topic)
         .then(
             (response) => {
                 this.props.topicSelected(response);
-                this.setState({
-                    showCreateTopic: false,
-                    showTopicChooser: false,
-                    showTopic: true,
-                    showSearchField: true
-                })
             },
             (error) => {
                 console.log(error);
@@ -168,29 +152,10 @@ export default class NoteHeader extends React.Component {
                     <TopicChooser topicSelected={this.props.topicSelected}
                                   activeTopic={this.props.activeTopic}
                                   loggedInUser={this.props.loggedInUser}
-                                  newTopic={this.noteNewTopic.bind(this)}
+                                  createTopic={this.createTopic.bind(this)}
                                   inNotes={true}/>
                 </nav>
 
-
-                {/* create topic form */}
-
-                {(this.state.showCreateTopic) ? (
-                    <form className="noteHeaderInputForm">
-                        <input id="noteLandingPageCreateTopicInput"
-                               className="noteHeaderInputField"
-                               type="text"
-                               placeholder="Topic name:"
-                               autoComplete="off"
-                               ref="topicCreate">
-                        </input>
-                        <button className="noteHeaderInputButton"
-                                type="submit"
-                                onClick={this.createTopicSaveClicked.bind(this)}>
-                            Save
-                        </button>
-                    </form>
-                ) : null}
 
                 {/* Search form */}
 

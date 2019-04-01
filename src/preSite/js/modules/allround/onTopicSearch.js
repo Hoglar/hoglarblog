@@ -6,17 +6,17 @@ export default function topicSearch(event) {
 
     console.log(topicSearchValue);
 
-    const url = "/api/notes/topicSearch?searchData=";
+    const url = "/api/notes/topicSearch?topicSearchValue=";
 
     return new Promise((resolve, reject) => {
 
-        fetch(url + searchData)
+        fetch(url + topicSearchValue)
         .then((response) => {
             return response.json();
         })
         .then((response) => {
-            if(response.searchMessage) {
-                reject("Nothing found");
+            if(response.failMessage) {
+                reject(response.failMessage);
             }
             else {
                 resolve(response);

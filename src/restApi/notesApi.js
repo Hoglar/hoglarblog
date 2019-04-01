@@ -141,6 +141,34 @@ module.exports = function(app, dbs) {
         });
     })
 
+    app.get("/api/notes/topicSearch", function(req, res) {
+        let searchData = req.query.topicSearchValue.toLowerCase();
+        let regSearch = new RegExp(searchData);
+
+        dbs.notes.listCollections().toArray(function(err, collections) {
+
+            if (err) {
+                console.log("Error in notesApi: " + err);
+                res.json({"topics": ["Error!"]});
+                return;
+            }
+
+            let collectionNames = [];
+            collections.forEach(function(collection) {
+
+                if(collection.name.indexOf(searchData) >= 0) {
+                    collectionNames.push(collection.name);
+                }
+            });
+            if (collectionNames.length > 0) {
+                res.json({"topics": collectionNames});
+            }
+            else {
+                res.json({failMessage: "Nothing found"});
+            }
+        })
+    })
+
     app.post("/api/notes/fetchUpdatedNote", function(req, res) {
         console.log("Getting here?");
         let _id = req.body._id

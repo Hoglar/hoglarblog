@@ -12,11 +12,12 @@ export default class hideTopicChooser extends React.Component {
             showTopicChooser: false,
             topicButtonToInputField: false,
             topics: ["waitingServer"],
+            showAddTopic: false,
         };
     }
 
     hideTopicChooser() {
-        this.setState({showTopicChooser: false, topicButtonToInputField: false});
+        this.setState({showTopicChooser: false, topicButtonToInputField: false, showAddTopic: false, topics: ["waitingServer"]});
     }
 
 
@@ -48,10 +49,24 @@ export default class hideTopicChooser extends React.Component {
 
     onTopicSearch(event) {
         event.preventDefault();
+
         topicSearch(event)
+        .then(
+            (response) => {
+                this.setState({topics: response.topics.sort(), showAddTopic: false})
+            },
+            (error) => {
+                this.setState({topics: [], showAddTopic: true});
+            }
+        )
     }
 
+    createNewTopic(event) {
+        event.preventDefault();
+        this.props.createTopic(this.refs.newTopic.value);
+        this.setState({topics: [], showAddTopic: false});
 
+    }
 
     render() {
         return(
@@ -62,13 +77,22 @@ export default class hideTopicChooser extends React.Component {
 
                      <input className="topicChooserSearchField"
                             placeholder="Search:"
-                            onChange={this.onTopicSearch}></input> :
+                            ref="newTopic"
+                            onChange={this.onTopicSearch.bind(this)}>
+                     </input>
+
+                     :
 
                      <button className="topicButton"
                              onClick={this.showTopicChooser.bind(this)}>
 
                          {capitalizeFirstLetter(this.props.activeTopic)}
                      </button>}
+
+                     {(this.state.showAddTopic) ?
+                         <button className="topicAdd"
+                                 onClick={this.createNewTopic.bind(this)}>Add Topic</button>
+                     : null}
 
 
                 {(this.state.showTopicChooser) ?
@@ -81,15 +105,6 @@ export default class hideTopicChooser extends React.Component {
                                        key={index}/>
                             )
                         }.bind(this))}
-
-                        {(this.props.loggedInUser === "hoglar" && this.props.inNotes === true) ?
-                        (
-                            <li className="topicChooserSingleTopic"
-                                 onClick={this.props.newTopic.bind(this)}>
-                                Add topic
-                            </li>
-                        ) :
-                        null}
                     </ul>) :
                 null}
             </div>
