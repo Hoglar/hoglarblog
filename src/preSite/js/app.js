@@ -40,7 +40,6 @@ class Application extends React.Component {
             showDictionary: false,
             showRegister: false,
 
-            // Topic need to be a main app state.
             // Change topic in options! default topic
             topic: "Select topic",
 
