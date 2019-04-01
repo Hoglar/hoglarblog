@@ -47,6 +47,6 @@
 .sidebarBoxBig:hover {
 	cursor: pointer;
 	border-right: 1px solid #FF9E00;
-	border-bottom: 1px solid #FF9E00;
-	border-top: 1px solid #FF9E00;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
 }
