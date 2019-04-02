@@ -21,10 +21,11 @@ module.exports = function(app, dbs) {
             }
 
         let collectionNames = [];
+        console.log(collections)
         collections.forEach(function(collection) {
                 collectionNames.push(collection.name);
             })
-
+            
             res.json({"topics": collectionNames});
         });
     });
