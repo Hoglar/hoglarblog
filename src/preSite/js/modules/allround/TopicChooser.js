@@ -12,6 +12,7 @@ export default class hideTopicChooser extends React.Component {
             showTopicChooser: false,
             topicButtonToInputField: false,
             topics: ["waitingServer"],
+            defaultTopics: ["waitingServer"],
             showAddTopic: false,
         };
     }
@@ -30,7 +31,7 @@ export default class hideTopicChooser extends React.Component {
                     return response.json();
                 })
                 .then((response) => {
-                    this.setState({topics: response.topics.sort()})
+                    this.setState({topics: response.topics.sort(), defaultTopics: response.topics.sort()})
                 })
                 .then(() => {
                 this.setState({showTopicChooser: true})
@@ -61,9 +62,7 @@ export default class hideTopicChooser extends React.Component {
             )
         }
         else {
-            this.setState({topics: ["waitingServer"], topicButtonToInputField: false}, () => {
-                this.showTopicChooser()
-            })
+            this.setState({topics: this.state.defaultTopics})
         }
 
     }
@@ -72,7 +71,6 @@ export default class hideTopicChooser extends React.Component {
         event.preventDefault();
         this.props.createTopic(this.refs.newTopic.value);
         this.setState({topics: [], showAddTopic: false});
-
     }
 
     render() {

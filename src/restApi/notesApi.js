@@ -141,6 +141,7 @@ module.exports = function(app, dbs) {
         let searchData = req.query.topicSearchValue.toLowerCase();
         let regSearch = new RegExp(searchData);
 
+
         dbs.notes.listCollections().toArray(function(err, collections) {
 
             if (err) {
@@ -166,7 +167,7 @@ module.exports = function(app, dbs) {
     })
 
     app.post("/api/notes/fetchUpdatedNote", function(req, res) {
-        
+
         let _id = req.body._id
         let searchTopic = req.body.topic.toLowerCase();
         let query = {_id: new mongo.ObjectId(_id)}
