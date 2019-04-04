@@ -1,21 +1,21 @@
 'use strict';
 
-// index.js under dbs is where i set up the databases, currently i only use one database, hoglarBlog and just use collections under this database for the different pages. Maybe i should make more databases?
+// index.js under dbs is where i set up the databases.
 
+// Should i still use async function?
 var async = require('async');
 var MongoClient = require('mongodb').MongoClient;
 
-//var hoglarBlog_URI = "mongodb://localhost:27017/hoglarBlog";
-var dictionary_URI = "mongodb://localhost:27017/dictionary";
+const dictionary_URI = "mongodb://localhost:27017/dictionary";
 const users_URI = "mongodb://localhost:27017/users";
 const notes_URI = "mongodb://localhost:27017/notes";
-
+const metaData_URI = "mongodb://localhost:27017/metaData";
 
 var database = {
-    //hoglarBlog: async.apply(MongoClient.connect, hoglarBlog_URI),
     dictionary: async.apply(MongoClient.connect, dictionary_URI),
     users: async.apply(MongoClient.connect, users_URI),
-    notes: async.apply(MongoClient.connect, notes_URI)
+    notes: async.apply(MongoClient.connect, notes_URI),
+    metaData: async.apply(MongoClient.connect, metaData_URI)
 };
 
 module.exports = function (cb) {

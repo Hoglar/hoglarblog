@@ -13,6 +13,7 @@ const notesApi = require('./restApi/notesApi.js');
 const dictionaryApi = require('./restApi/dictionaryApi.js');
 const userAuthApi = require('./restApi/userAuth.js');
 
+const topicUpdater = require('./serverUtilities/topicUpdater.js');
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -37,6 +38,9 @@ initializeDatabases(function(err, dbs) {
     notesApi(app, dbs);
     dictionaryApi(app, dbs);
     userAuthApi(app, dbs);
+
+    // Starting topic updater
+    topicUpdater(dbs);
 
     app.listen(8080, 'localhost', () => {
 
