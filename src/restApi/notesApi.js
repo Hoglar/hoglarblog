@@ -12,22 +12,17 @@ module.exports = function(app, dbs) {
 
     app.get("/api/notes/topics", function(req, res) {
 
-        dbs.notes.listCollections().toArray(function(err, collections) {
-
-            if (err) {
-                console.log("Error in notesApi: " + err);
-                res.json({"topics": ["Error!"]});
-                return;
+        dbs.metaData.collection("helper").findOne({"document": "collectionInfo"})
+        .then(
+            function(response) {
+                res.json({"topics": response.defaultTopicDisplay});
+            },
+            function(error) {
+                console.error(error);
+                res.json({failMessage: "Something went wrong with database"});
             }
+        )
 
-        let collectionNames = [];
-        console.log(collections)
-        collections.forEach(function(collection) {
-                collectionNames.push(collection.name);
-            })
-            
-            res.json({"topics": collectionNames});
-        });
     });
 
     app.post("/api/notes/create", function(req, res) {
