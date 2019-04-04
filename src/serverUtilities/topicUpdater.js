@@ -37,7 +37,7 @@ function topicUpdater(dbs) {
         })();
 
         topicUpdater(dbs);
-    }, 10000)
+    }, 86400000)
 }
 
 
