@@ -49,16 +49,23 @@ export default class hideTopicChooser extends React.Component {
 
     onTopicSearch(event) {
         event.preventDefault();
+        if(event.target.value.length > 0) {
+            topicSearch(event)
+            .then(
+                (response) => {
+                    this.setState({topics: response.topics.sort(), showAddTopic: false})
+                },
+                (error) => {
+                    this.setState({topics: [], showAddTopic: true});
+                }
+            )
+        }
+        else {
+            this.setState({topics: ["waitingServer"], topicButtonToInputField: false}, () => {
+                this.showTopicChooser()
+            })
+        }
 
-        topicSearch(event)
-        .then(
-            (response) => {
-                this.setState({topics: response.topics.sort(), showAddTopic: false})
-            },
-            (error) => {
-                this.setState({topics: [], showAddTopic: true});
-            }
-        )
     }
 
     createNewTopic(event) {

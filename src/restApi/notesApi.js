@@ -166,7 +166,7 @@ module.exports = function(app, dbs) {
     })
 
     app.post("/api/notes/fetchUpdatedNote", function(req, res) {
-        console.log("Getting here?");
+        
         let _id = req.body._id
         let searchTopic = req.body.topic.toLowerCase();
         let query = {_id: new mongo.ObjectId(_id)}

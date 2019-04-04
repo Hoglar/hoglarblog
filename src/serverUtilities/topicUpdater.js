@@ -1,7 +1,7 @@
 "use strict";
 const mongo = require('mongodb');
 
-// This function updates the default topics to display so that we ony show the 9 biggest topics. 
+// This function updates the default topics to display so that we ony show the 9 biggest topics.
 
 
 function topicUpdater(dbs) {
@@ -37,7 +37,7 @@ function topicUpdater(dbs) {
         })();
 
         topicUpdater(dbs);
-    }, 86400000)
+    }, 10000)
 }
 
 

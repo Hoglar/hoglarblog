@@ -4,8 +4,6 @@ export default function topicSearch(event) {
 
     let topicSearchValue = event.target.value;
 
-    console.log(topicSearchValue);
-
     const url = "/api/notes/topicSearch?topicSearchValue=";
 
     return new Promise((resolve, reject) => {
