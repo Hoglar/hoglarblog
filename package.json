@@ -15,14 +15,14 @@
   "author": "Martin Høghaug Larsen",
   "license": "MIT",
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^2.6.2",
     "body-parser": "^1.18.3",
     "draft-js": "^0.10.5",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "express-validator": "^4.3.0",
-    "mongodb": "^2.2.36",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "mongodb": "^3.2.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "bugs": {
     "url": "https://github.com/Hoglar/hoglarblog/issues"
@@ -33,10 +33,10 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.11",
+    "css-loader": "^2.1.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^2.1.5"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
