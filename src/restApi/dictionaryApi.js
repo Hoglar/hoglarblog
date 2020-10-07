@@ -16,7 +16,6 @@ module.exports = function(app, dbs) {
             let query = { topic: searchTopic, title: regSearch }
             // dbs.dictionary.collection
             // Need to make a title search with searchData. maybe use regex?
-
             // We need an algorithm here..
 
             dbs.dictionary.collection(searchTopic).find(query).toArray(function(err, result) {
@@ -27,10 +26,7 @@ module.exports = function(app, dbs) {
                     // We sort it based on score and return the 5 first.
                     let returnArray = result.sort(compareScore);
                     returnArray = returnArray.splice(0,5);
-
                     // We need to iterate over the array to check the documentScore of all items in it.
-
-
                     res.json(returnArray);
                 }
                 else {
