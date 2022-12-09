@@ -18,7 +18,7 @@
     "async": "^2.6.2",
     "body-parser": "^1.18.3",
     "draft-js": "^0.10.5",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-validator": "^4.3.0",
     "mongodb": "^3.2.3",
     "react": "^16.8.6",
